@@ -2436,6 +2436,7 @@ Public Class FrmStudent
     Private Sub BindingNavigatorAddNewItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         mblnaddingUser = True
         lbAddingStudent.Visible = True
+        btnStudProfile.Visible = False
 
         '      BindingNavigator1.Items("BindingNavigatorAddNewItem").Visible = False
         If StudentIDTextBox.Enabled = True Then
@@ -2523,6 +2524,7 @@ Public Class FrmStudent
                 With stud
                     mblnaddingUser = False
                     lbAddingStudent.Visible = False
+                    btnStudProfile.Visible = True
 
                     StudentIDTextBox.Text = .StudentID
                     StudentNameTextBox.Text = .StudentName
@@ -4946,6 +4948,7 @@ Public Class FrmStudent
         gblnsinglemsg = False
         LoadDatasets()
         lbAddingStudent.Visible = False
+        btnStudProfile.Visible = False
 
         FeesloadingMode()
         '     lbpos.Text = StudentPersonalDetailsBindingSource.Position + 1 & "of " & StudentPersonalDetailsBindingSource.Count
@@ -7098,6 +7101,10 @@ Public Class FrmStudent
 
         If a = 0 Then
             MsgBox("New class empty")
+        End If
+
+        If cbonewclassprog.Text <> cboOldClassprog.Text Then
+            chkMaintainPrevSubjects.Checked = False
         End If
 
         For Each itm In chknewclass.Items
@@ -9413,5 +9420,16 @@ Public Class FrmStudent
         Else
             MsgBox("No Class Teacher(s) maintained for  : " & cboMarkLevel.Text & "." & cboMarkSession.Text & " - " & cboMarkClass.Text)
         End If
+    End Sub
+
+    Private Sub btnStudProfile_Click(sender As Object, e As EventArgs) Handles btnStudProfile.Click
+        Dim frmStudprof As New frmStudentProfile
+        With frmStudprof
+            .StudentID = StudentIDTextBox.Text
+            .StudentFullName = StudentSurnameTextBox.Text & " " & StudentNameTextBox.Text & " ( " & StudentIDTextBox.Text & " ) "
+            .Text = .StudentFullName.ToUpper
+            .ShowDialog()
+        End With
+
     End Sub
 End Class
