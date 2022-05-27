@@ -6,9 +6,12 @@
     Private intk As String
     Private sess As String
     Private _clas As String
-
     Public Property Email As String
     Public Property FullName As String
+    Public Property enrolref As String
+    Public Property gender As String
+    Public Property Center As String
+    Public Property Status As String
 
     Public Property Student() As String
         Get

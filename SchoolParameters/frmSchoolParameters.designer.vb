@@ -67,6 +67,8 @@ Partial Class frmSchoolParameters
         Dim SittingLabel As System.Windows.Forms.Label
         Dim CurrentIDValueLabel As System.Windows.Forms.Label
         Dim Label16 As System.Windows.Forms.Label
+        Dim Label24 As System.Windows.Forms.Label
+        Dim Label25 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSchoolParameters))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -320,6 +322,9 @@ Partial Class frmSchoolParameters
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.tbExamSessions = New System.Windows.Forms.TabPage()
+        Me.pbSchoolStamp2 = New System.Windows.Forms.PictureBox()
+        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.pbSchoolStamp = New System.Windows.Forms.PictureBox()
         Me.lbExamSearch = New System.Windows.Forms.ListBox()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
         Me.btnExamSearch = New System.Windows.Forms.Button()
@@ -327,7 +332,6 @@ Partial Class frmSchoolParameters
         Me.Label10 = New System.Windows.Forms.Label()
         Me.GroupBox20 = New System.Windows.Forms.GroupBox()
         Me.cboMarkFormat = New System.Windows.Forms.ComboBox()
-        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SessionTextBox = New System.Windows.Forms.TextBox()
         Me.ExamClassRefComboBox = New System.Windows.Forms.ComboBox()
         Me.SittingTextBox = New System.Windows.Forms.TextBox()
@@ -574,6 +578,8 @@ Partial Class frmSchoolParameters
         SittingLabel = New System.Windows.Forms.Label()
         CurrentIDValueLabel = New System.Windows.Forms.Label()
         Label16 = New System.Windows.Forms.Label()
+        Label24 = New System.Windows.Forms.Label()
+        Label25 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -642,9 +648,11 @@ Partial Class frmSchoolParameters
         Me.tbProgramSubjects.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.tbExamSessions.SuspendLayout()
+        CType(Me.pbSchoolStamp2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbSchoolStamp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox20.SuspendLayout()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator7.SuspendLayout()
         Me.tbExamGrading.SuspendLayout()
@@ -1047,7 +1055,7 @@ Partial Class frmSchoolParameters
         'SessionLabel
         '
         SessionLabel.AutoSize = True
-        SessionLabel.Location = New System.Drawing.Point(134, 90)
+        SessionLabel.Location = New System.Drawing.Point(7, 70)
         SessionLabel.Name = "SessionLabel"
         SessionLabel.Size = New System.Drawing.Size(47, 13)
         SessionLabel.TabIndex = 7
@@ -1056,7 +1064,7 @@ Partial Class frmSchoolParameters
         'ExamClassRefLabel
         '
         ExamClassRefLabel.AutoSize = True
-        ExamClassRefLabel.Location = New System.Drawing.Point(134, 116)
+        ExamClassRefLabel.Location = New System.Drawing.Point(7, 96)
         ExamClassRefLabel.Name = "ExamClassRefLabel"
         ExamClassRefLabel.Size = New System.Drawing.Size(35, 13)
         ExamClassRefLabel.TabIndex = 9
@@ -1065,7 +1073,7 @@ Partial Class frmSchoolParameters
         'SittingLabel
         '
         SittingLabel.AutoSize = True
-        SittingLabel.Location = New System.Drawing.Point(134, 143)
+        SittingLabel.Location = New System.Drawing.Point(7, 123)
         SittingLabel.Name = "SittingLabel"
         SittingLabel.Size = New System.Drawing.Size(39, 13)
         SittingLabel.TabIndex = 11
@@ -1083,12 +1091,30 @@ Partial Class frmSchoolParameters
         'Label16
         '
         Label16.AutoSize = True
-        Label16.Location = New System.Drawing.Point(134, 169)
+        Label16.Location = New System.Drawing.Point(7, 149)
         Label16.Name = "Label16"
         Label16.Size = New System.Drawing.Size(66, 13)
         Label16.TabIndex = 20
         Label16.Text = "MarkFormat:"
         AddHandler Label16.Click, AddressOf Me.Label16_Click
+        '
+        'Label24
+        '
+        Label24.AutoSize = True
+        Label24.Location = New System.Drawing.Point(381, 142)
+        Label24.Name = "Label24"
+        Label24.Size = New System.Drawing.Size(49, 13)
+        Label24.TabIndex = 18
+        Label24.Text = "Stamp 1:"
+        '
+        'Label25
+        '
+        Label25.AutoSize = True
+        Label25.Location = New System.Drawing.Point(622, 142)
+        Label25.Name = "Label25"
+        Label25.Size = New System.Drawing.Size(49, 13)
+        Label25.TabIndex = 20
+        Label25.Text = "Stamp 2:"
         '
         'TabControl1
         '
@@ -3432,6 +3458,10 @@ Partial Class frmSchoolParameters
         '
         'tbExamSessions
         '
+        Me.tbExamSessions.Controls.Add(Me.pbSchoolStamp2)
+        Me.tbExamSessions.Controls.Add(Label25)
+        Me.tbExamSessions.Controls.Add(Me.pbSchoolStamp)
+        Me.tbExamSessions.Controls.Add(Label24)
         Me.tbExamSessions.Controls.Add(Me.lbExamSearch)
         Me.tbExamSessions.Controls.Add(Me.GroupBox16)
         Me.tbExamSessions.Controls.Add(Me.GroupBox20)
@@ -3443,12 +3473,41 @@ Partial Class frmSchoolParameters
         Me.tbExamSessions.Text = "ExamSessions"
         Me.tbExamSessions.UseVisualStyleBackColor = True
         '
+        'pbSchoolStamp2
+        '
+        Me.pbSchoolStamp2.BackgroundImage = Global.SchoolParameters.My.Resources.Resources.Upload___Transfer_Photos
+        Me.pbSchoolStamp2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbSchoolStamp2.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.ExamSessionsBindingSource, "ExamStamp2", True))
+        Me.pbSchoolStamp2.Location = New System.Drawing.Point(622, 158)
+        Me.pbSchoolStamp2.Name = "pbSchoolStamp2"
+        Me.pbSchoolStamp2.Size = New System.Drawing.Size(226, 147)
+        Me.pbSchoolStamp2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbSchoolStamp2.TabIndex = 21
+        Me.pbSchoolStamp2.TabStop = False
+        '
+        'ExamSessionsBindingSource
+        '
+        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
+        Me.ExamSessionsBindingSource.DataSource = Me.DsSchoolParameters
+        '
+        'pbSchoolStamp
+        '
+        Me.pbSchoolStamp.BackgroundImage = Global.SchoolParameters.My.Resources.Resources.Upload___Transfer_Photos
+        Me.pbSchoolStamp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbSchoolStamp.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.ExamSessionsBindingSource, "ExamStamp", True))
+        Me.pbSchoolStamp.Location = New System.Drawing.Point(381, 158)
+        Me.pbSchoolStamp.Name = "pbSchoolStamp"
+        Me.pbSchoolStamp.Size = New System.Drawing.Size(226, 147)
+        Me.pbSchoolStamp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbSchoolStamp.TabIndex = 19
+        Me.pbSchoolStamp.TabStop = False
+        '
         'lbExamSearch
         '
         Me.lbExamSearch.FormattingEnabled = True
-        Me.lbExamSearch.Location = New System.Drawing.Point(622, 59)
+        Me.lbExamSearch.Location = New System.Drawing.Point(622, 61)
         Me.lbExamSearch.Name = "lbExamSearch"
-        Me.lbExamSearch.Size = New System.Drawing.Size(282, 160)
+        Me.lbExamSearch.Size = New System.Drawing.Size(282, 56)
         Me.lbExamSearch.TabIndex = 17
         Me.lbExamSearch.Visible = False
         '
@@ -3504,9 +3563,9 @@ Partial Class frmSchoolParameters
         Me.GroupBox20.Controls.Add(Me.PublishCheckBox)
         Me.GroupBox20.Controls.Add(Me.AutoCommentCheckBox)
         Me.GroupBox20.Controls.Add(Me.BindingNavigator7)
-        Me.GroupBox20.Location = New System.Drawing.Point(205, 90)
+        Me.GroupBox20.Location = New System.Drawing.Point(6, 77)
         Me.GroupBox20.Name = "GroupBox20"
-        Me.GroupBox20.Size = New System.Drawing.Size(507, 265)
+        Me.GroupBox20.Size = New System.Drawing.Size(369, 296)
         Me.GroupBox20.TabIndex = 3
         Me.GroupBox20.TabStop = False
         Me.GroupBox20.Text = "ExamSessions"
@@ -3518,20 +3577,15 @@ Partial Class frmSchoolParameters
         Me.cboMarkFormat.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ExamSessionsBindingSource, "MarkFormat", True))
         Me.cboMarkFormat.FormattingEnabled = True
         Me.cboMarkFormat.Items.AddRange(New Object() {"ExamMark", "TermMark", "BothMarks"})
-        Me.cboMarkFormat.Location = New System.Drawing.Point(224, 166)
+        Me.cboMarkFormat.Location = New System.Drawing.Point(97, 146)
         Me.cboMarkFormat.Name = "cboMarkFormat"
         Me.cboMarkFormat.Size = New System.Drawing.Size(121, 21)
         Me.cboMarkFormat.TabIndex = 3
         '
-        'ExamSessionsBindingSource
-        '
-        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
-        Me.ExamSessionsBindingSource.DataSource = Me.DsSchoolParameters
-        '
         'SessionTextBox
         '
         Me.SessionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ExamSessionsBindingSource, "Session", True))
-        Me.SessionTextBox.Location = New System.Drawing.Point(224, 87)
+        Me.SessionTextBox.Location = New System.Drawing.Point(97, 67)
         Me.SessionTextBox.Name = "SessionTextBox"
         Me.SessionTextBox.Size = New System.Drawing.Size(259, 20)
         Me.SessionTextBox.TabIndex = 0
@@ -3542,7 +3596,7 @@ Partial Class frmSchoolParameters
         Me.ExamClassRefComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ExamClassRefComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ExamSessionsBindingSource, "ExamClassRef", True))
         Me.ExamClassRefComboBox.FormattingEnabled = True
-        Me.ExamClassRefComboBox.Location = New System.Drawing.Point(224, 113)
+        Me.ExamClassRefComboBox.Location = New System.Drawing.Point(97, 93)
         Me.ExamClassRefComboBox.Name = "ExamClassRefComboBox"
         Me.ExamClassRefComboBox.Size = New System.Drawing.Size(121, 21)
         Me.ExamClassRefComboBox.TabIndex = 1
@@ -3550,7 +3604,7 @@ Partial Class frmSchoolParameters
         'SittingTextBox
         '
         Me.SittingTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ExamSessionsBindingSource, "Sitting", True))
-        Me.SittingTextBox.Location = New System.Drawing.Point(224, 140)
+        Me.SittingTextBox.Location = New System.Drawing.Point(97, 120)
         Me.SittingTextBox.Name = "SittingTextBox"
         Me.SittingTextBox.Size = New System.Drawing.Size(121, 20)
         Me.SittingTextBox.TabIndex = 2
@@ -3566,7 +3620,7 @@ Partial Class frmSchoolParameters
         'PublishCheckBox
         '
         Me.PublishCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ExamSessionsBindingSource, "Publish", True))
-        Me.PublishCheckBox.Location = New System.Drawing.Point(224, 193)
+        Me.PublishCheckBox.Location = New System.Drawing.Point(97, 173)
         Me.PublishCheckBox.Name = "PublishCheckBox"
         Me.PublishCheckBox.Size = New System.Drawing.Size(121, 24)
         Me.PublishCheckBox.TabIndex = 4
@@ -3576,7 +3630,7 @@ Partial Class frmSchoolParameters
         'AutoCommentCheckBox
         '
         Me.AutoCommentCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ExamSessionsBindingSource, "AutoComment", True))
-        Me.AutoCommentCheckBox.Location = New System.Drawing.Point(224, 214)
+        Me.AutoCommentCheckBox.Location = New System.Drawing.Point(97, 194)
         Me.AutoCommentCheckBox.Name = "AutoCommentCheckBox"
         Me.AutoCommentCheckBox.Size = New System.Drawing.Size(121, 24)
         Me.AutoCommentCheckBox.TabIndex = 5
@@ -3597,7 +3651,7 @@ Partial Class frmSchoolParameters
         Me.BindingNavigator7.MovePreviousItem = Me.ToolStripButton22
         Me.BindingNavigator7.Name = "BindingNavigator7"
         Me.BindingNavigator7.PositionItem = Me.ToolStripTextBox3
-        Me.BindingNavigator7.Size = New System.Drawing.Size(501, 25)
+        Me.BindingNavigator7.Size = New System.Drawing.Size(363, 25)
         Me.BindingNavigator7.TabIndex = 7
         Me.BindingNavigator7.Text = "BindingNavigator7"
         '
@@ -5350,11 +5404,14 @@ Partial Class frmSchoolParameters
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.tbExamSessions.ResumeLayout(False)
+        Me.tbExamSessions.PerformLayout()
+        CType(Me.pbSchoolStamp2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbSchoolStamp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox16.ResumeLayout(False)
         Me.GroupBox16.PerformLayout()
         Me.GroupBox20.ResumeLayout(False)
         Me.GroupBox20.PerformLayout()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator7.ResumeLayout(False)
         Me.BindingNavigator7.PerformLayout()
@@ -5882,4 +5939,6 @@ Partial Class frmSchoolParameters
     Friend WithEvents Ref As Windows.Forms.ColumnHeader
     Friend WithEvents txtgradeRef As Windows.Forms.TextBox
     Friend WithEvents cboMarkFormat As Windows.Forms.ComboBox
+    Friend WithEvents pbSchoolStamp As Windows.Forms.PictureBox
+    Friend WithEvents pbSchoolStamp2 As Windows.Forms.PictureBox
 End Class

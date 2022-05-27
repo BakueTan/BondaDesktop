@@ -903,6 +903,7 @@ Public Class frmSchoolParameters
 
     Private Sub ToolStripButton25_Click_1(sender As Object, e As EventArgs) Handles ToolStripButton25.Click
         cnn = New SqlConnection(ConnectionString)
+        Dim imagebytes As Byte()
 
         Try
             cnn.Open()
@@ -917,6 +918,47 @@ Public Class frmSchoolParameters
                 .Parameters.AddWithValue("@publish", PublishCheckBox.Checked)
                 .Parameters.AddWithValue("@autocomment", AutoCommentCheckBox.Checked)
                 .Parameters.AddWithValue("@markformat", cboMarkFormat.Text)
+
+                param = New SqlParameter("@examstamp", SqlDbType.Image)
+                Try
+
+                    imagebytes = getimage(pbSchoolStamp)
+                    If Not IsNothing(imagebytes) Then
+                        param.Value = imagebytes
+                        .Parameters.Add(param)
+                    Else
+                        Dim par As New SqlParameter("@examstamp", SqlDbType.Image)
+                        With par
+                            .Value = DBNull.Value
+
+                        End With
+                        .Parameters.Add(par)
+                    End If
+
+                Catch ex As Exception
+                    param.Value = DBNull.Value
+                End Try
+
+                param = New SqlParameter("@examstamp2", SqlDbType.Image)
+                Try
+
+                    imagebytes = getimage(pbSchoolStamp2)
+                    If Not IsNothing(imagebytes) Then
+                        param.Value = imagebytes
+                        .Parameters.Add(param)
+                    Else
+                        Dim par As New SqlParameter("@examstamp2", SqlDbType.Image)
+                        With par
+                            .Value = DBNull.Value
+
+                        End With
+                        .Parameters.Add(par)
+                    End If
+
+                Catch ex As Exception
+                    param.Value = DBNull.Value
+                End Try
+
                 .ExecuteNonQuery()
                 MsgBox("Exam Session Saved")
             End With
@@ -1933,6 +1975,18 @@ Public Class frmSchoolParameters
 
     Private Sub Label16_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub pbSchoolStamp_Click(sender As Object, e As EventArgs) Handles pbSchoolStamp.Click
+        If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            pbSchoolStamp.ImageLocation = OpenFileDialog1.FileName
+        End If
+    End Sub
+
+    Private Sub pbSchoolStamp2_Click(sender As Object, e As EventArgs) Handles pbSchoolStamp2.Click
+        If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            pbSchoolStamp2.ImageLocation = OpenFileDialog1.FileName
+        End If
     End Sub
 
     Private Sub ToolStripButton91_Click(sender As Object, e As EventArgs) Handles ToolStripButton91.Click

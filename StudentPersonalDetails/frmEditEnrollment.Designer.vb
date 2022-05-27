@@ -196,6 +196,7 @@ Partial Class frmEditEnrollment
         'DsSchool
         '
         Me.DsSchool.DataSetName = "dsSchool"
+        Me.DsSchool.EnforceConstraints = False
         Me.DsSchool.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BindingNavigatorCountItem

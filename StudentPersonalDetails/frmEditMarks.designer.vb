@@ -42,16 +42,6 @@ Partial Class frmEditMarks
         Me.Button3 = New System.Windows.Forms.Button()
         Me.lstResult = New System.Windows.Forms.ListBox()
         Me.dgeditmarks = New System.Windows.Forms.DataGridView()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.cboEditMarksRef = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtStudEditMarks = New System.Windows.Forms.TextBox()
-        Me.cboEditMarksProg = New System.Windows.Forms.ComboBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.DsSchool = New StudentPersonalDetails.dsSchool()
-        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ExamSessionsTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.ExamSessionsTableAdapter()
         Me.RowNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Subject = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SubType = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -64,16 +54,26 @@ Partial Class frmEditMarks
         Me.Grade = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Status = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Exam = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsSchool = New StudentPersonalDetails.dsSchool()
         Me.Comment = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Ref = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MarkEnrolref = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Delete = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Update = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cboEditMarksProg = New System.Windows.Forms.ComboBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtStudEditMarks = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cboEditMarksRef = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ExamSessionsTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.ExamSessionsTableAdapter()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgeditmarks, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -127,95 +127,6 @@ Partial Class frmEditMarks
         Me.dgeditmarks.Name = "dgeditmarks"
         Me.dgeditmarks.Size = New System.Drawing.Size(1346, 286)
         Me.dgeditmarks.TabIndex = 0
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.GroupBox2.Controls.Add(Me.cboEditMarksProg)
-        Me.GroupBox2.Controls.Add(Me.Label17)
-        Me.GroupBox2.Controls.Add(Me.txtStudEditMarks)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.cboEditMarksRef)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 9)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1223, 48)
-        Me.GroupBox2.TabIndex = 30
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "ExamSearch"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(513, 24)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(36, 13)
-        Me.Label7.TabIndex = 31
-        Me.Label7.Text = "Exam:"
-        '
-        'cboEditMarksRef
-        '
-        Me.cboEditMarksRef.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboEditMarksRef.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboEditMarksRef.DisplayMember = "Sessions"
-        Me.cboEditMarksRef.FormattingEnabled = True
-        Me.cboEditMarksRef.Location = New System.Drawing.Point(555, 21)
-        Me.cboEditMarksRef.Name = "cboEditMarksRef"
-        Me.cboEditMarksRef.Size = New System.Drawing.Size(226, 21)
-        Me.cboEditMarksRef.TabIndex = 3
-        Me.cboEditMarksRef.ValueMember = "Sessions"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(272, 24)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Student:"
-        '
-        'txtStudEditMarks
-        '
-        Me.txtStudEditMarks.Location = New System.Drawing.Point(325, 21)
-        Me.txtStudEditMarks.Name = "txtStudEditMarks"
-        Me.txtStudEditMarks.Size = New System.Drawing.Size(173, 20)
-        Me.txtStudEditMarks.TabIndex = 32
-        '
-        'cboEditMarksProg
-        '
-        Me.cboEditMarksProg.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboEditMarksProg.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboEditMarksProg.DisplayMember = "Forms"
-        Me.cboEditMarksProg.FormattingEnabled = True
-        Me.cboEditMarksProg.Location = New System.Drawing.Point(126, 21)
-        Me.cboEditMarksProg.Name = "cboEditMarksProg"
-        Me.cboEditMarksProg.Size = New System.Drawing.Size(128, 21)
-        Me.cboEditMarksProg.TabIndex = 42
-        Me.cboEditMarksProg.ValueMember = "Forms"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(71, 24)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(49, 13)
-        Me.Label17.TabIndex = 43
-        Me.Label17.Text = "Program:"
-        '
-        'DsSchool
-        '
-        Me.DsSchool.DataSetName = "dsSchool"
-        Me.DsSchool.EnforceConstraints = False
-        Me.DsSchool.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ExamSessionsBindingSource
-        '
-        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
-        Me.ExamSessionsBindingSource.DataSource = Me.DsSchool
-        '
-        'ExamSessionsTableAdapter
-        '
-        Me.ExamSessionsTableAdapter.ClearBeforeFill = True
         '
         'RowNumber
         '
@@ -320,6 +231,17 @@ Partial Class frmEditMarks
         Me.Exam.ValueMember = "Session"
         Me.Exam.Width = 200
         '
+        'ExamSessionsBindingSource
+        '
+        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
+        Me.ExamSessionsBindingSource.DataSource = Me.DsSchool
+        '
+        'DsSchool
+        '
+        Me.DsSchool.DataSetName = "dsSchool"
+        Me.DsSchool.EnforceConstraints = False
+        Me.DsSchool.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Comment
         '
         Me.Comment.HeaderText = "Comment"
@@ -363,6 +285,84 @@ Partial Class frmEditMarks
         Me.Update.ToolTipText = "Saves changes made to current row"
         Me.Update.UseColumnTextForButtonValue = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.GroupBox2.Controls.Add(Me.cboEditMarksProg)
+        Me.GroupBox2.Controls.Add(Me.Label17)
+        Me.GroupBox2.Controls.Add(Me.txtStudEditMarks)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.cboEditMarksRef)
+        Me.GroupBox2.Controls.Add(Me.Label1)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 9)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1223, 48)
+        Me.GroupBox2.TabIndex = 30
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "ExamSearch"
+        '
+        'cboEditMarksProg
+        '
+        Me.cboEditMarksProg.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboEditMarksProg.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboEditMarksProg.DisplayMember = "Forms"
+        Me.cboEditMarksProg.FormattingEnabled = True
+        Me.cboEditMarksProg.Location = New System.Drawing.Point(126, 21)
+        Me.cboEditMarksProg.Name = "cboEditMarksProg"
+        Me.cboEditMarksProg.Size = New System.Drawing.Size(128, 21)
+        Me.cboEditMarksProg.TabIndex = 42
+        Me.cboEditMarksProg.ValueMember = "Forms"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(71, 24)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(49, 13)
+        Me.Label17.TabIndex = 43
+        Me.Label17.Text = "Program:"
+        '
+        'txtStudEditMarks
+        '
+        Me.txtStudEditMarks.Location = New System.Drawing.Point(325, 21)
+        Me.txtStudEditMarks.Name = "txtStudEditMarks"
+        Me.txtStudEditMarks.Size = New System.Drawing.Size(173, 20)
+        Me.txtStudEditMarks.TabIndex = 32
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(513, 24)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(36, 13)
+        Me.Label7.TabIndex = 31
+        Me.Label7.Text = "Exam:"
+        '
+        'cboEditMarksRef
+        '
+        Me.cboEditMarksRef.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboEditMarksRef.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboEditMarksRef.DisplayMember = "Sessions"
+        Me.cboEditMarksRef.FormattingEnabled = True
+        Me.cboEditMarksRef.Location = New System.Drawing.Point(555, 21)
+        Me.cboEditMarksRef.Name = "cboEditMarksRef"
+        Me.cboEditMarksRef.Size = New System.Drawing.Size(226, 21)
+        Me.cboEditMarksRef.TabIndex = 3
+        Me.cboEditMarksRef.ValueMember = "Sessions"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(272, 24)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(47, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Student:"
+        '
+        'ExamSessionsTableAdapter
+        '
+        Me.ExamSessionsTableAdapter.ClearBeforeFill = True
+        '
         'frmEditMarks
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -381,10 +381,10 @@ Partial Class frmEditMarks
         Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.dgeditmarks, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

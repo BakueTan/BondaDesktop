@@ -42,7 +42,7 @@ Public Class frmEditMarks
 
         Dim sql As String
         Dim exams As SqlDataReader
-        sql = " select distinct exam from studentmarks  where studentid = '" & stud & "'"
+        sql = " select distinct exam from studentmarks  where studentid = '" & stud & "' and status = 1"
 
         exams = ExecuteReader(sql,, True)
         Dim state As New List(Of ComboItem)
@@ -485,6 +485,10 @@ Public Class frmEditMarks
 
             End Try
         End If
+    End Sub
+
+    Private Sub cboEditMarksProg_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles cboEditMarksProg.SelectedIndexChanged
+
     End Sub
 End Class
 

@@ -315,7 +315,7 @@ Public Class FrmStudent
         Dim Nd, NdSub, NdSubSub, NdSubSubSub As TreeNode
         Nd = Nothing : NdSub = Nothing : NdSubSub = Nothing
         NdSubSubSub = Nothing
-        lbl = tvStudsEdt
+        '    lbl = tvStudsEdt
 
         If goUser.Group <= 1 Or goUser.Group = 13 Then
             BindingNavigator2.Items("Delete").Enabled = True
@@ -337,74 +337,7 @@ Public Class FrmStudent
 
 
 
-        For Each Nd In lbl.Nodes
-            For Each NdSub In Nd.Nodes
-                Try
-                    If Not IsNothing(NdSub.Tag) Then
-                        If NdSub.Tag.ToString = "-1" Then
-                            NdSub.Text = ""
-                        Else
-                            If NdSub.Tag.ToString <> "0" Then
-                                Dim dr As SqlDataReader = Nothing
-                                Dim sql As String = ""
-                                sql = "Select Auth_HasAccess from " &
-                                      "dbo.UserAuthorisations where Auth_Group = '" & goUser.Group &
-                                      "' and Auth_AccComp = '" & NdSub.Tag.ToString & "'"
-                                dr = ExecuteReader(sql, Nothing)
-                                While dr.Read
-                                    If Not CBool(dr.Item(0)) Then NdSub.Text = ""
-                                End While
-                            End If
-                        End If
-                        For Each NdSubSub In NdSub.Nodes
-                            Try
-                                If Not IsNothing(NdSubSub.Tag) Then
-                                    If NdSubSub.Tag.ToString = "-1" Then
-                                        NdSubSub.Text = ""
-                                    Else
-                                        If NdSubSub.Tag.ToString <> "0" Then
-                                            Dim dr As SqlDataReader = Nothing
-                                            Dim sql As String = ""
-                                            sql = "Select Auth_HasAccess from " &
-                                                  "dbo.UserAuthorisations where Auth_Group = '" & goUser.Group &
-                                                  "' and Auth_AccComp = '" & NdSubSub.Tag.ToString & "'"
-                                            dr = ExecuteReader(sql, Nothing)
-                                            While dr.Read
-                                                If Not CBool(dr.Item(0)) Then NdSubSub.Text = ""
-                                            End While
-                                        End If
-                                    End If
-                                End If
-                            Catch ex As Exception
-                            End Try
-                            For Each NdSubSubSub In NdSubSub.Nodes
-                                Try
-                                    If Not IsNothing(NdSubSubSub.Tag) Then
-                                        If NdSubSubSub.Tag.ToString = "-1" Then
-                                            NdSubSubSub.Text = ""
-                                        Else
-                                            If NdSubSubSub.Tag.ToString <> "0" Then
-                                                Dim dr As SqlDataReader = Nothing
-                                                Dim sql As String = ""
-                                                sql = "Select Auth_HasAccess from " &
-                                                      "dbo.UserAuthorisations where Auth_Group = '" & goUser.Group &
-                                                      "' and Auth_AccComp = '" & NdSubSubSub.Tag.ToString & "'"
-                                                dr = ExecuteReader(sql, Nothing)
-                                                While dr.Read
-                                                    If Not CBool(dr.Item(0)) Then NdSubSubSub.Text = ""
-                                                End While
-                                            End If
-                                        End If
-                                    End If
-                                Catch ex As Exception
-                                End Try
-                            Next
-                        Next
-                    End If
-                Catch ex As Exception
-                End Try
-            Next
-        Next
+
 
         Dim cont As TabPage
         For Each cont In PersonalDetails.TabPages
@@ -2510,7 +2443,7 @@ Public Class FrmStudent
 
     End Function
     Private Sub loadStudInfo(searchstud As String)
-
+        btnStudProfile.Visible = False
 
         If searchstud <> "" Then
 
@@ -3520,7 +3453,7 @@ Public Class FrmStudent
         End With
 
     End Sub
-    Private Sub tvStudsEdt_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles tvStudsEdt.AfterSelect
+    Private Sub tvStudsEdt_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs)
 
         If e.Node.Text = "EnrollmentDetails" Then
             Dim frmenroledit As New frmEditEnrollment()
@@ -3806,13 +3739,29 @@ Public Class FrmStudent
     Private Sub StudentIDTextBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StudentIDTextBox.TextChanged
 
 
-        'Try
-        '    Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, StudentIDTextBox.Text, cboFeesCartegory.Text)
-        '    txtReceiptSearch.Text = StudentIDTextBox.Text
-        '    lbSeacrhFees.Visible = False
-        'Catch ex As Exception
+        Dim reader As SqlDataReader = Nothing
+        Dim cnt As Integer = 0
+        lbEditDetails.Text = ""
+        If mblnaddingUser = False Then
+            tvEnrol.Nodes.Clear()
+            tvEnrol.Nodes.Add(StudentIDTextBox.Text)
 
-        'End Try
+
+            Dim sql As String = "select distinct program from enrollment where studentid = '" & StudentIDTextBox.Text & "'"
+            reader = ExecuteReader(sql, , True)
+
+            While reader.Read
+                tvEnrol.Nodes(0).Nodes.Add(reader(0).ToString)
+                tvEnrol.Nodes(0).Nodes(cnt).Tag = "Program"
+                cnt += 1
+
+            End While
+
+            LastEdited(StudentIDTextBox.Text)
+            gblnconfirmUpdate = False
+        End If
+        tvEnrol.ExpandAll()
+
     End Sub
 
 
@@ -3854,7 +3803,7 @@ Public Class FrmStudent
                                     Dim dr As SqlDataReader = Nothing
                                     Dim sql As String = ""
                                     sql = "Select Auth_HasAccess from " &
-                                          "dbo.UserAuthorisations where Auth_Group = '" & goUser.Group &
+                                          "dbo.UserAuthorisations where Auth_Group = '" & gouser.Group &
                                           "' and Auth_AccComp = '" & NdSub.Tag.ToString & "'"
                                     dr = ExecuteReader(sql, Nothing)
                                     While dr.Read
@@ -3872,7 +3821,7 @@ Public Class FrmStudent
                                                 Dim dr As SqlDataReader = Nothing
                                                 Dim sql As String = ""
                                                 sql = "Select Auth_HasAccess from " &
-                                                      "dbo.UserAuthorisations where Auth_Group = '" & goUser.Group &
+                                                      "dbo.UserAuthorisations where Auth_Group = '" & gouser.Group &
                                                       "' and Auth_AccComp = '" & NdSubSub.Tag.ToString & "'"
                                                 dr = ExecuteReader(sql, Nothing)
                                                 While dr.Read
@@ -3893,7 +3842,7 @@ Public Class FrmStudent
                                                     Dim dr As SqlDataReader = Nothing
                                                     Dim sql As String = ""
                                                     sql = "Select Auth_HasAccess from " &
-                                                          "dbo.UserAuthorisations where Auth_Group = '" & goUser.Group &
+                                                          "dbo.UserAuthorisations where Auth_Group = '" & gouser.Group &
                                                           "' and Auth_AccComp = '" & NdSubSubSub.Tag.ToString & "'"
                                                     dr = ExecuteReader(sql, Nothing)
                                                     While dr.Read
@@ -5110,7 +5059,7 @@ Public Class FrmStudent
                 param = New SqlParameter("@recnumber", receipt)
                 params.Add(param)
 
-                param = New SqlParameter("@user", goUser.userName)
+                param = New SqlParameter("@user", gouser.userName)
                 params.Add(param)
 
 
@@ -5337,7 +5286,7 @@ Public Class FrmStudent
                 param = New SqlParameter("@recnumber", receipt)
                 params.Add(param)
 
-                param = New SqlParameter("@user", goUser.userName)
+                param = New SqlParameter("@user", gouser.userName)
                 params.Add(param)
 
 
@@ -5460,7 +5409,7 @@ Public Class FrmStudent
 
                     param = New SqlParameter("@lineref", IIf(lineref = "", Guid.NewGuid, lineref))
                     params.Add(param)
-                    param = New SqlParameter("@user", goUser.userName)
+                    param = New SqlParameter("@user", gouser.userName)
                     params.Add(param)
                     param = New SqlParameter("@TransType", IIf(Mid(Trim(ReceiptTextBox.Text), 1, 3) = "Rec", "R", "I"))
                     params.Add(param)
@@ -5568,7 +5517,7 @@ Public Class FrmStudent
     Private Sub RefreshFeesStatement()
         Try
 
-            Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations, cboFeesCartegory.Text, txtFeesStudID.Text, goUser.userName, "", -1, -1)
+            Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations, cboFeesCartegory.Text, txtFeesStudID.Text, gouser.userName, "", -1, -1)
             rvOnScreenStat.Dock = DockStyle.Fill
             rvOnScreenStat.Visible = True
             rvOnScreenStat.RefreshReport()
@@ -5665,7 +5614,7 @@ Public Class FrmStudent
                                     param = New SqlParameter("@recnumber", "")
                                     cmd.Parameters.Add(param)
 
-                                    param = New SqlParameter("@user", goUser.userName)
+                                    param = New SqlParameter("@user", gouser.userName)
                                     cmd.Parameters.Add(param)
 
 
@@ -5728,7 +5677,7 @@ Public Class FrmStudent
 
                                     param = New SqlParameter("@lineref", Guid.NewGuid)
                                     params.Add(param)
-                                    param = New SqlParameter("@user", goUser.userName)
+                                    param = New SqlParameter("@user", gouser.userName)
                                     params.Add(param)
 
                                     param = New SqlParameter("@TransType", "I")
@@ -6618,7 +6567,7 @@ Public Class FrmStudent
                     cmd.Connection = cnn
                     param = New SqlParameter("@recnumber", ReceiptTextBox.Text)
                     cmd.Parameters.Add(param)
-                    param = New SqlParameter("@user", goUser.userName)
+                    param = New SqlParameter("@user", gouser.userName)
                     cmd.Parameters.Add(param)
                     param = New SqlParameter("@reason", ReasonForReversalComboBox.Text)
                     cmd.Parameters.Add(param)
@@ -7157,7 +7106,7 @@ Public Class FrmStudent
                 param = New SqlParameter("@keepoldclass", Chkmitype.Checked)
                 params.Add(param)
 
-                param = New SqlParameter("@user", goUser.FullName)
+                param = New SqlParameter("@user", gouser.FullName)
                 params.Add(param)
 
                 param = New SqlParameter("@maintainPrevSubjects", chkMaintainPrevSubjects.Checked)
@@ -9431,5 +9380,166 @@ Public Class FrmStudent
             .ShowDialog()
         End With
 
+    End Sub
+
+    Private Sub tvEnrol_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles tvEnrol.AfterSelect
+        Dim drr As SqlDataReader = Nothing
+        If e.Node.Tag = "Program" Then
+            e.Node.Nodes.Clear()
+            Dim sql As String = "select e.program,e.year,e.session,e.classdesc,e.enrolref from enrollment E  " &
+                " inner join classes  C on c.Description = e.classdesc " &
+" where e.program = '" & e.Node.Text & "' and e.studentid = '" & StudentIDTextBox.Text & "' order by c.clas desc ,e.year desc,c.sem desc "
+            drr = ExecuteReader(sql, True)
+            Dim cnt As Integer = 0
+            While drr.Read
+                tvEnrol.SelectedNode.Nodes.Add(drr(1) & "." & drr(2) & "-" & drr(3))
+                tvEnrol.SelectedNode.Nodes(cnt).Tag = drr(4).ToString
+                tvEnrol.SelectedNode.Nodes(cnt).ContextMenuStrip = ctxEnrollment
+                cnt += 1
+            End While
+        Else
+
+
+
+
+        End If
+        tvEnrol.ExpandAll()
+    End Sub
+
+    Private Sub tvEnrol_DoubleClick(sender As Object, e As EventArgs) Handles tvEnrol.DoubleClick, cxtToolEditEnrollment.Click
+        Dim studentid
+        Dim enrolref As String
+        Try
+            If tvEnrol.SelectedNode.Text <> "" Then
+
+                studentid = StudentIDTextBox.Text
+                enrolref = tvEnrol.SelectedNode.Tag
+                '   Dim enrol As New Enrol()
+
+                With enrollment
+                    .Student = studentid
+                    .enrolref = enrolref
+                End With
+
+
+                Dim enrolform As New frmEditEnrollment()
+
+                With enrolform
+                    .mdiPrnt = mainform
+                    .loadspec = True
+                    .ShowDialog()
+                End With
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub cxtToolDeleteEnrollment_Click(sender As Object, e As EventArgs) Handles cxtToolDeleteEnrollment.Click
+        If MsgBox("Delete Enrollment?", vbYesNo) = vbYes Then
+
+            Dim sql As String = "delete enrollment where enrolref = '" & tvEnrol.SelectedNode.Tag & "'"
+            ExecuteNonQuery(sql,, True)
+            If era Then
+                MsgBox(eramsg)
+                Exit Sub
+            End If
+
+            StudentIDTextBox_TextChanged(Me, Nothing)
+        End If
+    End Sub
+
+    Private Sub cxtToolEditEnrollment_Click(sender As Object, e As EventArgs) Handles cxtToolEditEnrollment.Click
+
+    End Sub
+
+    Private Sub cxtToolCopyEnrollment_Click(sender As Object, e As EventArgs) Handles cxtToolCopyEnrollment.Click
+        Dim items(2) As String
+
+        Dim classdetails(2)
+        Dim studentid
+        Dim enrolref As String
+
+        Dim reader As SqlDataReader
+
+        Dim cnn As New SqlConnection(ConnectionString)
+        Try
+            If tvEnrol.SelectedNode.Text <> "" Then
+
+                studentid = StudentIDTextBox.Text
+                enrolref = tvEnrol.SelectedNode.Tag
+
+                Dim sql As String = "Select * from enrollment where studentid = '" & studentid & "' and enrolref = '" & enrolref & "'"
+
+                Try
+                    Dim cmd As New SqlCommand(sql, cnn)
+                    cnn.Open()
+                    With cmd
+                        .CommandType = CommandType.Text
+                        reader = .ExecuteReader()
+
+                        While reader.Read
+                            enrollment = New Enrol()
+                            With enrollment
+                                .Student = reader("StudentID")
+                                .Program = reader("Program")
+                                .Session = reader("Session")
+                                .Level = reader("Year")
+                                '            .Intake = reader("Intake")
+                                '     .Clas = reader("YearEnrolled")
+
+                                'Try
+                                '    .Center = reader("Center")
+                                'Catch ex As Exception
+                                '    .Center = "Harare"
+                                'End Try
+                                Try
+                                    .enrolref = reader("EnrolRef").ToString
+                                Catch ex As Exception
+                                    .enrolref = ""
+                                End Try
+
+                                Try
+                                    .gender = reader("Gender")
+                                Catch ex As Exception
+                                    .gender = "M"
+                                End Try
+
+                                Try
+                                    .Status = reader("Status")
+                                Catch ex As Exception
+                                    .Status = "Available"
+                                End Try
+
+                                .Clas = reader("Classdesc")
+                                .Session = reader("session")
+
+                            End With
+
+                        End While
+
+                    End With
+                Catch ex As Exception
+
+                End Try
+
+
+
+                '   Dim enrol As New Enrol()
+
+
+
+                Dim enrolform As New frmEditEnrollment()
+                With enrolform
+                    .mdiPrnt = mainform
+                    .Copy = True
+                    .Show()
+                End With
+
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

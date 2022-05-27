@@ -10,6 +10,9 @@ Public Class frmEditEnrollment
     Public frmmain As Form
     Private sql As String = ""
     Private blnaddingenrol As Boolean = False
+    Public loadspec As Boolean = False
+    Public Copy As Boolean = False
+    Public mdiPrnt As Form
 
     Private Sub loadPrograms()
         With ProgramComboBox
@@ -42,6 +45,9 @@ Public Class frmEditEnrollment
         Dim cmd As New SqlCommand(sql, cnn)
         Try
 
+            If Copy Then
+                EnrolRefTextBox.Text = ""
+            End If
 
             cnn.Open()
             With cmd
@@ -82,6 +88,34 @@ Public Class frmEditEnrollment
             loadSessions()
             loadClasses()
 
+            If loadspec Then
+                Try
+                    Me.LoadEnrollmentsTableAdapter.FillByStud(Me.DsSchool.LoadEnrollments, enrollment.Student, enrollment.enrolref)
+                Catch ex As Exception
+
+                End Try
+            ElseIf Copy Then
+                LoadEnrollmentsBindingSource.AddNew()
+
+                With enrollment
+                    StudentIDTextBox.Text = .Student
+                    ProgramComboBox.Text = .Program
+                    GenderComboBox.Text = .gender
+                    YearComboBox.Text = .Level
+
+                    ClassComboBox.Text = .Clas
+
+                    SessionComboBox.Text = .Session
+
+                    StatusComboBox.Text = .Status
+                    Date_EnrolledDateTimePicker.Value = Now.Date
+                    EnrolRefTextBox.Text = .enrolref
+
+                End With
+
+            End If
+
+
         Catch ex As Exception
 
         End Try
@@ -104,7 +138,7 @@ Public Class frmEditEnrollment
             lstResult.DataSource = Nothing
             lstResult.Visible = False
             Try
-                LoadEnrollmentsTableAdapter.FillByStud(DsSchool.LoadEnrollments, searchstring)
+                LoadEnrollmentsTableAdapter.FillByStud(DsSchool.LoadEnrollments, searchstring, "")
             Catch ex As Exception
 
             End Try
@@ -175,7 +209,7 @@ Public Class frmEditEnrollment
                     .Parameters.AddWithValue("@enrolref", EnrolRefTextBox.Text)
                     .ExecuteNonQuery()
                     MsgBox("Record Deleted")
-                    LoadEnrollmentsTableAdapter.FillByStud(DsSchool.LoadEnrollments, StudentIDTextBox.Text)
+                    LoadEnrollmentsTableAdapter.FillByStud(DsSchool.LoadEnrollments, StudentIDTextBox.Text, "")
                 End With
             Catch ex As Exception
                 MsgBox(ex.Message)

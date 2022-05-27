@@ -4059,6 +4059,10 @@ Partial Public Class dsSchoolParameters
         
         Private columnMarkFormat As Global.System.Data.DataColumn
         
+        Private columnExamStamp As Global.System.Data.DataColumn
+        
+        Private columnExamStamp2 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -4151,6 +4155,22 @@ Partial Public Class dsSchoolParameters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ExamStampColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnExamStamp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ExamStamp2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnExamStamp2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4187,9 +4207,9 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddExamSessionsRow(ByVal Session As String, ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As System.Guid, ByVal Publish As Boolean, ByVal AutoComment As Boolean, ByVal MarkFormat As String) As ExamSessionsRow
+        Public Overloads Function AddExamSessionsRow(ByVal Session As String, ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As System.Guid, ByVal Publish As Boolean, ByVal AutoComment As Boolean, ByVal MarkFormat As String, ByVal ExamStamp() As Byte, ByVal ExamStamp2() As Byte) As ExamSessionsRow
             Dim rowExamSessionsRow As ExamSessionsRow = CType(Me.NewRow,ExamSessionsRow)
-            Dim columnValuesArray() As Object = New Object() {Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, MarkFormat}
+            Dim columnValuesArray() As Object = New Object() {Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, MarkFormat, ExamStamp, ExamStamp2}
             rowExamSessionsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowExamSessionsRow)
             Return rowExamSessionsRow
@@ -4225,6 +4245,8 @@ Partial Public Class dsSchoolParameters
             Me.columnPublish = MyBase.Columns("Publish")
             Me.columnAutoComment = MyBase.Columns("AutoComment")
             Me.columnMarkFormat = MyBase.Columns("MarkFormat")
+            Me.columnExamStamp = MyBase.Columns("ExamStamp")
+            Me.columnExamStamp2 = MyBase.Columns("ExamStamp2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4244,6 +4266,10 @@ Partial Public Class dsSchoolParameters
             MyBase.Columns.Add(Me.columnAutoComment)
             Me.columnMarkFormat = New Global.System.Data.DataColumn("MarkFormat", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMarkFormat)
+            Me.columnExamStamp = New Global.System.Data.DataColumn("ExamStamp", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnExamStamp)
+            Me.columnExamStamp2 = New Global.System.Data.DataColumn("ExamStamp2", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnExamStamp2)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnSession}, true))
             Me.columnSession.AllowDBNull = false
             Me.columnSession.Unique = true
@@ -7428,6 +7454,36 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ExamStamp() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tableExamSessions.ExamStampColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ExamStamp' in table 'ExamSessions' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableExamSessions.ExamStampColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ExamStamp2() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tableExamSessions.ExamStamp2Column),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ExamStamp2' in table 'ExamSessions' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableExamSessions.ExamStamp2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsExamClassRefNull() As Boolean
             Return Me.IsNull(Me.tableExamSessions.ExamClassRefColumn)
         End Function
@@ -7484,6 +7540,30 @@ Partial Public Class dsSchoolParameters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetMarkFormatNull()
             Me(Me.tableExamSessions.MarkFormatColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsExamStampNull() As Boolean
+            Return Me.IsNull(Me.tableExamSessions.ExamStampColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetExamStampNull()
+            Me(Me.tableExamSessions.ExamStampColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsExamStamp2Null() As Boolean
+            Return Me.IsNull(Me.tableExamSessions.ExamStamp2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetExamStamp2Null()
+            Me(Me.tableExamSessions.ExamStamp2Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -13150,6 +13230,8 @@ Namespace dsSchoolParametersTableAdapters
             tableMapping.ColumnMappings.Add("Publish", "Publish")
             tableMapping.ColumnMappings.Add("AutoComment", "AutoComment")
             tableMapping.ColumnMappings.Add("MarkFormat", "MarkFormat")
+            tableMapping.ColumnMappings.Add("ExamStamp", "ExamStamp")
+            tableMapping.ColumnMappings.Add("ExamStamp2", "ExamStamp2")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -13176,10 +13258,10 @@ Namespace dsSchoolParametersTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [ExamSessions] ([Session], [ExamClassRef], [Sitting], [Ref], [Publish"& _ 
-                "], [AutoComment], [MarkFormat]) VALUES (@Session, @ExamClassRef, @Sitting, @Ref,"& _ 
-                " @Publish, @AutoComment, @MarkFormat);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Session, ExamClassRef, Sitting, R"& _ 
-                "ef, Publish, AutoComment, MarkFormat FROM ExamSessions WHERE (Session = @Session"& _ 
-                ")"
+                "], [AutoComment], [MarkFormat], [ExamStamp], [ExamStamp2]) VALUES (@Session, @Ex"& _ 
+                "amClassRef, @Sitting, @Ref, @Publish, @AutoComment, @MarkFormat, @ExamStamp, @Ex"& _ 
+                "amStamp2);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, Ma"& _ 
+                "rkFormat, ExamStamp, ExamStamp2 FROM ExamSessions WHERE (Session = @Session)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Session", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Session", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExamClassRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamClassRef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13188,19 +13270,22 @@ Namespace dsSchoolParametersTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Publish", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Publish", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutoComment", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutoComment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MarkFormat", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MarkFormat", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExamStamp", Global.System.Data.SqlDbType.Image, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamStamp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExamStamp2", Global.System.Data.SqlDbType.Image, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamStamp2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [ExamSessions] SET [Session] = @Session, [ExamClassRef] = @ExamClassRef, ["& _ 
                 "Sitting] = @Sitting, [Ref] = @Ref, [Publish] = @Publish, [AutoComment] = @AutoCo"& _ 
-                "mment, [MarkFormat] = @MarkFormat WHERE (([Session] = @Original_Session) AND ((@"& _ 
-                "IsNull_ExamClassRef = 1 AND [ExamClassRef] IS NULL) OR ([ExamClassRef] = @Origin"& _ 
-                "al_ExamClassRef)) AND ([Sitting] = @Original_Sitting) AND ((@IsNull_Ref = 1 AND "& _ 
-                "[Ref] IS NULL) OR ([Ref] = @Original_Ref)) AND ((@IsNull_Publish = 1 AND [Publis"& _ 
-                "h] IS NULL) OR ([Publish] = @Original_Publish)) AND ((@IsNull_AutoComment = 1 AN"& _ 
-                "D [AutoComment] IS NULL) OR ([AutoComment] = @Original_AutoComment)) AND ((@IsNu"& _ 
-                "ll_MarkFormat = 1 AND [MarkFormat] IS NULL) OR ([MarkFormat] = @Original_MarkFor"& _ 
-                "mat)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, MarkF"& _ 
-                "ormat FROM ExamSessions WHERE (Session = @Session)"
+                "mment, [MarkFormat] = @MarkFormat, [ExamStamp] = @ExamStamp, [ExamStamp2] = @Exa"& _ 
+                "mStamp2 WHERE (([Session] = @Original_Session) AND ((@IsNull_ExamClassRef = 1 AN"& _ 
+                "D [ExamClassRef] IS NULL) OR ([ExamClassRef] = @Original_ExamClassRef)) AND ([Si"& _ 
+                "tting] = @Original_Sitting) AND ((@IsNull_Ref = 1 AND [Ref] IS NULL) OR ([Ref] ="& _ 
+                " @Original_Ref)) AND ((@IsNull_Publish = 1 AND [Publish] IS NULL) OR ([Publish] "& _ 
+                "= @Original_Publish)) AND ((@IsNull_AutoComment = 1 AND [AutoComment] IS NULL) O"& _ 
+                "R ([AutoComment] = @Original_AutoComment)) AND ((@IsNull_MarkFormat = 1 AND [Mar"& _ 
+                "kFormat] IS NULL) OR ([MarkFormat] = @Original_MarkFormat)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Session, E"& _ 
+                "xamClassRef, Sitting, Ref, Publish, AutoComment, MarkFormat, ExamStamp, ExamStam"& _ 
+                "p2 FROM ExamSessions WHERE (Session = @Session)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Session", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Session", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExamClassRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamClassRef", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13209,6 +13294,8 @@ Namespace dsSchoolParametersTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Publish", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Publish", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutoComment", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutoComment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MarkFormat", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MarkFormat", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExamStamp", Global.System.Data.SqlDbType.Image, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamStamp", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExamStamp2", Global.System.Data.SqlDbType.Image, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamStamp2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Session", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Session", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ExamClassRef", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamClassRef", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ExamClassRef", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExamClassRef", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -13236,12 +13323,14 @@ Namespace dsSchoolParametersTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ExamSessions.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ExamSessions"
+            Me._commandCollection(0).CommandText = "SELECT        Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, MarkForm"& _ 
+                "at, ExamStamp, ExamStamp2"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ExamSessions"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT AutoComment, ExamClassRef, MarkFormat, Publish, Ref, Session, Sitting FROM"& _ 
-                " ExamSessions WHERE (Ref = @ref)"
+            Me._commandCollection(1).CommandText = "SELECT        AutoComment, ExamClassRef, ExamStamp, ExamStamp2, MarkFormat, Publi"& _ 
+                "sh, Ref, Session, Sitting"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ExamSessions"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Ref = @re"& _ 
+                "f)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ref", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "Ref", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -13397,7 +13486,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Session As String, ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Publish As Global.System.Nullable(Of Boolean), ByVal AutoComment As Global.System.Nullable(Of Boolean), ByVal MarkFormat As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Session As String, ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Publish As Global.System.Nullable(Of Boolean), ByVal AutoComment As Global.System.Nullable(Of Boolean), ByVal MarkFormat As String, ByVal ExamStamp() As Byte, ByVal ExamStamp2() As Byte) As Integer
             If (Session Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Session")
             Else
@@ -13429,6 +13518,16 @@ Namespace dsSchoolParametersTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = CType(MarkFormat,String)
             End If
+            If (ExamStamp Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(ExamStamp,Byte())
+            End If
+            If (ExamStamp2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(ExamStamp2,Byte())
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -13448,7 +13547,23 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Session As String, ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Publish As Global.System.Nullable(Of Boolean), ByVal AutoComment As Global.System.Nullable(Of Boolean), ByVal MarkFormat As String, ByVal Original_Session As String, ByVal Original_ExamClassRef As String, ByVal Original_Sitting As Integer, ByVal Original_Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Publish As Global.System.Nullable(Of Boolean), ByVal Original_AutoComment As Global.System.Nullable(Of Boolean), ByVal Original_MarkFormat As String) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal Session As String,  _
+                    ByVal ExamClassRef As String,  _
+                    ByVal Sitting As Integer,  _
+                    ByVal Ref As Global.System.Nullable(Of Global.System.Guid),  _
+                    ByVal Publish As Global.System.Nullable(Of Boolean),  _
+                    ByVal AutoComment As Global.System.Nullable(Of Boolean),  _
+                    ByVal MarkFormat As String,  _
+                    ByVal ExamStamp() As Byte,  _
+                    ByVal ExamStamp2() As Byte,  _
+                    ByVal Original_Session As String,  _
+                    ByVal Original_ExamClassRef As String,  _
+                    ByVal Original_Sitting As Integer,  _
+                    ByVal Original_Ref As Global.System.Nullable(Of Global.System.Guid),  _
+                    ByVal Original_Publish As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_AutoComment As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_MarkFormat As String) As Integer
             If (Session Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Session")
             Else
@@ -13480,46 +13595,56 @@ Namespace dsSchoolParametersTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = CType(MarkFormat,String)
             End If
+            If (ExamStamp Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(ExamStamp,Byte())
+            End If
+            If (ExamStamp2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(ExamStamp2,Byte())
+            End If
             If (Original_Session Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Session")
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Session,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Session,String)
             End If
             If (Original_ExamClassRef Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_ExamClassRef,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ExamClassRef,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Sitting,Integer)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Sitting,Integer)
             If (Original_Ref.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Ref.Value,System.Guid)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Publish.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Publish.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Ref.Value,System.Guid)
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            If (Original_AutoComment.HasValue = true) Then
+            If (Original_Publish.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_AutoComment.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Publish.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            If (Original_MarkFormat Is Nothing) Then
+            If (Original_AutoComment.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_AutoComment.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (Original_MarkFormat Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_MarkFormat,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_MarkFormat,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -13540,8 +13665,8 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Publish As Global.System.Nullable(Of Boolean), ByVal AutoComment As Global.System.Nullable(Of Boolean), ByVal MarkFormat As String, ByVal Original_Session As String, ByVal Original_ExamClassRef As String, ByVal Original_Sitting As Integer, ByVal Original_Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Publish As Global.System.Nullable(Of Boolean), ByVal Original_AutoComment As Global.System.Nullable(Of Boolean), ByVal Original_MarkFormat As String) As Integer
-            Return Me.Update(Original_Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, MarkFormat, Original_Session, Original_ExamClassRef, Original_Sitting, Original_Ref, Original_Publish, Original_AutoComment, Original_MarkFormat)
+        Public Overloads Overridable Function Update(ByVal ExamClassRef As String, ByVal Sitting As Integer, ByVal Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Publish As Global.System.Nullable(Of Boolean), ByVal AutoComment As Global.System.Nullable(Of Boolean), ByVal MarkFormat As String, ByVal ExamStamp() As Byte, ByVal ExamStamp2() As Byte, ByVal Original_Session As String, ByVal Original_ExamClassRef As String, ByVal Original_Sitting As Integer, ByVal Original_Ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Publish As Global.System.Nullable(Of Boolean), ByVal Original_AutoComment As Global.System.Nullable(Of Boolean), ByVal Original_MarkFormat As String) As Integer
+            Return Me.Update(Original_Session, ExamClassRef, Sitting, Ref, Publish, AutoComment, MarkFormat, ExamStamp, ExamStamp2, Original_Session, Original_ExamClassRef, Original_Sitting, Original_Ref, Original_Publish, Original_AutoComment, Original_MarkFormat)
         End Function
     End Class
     
