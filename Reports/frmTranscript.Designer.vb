@@ -23,6 +23,7 @@ Partial Class frmTranscript
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource3 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
@@ -69,7 +70,6 @@ Partial Class frmTranscript
         Dim ReportDataSource45 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource46 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource47 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.EnrollmentAnalysisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dsRevoReports = New Reports.dsRevoReports()
         Me.AcademicReportBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -103,6 +103,7 @@ Partial Class frmTranscript
         Me.CreditorsContactsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CreditorsStatementBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.rvHsReport_Olevel = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvEnrolAnalysis = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvExamStudGraphAnalysis = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvExamSubGrapAnalysis = New Microsoft.Reporting.WinForms.ReportViewer()
@@ -242,7 +243,8 @@ Partial Class frmTranscript
         Me.StudbehaviorTableAdapter = New Reports.dsReportsTableAdapters.StudbehaviorTableAdapter()
         Me.BookMasterTableAdapter = New Reports.dsLibraryReportsTableAdapters.BookMasterTableAdapter()
         Me.CurrentIssuesTableAdapter = New Reports.dsLibraryReportsTableAdapters.CurrentIssuesTableAdapter()
-        Me.rvHsReport_Olevel = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.SchoolFeesPaymentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SchoolFeesPaymentsTableAdapter = New Reports.dsRevoReportsTableAdapters.SchoolFeesPaymentsTableAdapter()
         CType(Me.EnrollmentAnalysisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dsRevoReports, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AcademicReportBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -309,6 +311,7 @@ Partial Class frmTranscript
         CType(Me.SubjectItemsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SujectsTaughtBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NeawYearStatementBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SchoolFeesPaymentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'EnrollmentAnalysisBindingSource
@@ -529,6 +532,18 @@ Partial Class frmTranscript
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1022, 519)
         Me.Panel1.TabIndex = 3
+        '
+        'rvHsReport_Olevel
+        '
+        ReportDataSource1.Name = "DataSet1"
+        ReportDataSource1.Value = Me.AcademicReportBindingSource
+        Me.rvHsReport_Olevel.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.rvHsReport_Olevel.LocalReport.ReportEmbeddedResource = "Reports.rptHsReport_Bonda_Olevel.rdlc"
+        Me.rvHsReport_Olevel.Location = New System.Drawing.Point(845, 96)
+        Me.rvHsReport_Olevel.Name = "rvHsReport_Olevel"
+        Me.rvHsReport_Olevel.ServerReport.BearerToken = Nothing
+        Me.rvHsReport_Olevel.Size = New System.Drawing.Size(159, 51)
+        Me.rvHsReport_Olevel.TabIndex = 116
         '
         'rvEnrolAnalysis
         '
@@ -840,9 +855,9 @@ Partial Class frmTranscript
         'rvPymntsPerForm
         '
         ReportDataSource27.Name = "dsReports_LedgerTransactions"
-        ReportDataSource27.Value = Me.LedgerTransactionsBindingSource
+        ReportDataSource27.Value = Me.SchoolFeesPaymentsBindingSource
         Me.rvPymntsPerForm.LocalReport.DataSources.Add(ReportDataSource27)
-        Me.rvPymntsPerForm.LocalReport.ReportEmbeddedResource = "SMS.rptFeesPaymentsPerForm.rdlc"
+        Me.rvPymntsPerForm.LocalReport.ReportEmbeddedResource = "Reports.rptFeesPaymentsPerForm.rdlc"
         Me.rvPymntsPerForm.Location = New System.Drawing.Point(831, 425)
         Me.rvPymntsPerForm.Name = "rvPymntsPerForm"
         Me.rvPymntsPerForm.ServerReport.BearerToken = Nothing
@@ -1566,17 +1581,14 @@ Partial Class frmTranscript
         '
         Me.CurrentIssuesTableAdapter.ClearBeforeFill = True
         '
-        'rvHsReport_Olevel
+        'SchoolFeesPaymentsBindingSource
         '
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.AcademicReportBindingSource
-        Me.rvHsReport_Olevel.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.rvHsReport_Olevel.LocalReport.ReportEmbeddedResource = "Reports.rptHsReport_Bonda_Olevel.rdlc"
-        Me.rvHsReport_Olevel.Location = New System.Drawing.Point(845, 96)
-        Me.rvHsReport_Olevel.Name = "rvHsReport_Olevel"
-        Me.rvHsReport_Olevel.ServerReport.BearerToken = Nothing
-        Me.rvHsReport_Olevel.Size = New System.Drawing.Size(159, 51)
-        Me.rvHsReport_Olevel.TabIndex = 116
+        Me.SchoolFeesPaymentsBindingSource.DataMember = "SchoolFeesPayments"
+        Me.SchoolFeesPaymentsBindingSource.DataSource = Me.dsRevoReports
+        '
+        'SchoolFeesPaymentsTableAdapter
+        '
+        Me.SchoolFeesPaymentsTableAdapter.ClearBeforeFill = True
         '
         'frmTranscript
         '
@@ -1654,6 +1666,7 @@ Partial Class frmTranscript
         CType(Me.SubjectItemsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SujectsTaughtBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NeawYearStatementBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SchoolFeesPaymentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1835,6 +1848,8 @@ Partial Class frmTranscript
     Friend WithEvents ClassListBindingSource As Windows.Forms.BindingSource
     Friend WithEvents ClassListTableAdapter As dsRevoReportsTableAdapters.ClassListTableAdapter
     Friend WithEvents rvHsReport_Olevel As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents SchoolFeesPaymentsBindingSource As Windows.Forms.BindingSource
+    Friend WithEvents SchoolFeesPaymentsTableAdapter As dsRevoReportsTableAdapters.SchoolFeesPaymentsTableAdapter
     ' Friend WithEvents DebtorsContactsTableAdapter As SMS.dsReportsTableAdapters.DebtorsContactsTableAdapter
     ' Friend WithEvents DebtorsTableAdapter As SMS.dsReportsTableAdapters.DebtorsTableAdapter
     ' Friend WithEvents DebtorsTableAdapter As SMS.dsReportsTableAdapters.DebtorsTableAdapter

@@ -20,6 +20,8 @@ Public Class frmReportPreview
     Public session As String
     Public blnbookreturn As Boolean
     Public returnref As String
+    Public BehaviorReport As Boolean = False
+    Public BehaviorReference As String = ""
 
 
 
@@ -118,7 +120,16 @@ Public Class frmReportPreview
                 Me.rvIssueForm.Visible = True
             End If
 
+        ElseIf BehaviorReport Then
 
+            Try
+                Me.StudBehaviorReportTableAdapter.Fill(dsSchool.StudBehaviorReport, "", BehaviorReference, "", "Specific", "")
+                rvBehaviorReport.Dock = DockStyle.Fill
+                rvBehaviorReport.RefreshReport()
+                rvBehaviorReport.Visible = True
+            Catch ex As Exception
+
+            End Try
 
 
 

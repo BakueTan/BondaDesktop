@@ -536,6 +536,9 @@ Partial Class Rports
         Me.dtpPayDateTo = New System.Windows.Forms.DateTimePicker()
         Me.dtpPayDateFrom = New System.Windows.Forms.DateTimePicker()
         Me.gbAccounts = New System.Windows.Forms.GroupBox()
+        Me.pnlTranstype = New System.Windows.Forms.Panel()
+        Me.chkAccShoRec = New System.Windows.Forms.CheckBox()
+        Me.chkAccShowInv = New System.Windows.Forms.CheckBox()
         Me.chkDebtorsOnly = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cboAccClass = New System.Windows.Forms.ComboBox()
@@ -543,12 +546,11 @@ Partial Class Rports
         Me.Label101 = New System.Windows.Forms.Label()
         Me.rtxtAccAddinfo = New System.Windows.Forms.RichTextBox()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.cboAccStatus = New System.Windows.Forms.ComboBox()
+        Me.cboBBFCutOff = New System.Windows.Forms.ComboBox()
         Me.rbClassStatement = New System.Windows.Forms.RadioButton()
         Me.Label132 = New System.Windows.Forms.Label()
         Me.cboAccPayType = New System.Windows.Forms.ComboBox()
         Me.rbStudStatement = New System.Windows.Forms.RadioButton()
-        Me.rbAccDebtPerSect = New System.Windows.Forms.RadioButton()
         Me.lbAccStud = New System.Windows.Forms.ListBox()
         Me.Label77 = New System.Windows.Forms.Label()
         Me.Label74 = New System.Windows.Forms.Label()
@@ -657,6 +659,7 @@ Partial Class Rports
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.gbAccounts.SuspendLayout()
+        Me.pnlTranstype.SuspendLayout()
         Me.gbExamAttendance.SuspendLayout()
         Me.gbContactDetails.SuspendLayout()
         Me.gbCollegeAssessment.SuspendLayout()
@@ -729,10 +732,9 @@ Partial Class Rports
         '
         'tvRpts
         '
-        Me.tvRpts.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.tvRpts.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.tvRpts.Location = New System.Drawing.Point(11, 11)
+        Me.tvRpts.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tvRpts.Location = New System.Drawing.Point(0, 0)
         Me.tvRpts.Name = "tvRpts"
         TreeNode1.Name = "Node1"
         TreeNode1.Tag = "30"
@@ -793,7 +795,7 @@ Partial Class Rports
         TreeNode21.Tag = "32"
         TreeNode21.Text = "AllReports"
         Me.tvRpts.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode21})
-        Me.tvRpts.Size = New System.Drawing.Size(180, 299)
+        Me.tvRpts.Size = New System.Drawing.Size(204, 485)
         Me.tvRpts.TabIndex = 10
         '
         'gbStudProfile
@@ -1746,7 +1748,7 @@ Partial Class Rports
         Me.gbBookMaster.Controls.Add(Me.rbBookSummary)
         Me.gbBookMaster.Controls.Add(Me.rbPerProgram)
         Me.gbBookMaster.Controls.Add(Me.rbPerBook)
-        Me.gbBookMaster.Location = New System.Drawing.Point(105, 226)
+        Me.gbBookMaster.Location = New System.Drawing.Point(14, 191)
         Me.gbBookMaster.Name = "gbBookMaster"
         Me.gbBookMaster.Size = New System.Drawing.Size(29, 93)
         Me.gbBookMaster.TabIndex = 40
@@ -1796,9 +1798,9 @@ Partial Class Rports
         Me.gbBookIssues.Controls.Add(Me.dtpBookIssuesFrom)
         Me.gbBookIssues.Controls.Add(Me.Label158)
         Me.gbBookIssues.Controls.Add(Me.Label159)
-        Me.gbBookIssues.Location = New System.Drawing.Point(114, 321)
+        Me.gbBookIssues.Location = New System.Drawing.Point(12, 291)
         Me.gbBookIssues.Name = "gbBookIssues"
-        Me.gbBookIssues.Size = New System.Drawing.Size(26, 136)
+        Me.gbBookIssues.Size = New System.Drawing.Size(191, 136)
         Me.gbBookIssues.TabIndex = 39
         Me.gbBookIssues.TabStop = False
         Me.gbBookIssues.Text = "BookIssues"
@@ -2487,9 +2489,9 @@ Partial Class Rports
         Me.gbHsStudMarks.Controls.Add(Me.cboHsMarksRef)
         Me.gbHsStudMarks.Controls.Add(Me.Label38)
         Me.gbHsStudMarks.Controls.Add(Me.cboHsMarksLev)
-        Me.gbHsStudMarks.Location = New System.Drawing.Point(257, 222)
+        Me.gbHsStudMarks.Location = New System.Drawing.Point(105, 186)
         Me.gbHsStudMarks.Name = "gbHsStudMarks"
-        Me.gbHsStudMarks.Size = New System.Drawing.Size(540, 223)
+        Me.gbHsStudMarks.Size = New System.Drawing.Size(63, 70)
         Me.gbHsStudMarks.TabIndex = 0
         Me.gbHsStudMarks.TabStop = False
         Me.gbHsStudMarks.Text = "ExamMark"
@@ -2639,7 +2641,7 @@ Partial Class Rports
         'lbMarksPerStud
         '
         Me.lbMarksPerStud.FormattingEnabled = True
-        Me.lbMarksPerStud.Location = New System.Drawing.Point(76, 54)
+        Me.lbMarksPerStud.Location = New System.Drawing.Point(78, 52)
         Me.lbMarksPerStud.Name = "lbMarksPerStud"
         Me.lbMarksPerStud.Size = New System.Drawing.Size(234, 56)
         Me.lbMarksPerStud.TabIndex = 27
@@ -5932,9 +5934,9 @@ Partial Class Rports
         Me.gbPaymentsPerDate.Controls.Add(Me.Label58)
         Me.gbPaymentsPerDate.Controls.Add(Me.dtpPayDateTo)
         Me.gbPaymentsPerDate.Controls.Add(Me.dtpPayDateFrom)
-        Me.gbPaymentsPerDate.Location = New System.Drawing.Point(23, 183)
+        Me.gbPaymentsPerDate.Location = New System.Drawing.Point(45, 198)
         Me.gbPaymentsPerDate.Name = "gbPaymentsPerDate"
-        Me.gbPaymentsPerDate.Size = New System.Drawing.Size(48, 23)
+        Me.gbPaymentsPerDate.Size = New System.Drawing.Size(53, 22)
         Me.gbPaymentsPerDate.TabIndex = 14
         Me.gbPaymentsPerDate.TabStop = False
         Me.gbPaymentsPerDate.Text = "FeesPayments"
@@ -6182,6 +6184,7 @@ Partial Class Rports
         '
         'gbAccounts
         '
+        Me.gbAccounts.Controls.Add(Me.pnlTranstype)
         Me.gbAccounts.Controls.Add(Me.chkDebtorsOnly)
         Me.gbAccounts.Controls.Add(Me.Label7)
         Me.gbAccounts.Controls.Add(Me.cboAccClass)
@@ -6189,12 +6192,11 @@ Partial Class Rports
         Me.gbAccounts.Controls.Add(Me.Label101)
         Me.gbAccounts.Controls.Add(Me.rtxtAccAddinfo)
         Me.gbAccounts.Controls.Add(Me.Label32)
-        Me.gbAccounts.Controls.Add(Me.cboAccStatus)
+        Me.gbAccounts.Controls.Add(Me.cboBBFCutOff)
         Me.gbAccounts.Controls.Add(Me.rbClassStatement)
         Me.gbAccounts.Controls.Add(Me.Label132)
         Me.gbAccounts.Controls.Add(Me.cboAccPayType)
         Me.gbAccounts.Controls.Add(Me.rbStudStatement)
-        Me.gbAccounts.Controls.Add(Me.rbAccDebtPerSect)
         Me.gbAccounts.Controls.Add(Me.lbAccStud)
         Me.gbAccounts.Controls.Add(Me.Label77)
         Me.gbAccounts.Controls.Add(Me.Label74)
@@ -6208,18 +6210,47 @@ Partial Class Rports
         Me.gbAccounts.Controls.Add(Me.Label52)
         Me.gbAccounts.Controls.Add(Me.cboAccLvl)
         Me.gbAccounts.Controls.Add(Me.rbAccPerForm)
-        Me.gbAccounts.Location = New System.Drawing.Point(81, 130)
+        Me.gbAccounts.Location = New System.Drawing.Point(219, 179)
         Me.gbAccounts.Name = "gbAccounts"
-        Me.gbAccounts.Size = New System.Drawing.Size(30, 33)
+        Me.gbAccounts.Size = New System.Drawing.Size(655, 249)
         Me.gbAccounts.TabIndex = 13
         Me.gbAccounts.TabStop = False
         Me.gbAccounts.Text = "Accounting"
         Me.gbAccounts.Visible = False
         '
+        'pnlTranstype
+        '
+        Me.pnlTranstype.Controls.Add(Me.chkAccShoRec)
+        Me.pnlTranstype.Controls.Add(Me.chkAccShowInv)
+        Me.pnlTranstype.Location = New System.Drawing.Point(91, 165)
+        Me.pnlTranstype.Name = "pnlTranstype"
+        Me.pnlTranstype.Size = New System.Drawing.Size(274, 26)
+        Me.pnlTranstype.TabIndex = 59
+        '
+        'chkAccShoRec
+        '
+        Me.chkAccShoRec.AutoSize = True
+        Me.chkAccShoRec.Location = New System.Drawing.Point(94, 5)
+        Me.chkAccShoRec.Name = "chkAccShoRec"
+        Me.chkAccShoRec.Size = New System.Drawing.Size(98, 17)
+        Me.chkAccShoRec.TabIndex = 12
+        Me.chkAccShoRec.Text = "Show Receipts"
+        Me.chkAccShoRec.UseVisualStyleBackColor = True
+        '
+        'chkAccShowInv
+        '
+        Me.chkAccShowInv.AutoSize = True
+        Me.chkAccShowInv.Location = New System.Drawing.Point(4, 4)
+        Me.chkAccShowInv.Name = "chkAccShowInv"
+        Me.chkAccShowInv.Size = New System.Drawing.Size(88, 17)
+        Me.chkAccShowInv.TabIndex = 11
+        Me.chkAccShowInv.Text = "Show Billings"
+        Me.chkAccShowInv.UseVisualStyleBackColor = True
+        '
         'chkDebtorsOnly
         '
         Me.chkDebtorsOnly.AutoSize = True
-        Me.chkDebtorsOnly.Location = New System.Drawing.Point(91, 158)
+        Me.chkDebtorsOnly.Location = New System.Drawing.Point(91, 194)
         Me.chkDebtorsOnly.Name = "chkDebtorsOnly"
         Me.chkDebtorsOnly.Size = New System.Drawing.Size(87, 17)
         Me.chkDebtorsOnly.TabIndex = 55
@@ -6229,7 +6260,7 @@ Partial Class Rports
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(16, 91)
+        Me.Label7.Location = New System.Drawing.Point(15, 97)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(35, 13)
         Me.Label7.TabIndex = 54
@@ -6241,7 +6272,7 @@ Partial Class Rports
         Me.cboAccClass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboAccClass.DisplayMember = "Period"
         Me.cboAccClass.FormattingEnabled = True
-        Me.cboAccClass.Location = New System.Drawing.Point(91, 87)
+        Me.cboAccClass.Location = New System.Drawing.Point(91, 92)
         Me.cboAccClass.Name = "cboAccClass"
         Me.cboAccClass.Size = New System.Drawing.Size(119, 21)
         Me.cboAccClass.TabIndex = 53
@@ -6249,7 +6280,7 @@ Partial Class Rports
         '
         'txtAccStud
         '
-        Me.txtAccStud.Location = New System.Drawing.Point(91, 15)
+        Me.txtAccStud.Location = New System.Drawing.Point(91, 21)
         Me.txtAccStud.Name = "txtAccStud"
         Me.txtAccStud.Size = New System.Drawing.Size(121, 20)
         Me.txtAccStud.TabIndex = 52
@@ -6274,29 +6305,29 @@ Partial Class Rports
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(16, 136)
+        Me.Label32.Location = New System.Drawing.Point(15, 122)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(43, 13)
+        Me.Label32.Size = New System.Drawing.Size(66, 13)
         Me.Label32.TabIndex = 48
-        Me.Label32.Text = "Status :"
+        Me.Label32.Text = "BBF Cut Off:"
         '
-        'cboAccStatus
+        'cboBBFCutOff
         '
-        Me.cboAccStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cboAccStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboAccStatus.DisplayMember = "SubjectID"
-        Me.cboAccStatus.FormattingEnabled = True
-        Me.cboAccStatus.Items.AddRange(New Object() {"Available", "Transferred", "Outgoing"})
-        Me.cboAccStatus.Location = New System.Drawing.Point(91, 134)
-        Me.cboAccStatus.Name = "cboAccStatus"
-        Me.cboAccStatus.Size = New System.Drawing.Size(117, 21)
-        Me.cboAccStatus.TabIndex = 47
-        Me.cboAccStatus.ValueMember = "SubjectID"
+        Me.cboBBFCutOff.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboBBFCutOff.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboBBFCutOff.DisplayMember = "SubjectID"
+        Me.cboBBFCutOff.FormattingEnabled = True
+        Me.cboBBFCutOff.Items.AddRange(New Object() {"Available", "Transferred", "Outgoing"})
+        Me.cboBBFCutOff.Location = New System.Drawing.Point(91, 116)
+        Me.cboBBFCutOff.Name = "cboBBFCutOff"
+        Me.cboBBFCutOff.Size = New System.Drawing.Size(117, 21)
+        Me.cboBBFCutOff.TabIndex = 47
+        Me.cboBBFCutOff.ValueMember = "SubjectID"
         '
         'rbClassStatement
         '
         Me.rbClassStatement.AutoSize = True
-        Me.rbClassStatement.Location = New System.Drawing.Point(343, 181)
+        Me.rbClassStatement.Location = New System.Drawing.Point(330, 220)
         Me.rbClassStatement.Name = "rbClassStatement"
         Me.rbClassStatement.Size = New System.Drawing.Size(103, 17)
         Me.rbClassStatement.TabIndex = 39
@@ -6307,7 +6338,7 @@ Partial Class Rports
         'Label132
         '
         Me.Label132.AutoSize = True
-        Me.Label132.Location = New System.Drawing.Point(17, 183)
+        Me.Label132.Location = New System.Drawing.Point(19, 219)
         Me.Label132.Name = "Label132"
         Me.Label132.Size = New System.Drawing.Size(34, 13)
         Me.Label132.TabIndex = 38
@@ -6318,7 +6349,7 @@ Partial Class Rports
         Me.cboAccPayType.DisplayMember = "Payment"
         Me.cboAccPayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboAccPayType.FormattingEnabled = True
-        Me.cboAccPayType.Location = New System.Drawing.Point(54, 180)
+        Me.cboAccPayType.Location = New System.Drawing.Point(54, 216)
         Me.cboAccPayType.Name = "cboAccPayType"
         Me.cboAccPayType.Size = New System.Drawing.Size(72, 21)
         Me.cboAccPayType.TabIndex = 37
@@ -6327,7 +6358,7 @@ Partial Class Rports
         'rbStudStatement
         '
         Me.rbStudStatement.AutoSize = True
-        Me.rbStudStatement.Location = New System.Drawing.Point(221, 181)
+        Me.rbStudStatement.Location = New System.Drawing.Point(219, 220)
         Me.rbStudStatement.Name = "rbStudStatement"
         Me.rbStudStatement.Size = New System.Drawing.Size(110, 17)
         Me.rbStudStatement.TabIndex = 36
@@ -6335,31 +6366,20 @@ Partial Class Rports
         Me.rbStudStatement.Text = "StudentStatement"
         Me.rbStudStatement.UseVisualStyleBackColor = True
         '
-        'rbAccDebtPerSect
-        '
-        Me.rbAccDebtPerSect.AutoSize = True
-        Me.rbAccDebtPerSect.Location = New System.Drawing.Point(563, 180)
-        Me.rbAccDebtPerSect.Name = "rbAccDebtPerSect"
-        Me.rbAccDebtPerSect.Size = New System.Drawing.Size(110, 17)
-        Me.rbAccDebtPerSect.TabIndex = 35
-        Me.rbAccDebtPerSect.TabStop = True
-        Me.rbAccDebtPerSect.Text = "DebtorsBySection"
-        Me.rbAccDebtPerSect.UseVisualStyleBackColor = True
-        '
         'lbAccStud
         '
         Me.lbAccStud.BackColor = System.Drawing.Color.LightYellow
         Me.lbAccStud.FormattingEnabled = True
-        Me.lbAccStud.Location = New System.Drawing.Point(90, 36)
+        Me.lbAccStud.Location = New System.Drawing.Point(213, 24)
         Me.lbAccStud.Name = "lbAccStud"
-        Me.lbAccStud.Size = New System.Drawing.Size(261, 56)
+        Me.lbAccStud.Size = New System.Drawing.Size(172, 82)
         Me.lbAccStud.TabIndex = 33
         Me.lbAccStud.Visible = False
         '
         'Label77
         '
         Me.Label77.AutoSize = True
-        Me.Label77.Location = New System.Drawing.Point(16, 20)
+        Me.Label77.Location = New System.Drawing.Point(15, 28)
         Me.Label77.Name = "Label77"
         Me.Label77.Size = New System.Drawing.Size(47, 13)
         Me.Label77.TabIndex = 31
@@ -6368,7 +6388,7 @@ Partial Class Rports
         'Label74
         '
         Me.Label74.AutoSize = True
-        Me.Label74.Location = New System.Drawing.Point(16, 44)
+        Me.Label74.Location = New System.Drawing.Point(15, 49)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(46, 13)
         Me.Label74.TabIndex = 29
@@ -6381,7 +6401,7 @@ Partial Class Rports
         Me.cboAccSection.DisplayMember = "SubjectID"
         Me.cboAccSection.FormattingEnabled = True
         Me.cboAccSection.Items.AddRange(New Object() {"Business School", "IT", "High School", "NonStudent"})
-        Me.cboAccSection.Location = New System.Drawing.Point(91, 40)
+        Me.cboAccSection.Location = New System.Drawing.Point(91, 44)
         Me.cboAccSection.Name = "cboAccSection"
         Me.cboAccSection.Size = New System.Drawing.Size(119, 21)
         Me.cboAccSection.TabIndex = 28
@@ -6390,7 +6410,7 @@ Partial Class Rports
         'rbAccDebtors
         '
         Me.rbAccDebtors.AutoSize = True
-        Me.rbAccDebtors.Location = New System.Drawing.Point(459, 181)
+        Me.rbAccDebtors.Location = New System.Drawing.Point(439, 220)
         Me.rbAccDebtors.Name = "rbAccDebtors"
         Me.rbAccDebtors.Size = New System.Drawing.Size(99, 17)
         Me.rbAccDebtors.TabIndex = 27
@@ -6404,7 +6424,7 @@ Partial Class Rports
         Me.cboAccSession.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboAccSession.DisplayMember = "Session"
         Me.cboAccSession.FormattingEnabled = True
-        Me.cboAccSession.Location = New System.Drawing.Point(145, 64)
+        Me.cboAccSession.Location = New System.Drawing.Point(145, 68)
         Me.cboAccSession.Name = "cboAccSession"
         Me.cboAccSession.Size = New System.Drawing.Size(65, 21)
         Me.cboAccSession.TabIndex = 25
@@ -6413,7 +6433,7 @@ Partial Class Rports
         'Label55
         '
         Me.Label55.AutoSize = True
-        Me.Label55.Location = New System.Drawing.Point(214, 114)
+        Me.Label55.Location = New System.Drawing.Point(216, 144)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(26, 13)
         Me.Label55.TabIndex = 22
@@ -6425,7 +6445,7 @@ Partial Class Rports
         Me.cboAccPerTo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboAccPerTo.DisplayMember = "Period"
         Me.cboAccPerTo.FormattingEnabled = True
-        Me.cboAccPerTo.Location = New System.Drawing.Point(249, 110)
+        Me.cboAccPerTo.Location = New System.Drawing.Point(245, 140)
         Me.cboAccPerTo.Name = "cboAccPerTo"
         Me.cboAccPerTo.Size = New System.Drawing.Size(119, 21)
         Me.cboAccPerTo.TabIndex = 21
@@ -6434,7 +6454,7 @@ Partial Class Rports
         'Label54
         '
         Me.Label54.AutoSize = True
-        Me.Label54.Location = New System.Drawing.Point(16, 111)
+        Me.Label54.Location = New System.Drawing.Point(15, 143)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(69, 13)
         Me.Label54.TabIndex = 20
@@ -6446,7 +6466,7 @@ Partial Class Rports
         Me.cboAccPerFrm.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboAccPerFrm.DisplayMember = "Period"
         Me.cboAccPerFrm.FormattingEnabled = True
-        Me.cboAccPerFrm.Location = New System.Drawing.Point(91, 110)
+        Me.cboAccPerFrm.Location = New System.Drawing.Point(91, 141)
         Me.cboAccPerFrm.Name = "cboAccPerFrm"
         Me.cboAccPerFrm.Size = New System.Drawing.Size(119, 21)
         Me.cboAccPerFrm.TabIndex = 19
@@ -6455,7 +6475,7 @@ Partial Class Rports
         'Label52
         '
         Me.Label52.AutoSize = True
-        Me.Label52.Location = New System.Drawing.Point(16, 69)
+        Me.Label52.Location = New System.Drawing.Point(15, 71)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(36, 13)
         Me.Label52.TabIndex = 16
@@ -6468,7 +6488,7 @@ Partial Class Rports
         Me.cboAccLvl.DisplayMember = "SubjectID"
         Me.cboAccLvl.FormattingEnabled = True
         Me.cboAccLvl.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.cboAccLvl.Location = New System.Drawing.Point(91, 64)
+        Me.cboAccLvl.Location = New System.Drawing.Point(91, 67)
         Me.cboAccLvl.Name = "cboAccLvl"
         Me.cboAccLvl.Size = New System.Drawing.Size(49, 21)
         Me.cboAccLvl.TabIndex = 15
@@ -6477,7 +6497,7 @@ Partial Class Rports
         'rbAccPerForm
         '
         Me.rbAccPerForm.AutoSize = True
-        Me.rbAccPerForm.Location = New System.Drawing.Point(134, 181)
+        Me.rbAccPerForm.Location = New System.Drawing.Point(136, 220)
         Me.rbAccPerForm.Name = "rbAccPerForm"
         Me.rbAccPerForm.Size = New System.Drawing.Size(84, 17)
         Me.rbAccPerForm.TabIndex = 5
@@ -7088,6 +7108,8 @@ Partial Class Rports
         Me.Panel1.PerformLayout()
         Me.gbAccounts.ResumeLayout(False)
         Me.gbAccounts.PerformLayout()
+        Me.pnlTranstype.ResumeLayout(False)
+        Me.pnlTranstype.PerformLayout()
         Me.gbExamAttendance.ResumeLayout(False)
         Me.gbExamAttendance.PerformLayout()
         Me.gbContactDetails.ResumeLayout(False)
@@ -7346,7 +7368,6 @@ Partial Class Rports
     Friend WithEvents rbClassResStats As System.Windows.Forms.RadioButton
     Friend WithEvents SchoolsessionsTableAdapter As dsSchoolTableAdapters.schoolsessionsTableAdapter
     Friend WithEvents ExamSessionsTableAdapter As dsSchoolTableAdapters.ExamSessionsTableAdapter
-    Friend WithEvents rbAccDebtPerSect As System.Windows.Forms.RadioButton
     Friend WithEvents Label106 As System.Windows.Forms.Label
     Friend WithEvents cboSubPntSess As System.Windows.Forms.ComboBox
     Friend WithEvents gbstudentregister2 As System.Windows.Forms.GroupBox
@@ -7465,7 +7486,7 @@ Partial Class Rports
     Friend WithEvents rbLoggedInUser As System.Windows.Forms.RadioButton
     Friend WithEvents Schoolsessions1TableAdapter As dsStudentSearchesTableAdapters.schoolsessions1TableAdapter
     Friend WithEvents Label32 As System.Windows.Forms.Label
-    Friend WithEvents cboAccStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents cboBBFCutOff As System.Windows.Forms.ComboBox
     Friend WithEvents gbIDcards As System.Windows.Forms.GroupBox
     Friend WithEvents Label57 As System.Windows.Forms.Label
     Friend WithEvents cboCardsGrp As System.Windows.Forms.ComboBox
@@ -7688,6 +7709,9 @@ Partial Class Rports
     Friend WithEvents cboStudClassCls As ComboBox
     Friend WithEvents gbClassAgeRange As GroupBox
     Friend WithEvents chkClssAge As CheckBox
+    Friend WithEvents pnlTranstype As Panel
+    Friend WithEvents chkAccShoRec As CheckBox
+    Friend WithEvents chkAccShowInv As CheckBox
     ' Friend WithEvents DebtPaymentTableAdapter As SMS.dsschoolTableAdapters.DebtPaymentTableAdapter
     ' Friend WithEvents AssertliquidationTableAdapter As SMS.dsschoolTableAdapters.assertliquidationTableAdapter
     'Friend WithEvents ReceitsdonationsTableAdapter As SMS.dsschoolTableAdapters.receitsdonationsTableAdapter

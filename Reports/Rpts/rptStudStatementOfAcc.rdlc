@@ -719,6 +719,9 @@
                                                   <TablixMembers>
                                                     <TablixMember />
                                                   </TablixMembers>
+                                                  <Visibility>
+                                                    <Hidden>= Fields!line_number.Value = -1</Hidden>
+                                                  </Visibility>
                                                   <DataElementName>Detail_Collection</DataElementName>
                                                   <DataElementOutput>Output</DataElementOutput>
                                                   <KeepTogether>true</KeepTogether>
@@ -844,7 +847,7 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <Top>7.93651cm</Top>
-                                            <Left>12.69841cm</Left>
+                                            <Left>12.55734cm</Left>
                                             <Height>0.75265cm</Height>
                                             <Width>7.30159cm</Width>
                                             <ZIndex>7</ZIndex>
@@ -1036,8 +1039,8 @@
                                               </Textbox>
                                             </ReportItems>
                                             <DataElementOutput>ContentsOnly</DataElementOutput>
-                                            <Top>4.12698cm</Top>
-                                            <Left>12.69841cm</Left>
+                                            <Top>3.80952cm</Top>
+                                            <Left>12.55734cm</Left>
                                             <Height>3.49206cm</Height>
                                             <Width>7.61905cm</Width>
                                             <ZIndex>10</ZIndex>
@@ -1395,10 +1398,6 @@
           <DataField>Gender</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Column1">
-          <DataField>Column1</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="type">
           <DataField>type</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1439,10 +1438,14 @@
           <DataField>BBF</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="SelectedCartegory">
+          <DataField>SelectedCartegory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsRevoReports</rd:DataSetName>
-        <rd:SchemaPath>F:\Development\StandardDesktop_vs2017_Dev\Reports\dsRevoReports.xsd</rd:SchemaPath>
+        <rd:SchemaPath>F:\Development\Banda_Desktop_GitHub\BondaDesktop\Reports\dsRevoReports.xsd</rd:SchemaPath>
         <rd:TableName>SchoolFeesStatement</rd:TableName>
         <rd:TableAdapterFillMethod>FillByStudent</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

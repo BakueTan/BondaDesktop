@@ -69,21 +69,31 @@ Partial Class FrmStudent
         Dim Label3 As System.Windows.Forms.Label
         Dim Label9 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmStudent))
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("EditMarks")
-        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("StudentMarks", New System.Windows.Forms.TreeNode() {TreeNode5})
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim ReportDataSource3 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle68 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("EditMarks")
+        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("StudentMarks", New System.Windows.Forms.TreeNode() {TreeNode7})
+        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle85 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle86 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle87 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle88 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.StudentFeesTranscationsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsSchool = New StudentPersonalDetails.dsSchool()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
@@ -174,6 +184,8 @@ Partial Class FrmStudent
         Me.lbStudDeactivationSearch = New System.Windows.Forms.ListBox()
         Me.Button35 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.chkOtherClassList = New System.Windows.Forms.CheckedListBox()
+        Me.chkAllClassesInCalendarYear = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbonewClassCls = New System.Windows.Forms.ComboBox()
         Me.Label82 = New System.Windows.Forms.Label()
@@ -301,6 +313,10 @@ Partial Class FrmStudent
         Me.rvOnScreenStat = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvOnScreenDatPay = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.chkTransScreenShowReceipts = New System.Windows.Forms.CheckBox()
+        Me.chkTransScreenShowInvoices = New System.Windows.Forms.CheckBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cboBBFCutOffPeriod = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnFeesClassMoveNext = New System.Windows.Forms.Button()
         Me.btnFeesClassMovePrev = New System.Windows.Forms.Button()
@@ -351,6 +367,7 @@ Partial Class FrmStudent
         Me.Edt = New System.Windows.Forms.ToolStripButton()
         Me.rec_import = New System.Windows.Forms.ToolStripButton()
         Me.gbFeesPay = New System.Windows.Forms.GroupBox()
+        Me.Button28 = New System.Windows.Forms.Button()
         Me.pnlReversal = New System.Windows.Forms.Panel()
         Me.ReasonForReversalComboBox = New System.Windows.Forms.ComboBox()
         Me.lbStudRef = New System.Windows.Forms.TextBox()
@@ -509,17 +526,45 @@ Partial Class FrmStudent
         Me.tbStudBehavior = New System.Windows.Forms.TabPage()
         Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
         Me.GroupBox20 = New System.Windows.Forms.GroupBox()
-        Me.btnNew = New System.Windows.Forms.Button()
-        Me.lbStudBehavior = New System.Windows.Forms.ListBox()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.txtbedesc = New System.Windows.Forms.RichTextBox()
-        Me.Label66 = New System.Windows.Forms.Label()
-        Me.mskbedate = New System.Windows.Forms.MaskedTextBox()
-        Me.Label65 = New System.Windows.Forms.Label()
-        Me.cbobetype = New System.Windows.Forms.ComboBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label61 = New System.Windows.Forms.Label()
-        Me.txtStudent = New System.Windows.Forms.TextBox()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.lbBehaviorRecourCount = New System.Windows.Forms.Label()
+        Me.Label63 = New System.Windows.Forms.Label()
+        Me.lbStudBehaviorName = New System.Windows.Forms.Label()
+        Me.txtBehaviorRef = New System.Windows.Forms.TextBox()
+        Me.cboBehaviorPeriod = New System.Windows.Forms.ComboBox()
+        Me.lbStudBehavior = New System.Windows.Forms.ListBox()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.btnStudBeaviorSearch = New System.Windows.Forms.Button()
+        Me.cboBehaviorClass = New System.Windows.Forms.ComboBox()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.btnAddBehavior = New System.Windows.Forms.Button()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.txtBehaviorDetails = New System.Windows.Forms.RichTextBox()
+        Me.cboBehaviorSeverity = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.mskBehaviorDate = New System.Windows.Forms.MaskedTextBox()
         Me.Label59 = New System.Windows.Forms.Label()
+        Me.cboBehaviorType = New System.Windows.Forms.ComboBox()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.dgStudBehavior = New System.Windows.Forms.DataGridView()
+        Me.BehaviorStudent = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorClass = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorPeriod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorSeverity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorDetails = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BehaviorEdit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.BehaviorView = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.BehaviorDelete = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.BehaviorRef = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnNew = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.txtBehaviorStud = New System.Windows.Forms.TextBox()
+        Me.Label69 = New System.Windows.Forms.Label()
         Me.ClassListTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.ClassListTableAdapter()
         Me.Feespayments_detailsTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.feespayments_detailsTableAdapter()
         Me.FeesPayments_HeaderTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.FeesPayments_HeaderTableAdapter()
@@ -672,6 +717,8 @@ Partial Class FrmStudent
         Me.SplitContainer3.Panel2.SuspendLayout()
         Me.SplitContainer3.SuspendLayout()
         Me.GroupBox20.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.dgStudBehavior, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ctxEnrollment.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1662,35 +1709,35 @@ Partial Class FrmStudent
         Me.dgBilling.AllowUserToAddRows = False
         Me.dgBilling.AllowUserToDeleteRows = False
         Me.dgBilling.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBilling.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle67.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle67.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle67.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle67.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle67.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle67.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBilling.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle67
         Me.dgBilling.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgBilling.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BillingStudentID, Me.BillingStudName, Me.BillingEnrolRef})
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgBilling.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle68.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle68.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle68.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle68.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgBilling.DefaultCellStyle = DataGridViewCellStyle68
         Me.dgBilling.GridColor = System.Drawing.Color.LightSteelBlue
         Me.dgBilling.Location = New System.Drawing.Point(576, 142)
         Me.dgBilling.Name = "dgBilling"
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBilling.RowHeadersDefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle69.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle69.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle69.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle69.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBilling.RowHeadersDefaultCellStyle = DataGridViewCellStyle69
         Me.dgBilling.Size = New System.Drawing.Size(260, 382)
         Me.dgBilling.TabIndex = 25
         '
@@ -1906,6 +1953,8 @@ Partial Class FrmStudent
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.chkOtherClassList)
+        Me.GroupBox1.Controls.Add(Me.chkAllClassesInCalendarYear)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.cbonewClassCls)
         Me.GroupBox1.Controls.Add(Me.Label82)
@@ -1915,10 +1964,29 @@ Partial Class FrmStudent
         Me.GroupBox1.Controls.Add(Me.cbonewclassform)
         Me.GroupBox1.Location = New System.Drawing.Point(589, 41)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(577, 43)
+        Me.GroupBox1.Size = New System.Drawing.Size(905, 69)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "New Class"
+        '
+        'chkOtherClassList
+        '
+        Me.chkOtherClassList.FormattingEnabled = True
+        Me.chkOtherClassList.Location = New System.Drawing.Point(666, 11)
+        Me.chkOtherClassList.Name = "chkOtherClassList"
+        Me.chkOtherClassList.Size = New System.Drawing.Size(232, 49)
+        Me.chkOtherClassList.TabIndex = 30
+        Me.chkOtherClassList.Visible = False
+        '
+        'chkAllClassesInCalendarYear
+        '
+        Me.chkAllClassesInCalendarYear.AutoSize = True
+        Me.chkAllClassesInCalendarYear.Location = New System.Drawing.Point(398, 43)
+        Me.chkAllClassesInCalendarYear.Name = "chkAllClassesInCalendarYear"
+        Me.chkAllClassesInCalendarYear.Size = New System.Drawing.Size(262, 17)
+        Me.chkAllClassesInCalendarYear.TabIndex = 29
+        Me.chkAllClassesInCalendarYear.Text = "Transfer to  Other Classes in  Same Calendar Year"
+        Me.chkAllClassesInCalendarYear.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -1934,7 +2002,7 @@ Partial Class FrmStudent
         Me.cbonewClassCls.FormattingEnabled = True
         Me.cbonewClassCls.Location = New System.Drawing.Point(398, 16)
         Me.cbonewClassCls.Name = "cbonewClassCls"
-        Me.cbonewClassCls.Size = New System.Drawing.Size(154, 21)
+        Me.cbonewClassCls.Size = New System.Drawing.Size(221, 21)
         Me.cbonewClassCls.TabIndex = 18
         '
         'Label82
@@ -2530,35 +2598,35 @@ Partial Class FrmStudent
         '
         Me.dgClassList.AllowUserToAddRows = False
         Me.dgClassList.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgClassList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle70.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle70.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle70.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle70.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle70.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgClassList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle70
         Me.dgClassList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgClassList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NOKContactNumber})
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgClassList.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle71.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle71.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgClassList.DefaultCellStyle = DataGridViewCellStyle71
         Me.dgClassList.GridColor = System.Drawing.Color.LightSteelBlue
         Me.dgClassList.Location = New System.Drawing.Point(4, 54)
         Me.dgClassList.Name = "dgClassList"
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgClassList.RowHeadersDefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle72.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle72.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle72.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgClassList.RowHeadersDefaultCellStyle = DataGridViewCellStyle72
         Me.dgClassList.Size = New System.Drawing.Size(782, 247)
         Me.dgClassList.TabIndex = 17
         '
@@ -2776,12 +2844,12 @@ Partial Class FrmStudent
         '
         Me.tvEditMarks.Location = New System.Drawing.Point(22, 370)
         Me.tvEditMarks.Name = "tvEditMarks"
-        TreeNode5.Name = "Node1"
-        TreeNode5.Tag = "23"
-        TreeNode5.Text = "EditMarks"
-        TreeNode6.Name = "Node0"
-        TreeNode6.Text = "StudentMarks"
-        Me.tvEditMarks.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode6})
+        TreeNode7.Name = "Node1"
+        TreeNode7.Tag = "23"
+        TreeNode7.Text = "EditMarks"
+        TreeNode8.Name = "Node0"
+        TreeNode8.Text = "StudentMarks"
+        Me.tvEditMarks.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode8})
         Me.tvEditMarks.Size = New System.Drawing.Size(121, 97)
         Me.tvEditMarks.TabIndex = 1
         Me.tvEditMarks.Tag = ""
@@ -3165,37 +3233,37 @@ Partial Class FrmStudent
         Me.gdStudents.AllowUserToAddRows = False
         Me.gdStudents.AllowUserToDeleteRows = False
         Me.gdStudents.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gdStudents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle73.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle73.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle73.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle73.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle73.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gdStudents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle73
         Me.gdStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gdStudents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MarksStudentID, Me.MarksStudName, Me.MarksEnrolRef})
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gdStudents.DefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle74.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle74.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle74.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle74.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle74.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gdStudents.DefaultCellStyle = DataGridViewCellStyle74
         Me.gdStudents.GridColor = System.Drawing.Color.White
         Me.gdStudents.Location = New System.Drawing.Point(911, 45)
         Me.gdStudents.MultiSelect = False
         Me.gdStudents.Name = "gdStudents"
         Me.gdStudents.ReadOnly = True
-        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle33.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gdStudents.RowHeadersDefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle75.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gdStudents.RowHeadersDefaultCellStyle = DataGridViewCellStyle75
         Me.gdStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gdStudents.Size = New System.Drawing.Size(346, 293)
         Me.gdStudents.TabIndex = 0
@@ -3278,13 +3346,13 @@ Partial Class FrmStudent
         Me.Panel2.Location = New System.Drawing.Point(3, 82)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(773, 622)
-        Me.Panel2.TabIndex = 45
+        Me.Panel2.TabIndex = 1
         '
         'rvOnScreenStat
         '
-        ReportDataSource3.Name = "DataSet1"
-        ReportDataSource3.Value = Me.StudentFeesTranscationsBindingSource
-        Me.rvOnScreenStat.LocalReport.DataSources.Add(ReportDataSource3)
+        ReportDataSource4.Name = "DataSet1"
+        ReportDataSource4.Value = Me.StudentFeesTranscationsBindingSource
+        Me.rvOnScreenStat.LocalReport.DataSources.Add(ReportDataSource4)
         Me.rvOnScreenStat.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptStudFeesStatement.rdlc"
         Me.rvOnScreenStat.Location = New System.Drawing.Point(116, 216)
         Me.rvOnScreenStat.Name = "rvOnScreenStat"
@@ -3292,6 +3360,7 @@ Partial Class FrmStudent
         Me.rvOnScreenStat.Size = New System.Drawing.Size(396, 246)
         Me.rvOnScreenStat.TabIndex = 2
         Me.rvOnScreenStat.Visible = False
+        Me.rvOnScreenStat.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth
         '
         'rvOnScreenDatPay
         '
@@ -3308,6 +3377,10 @@ Partial Class FrmStudent
         '
         Me.GroupBox6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox6.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.GroupBox6.Controls.Add(Me.chkTransScreenShowReceipts)
+        Me.GroupBox6.Controls.Add(Me.chkTransScreenShowInvoices)
+        Me.GroupBox6.Controls.Add(Me.Label14)
+        Me.GroupBox6.Controls.Add(Me.cboBBFCutOffPeriod)
         Me.GroupBox6.Controls.Add(Me.Panel3)
         Me.GroupBox6.Controls.Add(Me.btnFessClass)
         Me.GroupBox6.Controls.Add(Me.lbFeesHidedStudID)
@@ -3322,16 +3395,60 @@ Partial Class FrmStudent
         Me.GroupBox6.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(778, 73)
-        Me.GroupBox6.TabIndex = 44
+        Me.GroupBox6.TabIndex = 0
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "ClassSearch"
+        '
+        'chkTransScreenShowReceipts
+        '
+        Me.chkTransScreenShowReceipts.AutoSize = True
+        Me.chkTransScreenShowReceipts.Checked = True
+        Me.chkTransScreenShowReceipts.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkTransScreenShowReceipts.Location = New System.Drawing.Point(669, 46)
+        Me.chkTransScreenShowReceipts.Name = "chkTransScreenShowReceipts"
+        Me.chkTransScreenShowReceipts.Size = New System.Drawing.Size(95, 17)
+        Me.chkTransScreenShowReceipts.TabIndex = 60
+        Me.chkTransScreenShowReceipts.Text = "ShowReceipts"
+        Me.chkTransScreenShowReceipts.UseVisualStyleBackColor = True
+        '
+        'chkTransScreenShowInvoices
+        '
+        Me.chkTransScreenShowInvoices.AutoSize = True
+        Me.chkTransScreenShowInvoices.Checked = True
+        Me.chkTransScreenShowInvoices.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkTransScreenShowInvoices.Location = New System.Drawing.Point(570, 46)
+        Me.chkTransScreenShowInvoices.Name = "chkTransScreenShowInvoices"
+        Me.chkTransScreenShowInvoices.Size = New System.Drawing.Size(93, 17)
+        Me.chkTransScreenShowInvoices.TabIndex = 59
+        Me.chkTransScreenShowInvoices.Text = "ShowInvoices"
+        Me.chkTransScreenShowInvoices.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(278, 47)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(95, 13)
+        Me.Label14.TabIndex = 58
+        Me.Label14.Text = "BBF cut off period:"
+        '
+        'cboBBFCutOffPeriod
+        '
+        Me.cboBBFCutOffPeriod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboBBFCutOffPeriod.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboBBFCutOffPeriod.FormattingEnabled = True
+        Me.cboBBFCutOffPeriod.Items.AddRange(New Object() {"Refund", "Error In Capturing", "Test Receipt", "Others"})
+        Me.cboBBFCutOffPeriod.Location = New System.Drawing.Point(376, 44)
+        Me.cboBBFCutOffPeriod.Name = "cboBBFCutOffPeriod"
+        Me.cboBBFCutOffPeriod.Size = New System.Drawing.Size(184, 21)
+        Me.cboBBFCutOffPeriod.TabIndex = 57
         '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.btnFeesClassMoveNext)
         Me.Panel3.Controls.Add(Me.btnFeesClassMovePrev)
         Me.Panel3.Controls.Add(Me.txtPos)
-        Me.Panel3.Location = New System.Drawing.Point(273, 38)
+        Me.Panel3.Location = New System.Drawing.Point(44, 39)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(232, 28)
         Me.Panel3.TabIndex = 52
@@ -3465,7 +3582,7 @@ Partial Class FrmStudent
         Me.Button37.Location = New System.Drawing.Point(1, 3)
         Me.Button37.Name = "Button37"
         Me.Button37.Size = New System.Drawing.Size(75, 41)
-        Me.Button37.TabIndex = 55
+        Me.Button37.TabIndex = 1
         Me.Button37.Text = "Hide Search Panel"
         Me.Button37.UseVisualStyleBackColor = False
         '
@@ -3585,6 +3702,10 @@ Partial Class FrmStudent
         '
         'btnUpdate
         '
+        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle76.BackColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle76.ForeColor = System.Drawing.Color.White
+        Me.btnUpdate.DefaultCellStyle = DataGridViewCellStyle76
         Me.btnUpdate.HeaderText = "Update"
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Text = "Update"
@@ -3593,6 +3714,11 @@ Partial Class FrmStudent
         '
         'btnDelete
         '
+        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle77.BackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle77.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle77.ForeColor = System.Drawing.Color.White
+        Me.btnDelete.DefaultCellStyle = DataGridViewCellStyle77
         Me.btnDelete.HeaderText = "Delete"
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Text = "Delete"
@@ -3767,6 +3893,7 @@ Partial Class FrmStudent
         'gbFeesPay
         '
         Me.gbFeesPay.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.gbFeesPay.Controls.Add(Me.Button28)
         Me.gbFeesPay.Controls.Add(Me.pnlReversal)
         Me.gbFeesPay.Controls.Add(Me.lbStudRef)
         Me.gbFeesPay.Controls.Add(Me.txtFeesStudID)
@@ -3788,6 +3915,16 @@ Partial Class FrmStudent
         Me.gbFeesPay.TabIndex = 0
         Me.gbFeesPay.TabStop = False
         '
+        'Button28
+        '
+        Me.Button28.BackgroundImage = Global.StudentPersonalDetails.My.Resources.Resources.search
+        Me.Button28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button28.Location = New System.Drawing.Point(335, 27)
+        Me.Button28.Name = "Button28"
+        Me.Button28.Size = New System.Drawing.Size(19, 20)
+        Me.Button28.TabIndex = 52
+        Me.Button28.UseVisualStyleBackColor = True
+        '
         'pnlReversal
         '
         Me.pnlReversal.Controls.Add(ReasonForReversalLabel)
@@ -3808,7 +3945,7 @@ Partial Class FrmStudent
         Me.ReasonForReversalComboBox.Location = New System.Drawing.Point(129, 9)
         Me.ReasonForReversalComboBox.Name = "ReasonForReversalComboBox"
         Me.ReasonForReversalComboBox.Size = New System.Drawing.Size(141, 21)
-        Me.ReasonForReversalComboBox.TabIndex = 9
+        Me.ReasonForReversalComboBox.TabIndex = 0
         '
         'lbStudRef
         '
@@ -3821,11 +3958,10 @@ Partial Class FrmStudent
         '
         'txtFeesStudID
         '
-        Me.txtFeesStudID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FeesPaymentsHeaderBindingSource, "StudentID", True))
         Me.txtFeesStudID.Location = New System.Drawing.Point(135, 27)
         Me.txtFeesStudID.Name = "txtFeesStudID"
         Me.txtFeesStudID.Size = New System.Drawing.Size(200, 20)
-        Me.txtFeesStudID.TabIndex = 25
+        Me.txtFeesStudID.TabIndex = 0
         '
         'PostDateDateTimePicker
         '
@@ -3836,15 +3972,15 @@ Partial Class FrmStudent
         Me.PostDateDateTimePicker.Location = New System.Drawing.Point(135, 129)
         Me.PostDateDateTimePicker.Name = "PostDateDateTimePicker"
         Me.PostDateDateTimePicker.Size = New System.Drawing.Size(153, 20)
-        Me.PostDateDateTimePicker.TabIndex = 8
+        Me.PostDateDateTimePicker.TabIndex = 4
         Me.PostDateDateTimePicker.Value = New Date(2015, 2, 10, 0, 0, 0, 0)
         '
         'lbStudFees
         '
         Me.lbStudFees.FormattingEnabled = True
-        Me.lbStudFees.Location = New System.Drawing.Point(135, 51)
+        Me.lbStudFees.Location = New System.Drawing.Point(135, 52)
         Me.lbStudFees.Name = "lbStudFees"
-        Me.lbStudFees.Size = New System.Drawing.Size(341, 43)
+        Me.lbStudFees.Size = New System.Drawing.Size(341, 69)
         Me.lbStudFees.TabIndex = 22
         Me.lbStudFees.Visible = False
         '
@@ -3857,7 +3993,7 @@ Partial Class FrmStudent
         Me.cboCashType.Location = New System.Drawing.Point(135, 53)
         Me.cboCashType.Name = "cboCashType"
         Me.cboCashType.Size = New System.Drawing.Size(121, 21)
-        Me.cboCashType.TabIndex = 5
+        Me.cboCashType.TabIndex = 1
         Me.cboCashType.ValueMember = "CashType"
         '
         'mskpaydate
@@ -3867,7 +4003,7 @@ Partial Class FrmStudent
         Me.mskpaydate.Mask = "00/00/0000"
         Me.mskpaydate.Name = "mskpaydate"
         Me.mskpaydate.Size = New System.Drawing.Size(121, 20)
-        Me.mskpaydate.TabIndex = 6
+        Me.mskpaydate.TabIndex = 2
         Me.mskpaydate.ValidatingType = GetType(Date)
         '
         'lblfullname
@@ -3887,7 +4023,7 @@ Partial Class FrmStudent
         Me.ReceiptTextBox.Name = "ReceiptTextBox"
         Me.ReceiptTextBox.ReadOnly = True
         Me.ReceiptTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.ReceiptTextBox.TabIndex = 7
+        Me.ReceiptTextBox.TabIndex = 3
         '
         'GroupBox17
         '
@@ -3902,7 +4038,7 @@ Partial Class FrmStudent
         Me.GroupBox17.Location = New System.Drawing.Point(82, 3)
         Me.GroupBox17.Name = "GroupBox17"
         Me.GroupBox17.Size = New System.Drawing.Size(649, 41)
-        Me.GroupBox17.TabIndex = 20
+        Me.GroupBox17.TabIndex = 0
         Me.GroupBox17.TabStop = False
         Me.GroupBox17.Text = "Payment Search"
         '
@@ -4196,35 +4332,35 @@ Partial Class FrmStudent
         Me.dgSubStuds.AllowUserToAddRows = False
         Me.dgSubStuds.AllowUserToDeleteRows = False
         Me.dgSubStuds.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle34.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSubStuds.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle34
+        DataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle78.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle78.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle78.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle78.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle78.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSubStuds.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle78
         Me.dgSubStuds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgSubStuds.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SubjectsStudentID, Me.StudentName, Me.EnrolRef})
-        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle35.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgSubStuds.DefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle79.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgSubStuds.DefaultCellStyle = DataGridViewCellStyle79
         Me.dgSubStuds.Location = New System.Drawing.Point(529, 91)
         Me.dgSubStuds.Name = "dgSubStuds"
         Me.dgSubStuds.ReadOnly = True
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSubStuds.RowHeadersDefaultCellStyle = DataGridViewCellStyle36
+        DataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle80.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSubStuds.RowHeadersDefaultCellStyle = DataGridViewCellStyle80
         Me.dgSubStuds.RowTemplate.Height = 24
         Me.dgSubStuds.Size = New System.Drawing.Size(346, 424)
         Me.dgSubStuds.TabIndex = 0
@@ -4773,7 +4909,7 @@ Partial Class FrmStudent
         'Button12
         '
         Me.Button12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button12.Location = New System.Drawing.Point(-531, 25593)
+        Me.Button12.Location = New System.Drawing.Point(-510, 25593)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(118, 34)
         Me.Button12.TabIndex = 1
@@ -4784,7 +4920,7 @@ Partial Class FrmStudent
         '
         Me.cmdConnect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdConnect.Enabled = False
-        Me.cmdConnect.Location = New System.Drawing.Point(-779, 25593)
+        Me.cmdConnect.Location = New System.Drawing.Point(-758, 25593)
         Me.cmdConnect.Name = "cmdConnect"
         Me.cmdConnect.Size = New System.Drawing.Size(118, 34)
         Me.cmdConnect.TabIndex = 3
@@ -4795,7 +4931,7 @@ Partial Class FrmStudent
         'Button13
         '
         Me.Button13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button13.Location = New System.Drawing.Point(-654, 25593)
+        Me.Button13.Location = New System.Drawing.Point(-633, 25593)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(118, 34)
         Me.Button13.TabIndex = 0
@@ -5539,119 +5675,389 @@ Partial Class FrmStudent
         '
         'GroupBox20
         '
-        Me.GroupBox20.Controls.Add(Me.btnNew)
+        Me.GroupBox20.Controls.Add(Me.GroupBox3)
+        Me.GroupBox20.Controls.Add(Me.lbBehaviorRecourCount)
+        Me.GroupBox20.Controls.Add(Me.Label63)
+        Me.GroupBox20.Controls.Add(Me.lbStudBehaviorName)
+        Me.GroupBox20.Controls.Add(Me.txtBehaviorRef)
+        Me.GroupBox20.Controls.Add(Me.cboBehaviorPeriod)
         Me.GroupBox20.Controls.Add(Me.lbStudBehavior)
-        Me.GroupBox20.Controls.Add(Me.btnSave)
-        Me.GroupBox20.Controls.Add(Me.txtbedesc)
-        Me.GroupBox20.Controls.Add(Me.Label66)
-        Me.GroupBox20.Controls.Add(Me.mskbedate)
-        Me.GroupBox20.Controls.Add(Me.Label65)
-        Me.GroupBox20.Controls.Add(Me.cbobetype)
-        Me.GroupBox20.Controls.Add(Me.Label61)
-        Me.GroupBox20.Controls.Add(Me.txtStudent)
+        Me.GroupBox20.Controls.Add(Me.Label41)
+        Me.GroupBox20.Controls.Add(Me.btnStudBeaviorSearch)
+        Me.GroupBox20.Controls.Add(Me.cboBehaviorClass)
+        Me.GroupBox20.Controls.Add(Me.Label40)
+        Me.GroupBox20.Controls.Add(Me.btnAddBehavior)
+        Me.GroupBox20.Controls.Add(Me.Label29)
+        Me.GroupBox20.Controls.Add(Me.txtBehaviorDetails)
+        Me.GroupBox20.Controls.Add(Me.cboBehaviorSeverity)
+        Me.GroupBox20.Controls.Add(Me.Label15)
+        Me.GroupBox20.Controls.Add(Me.mskBehaviorDate)
         Me.GroupBox20.Controls.Add(Me.Label59)
-        Me.GroupBox20.Location = New System.Drawing.Point(81, 36)
+        Me.GroupBox20.Controls.Add(Me.cboBehaviorType)
+        Me.GroupBox20.Controls.Add(Me.Label66)
+        Me.GroupBox20.Controls.Add(Me.dgStudBehavior)
+        Me.GroupBox20.Controls.Add(Me.btnNew)
+        Me.GroupBox20.Controls.Add(Me.btnSave)
+        Me.GroupBox20.Controls.Add(Me.txtBehaviorStud)
+        Me.GroupBox20.Controls.Add(Me.Label69)
+        Me.GroupBox20.Location = New System.Drawing.Point(17, 17)
         Me.GroupBox20.Name = "GroupBox20"
-        Me.GroupBox20.Size = New System.Drawing.Size(774, 553)
-        Me.GroupBox20.TabIndex = 0
+        Me.GroupBox20.Size = New System.Drawing.Size(1114, 393)
+        Me.GroupBox20.TabIndex = 1
         Me.GroupBox20.TabStop = False
-        Me.GroupBox20.Text = "Behaviour"
+        Me.GroupBox20.Text = "StudentBehaviour"
         '
-        'btnNew
+        'GroupBox3
         '
-        Me.btnNew.Location = New System.Drawing.Point(201, 364)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
-        Me.btnNew.TabIndex = 10
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
-        '
-        'lbStudBehavior
-        '
-        Me.lbStudBehavior.FormattingEnabled = True
-        Me.lbStudBehavior.Location = New System.Drawing.Point(226, 33)
-        Me.lbStudBehavior.Name = "lbStudBehavior"
-        Me.lbStudBehavior.Size = New System.Drawing.Size(160, 95)
-        Me.lbStudBehavior.TabIndex = 9
-        Me.lbStudBehavior.Visible = False
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(120, 364)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 8
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'txtbedesc
-        '
-        Me.txtbedesc.Location = New System.Drawing.Point(120, 141)
-        Me.txtbedesc.Name = "txtbedesc"
-        Me.txtbedesc.Size = New System.Drawing.Size(313, 217)
-        Me.txtbedesc.TabIndex = 7
-        Me.txtbedesc.Text = ""
-        '
-        'Label66
-        '
-        Me.Label66.AutoSize = True
-        Me.Label66.Location = New System.Drawing.Point(44, 141)
-        Me.Label66.Name = "Label66"
-        Me.Label66.Size = New System.Drawing.Size(63, 13)
-        Me.Label66.TabIndex = 6
-        Me.Label66.Text = "Description:"
-        '
-        'mskbedate
-        '
-        Me.mskbedate.Location = New System.Drawing.Point(120, 96)
-        Me.mskbedate.Mask = "00/00/0000"
-        Me.mskbedate.Name = "mskbedate"
-        Me.mskbedate.Size = New System.Drawing.Size(100, 20)
-        Me.mskbedate.TabIndex = 5
-        Me.mskbedate.ValidatingType = GetType(Date)
-        '
-        'Label65
-        '
-        Me.Label65.AutoSize = True
-        Me.Label65.Location = New System.Drawing.Point(41, 96)
-        Me.Label65.Name = "Label65"
-        Me.Label65.Size = New System.Drawing.Size(33, 13)
-        Me.Label65.TabIndex = 4
-        Me.Label65.Text = "Date:"
-        '
-        'cbobetype
-        '
-        Me.cbobetype.FormattingEnabled = True
-        Me.cbobetype.Items.AddRange(New Object() {"Disciplinary", "Awards"})
-        Me.cbobetype.Location = New System.Drawing.Point(120, 60)
-        Me.cbobetype.Name = "cbobetype"
-        Me.cbobetype.Size = New System.Drawing.Size(83, 21)
-        Me.cbobetype.TabIndex = 3
+        Me.GroupBox3.BackColor = System.Drawing.Color.White
+        Me.GroupBox3.Controls.Add(Me.Label61)
+        Me.GroupBox3.Controls.Add(Me.Label65)
+        Me.GroupBox3.Controls.Add(Me.Label50)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(538, 29)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(544, 91)
+        Me.GroupBox3.TabIndex = 31
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Important Information"
         '
         'Label61
         '
         Me.Label61.AutoSize = True
-        Me.Label61.Location = New System.Drawing.Point(41, 68)
+        Me.Label61.Location = New System.Drawing.Point(16, 23)
         Me.Label61.Name = "Label61"
-        Me.Label61.Size = New System.Drawing.Size(34, 13)
-        Me.Label61.TabIndex = 2
-        Me.Label61.Text = "Type:"
+        Me.Label61.Size = New System.Drawing.Size(511, 13)
+        Me.Label61.TabIndex = 27
+        Me.Label61.Text = "*Only Behavior Records that have been added to the Bahavior Records List will be " &
+    "saved to the Database."
         '
-        'txtStudent
+        'Label65
         '
-        Me.txtStudent.Location = New System.Drawing.Point(120, 33)
-        Me.txtStudent.Name = "txtStudent"
-        Me.txtStudent.Size = New System.Drawing.Size(100, 20)
-        Me.txtStudent.TabIndex = 1
+        Me.Label65.AutoSize = True
+        Me.Label65.Location = New System.Drawing.Point(16, 43)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(415, 13)
+        Me.Label65.TabIndex = 29
+        Me.Label65.Text = "*To add a Record to the List, Fill in the Details of the Record and Click ""Add Be" &
+    "havior"""
+        '
+        'Label50
+        '
+        Me.Label50.AutoSize = True
+        Me.Label50.Location = New System.Drawing.Point(16, 63)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(351, 13)
+        Me.Label50.TabIndex = 13
+        Me.Label50.Text = "*Records Highlighted in Yellow, in the List,  are not yet Saved / Updated."
+        '
+        'lbBehaviorRecourCount
+        '
+        Me.lbBehaviorRecourCount.AutoSize = True
+        Me.lbBehaviorRecourCount.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbBehaviorRecourCount.Location = New System.Drawing.Point(158, 178)
+        Me.lbBehaviorRecourCount.Name = "lbBehaviorRecourCount"
+        Me.lbBehaviorRecourCount.Size = New System.Drawing.Size(0, 13)
+        Me.lbBehaviorRecourCount.TabIndex = 30
+        '
+        'Label63
+        '
+        Me.Label63.AutoSize = True
+        Me.Label63.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label63.Location = New System.Drawing.Point(21, 178)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(136, 13)
+        Me.Label63.TabIndex = 28
+        Me.Label63.Text = "Behavior Records List:"
+        '
+        'lbStudBehaviorName
+        '
+        Me.lbStudBehaviorName.AutoSize = True
+        Me.lbStudBehaviorName.Location = New System.Drawing.Point(245, 11)
+        Me.lbStudBehaviorName.Name = "lbStudBehaviorName"
+        Me.lbStudBehaviorName.Size = New System.Drawing.Size(0, 13)
+        Me.lbStudBehaviorName.TabIndex = 2
+        Me.lbStudBehaviorName.Visible = False
+        '
+        'txtBehaviorRef
+        '
+        Me.txtBehaviorRef.Location = New System.Drawing.Point(483, 128)
+        Me.txtBehaviorRef.Name = "txtBehaviorRef"
+        Me.txtBehaviorRef.ReadOnly = True
+        Me.txtBehaviorRef.Size = New System.Drawing.Size(10, 20)
+        Me.txtBehaviorRef.TabIndex = 26
+        Me.txtBehaviorRef.TabStop = False
+        '
+        'cboBehaviorPeriod
+        '
+        Me.cboBehaviorPeriod.FormattingEnabled = True
+        Me.cboBehaviorPeriod.Location = New System.Drawing.Point(92, 57)
+        Me.cboBehaviorPeriod.Name = "cboBehaviorPeriod"
+        Me.cboBehaviorPeriod.Size = New System.Drawing.Size(150, 21)
+        Me.cboBehaviorPeriod.TabIndex = 4
+        '
+        'lbStudBehavior
+        '
+        Me.lbStudBehavior.FormattingEnabled = True
+        Me.lbStudBehavior.Location = New System.Drawing.Point(245, 12)
+        Me.lbStudBehavior.Name = "lbStudBehavior"
+        Me.lbStudBehavior.Size = New System.Drawing.Size(232, 95)
+        Me.lbStudBehavior.TabIndex = 23
+        Me.lbStudBehavior.Visible = False
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(18, 65)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(40, 13)
+        Me.Label41.TabIndex = 25
+        Me.Label41.Text = "Period:"
+        '
+        'btnStudBeaviorSearch
+        '
+        Me.btnStudBeaviorSearch.BackgroundImage = Global.StudentPersonalDetails.My.Resources.Resources.search
+        Me.btnStudBeaviorSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnStudBeaviorSearch.Location = New System.Drawing.Point(223, 11)
+        Me.btnStudBeaviorSearch.Name = "btnStudBeaviorSearch"
+        Me.btnStudBeaviorSearch.Size = New System.Drawing.Size(19, 20)
+        Me.btnStudBeaviorSearch.TabIndex = 1
+        Me.btnStudBeaviorSearch.UseVisualStyleBackColor = True
+        '
+        'cboBehaviorClass
+        '
+        Me.cboBehaviorClass.FormattingEnabled = True
+        Me.cboBehaviorClass.Location = New System.Drawing.Point(92, 34)
+        Me.cboBehaviorClass.Name = "cboBehaviorClass"
+        Me.cboBehaviorClass.Size = New System.Drawing.Size(150, 21)
+        Me.cboBehaviorClass.TabIndex = 3
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(18, 42)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(35, 13)
+        Me.Label40.TabIndex = 21
+        Me.Label40.Text = "Class:"
+        '
+        'btnAddBehavior
+        '
+        Me.btnAddBehavior.BackColor = System.Drawing.Color.Transparent
+        Me.btnAddBehavior.Enabled = False
+        Me.btnAddBehavior.ForeColor = System.Drawing.Color.Black
+        Me.btnAddBehavior.Location = New System.Drawing.Point(414, 112)
+        Me.btnAddBehavior.Name = "btnAddBehavior"
+        Me.btnAddBehavior.Size = New System.Drawing.Size(63, 50)
+        Me.btnAddBehavior.TabIndex = 9
+        Me.btnAddBehavior.Text = "Add Behavior"
+        Me.btnAddBehavior.UseVisualStyleBackColor = False
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(18, 120)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(42, 13)
+        Me.Label29.TabIndex = 19
+        Me.Label29.Text = "Details:"
+        '
+        'txtBehaviorDetails
+        '
+        Me.txtBehaviorDetails.Location = New System.Drawing.Point(92, 103)
+        Me.txtBehaviorDetails.Name = "txtBehaviorDetails"
+        Me.txtBehaviorDetails.Size = New System.Drawing.Size(316, 69)
+        Me.txtBehaviorDetails.TabIndex = 8
+        Me.txtBehaviorDetails.Text = ""
+        '
+        'cboBehaviorSeverity
+        '
+        Me.cboBehaviorSeverity.FormattingEnabled = True
+        Me.cboBehaviorSeverity.Items.AddRange(New Object() {"Minor", "Medium", "Serious", "Dismissable"})
+        Me.cboBehaviorSeverity.Location = New System.Drawing.Point(287, 80)
+        Me.cboBehaviorSeverity.Name = "cboBehaviorSeverity"
+        Me.cboBehaviorSeverity.Size = New System.Drawing.Size(121, 21)
+        Me.cboBehaviorSeverity.TabIndex = 7
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(248, 83)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(34, 13)
+        Me.Label15.TabIndex = 16
+        Me.Label15.Text = "Type:"
+        '
+        'mskBehaviorDate
+        '
+        Me.mskBehaviorDate.Location = New System.Drawing.Point(287, 57)
+        Me.mskBehaviorDate.Mask = "00/00/0000"
+        Me.mskBehaviorDate.Name = "mskBehaviorDate"
+        Me.mskBehaviorDate.Size = New System.Drawing.Size(121, 20)
+        Me.mskBehaviorDate.TabIndex = 5
+        Me.mskBehaviorDate.ValidatingType = GetType(Date)
         '
         'Label59
         '
         Me.Label59.AutoSize = True
-        Me.Label59.Location = New System.Drawing.Point(41, 41)
+        Me.Label59.Location = New System.Drawing.Point(248, 60)
         Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(47, 13)
-        Me.Label59.TabIndex = 0
-        Me.Label59.Text = "Student:"
+        Me.Label59.Size = New System.Drawing.Size(33, 13)
+        Me.Label59.TabIndex = 14
+        Me.Label59.Text = "Date:"
+        '
+        'cboBehaviorType
+        '
+        Me.cboBehaviorType.FormattingEnabled = True
+        Me.cboBehaviorType.Items.AddRange(New Object() {"Merit", "Offence"})
+        Me.cboBehaviorType.Location = New System.Drawing.Point(92, 80)
+        Me.cboBehaviorType.Name = "cboBehaviorType"
+        Me.cboBehaviorType.Size = New System.Drawing.Size(150, 21)
+        Me.cboBehaviorType.TabIndex = 6
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.Location = New System.Drawing.Point(18, 86)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(55, 13)
+        Me.Label66.TabIndex = 12
+        Me.Label66.Text = "Cartegory:"
+        '
+        'dgStudBehavior
+        '
+        Me.dgStudBehavior.AllowUserToAddRows = False
+        Me.dgStudBehavior.AllowUserToDeleteRows = False
+        Me.dgStudBehavior.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgStudBehavior.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BehaviorStudent, Me.BehaviorClass, Me.BehaviorPeriod, Me.BehaviorDate, Me.BehaviorType, Me.BehaviorSeverity, Me.BehaviorDetails, Me.BehaviorEdit, Me.BehaviorView, Me.BehaviorDelete, Me.BehaviorRef})
+        Me.dgStudBehavior.Location = New System.Drawing.Point(21, 194)
+        Me.dgStudBehavior.Name = "dgStudBehavior"
+        Me.dgStudBehavior.Size = New System.Drawing.Size(1070, 154)
+        Me.dgStudBehavior.TabIndex = 10
+        '
+        'BehaviorStudent
+        '
+        DataGridViewCellStyle81.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorStudent.DefaultCellStyle = DataGridViewCellStyle81
+        Me.BehaviorStudent.HeaderText = "Student"
+        Me.BehaviorStudent.Name = "BehaviorStudent"
+        Me.BehaviorStudent.ReadOnly = True
+        '
+        'BehaviorClass
+        '
+        DataGridViewCellStyle82.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorClass.DefaultCellStyle = DataGridViewCellStyle82
+        Me.BehaviorClass.HeaderText = "Class"
+        Me.BehaviorClass.Name = "BehaviorClass"
+        Me.BehaviorClass.ReadOnly = True
+        Me.BehaviorClass.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'BehaviorPeriod
+        '
+        DataGridViewCellStyle83.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorPeriod.DefaultCellStyle = DataGridViewCellStyle83
+        Me.BehaviorPeriod.HeaderText = "Period"
+        Me.BehaviorPeriod.Name = "BehaviorPeriod"
+        Me.BehaviorPeriod.ReadOnly = True
+        '
+        'BehaviorDate
+        '
+        DataGridViewCellStyle84.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorDate.DefaultCellStyle = DataGridViewCellStyle84
+        Me.BehaviorDate.HeaderText = "Date"
+        Me.BehaviorDate.Name = "BehaviorDate"
+        Me.BehaviorDate.ReadOnly = True
+        '
+        'BehaviorType
+        '
+        DataGridViewCellStyle85.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorType.DefaultCellStyle = DataGridViewCellStyle85
+        Me.BehaviorType.HeaderText = "Cartegory"
+        Me.BehaviorType.Name = "BehaviorType"
+        Me.BehaviorType.ReadOnly = True
+        Me.BehaviorType.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'BehaviorSeverity
+        '
+        DataGridViewCellStyle86.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorSeverity.DefaultCellStyle = DataGridViewCellStyle86
+        Me.BehaviorSeverity.HeaderText = "Type"
+        Me.BehaviorSeverity.Name = "BehaviorSeverity"
+        Me.BehaviorSeverity.ReadOnly = True
+        Me.BehaviorSeverity.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BehaviorSeverity.Width = 75
+        '
+        'BehaviorDetails
+        '
+        DataGridViewCellStyle87.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorDetails.DefaultCellStyle = DataGridViewCellStyle87
+        Me.BehaviorDetails.HeaderText = "Details"
+        Me.BehaviorDetails.MaxInputLength = 1000000
+        Me.BehaviorDetails.Name = "BehaviorDetails"
+        Me.BehaviorDetails.ReadOnly = True
+        Me.BehaviorDetails.Width = 200
+        '
+        'BehaviorEdit
+        '
+        Me.BehaviorEdit.HeaderText = ""
+        Me.BehaviorEdit.Name = "BehaviorEdit"
+        Me.BehaviorEdit.Text = "Edit"
+        Me.BehaviorEdit.ToolTipText = "Edit or Delete Row"
+        Me.BehaviorEdit.Width = 50
+        '
+        'BehaviorView
+        '
+        Me.BehaviorView.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.BehaviorView.HeaderText = ""
+        Me.BehaviorView.Name = "BehaviorView"
+        Me.BehaviorView.Text = "ViewReport"
+        '
+        'BehaviorDelete
+        '
+        Me.BehaviorDelete.HeaderText = ""
+        Me.BehaviorDelete.Name = "BehaviorDelete"
+        '
+        'BehaviorRef
+        '
+        DataGridViewCellStyle88.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorRef.DefaultCellStyle = DataGridViewCellStyle88
+        Me.BehaviorRef.HeaderText = "Reference"
+        Me.BehaviorRef.Name = "BehaviorRef"
+        Me.BehaviorRef.ReadOnly = True
+        Me.BehaviorRef.Visible = False
+        '
+        'btnNew
+        '
+        Me.btnNew.Location = New System.Drawing.Point(102, 354)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(75, 23)
+        Me.btnNew.TabIndex = 12
+        Me.btnNew.Text = "Refresh"
+        Me.btnNew.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(21, 354)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.TabIndex = 11
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'txtBehaviorStud
+        '
+        Me.txtBehaviorStud.Location = New System.Drawing.Point(92, 11)
+        Me.txtBehaviorStud.Name = "txtBehaviorStud"
+        Me.txtBehaviorStud.Size = New System.Drawing.Size(130, 20)
+        Me.txtBehaviorStud.TabIndex = 0
+        '
+        'Label69
+        '
+        Me.Label69.AutoSize = True
+        Me.Label69.Location = New System.Drawing.Point(18, 14)
+        Me.Label69.Name = "Label69"
+        Me.Label69.Size = New System.Drawing.Size(47, 13)
+        Me.Label69.TabIndex = 0
+        Me.Label69.Text = "Student:"
         '
         'ClassListTableAdapter
         '
@@ -5721,24 +6127,24 @@ Partial Class FrmStudent
         '
         Me.ctxEnrollment.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cxtToolDeleteEnrollment, Me.cxtToolEditEnrollment, Me.cxtToolCopyEnrollment})
         Me.ctxEnrollment.Name = "ctxEnrollment"
-        Me.ctxEnrollment.Size = New System.Drawing.Size(181, 92)
+        Me.ctxEnrollment.Size = New System.Drawing.Size(166, 70)
         '
         'cxtToolDeleteEnrollment
         '
         Me.cxtToolDeleteEnrollment.Name = "cxtToolDeleteEnrollment"
-        Me.cxtToolDeleteEnrollment.Size = New System.Drawing.Size(180, 22)
+        Me.cxtToolDeleteEnrollment.Size = New System.Drawing.Size(165, 22)
         Me.cxtToolDeleteEnrollment.Text = "DeleteEnrollment"
         '
         'cxtToolEditEnrollment
         '
         Me.cxtToolEditEnrollment.Name = "cxtToolEditEnrollment"
-        Me.cxtToolEditEnrollment.Size = New System.Drawing.Size(180, 22)
+        Me.cxtToolEditEnrollment.Size = New System.Drawing.Size(165, 22)
         Me.cxtToolEditEnrollment.Text = "Edit Enrollment"
         '
         'cxtToolCopyEnrollment
         '
         Me.cxtToolCopyEnrollment.Name = "cxtToolCopyEnrollment"
-        Me.cxtToolCopyEnrollment.Size = New System.Drawing.Size(180, 22)
+        Me.cxtToolCopyEnrollment.Size = New System.Drawing.Size(165, 22)
         Me.cxtToolCopyEnrollment.Text = "Copy Enrollment"
         '
         'FrmStudent
@@ -5899,6 +6305,9 @@ Partial Class FrmStudent
         Me.SplitContainer3.ResumeLayout(False)
         Me.GroupBox20.ResumeLayout(False)
         Me.GroupBox20.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.dgStudBehavior, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ctxEnrollment.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -6258,18 +6667,6 @@ Partial Class FrmStudent
     Friend WithEvents txtPrevSchoolCommnt As System.Windows.Forms.TextBox
     Friend WithEvents tbStudBehavior As System.Windows.Forms.TabPage
     Friend WithEvents SplitContainer3 As System.Windows.Forms.SplitContainer
-    Friend WithEvents GroupBox20 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label65 As System.Windows.Forms.Label
-    Friend WithEvents cbobetype As System.Windows.Forms.ComboBox
-    Friend WithEvents Label61 As System.Windows.Forms.Label
-    Friend WithEvents txtStudent As System.Windows.Forms.TextBox
-    Friend WithEvents Label59 As System.Windows.Forms.Label
-    Friend WithEvents txtbedesc As System.Windows.Forms.RichTextBox
-    Friend WithEvents Label66 As System.Windows.Forms.Label
-    Friend WithEvents mskbedate As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents btnSave As System.Windows.Forms.Button
-    Friend WithEvents lbStudBehavior As System.Windows.Forms.ListBox
-    Friend WithEvents btnNew As System.Windows.Forms.Button
     Friend WithEvents gvMarks As System.Windows.Forms.DataGridView
     Friend WithEvents chkdef As System.Windows.Forms.CheckBox
     Friend WithEvents StudentIDDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -6398,6 +6795,16 @@ Partial Class FrmStudent
     Friend WithEvents chkAllExams As CheckBox
     Friend WithEvents chkStudSubsSessions As CheckedListBox
     Friend WithEvents dgFessDetails As DataGridView
+    Friend WithEvents btnStudProfile As Button
+    Friend WithEvents tvEnrol As TreeView
+    Friend WithEvents ctxEnrollment As ContextMenuStrip
+    Friend WithEvents cxtToolDeleteEnrollment As ToolStripMenuItem
+    Friend WithEvents cxtToolEditEnrollment As ToolStripMenuItem
+    Friend WithEvents cxtToolCopyEnrollment As ToolStripMenuItem
+    Friend WithEvents chkTransScreenShowReceipts As CheckBox
+    Friend WithEvents chkTransScreenShowInvoices As CheckBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents cboBBFCutOffPeriod As ComboBox
     Friend WithEvents Cartegory As DataGridViewComboBoxColumn
     Friend WithEvents amount As DataGridViewTextBoxColumn
     Friend WithEvents Currency As DataGridViewComboBoxColumn
@@ -6406,10 +6813,47 @@ Partial Class FrmStudent
     Friend WithEvents btnUpdate As DataGridViewButtonColumn
     Friend WithEvents btnDelete As DataGridViewButtonColumn
     Friend WithEvents LineRef As DataGridViewTextBoxColumn
-    Friend WithEvents btnStudProfile As Button
-    Friend WithEvents tvEnrol As TreeView
-    Friend WithEvents ctxEnrollment As ContextMenuStrip
-    Friend WithEvents cxtToolDeleteEnrollment As ToolStripMenuItem
-    Friend WithEvents cxtToolEditEnrollment As ToolStripMenuItem
-    Friend WithEvents cxtToolCopyEnrollment As ToolStripMenuItem
+    Friend WithEvents Button28 As Button
+    Friend WithEvents chkAllClassesInCalendarYear As CheckBox
+    Friend WithEvents chkOtherClassList As CheckedListBox
+    Friend WithEvents GroupBox20 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label61 As Label
+    Friend WithEvents Label65 As Label
+    Friend WithEvents Label50 As Label
+    Friend WithEvents lbBehaviorRecourCount As Label
+    Friend WithEvents Label63 As Label
+    Friend WithEvents lbStudBehaviorName As Label
+    Friend WithEvents txtBehaviorRef As TextBox
+    Friend WithEvents cboBehaviorPeriod As ComboBox
+    Friend WithEvents lbStudBehavior As ListBox
+    Friend WithEvents Label41 As Label
+    Friend WithEvents btnStudBeaviorSearch As Button
+    Friend WithEvents cboBehaviorClass As ComboBox
+    Friend WithEvents Label40 As Label
+    Friend WithEvents btnAddBehavior As Button
+    Friend WithEvents Label29 As Label
+    Friend WithEvents txtBehaviorDetails As RichTextBox
+    Friend WithEvents cboBehaviorSeverity As ComboBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents mskBehaviorDate As MaskedTextBox
+    Friend WithEvents Label59 As Label
+    Friend WithEvents cboBehaviorType As ComboBox
+    Friend WithEvents Label66 As Label
+    Friend WithEvents dgStudBehavior As DataGridView
+    Friend WithEvents BehaviorStudent As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorClass As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorPeriod As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorDate As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorType As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorSeverity As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorDetails As DataGridViewTextBoxColumn
+    Friend WithEvents BehaviorEdit As DataGridViewButtonColumn
+    Friend WithEvents BehaviorView As DataGridViewButtonColumn
+    Friend WithEvents BehaviorDelete As DataGridViewButtonColumn
+    Friend WithEvents BehaviorRef As DataGridViewTextBoxColumn
+    Friend WithEvents btnNew As Button
+    Friend WithEvents btnSave As Button
+    Friend WithEvents txtBehaviorStud As TextBox
+    Friend WithEvents Label69 As Label
 End Class

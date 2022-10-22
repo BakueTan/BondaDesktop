@@ -1074,6 +1074,9 @@
                                 <TablixMembers>
                                   <TablixMember />
                                 </TablixMembers>
+                                <Visibility>
+                                  <Hidden>=fields!line_number.Value  = -1</Hidden>
+                                </Visibility>
                                 <DataElementName>Detail_Collection</DataElementName>
                                 <DataElementOutput>Output</DataElementOutput>
                                 <KeepTogether>true</KeepTogether>
@@ -1604,10 +1607,14 @@
           <DataField>SchoolAddress</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SelectedCartegory">
+          <DataField>SelectedCartegory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsSchool</rd:DataSetName>
-        <rd:SchemaPath>F:\Development\StandardDesktop_vs2017_Dev\StudentPersonalDetails\dsSchool.xsd</rd:SchemaPath>
+        <rd:SchemaPath>F:\Development\Banda_Desktop_GitHub\BondaDesktop\StudentPersonalDetails\dsSchool.xsd</rd:SchemaPath>
         <rd:TableName>StudentFeesTranscations</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

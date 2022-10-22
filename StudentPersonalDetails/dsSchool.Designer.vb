@@ -49,6 +49,8 @@ Partial Public Class dsSchool
     
     Private tableBookIssueForm As BookIssueFormDataTable
     
+    Private tableStudBehaviorReport As StudBehaviorReportDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -113,6 +115,9 @@ Partial Public Class dsSchool
             End If
             If (Not (ds.Tables("BookIssueForm")) Is Nothing) Then
                 MyBase.Tables.Add(New BookIssueFormDataTable(ds.Tables("BookIssueForm")))
+            End If
+            If (Not (ds.Tables("StudBehaviorReport")) Is Nothing) Then
+                MyBase.Tables.Add(New StudBehaviorReportDataTable(ds.Tables("StudBehaviorReport")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -253,6 +258,16 @@ Partial Public Class dsSchool
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property StudBehaviorReport() As StudBehaviorReportDataTable
+        Get
+            Return Me.tableStudBehaviorReport
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -353,6 +368,9 @@ Partial Public Class dsSchool
             End If
             If (Not (ds.Tables("BookIssueForm")) Is Nothing) Then
                 MyBase.Tables.Add(New BookIssueFormDataTable(ds.Tables("BookIssueForm")))
+            End If
+            If (Not (ds.Tables("StudBehaviorReport")) Is Nothing) Then
+                MyBase.Tables.Add(New StudBehaviorReportDataTable(ds.Tables("StudBehaviorReport")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -458,6 +476,12 @@ Partial Public Class dsSchool
                 Me.tableBookIssueForm.InitVars
             End If
         End If
+        Me.tableStudBehaviorReport = CType(MyBase.Tables("StudBehaviorReport"),StudBehaviorReportDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableStudBehaviorReport) Is Nothing) Then
+                Me.tableStudBehaviorReport.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -492,6 +516,8 @@ Partial Public Class dsSchool
         MyBase.Tables.Add(Me.tableExamSessions)
         Me.tableBookIssueForm = New BookIssueFormDataTable()
         MyBase.Tables.Add(Me.tableBookIssueForm)
+        Me.tableStudBehaviorReport = New StudBehaviorReportDataTable()
+        MyBase.Tables.Add(Me.tableStudBehaviorReport)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -563,6 +589,12 @@ Partial Public Class dsSchool
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeBookIssueForm() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeStudBehaviorReport() As Boolean
         Return false
     End Function
     
@@ -659,6 +691,9 @@ Partial Public Class dsSchool
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub BookIssueFormRowChangeEventHandler(ByVal sender As Object, ByVal e As BookIssueFormRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub StudBehaviorReportRowChangeEventHandler(ByVal sender As Object, ByVal e As StudBehaviorReportRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -3009,6 +3044,8 @@ Partial Public Class dsSchool
         
         Private columnSchoolAddress As Global.System.Data.DataColumn
         
+        Private columnSelectedCartegory As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -3397,6 +3434,14 @@ Partial Public Class dsSchool
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SelectedCartegoryColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSelectedCartegory
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3477,12 +3522,19 @@ Partial Public Class dsSchool
                     ByVal _BBF As Decimal,  _
                     ByVal SchoolName As String,  _
                     ByVal SchoolPhone As String,  _
-                    ByVal SchoolAddress As String) As StudentFeesTranscationsRow
+                    ByVal SchoolAddress As String,  _
+                    ByVal SelectedCartegory As String) As StudentFeesTranscationsRow
             Dim rowStudentFeesTranscationsRow As StudentFeesTranscationsRow = CType(Me.NewRow,StudentFeesTranscationsRow)
-            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, type, bbf, logo, Column1, ConvAmount, ConvRate, BaseCurrency, PtoDesc, _BBF, SchoolName, SchoolPhone, SchoolAddress}
+            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, type, bbf, logo, Column1, ConvAmount, ConvRate, BaseCurrency, PtoDesc, _BBF, SchoolName, SchoolPhone, SchoolAddress, SelectedCartegory}
             rowStudentFeesTranscationsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowStudentFeesTranscationsRow)
             Return rowStudentFeesTranscationsRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByReceipt(ByVal Receipt As String) As StudentFeesTranscationsRow
+            Return CType(Me.Rows.Find(New Object() {Receipt}),StudentFeesTranscationsRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3546,6 +3598,7 @@ Partial Public Class dsSchool
             Me.columnSchoolName = MyBase.Columns("SchoolName")
             Me.columnSchoolPhone = MyBase.Columns("SchoolPhone")
             Me.columnSchoolAddress = MyBase.Columns("SchoolAddress")
+            Me.columnSelectedCartegory = MyBase.Columns("SelectedCartegory")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3646,12 +3699,16 @@ Partial Public Class dsSchool
             MyBase.Columns.Add(Me.columnSchoolPhone)
             Me.columnSchoolAddress = New Global.System.Data.DataColumn("SchoolAddress", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSchoolAddress)
+            Me.columnSelectedCartegory = New Global.System.Data.DataColumn("SelectedCartegory", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSelectedCartegory)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnReceipt}, true))
             Me.columnStudentID.MaxLength = 50
             Me.columnStudentName.AllowDBNull = false
             Me.columnStudentName.MaxLength = 50
             Me.columnStudentSurname.AllowDBNull = false
             Me.columnStudentSurname.MaxLength = 50
             Me.columnReceipt.AllowDBNull = false
+            Me.columnReceipt.Unique = true
             Me.columnReceipt.MaxLength = 50
             Me.columnProgram.AllowDBNull = false
             Me.columnProgram.MaxLength = 50
@@ -3665,7 +3722,6 @@ Partial Public Class dsSchool
             Me.columnusr.MaxLength = 50
             Me.columnCartegory.MaxLength = 50
             Me.columnPayType.MaxLength = 50
-            Me.columnline_number.AllowDBNull = false
             Me.columnCashType.MaxLength = 50
             Me.columnlogduser.ReadOnly = true
             Me.columnlogduser.MaxLength = 50
@@ -3694,6 +3750,8 @@ Partial Public Class dsSchool
             Me.columnSchoolPhone.MaxLength = 50
             Me.columnSchoolAddress.ReadOnly = true
             Me.columnSchoolAddress.MaxLength = 2147483647
+            Me.columnSelectedCartegory.ReadOnly = true
+            Me.columnSelectedCartegory.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7633,6 +7691,441 @@ Partial Public Class dsSchool
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class StudBehaviorReportDataTable
+        Inherits Global.System.Data.TypedTableBase(Of StudBehaviorReportRow)
+        
+        Private columnstudent As Global.System.Data.DataColumn
+        
+        Private columnBehaviorClass As Global.System.Data.DataColumn
+        
+        Private columnBehaviorDate As Global.System.Data.DataColumn
+        
+        Private columnBehaviorDetails As Global.System.Data.DataColumn
+        
+        Private columnBehaviorLine As Global.System.Data.DataColumn
+        
+        Private columnBehaviorPeriod As Global.System.Data.DataColumn
+        
+        Private columnBehaviorSeverity As Global.System.Data.DataColumn
+        
+        Private columnBehaviorType As Global.System.Data.DataColumn
+        
+        Private columnStudentName As Global.System.Data.DataColumn
+        
+        Private columnYear As Global.System.Data.DataColumn
+        
+        Private columnBehaviorReference As Global.System.Data.DataColumn
+        
+        Private columnProgram As Global.System.Data.DataColumn
+        
+        Private columnSchoolname As Global.System.Data.DataColumn
+        
+        Private columnlogo As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "StudBehaviorReport"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property studentColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnstudent
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorClassColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorClass
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorDetailsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorDetails
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorLineColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorLine
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorPeriodColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorPeriod
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorSeverityColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorSeverity
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorTypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorType
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StudentNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStudentName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property YearColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYear
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BehaviorReferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBehaviorReference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ProgramColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProgram
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SchoolnameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSchoolname
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property logoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlogo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As StudBehaviorReportRow
+            Get
+                Return CType(Me.Rows(index),StudBehaviorReportRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event StudBehaviorReportRowChanging As StudBehaviorReportRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event StudBehaviorReportRowChanged As StudBehaviorReportRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event StudBehaviorReportRowDeleting As StudBehaviorReportRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event StudBehaviorReportRowDeleted As StudBehaviorReportRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub AddStudBehaviorReportRow(ByVal row As StudBehaviorReportRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function AddStudBehaviorReportRow(ByVal student As String, ByVal BehaviorClass As String, ByVal BehaviorDate As Date, ByVal BehaviorDetails As String, ByVal BehaviorLine As Integer, ByVal BehaviorPeriod As String, ByVal BehaviorSeverity As String, ByVal BehaviorType As String, ByVal StudentName As String, ByVal Year As Integer, ByVal BehaviorReference As System.Guid, ByVal Program As String, ByVal Schoolname As String, ByVal logo() As Byte) As StudBehaviorReportRow
+            Dim rowStudBehaviorReportRow As StudBehaviorReportRow = CType(Me.NewRow,StudBehaviorReportRow)
+            Dim columnValuesArray() As Object = New Object() {student, BehaviorClass, BehaviorDate, BehaviorDetails, BehaviorLine, BehaviorPeriod, BehaviorSeverity, BehaviorType, StudentName, Year, BehaviorReference, Program, Schoolname, logo}
+            rowStudBehaviorReportRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowStudBehaviorReportRow)
+            Return rowStudBehaviorReportRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As StudBehaviorReportDataTable = CType(MyBase.Clone,StudBehaviorReportDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New StudBehaviorReportDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnstudent = MyBase.Columns("student")
+            Me.columnBehaviorClass = MyBase.Columns("BehaviorClass")
+            Me.columnBehaviorDate = MyBase.Columns("BehaviorDate")
+            Me.columnBehaviorDetails = MyBase.Columns("BehaviorDetails")
+            Me.columnBehaviorLine = MyBase.Columns("BehaviorLine")
+            Me.columnBehaviorPeriod = MyBase.Columns("BehaviorPeriod")
+            Me.columnBehaviorSeverity = MyBase.Columns("BehaviorSeverity")
+            Me.columnBehaviorType = MyBase.Columns("BehaviorType")
+            Me.columnStudentName = MyBase.Columns("StudentName")
+            Me.columnYear = MyBase.Columns("Year")
+            Me.columnBehaviorReference = MyBase.Columns("BehaviorReference")
+            Me.columnProgram = MyBase.Columns("Program")
+            Me.columnSchoolname = MyBase.Columns("Schoolname")
+            Me.columnlogo = MyBase.Columns("logo")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnstudent = New Global.System.Data.DataColumn("student", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnstudent)
+            Me.columnBehaviorClass = New Global.System.Data.DataColumn("BehaviorClass", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorClass)
+            Me.columnBehaviorDate = New Global.System.Data.DataColumn("BehaviorDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorDate)
+            Me.columnBehaviorDetails = New Global.System.Data.DataColumn("BehaviorDetails", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorDetails)
+            Me.columnBehaviorLine = New Global.System.Data.DataColumn("BehaviorLine", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorLine)
+            Me.columnBehaviorPeriod = New Global.System.Data.DataColumn("BehaviorPeriod", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorPeriod)
+            Me.columnBehaviorSeverity = New Global.System.Data.DataColumn("BehaviorSeverity", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorSeverity)
+            Me.columnBehaviorType = New Global.System.Data.DataColumn("BehaviorType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorType)
+            Me.columnStudentName = New Global.System.Data.DataColumn("StudentName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStudentName)
+            Me.columnYear = New Global.System.Data.DataColumn("Year", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYear)
+            Me.columnBehaviorReference = New Global.System.Data.DataColumn("BehaviorReference", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBehaviorReference)
+            Me.columnProgram = New Global.System.Data.DataColumn("Program", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProgram)
+            Me.columnSchoolname = New Global.System.Data.DataColumn("Schoolname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSchoolname)
+            Me.columnlogo = New Global.System.Data.DataColumn("logo", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlogo)
+            Me.columnstudent.AllowDBNull = false
+            Me.columnstudent.MaxLength = 50
+            Me.columnBehaviorClass.MaxLength = 150
+            Me.columnBehaviorDetails.MaxLength = 2147483647
+            Me.columnBehaviorLine.AllowDBNull = false
+            Me.columnBehaviorPeriod.MaxLength = 100
+            Me.columnBehaviorSeverity.MaxLength = 50
+            Me.columnBehaviorType.MaxLength = 50
+            Me.columnStudentName.ReadOnly = true
+            Me.columnStudentName.MaxLength = 101
+            Me.columnYear.AllowDBNull = false
+            Me.columnProgram.MaxLength = 50
+            Me.columnSchoolname.AllowDBNull = false
+            Me.columnSchoolname.MaxLength = 150
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function NewStudBehaviorReportRow() As StudBehaviorReportRow
+            Return CType(Me.NewRow,StudBehaviorReportRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New StudBehaviorReportRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(StudBehaviorReportRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.StudBehaviorReportRowChangedEvent) Is Nothing) Then
+                RaiseEvent StudBehaviorReportRowChanged(Me, New StudBehaviorReportRowChangeEvent(CType(e.Row,StudBehaviorReportRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.StudBehaviorReportRowChangingEvent) Is Nothing) Then
+                RaiseEvent StudBehaviorReportRowChanging(Me, New StudBehaviorReportRowChangeEvent(CType(e.Row,StudBehaviorReportRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.StudBehaviorReportRowDeletedEvent) Is Nothing) Then
+                RaiseEvent StudBehaviorReportRowDeleted(Me, New StudBehaviorReportRowChangeEvent(CType(e.Row,StudBehaviorReportRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.StudBehaviorReportRowDeletingEvent) Is Nothing) Then
+                RaiseEvent StudBehaviorReportRowDeleting(Me, New StudBehaviorReportRowChangeEvent(CType(e.Row,StudBehaviorReportRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub RemoveStudBehaviorReportRow(ByVal row As StudBehaviorReportRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As dsSchool = New dsSchool()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "StudBehaviorReportDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ClassListRow
@@ -10560,7 +11053,11 @@ Partial Public Class dsSchool
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property line_number() As Integer
             Get
-                Return CType(Me(Me.tableStudentFeesTranscations.line_numberColumn),Integer)
+                Try 
+                    Return CType(Me(Me.tableStudentFeesTranscations.line_numberColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'line_number' in table 'StudentFeesTranscations' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableStudentFeesTranscations.line_numberColumn) = value
@@ -10945,6 +11442,22 @@ Partial Public Class dsSchool
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property SelectedCartegory() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudentFeesTranscations.SelectedCartegoryColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SelectedCartegory' in table 'StudentFeesTranscations' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudentFeesTranscations.SelectedCartegoryColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsStudentIDNull() As Boolean
             Return Me.IsNull(Me.tableStudentFeesTranscations.StudentIDColumn)
         End Function
@@ -11097,6 +11610,18 @@ Partial Public Class dsSchool
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPayTypeNull()
             Me(Me.tableStudentFeesTranscations.PayTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isline_numberNull() As Boolean
+            Return Me.IsNull(Me.tableStudentFeesTranscations.line_numberColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setline_numberNull()
+            Me(Me.tableStudentFeesTranscations.line_numberColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11385,6 +11910,18 @@ Partial Public Class dsSchool
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSchoolAddressNull()
             Me(Me.tableStudentFeesTranscations.SchoolAddressColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSelectedCartegoryNull() As Boolean
+            Return Me.IsNull(Me.tableStudentFeesTranscations.SelectedCartegoryColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSelectedCartegoryNull()
+            Me(Me.tableStudentFeesTranscations.SelectedCartegoryColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -14329,6 +14866,337 @@ Partial Public Class dsSchool
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class StudBehaviorReportRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableStudBehaviorReport As StudBehaviorReportDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableStudBehaviorReport = CType(Me.Table,StudBehaviorReportDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property student() As String
+            Get
+                Return CType(Me(Me.tableStudBehaviorReport.studentColumn),String)
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.studentColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorClass() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorClassColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorClass' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorClassColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorDate' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorDetails() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorDetailsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorDetails' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorDetailsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorLine() As Integer
+            Get
+                Return CType(Me(Me.tableStudBehaviorReport.BehaviorLineColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorLineColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorPeriod() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorPeriodColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorPeriod' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorPeriodColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorSeverity() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorSeverityColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorSeverity' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorSeverityColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorType() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorTypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorType' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorTypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property StudentName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.StudentNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StudentName' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.StudentNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Year() As Integer
+            Get
+                Return CType(Me(Me.tableStudBehaviorReport.YearColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.YearColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BehaviorReference() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.BehaviorReferenceColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BehaviorReference' in table 'StudBehaviorReport' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.BehaviorReferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Program() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.ProgramColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Program' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.ProgramColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Schoolname() As String
+            Get
+                Return CType(Me(Me.tableStudBehaviorReport.SchoolnameColumn),String)
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.SchoolnameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property logo() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudBehaviorReport.logoColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'logo' in table 'StudBehaviorReport' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudBehaviorReport.logoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorClassNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorClassColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorClassNull()
+            Me(Me.tableStudBehaviorReport.BehaviorClassColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorDateNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorDateNull()
+            Me(Me.tableStudBehaviorReport.BehaviorDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorDetailsNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorDetailsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorDetailsNull()
+            Me(Me.tableStudBehaviorReport.BehaviorDetailsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorPeriodNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorPeriodColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorPeriodNull()
+            Me(Me.tableStudBehaviorReport.BehaviorPeriodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorSeverityNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorSeverityColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorSeverityNull()
+            Me(Me.tableStudBehaviorReport.BehaviorSeverityColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorTypeNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorTypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorTypeNull()
+            Me(Me.tableStudBehaviorReport.BehaviorTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsStudentNameNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.StudentNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetStudentNameNull()
+            Me(Me.tableStudBehaviorReport.StudentNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBehaviorReferenceNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.BehaviorReferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBehaviorReferenceNull()
+            Me(Me.tableStudBehaviorReport.BehaviorReferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsProgramNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.ProgramColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetProgramNull()
+            Me(Me.tableStudBehaviorReport.ProgramColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IslogoNull() As Boolean
+            Return Me.IsNull(Me.tableStudBehaviorReport.logoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetlogoNull()
+            Me(Me.tableStudBehaviorReport.logoColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -14746,6 +15614,42 @@ Partial Public Class dsSchool
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As BookIssueFormRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class StudBehaviorReportRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As StudBehaviorReportRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As StudBehaviorReportRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As StudBehaviorReportRow
             Get
                 Return Me.eventRow
             End Get
@@ -15449,6 +16353,8 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@recdate", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cart", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showrecipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "dbo.spFillPaymentsByReceipt"
@@ -15456,6 +16362,8 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@receipt", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cart", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "dbo.spFillPaymentsByStudent"
@@ -15463,6 +16371,8 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@student", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cart", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15493,7 +16403,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByDate(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal recdate As Global.System.Nullable(Of Date), ByVal cart As String) As Integer
+        Public Overloads Overridable Function FillByDate(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal recdate As Global.System.Nullable(Of Date), ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showrecipts As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (recdate.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(recdate.Value,Date)
@@ -15505,6 +16415,16 @@ Namespace dsSchoolTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
             End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (showrecipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(showrecipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -15516,7 +16436,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy2(ByVal recdate As Global.System.Nullable(Of Date), ByVal cart As String) As dsSchool.FeesPayments_HeaderDataTable
+        Public Overloads Overridable Function GetDataBy2(ByVal recdate As Global.System.Nullable(Of Date), ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showrecipts As Global.System.Nullable(Of Boolean)) As dsSchool.FeesPayments_HeaderDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (recdate.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(recdate.Value,Date)
@@ -15528,6 +16448,16 @@ Namespace dsSchoolTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
             End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (showrecipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(showrecipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
             Dim dataTable As dsSchool.FeesPayments_HeaderDataTable = New dsSchool.FeesPayments_HeaderDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -15537,7 +16467,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByReceipt(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal receipt As String, ByVal cart As String) As Integer
+        Public Overloads Overridable Function FillByReceipt(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal receipt As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (receipt Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -15548,6 +16478,16 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -15560,7 +16500,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal receipt As String, ByVal cart As String) As dsSchool.FeesPayments_HeaderDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal receipt As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsSchool.FeesPayments_HeaderDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (receipt Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -15572,6 +16512,16 @@ Namespace dsSchoolTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
             End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
             Dim dataTable As dsSchool.FeesPayments_HeaderDataTable = New dsSchool.FeesPayments_HeaderDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -15581,7 +16531,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal student As String, ByVal cart As String) As Integer
+        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal student As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (student Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -15592,6 +16542,16 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -15604,7 +16564,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy1(ByVal student As String, ByVal cart As String) As dsSchool.FeesPayments_HeaderDataTable
+        Public Overloads Overridable Function GetDataBy1(ByVal student As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsSchool.FeesPayments_HeaderDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (student Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -15615,6 +16575,16 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsSchool.FeesPayments_HeaderDataTable = New dsSchool.FeesPayments_HeaderDataTable()
             Me.Adapter.Fill(dataTable)
@@ -17385,6 +18355,7 @@ Namespace dsSchoolTableAdapters
             tableMapping.ColumnMappings.Add("SchoolName", "SchoolName")
             tableMapping.ColumnMappings.Add("SchoolPhone", "SchoolPhone")
             tableMapping.ColumnMappings.Add("SchoolAddress", "SchoolAddress")
+            tableMapping.ColumnMappings.Add("SelectedCartegory", "SelectedCartegory")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -17410,13 +18381,16 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@info", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@period", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@period1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CurrentPeriod", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsSchool.StudentFeesTranscationsDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsSchool.StudentFeesTranscationsDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -17447,6 +18421,21 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(6).Value = CType(period1.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (CurrentPeriod.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(CurrentPeriod.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(8).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -17459,7 +18448,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer)) As dsSchool.StudentFeesTranscationsDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsSchool.StudentFeesTranscationsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -17490,6 +18479,21 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(6).Value = CType(period1.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (CurrentPeriod.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(CurrentPeriod.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(8).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsSchool.StudentFeesTranscationsDataTable = New dsSchool.StudentFeesTranscationsDataTable()
             Me.Adapter.Fill(dataTable)
@@ -19793,6 +20797,248 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(5).Value = CType(returnref,String)
             End If
             Dim dataTable As dsSchool.BookIssueFormDataTable = New dsSchool.BookIssueFormDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class StudBehaviorReportTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "StudBehaviorReport"
+            tableMapping.ColumnMappings.Add("student", "student")
+            tableMapping.ColumnMappings.Add("BehaviorClass", "BehaviorClass")
+            tableMapping.ColumnMappings.Add("BehaviorDate", "BehaviorDate")
+            tableMapping.ColumnMappings.Add("BehaviorDetails", "BehaviorDetails")
+            tableMapping.ColumnMappings.Add("BehaviorLine", "BehaviorLine")
+            tableMapping.ColumnMappings.Add("BehaviorPeriod", "BehaviorPeriod")
+            tableMapping.ColumnMappings.Add("BehaviorSeverity", "BehaviorSeverity")
+            tableMapping.ColumnMappings.Add("BehaviorType", "BehaviorType")
+            tableMapping.ColumnMappings.Add("StudentName", "StudentName")
+            tableMapping.ColumnMappings.Add("Year", "Year")
+            tableMapping.ColumnMappings.Add("BehaviorReference", "BehaviorReference")
+            tableMapping.ColumnMappings.Add("Program", "Program")
+            tableMapping.ColumnMappings.Add("Schoolname", "Schoolname")
+            tableMapping.ColumnMappings.Add("logo", "logo")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.StudentPersonalDetails.My.MySettings.Default.MarchWoodConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "dbo.spStudBehaviorReport"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@stud", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ref", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@studClass", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@type", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@exam", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsSchool.StudBehaviorReportDataTable, ByVal stud As String, ByVal ref As String, ByVal studClass As String, ByVal type As String, ByVal exam As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (stud Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(stud,String)
+            End If
+            If (ref Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ref,String)
+            End If
+            If (studClass Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(studClass,String)
+            End If
+            If (type Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(type,String)
+            End If
+            If (exam Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(exam,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal stud As String, ByVal ref As String, ByVal studClass As String, ByVal type As String, ByVal exam As String) As dsSchool.StudBehaviorReportDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (stud Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(stud,String)
+            End If
+            If (ref Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ref,String)
+            End If
+            If (studClass Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(studClass,String)
+            End If
+            If (type Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(type,String)
+            End If
+            If (exam Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(exam,String)
+            End If
+            Dim dataTable As dsSchool.StudBehaviorReportDataTable = New dsSchool.StudBehaviorReportDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

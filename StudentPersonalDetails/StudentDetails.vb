@@ -58,6 +58,24 @@ Public Class FrmStudent
         loadStudents()
         LoadCashtypes()
         loadFeesCartegory()
+        loadPaymentPeriods()
+    End Sub
+
+    Private Sub loadPaymentPeriods()
+        With cboBBFCutOffPeriod
+            .DataSource = FeesPaymentPeriods()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+
+        End With
+
+        For Each itm As ComboItem In cboBBFCutOffPeriod.Items
+            If itm.Value = CurrentPaymentPeriod Then
+                cboBBFCutOffPeriod.SelectedItem = itm
+                Exit For
+            End If
+
+        Next
     End Sub
     Private Sub LoadPaymentTypes()
         With cboFeesCartegory
@@ -136,6 +154,13 @@ Public Class FrmStudent
             .DisplayMember = "Text"
             .ValueMember = "Value"
         End With
+
+
+        With cboBehaviorPeriod
+            .DataSource = SchoolExams(cboBehaviorClass.Text)
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
         'With cboSubExam
         '    .DataSource = SchoolExams()
         '    .DisplayMember = "Text"
@@ -205,6 +230,12 @@ Public Class FrmStudent
     End Sub
 
     Private Sub loadclassses()
+
+        With cboBehaviorClass
+            .DataSource = Classes()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
 
         With cboOldClassCls
             .DataSource = Classes()
@@ -4898,24 +4929,27 @@ Public Class FrmStudent
         LoadDatasets()
         lbAddingStudent.Visible = False
         btnStudProfile.Visible = False
-
+        RefreshFeesStatement()
         FeesloadingMode()
         '     lbpos.Text = StudentPersonalDetailsBindingSource.Position + 1 & "of " & StudentPersonalDetailsBindingSource.Count
 
     End Sub
 
     Private Sub Button4_Click_4(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        Select Case PersonalDetails.SelectedIndex
-            Case 0
+
+
+
+        Select Case PersonalDetails.SelectedTab.Name
+            Case "tbPersonalDetails"
                 SchoolInfoBindingNavigatorSaveItem_Click(Me, Nothing)
-            Case 1
+            Case "tbStudentSubjects"
                 saveSub_Click(Me, Nothing)
-            Case 2
+            Case "tbStudentReceipts"
 
                 ToolStripButton13_Click(Me, Nothing)
-            Case 3
-                ToolStripButton13_Click(Me, Nothing)
-            Case 5
+
+            Case "Marks"
+                Button1_Click(Me, Nothing)
 
 
         End Select
@@ -4960,7 +4994,7 @@ Public Class FrmStudent
         arraysplit = Split(studtext, "-")
         feesstud = New cEnrol(arraysplit(2).ToString, studid)
         lblfullname.Visible = True
-        lblfullname.Text = arraysplit(1).ToString & "-"
+
         Try
             lbStudRef.Text = feesstud.EnrolRef
         Catch ex As Exception
@@ -4968,7 +5002,7 @@ Public Class FrmStudent
         End Try
 
         txtFeesStudID.Text = studid
-
+        FeesStudSearch()
 
 
     End Sub
@@ -4982,6 +5016,7 @@ Public Class FrmStudent
         If mblnaddingFess And txtReceiptSearch.Text <> "" And cboReceiptSearch.Text = "Student" Then
             txtFeesStudID.Text = txtReceiptSearch.Text
             FeesStudSearch()
+            txtFeesStudID.Text = txtReceiptSearch.Text
         End If
     End Sub
 
@@ -5069,11 +5104,6 @@ Public Class FrmStudent
 
                 param = New SqlParameter("@cashtype", cboCashType.Text)
                 params.Add(param)
-
-
-                param = New SqlParameter("@enrolref", feesstud.EnrolRef)
-                params.Add(param)
-
 
 
                 For Each par As SqlParameter In params
@@ -5298,7 +5328,15 @@ Public Class FrmStudent
                 params.Add(param)
 
 
-                param = New SqlParameter("@enrolref", lbStudRef.Text)
+
+
+
+                param = New SqlParameter()
+                param.ParameterName = "@SavedReceipt"
+                param.DbType = DbType.String
+                param.Size = 50
+                param.Direction = ParameterDirection.Output
+
                 params.Add(param)
 
                 For Each par In params
@@ -5306,13 +5344,6 @@ Public Class FrmStudent
                 Next
 
                 cmd.ExecuteNonQuery()
-
-
-
-
-
-
-
 
                 For A1 = 0 To dgFessDetails.Rows.Count - 2
 
@@ -5498,7 +5529,7 @@ Public Class FrmStudent
                     MsgBox("Payment successfully cancelled")
                     FeesloadingMode()
                     RefreshFeesStatement()
-                    FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, ReceiptTextBox.Text, cboFeesCartegory.Text)
+                    FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, ReceiptTextBox.Text, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
 
 
                 Catch ex As Exception
@@ -5517,7 +5548,7 @@ Public Class FrmStudent
     Private Sub RefreshFeesStatement()
         Try
 
-            Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations, cboFeesCartegory.Text, txtFeesStudID.Text, gouser.userName, "", -1, -1)
+            Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations, cboFeesCartegory.Text, txtFeesStudID.Text, gouser.userName, "", -1, -1, cboBBFCutOffPeriod.SelectedValue.ToString, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
             rvOnScreenStat.Dock = DockStyle.Fill
             rvOnScreenStat.Visible = True
             rvOnScreenStat.RefreshReport()
@@ -5626,8 +5657,8 @@ Public Class FrmStudent
                                     cmd.Parameters.Add(param)
 
 
-                                    param = New SqlParameter("@enrolref", dgBilling.Rows(A1).Cells("BillingEnrolRef").Value.ToString)
-                                    cmd.Parameters.Add(param)
+                                    'param = New SqlParameter("@enrolref", dgBilling.Rows(A1).Cells("BillingEnrolRef").Value.ToString)
+                                    'cmd.Parameters.Add(param)
 
                                     param = New SqlParameter()
                                     param.ParameterName = "@SavedReceipt"
@@ -6366,7 +6397,7 @@ Public Class FrmStudent
 
                 searchstring = lbSeacrhFees.SelectedValue
                 txtReceiptSearch.Text = searchstring
-                Me.FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, searchstring, cboFeesCartegory.Text)
+                Me.FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, searchstring, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
                 lbSeacrhFees.Visible = False
                 RefreshFeesStatement()
 
@@ -6413,9 +6444,10 @@ Public Class FrmStudent
 
     Private Sub Loadstudent(stud As String)
         Try
-            Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, stud, cboFeesCartegory.Text)
+            Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, stud, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
             lbSeacrhFees.Visible = False
-
+            txtFeesStudID.Text = stud
+            FeesStudSearch()
             RefreshFeesStatement()
             FeesloadingMode()
         Catch ex As Exception
@@ -6433,7 +6465,7 @@ Public Class FrmStudent
             Dim recdate As Date
             Date.TryParse(FeesDateSearch.Text, recdate)
             Try
-                Me.FeesPayments_HeaderTableAdapter.FillByDate(DsSchool.FeesPayments_Header, recdate, cboFeesCartegory.Text)
+                Me.FeesPayments_HeaderTableAdapter.FillByDate(DsSchool.FeesPayments_Header, recdate, cboFeesCartegory.Text, chkTransScreenShowInvoices.CheckState, chkTransScreenShowReceipts.Checked)
             Catch ex As Exception
 
             End Try
@@ -6455,7 +6487,7 @@ Public Class FrmStudent
 
 
 
-                Me.FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, txtReceiptSearch.Text, cboFeesCartegory.Text)
+                Me.FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, txtReceiptSearch.Text, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Text)
                 lbSeacrhFees.Visible = False
 
 
@@ -6476,7 +6508,7 @@ Public Class FrmStudent
             Try
 
 
-                Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, txtReceiptSearch.Text, cboFeesCartegory.Text)
+                Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, txtReceiptSearch.Text, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
 
 
             Catch ex As Exception
@@ -6505,7 +6537,7 @@ Public Class FrmStudent
                 searchstring = FeesDateSearch.Text
                 txtReceiptSearch.Text = searchstring
                 Date.TryParse(searchstring, recdate)
-                Me.FeesPayments_HeaderTableAdapter.FillByDate(DsSchool.FeesPayments_Header, recdate, cboFeesCartegory.Text)
+                Me.FeesPayments_HeaderTableAdapter.FillByDate(DsSchool.FeesPayments_Header, recdate, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
 
 
                 lbSeacrhFees.Visible = False
@@ -6576,7 +6608,7 @@ Public Class FrmStudent
                     MsgBox("Payment successfully cancelled")
                     FeesloadingMode()
                     RefreshFeesStatement()
-                    FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, ReceiptTextBox.Text, cboFeesCartegory.Text)
+                    FeesPayments_HeaderTableAdapter.FillByReceipt(DsSchool.FeesPayments_Header, ReceiptTextBox.Text, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
 
 
                 Catch ex As Exception
@@ -7056,80 +7088,185 @@ Public Class FrmStudent
             chkMaintainPrevSubjects.Checked = False
         End If
 
-        For Each itm In chknewclass.Items
-            Dim cnn As New SqlConnection(ConnectionString)
-            Try
+        If chkAllClassesInCalendarYear.Checked Then
+            Dim oldclsitem As New C_Classes
+
+            With oldclsitem
+                .ClassDesc = cboOldClassCls.Text
+                .ClassProgram = cboOldClassprog.Text
+                .ClassYear = cboOldclassForm.Text
+                .ClassSession = cboOldClassSess.Text
+
+            End With
+
+            For Each cls  as comboitem In chkOtherClassList.CheckedItems
+                Dim newclsitem As C_Classes = cls.Ref
 
 
 
-                Dim cmd As New SqlCommand
-                cmd.Connection = cnn
-                cmd.CommandType = CommandType.StoredProcedure
-                cmd.CommandText = "spMigrateStudent"
-                cnn.Open()
+
+
+                For Each itm In chknewclass.Items
+                    Dim cnn As New SqlConnection(ConnectionString)
+                    Try
 
 
 
-                params = New List(Of SqlParameter)
+                        Dim cmd As New SqlCommand
+                        cmd.Connection = cnn
+                        cmd.CommandType = CommandType.StoredProcedure
+                        cmd.CommandText = "spMigrateStudent"
+                        cnn.Open()
 
 
 
-                param = New SqlParameter("@stud", CleanComboVal(itm.ToString))
-                params.Add(param)
-
-                param = New SqlParameter("@oldprogram", cboOldClassprog.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@newprogram", cbonewclassprog.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@newclass", cbonewClassCls.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@oldclass", cboOldClassCls.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@oldlevel", cboOldclassForm.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@newlevel", cbonewclassform.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@oldsession", cboOldClassSess.Text)
-                params.Add(param)
-
-                param = New SqlParameter("@session", cbonewclassSess.Text)
-                params.Add(param)
+                        params = New List(Of SqlParameter)
 
 
 
-                param = New SqlParameter("@keepoldclass", Chkmitype.Checked)
-                params.Add(param)
+                        param = New SqlParameter("@stud", CleanComboVal(itm.ToString))
+                        params.Add(param)
 
-                param = New SqlParameter("@user", gouser.FullName)
-                params.Add(param)
+                        param = New SqlParameter("@oldprogram", oldclsitem.ClassProgram)
+                        params.Add(param)
 
-                param = New SqlParameter("@maintainPrevSubjects", chkMaintainPrevSubjects.Checked)
-                params.Add(param)
+                        param = New SqlParameter("@newprogram", cbonewclassprog.Text)
+                        params.Add(param)
+
+                        param = New SqlParameter("@newclass", newclsitem.ClassDesc)
+                        params.Add(param)
+
+                        param = New SqlParameter("@oldclass", oldclsitem.ClassDesc)
+                        params.Add(param)
+
+                        param = New SqlParameter("@oldlevel", oldclsitem.ClassYear)
+                        params.Add(param)
+
+                        param = New SqlParameter("@newlevel", cbonewclassform.Text)
+                        params.Add(param)
+
+                        param = New SqlParameter("@oldsession", oldclsitem.ClassSession)
+                        params.Add(param)
+
+                        param = New SqlParameter("@session", cbonewclassSess.Text)
+                        params.Add(param)
 
 
-                For Each par In params
-                    cmd.Parameters.Add(par)
+
+                        param = New SqlParameter("@keepoldclass", Chkmitype.Checked)
+                        params.Add(param)
+
+                        param = New SqlParameter("@user", gouser.FullName)
+                        params.Add(param)
+
+                        param = New SqlParameter("@maintainPrevSubjects", chkMaintainPrevSubjects.Checked)
+                        params.Add(param)
+
+
+                        For Each par In params
+                            cmd.Parameters.Add(par)
+                        Next
+
+                        cmd.ExecuteNonQuery()
+
+
+
+
+                    Catch ex As Exception
+                        MsgBox(itm & ": Student migration failed " & vbNewLine & ex.Message)
+                    Finally
+                        cnn.Close()
+                    End Try
+
+
                 Next
 
-                cmd.ExecuteNonQuery()
+                oldclsitem = newclsitem
+                oldclsitem.ClassSession = cbonewclassSess.Text
+                oldclsitem.ClassProgram = cbonewclassprog.Text
+
+            Next
+
+
+
+        Else
+            For Each itm In chknewclass.Items
+                Dim cnn As New SqlConnection(ConnectionString)
+                Try
+
+
+
+                    Dim cmd As New SqlCommand
+                    cmd.Connection = cnn
+                    cmd.CommandType = CommandType.StoredProcedure
+                    cmd.CommandText = "spMigrateStudent"
+                    cnn.Open()
+
+
+
+                    params = New List(Of SqlParameter)
+
+
+
+                    param = New SqlParameter("@stud", CleanComboVal(itm.ToString))
+                    params.Add(param)
+
+                    param = New SqlParameter("@oldprogram", cboOldClassprog.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@newprogram", cbonewclassprog.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@newclass", cbonewClassCls.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@oldclass", cboOldClassCls.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@oldlevel", cboOldclassForm.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@newlevel", cbonewclassform.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@oldsession", cboOldClassSess.Text)
+                    params.Add(param)
+
+                    param = New SqlParameter("@session", cbonewclassSess.Text)
+                    params.Add(param)
+
+
+
+                    param = New SqlParameter("@keepoldclass", Chkmitype.Checked)
+                    params.Add(param)
+
+                    param = New SqlParameter("@user", gouser.FullName)
+                    params.Add(param)
+
+                    param = New SqlParameter("@maintainPrevSubjects", chkMaintainPrevSubjects.Checked)
+                    params.Add(param)
+
+
+                    For Each par In params
+                        cmd.Parameters.Add(par)
+                    Next
+
+                    cmd.ExecuteNonQuery()
 
 
 
 
-            Catch ex As Exception
-                MsgBox(itm & ": Student migration failed " & vbNewLine & ex.Message)
-            Finally
-                cnn.Close()
-            End Try
+                Catch ex As Exception
+                    MsgBox(itm & ": Student migration failed " & vbNewLine & ex.Message)
+                Finally
+                    cnn.Close()
+                End Try
 
 
-        Next
+            Next
+        End If
+
+
 
 
         MsgBox("Student migration completed")
@@ -7707,61 +7844,16 @@ Public Class FrmStudent
 
     End Sub
 
-    Private Sub Label66_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label66.Click
-
-    End Sub
-
-    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Dim sql As String
-        sql = "insert into studbehavior (student,type,date,description) values ( " &
-        " '" & txtStudent.Text & "','" & cbobetype.Text & "','" & changedate(mskbedate.Text) & "','" & txtbedesc.Text & "')"
-        ExecuteNonQuery(sql, , True)
-        If era Then
-            MsgBox(eramsg)
-        Else
-            MsgBox("Behavior saved")
-        End If
-    End Sub
-
-    Private Sub txtStudent_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtStudent.TextChanged
-        Dim serchtext As String = Trim(txtStudent.Text)
-        lbStudBehavior.Items.Clear()
-        Dim drr As SqlDataReader
-
-        lbStudBehavior.Visible = True
-        Dim sql As String = " select studentid,studentname,studentsurname from studentpersonaldetails where studentid + ' ' + studentname + ' ' + studentsurname like '%" & serchtext & "%'"
-        drr = ExecuteReader(sql)
-        Try
-            While drr.Read
-                lbStudBehavior.Items.Add(drr(0) & "-" & drr(1) & "-" & drr(2))
-            End While
-            ' End If
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub lbStudBehavior_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbStudBehavior.DoubleClick
-        Dim res() As String
-
-
-        res = lbStudBehavior.SelectedItem.ToString.Split("-")
-        txtStudent.Text = res(0)
-
-        lbStudBehavior.Visible = False
-
+    Private Sub Label66_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
 
-    Private Sub btnNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNew.Click
-        txtStudent.Clear()
-        lbStudBehavior.Visible = False
-        mskbedate.Clear()
-        txtbedesc.Clear()
-        cbobetype.Text = ""
 
-    End Sub
+
+
+
+
 
     Private Sub chkdef_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkdef.CheckedChanged
         For i = 0 To gvMarks.Rows.Count - 2
@@ -8131,7 +8223,7 @@ Public Class FrmStudent
                         '     ModalPopupExtender_SponsorDetails.Show()
                     Else
 
-                        MsgBox("Parent/Guardian Successfully Saved")
+                        MsgBox("Parent/Guardian Successfully Added,Save to update the Student Details")
 
                     End If
 
@@ -8271,7 +8363,7 @@ Public Class FrmStudent
 
     Private Sub dgFessDetails_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgFessDetails.CellClick
         If e.ColumnIndex = 6 Then
-            If MsgBox("This will delete line " & e.RowIndex + 1 & ", do you want to continue?") = vbYes Then
+            If MsgBox("This will delete line " & e.RowIndex + 1 & ", do you want to continue?", MsgBoxStyle.YesNo) = vbYes Then
 
                 With dgFessDetails.Rows(e.RowIndex)
                     deleteFeesLine(.Cells("lineref").Value.ToString, ReceiptTextBox.Text, e.RowIndex + 1)
@@ -9002,57 +9094,50 @@ Public Class FrmStudent
     Private Sub txtFeesStudID_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFeesStudID.KeyDown
         If e.KeyCode = Keys.Enter Then
 
-            FeesStudSearch()
+            '   FeesStudSearch()
+            Button28_Click_2(Me, Nothing)
 
         End If
     End Sub
 
     Private Sub FeesStudSearch()
         cnn = New SqlConnection(ConnectionString)
+
+        Dim Studname() As String
+
+        Dim studs As SqlDataReader
         Try
 
 
-            If mblnaddingFess Then
-                cnn.Open()
-                Dim serchtext As String = Trim(txtFeesStudID.Text)
-                lbStudFees.DataSource = Nothing
-                lbStudFees.DisplayMember = "StudName"
-                lbStudFees.ValueMember = "StudentID"
-                lbStudFees.Visible = True
-                Dim cmd As New SqlCommand
-                cmd.Connection = cnn
-                cmd.CommandText = "spStudentSearch"
-                cmd.CommandType = CommandType.StoredProcedure
-                Dim filter As String = " where concat(s.studentid, studentname , studentsurname ) like '%" & serchtext & "%'"
-                param = New SqlParameter("@filter", filter)
-                cmd.Parameters.Add(param)
-                Dim dsApps As New DataSet()
-                Dim taApps As SqlDataAdapter = Nothing
+            cnn.Open()
+            Dim serchtext As String = Trim(txtFeesStudID.Text)
+
+            Dim cmd As New SqlCommand
+            cmd.Connection = cnn
+            cmd.CommandText = "spStudentSearch"
+            cmd.CommandType = CommandType.StoredProcedure
+            Dim filter As String = " where s.studentid = '" & serchtext & "'"
+            param = New SqlParameter("@filter", filter)
+            cmd.Parameters.Add(param)
+
+            studs = cmd.ExecuteReader()
+            If studs.HasRows Then
 
 
-                ' Dim sql As String = "Select FirstName + '' + LastName as Student ,AppReference , DateSubmitted,Class,Intake,program,campus,email,level,sem,session from studentapplication where email = '" & email & "' and appstatus = 'Approved'  and apllicationAccepted = 1 and StudentIDAssigned =  0  "
+                While studs.Read
+                    Studname = studs("StudName").ToString.Split("-")
 
+                    lblfullname.Text = Studname(1).ToUpper
 
-
-
-                taApps = New SqlDataAdapter(cmd)
-
-
-
-                taApps.Fill(dsApps)
-
-
-
-
-
-                lbStudFees.DataSource = dsApps.Tables(0)
-                lbStudFees.DisplayMember = "StudName"
-                lbStudFees.ValueMember = "StudentID"
-
+                End While
             Else
-                RefreshFeesStatement()
+                lblfullname.Text = "Invalid StudentID"
 
             End If
+
+            RefreshFeesStatement()
+
+
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
@@ -9541,5 +9626,529 @@ Public Class FrmStudent
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub cboBBFCutOffPeriod_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboBBFCutOffPeriod.SelectedIndexChanged
+        RefreshFeesStatement()
+
+    End Sub
+
+    Private Sub chkTransScreenShowInvoices_CheckedChanged(sender As Object, e As EventArgs) Handles chkTransScreenShowInvoices.CheckedChanged, chkTransScreenShowReceipts.CheckedChanged
+        RefreshFeesStatement()
+        cboReceiptSearch_SelectedIndexChanged(Me, Nothing)
+    End Sub
+
+    Private Sub txtFeesStudID_TextChanged(sender As Object, e As EventArgs) Handles txtFeesStudID.TextChanged
+
+    End Sub
+
+    Private Sub Button28_Click_2(sender As Object, e As EventArgs) Handles Button28.Click
+        Dim serchtext As String = Trim(txtFeesStudID.Text)
+        StudEnrollmentSearch(lbStudFees, serchtext)
+    End Sub
+
+    Private Sub lbStudFees_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbStudFees.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub PersonalDetails_Validated(sender As Object, e As EventArgs) Handles PersonalDetails.Validated
+
+    End Sub
+
+    Private Sub ToolStripButton11_Click(sender As Object, e As EventArgs) Handles ToolStripButton11.Click
+
+    End Sub
+
+    Private Sub txtFeesStudID_Validated(sender As Object, e As EventArgs) Handles txtFeesStudID.Validated
+        FeesStudSearch()
+    End Sub
+
+    Private Sub cbonewClassCls_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbonewClassCls.SelectedIndexChanged
+        Dim selitm As ComboItem
+        selitm = cbonewClassCls.SelectedItem
+        LoadPosibleClasses(selitm)
+
+
+
+    End Sub
+
+    Private Sub LoadPosibleClasses(CombItem As ComboItem)
+        chkOtherClassList.DataSource = Nothing
+
+        Dim oclasses As List(Of ComboItem) = New List(Of ComboItem)
+        oclasses = Classes().Where(Function(x) CType(x.Ref, C_Classes).ClassYear = CType(CombItem.Ref, C_Classes).ClassYear And CType(x.Ref, C_Classes).ClassSem >= CType(CombItem.Ref, C_Classes).ClassSem).ToList
+
+        With chkOtherClassList
+
+            .DataSource = oclasses
+
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+
+
+
+        For i = 0 To chkOtherClassList.Items.Count - 1
+            If chkOtherClassList.GetItemText(chkOtherClassList.Items(i)) = CombItem.Text Then
+                chkOtherClassList.SetItemChecked(i, True)
+            End If
+
+
+        Next
+
+    End Sub
+
+    Private Sub chkAllClassesInCalendarYear_CheckedChanged(sender As Object, e As EventArgs) Handles chkAllClassesInCalendarYear.CheckedChanged
+        chkOtherClassList.Visible = chkAllClassesInCalendarYear.Checked
+    End Sub
+
+    Private Sub btnSave_Click_1(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim student As String = ""
+        Dim BehaviorClass As String = ""
+        Dim behaviorType As String = ""
+        Dim behaviorDate As Date
+        Dim behaviorSeverity As String = ""
+        Dim BehaviorDetails As String = ""
+        Dim behaviorReference As String = ""
+        Dim Behaviorperiod As String = ""
+
+        cnn = New SqlConnection(ConnectionString)
+        Dim trans As SqlTransaction
+        Dim cmd As SqlCommand
+        If dgStudBehavior.Rows.Count = 0 Then
+            MsgBox("No behavior Record available,add behavior records.")
+            Exit Sub
+        End If
+
+
+
+        Try
+            cnn.Open()
+
+            trans = cnn.BeginTransaction
+            For i = 0 To dgStudBehavior.Rows.Count - 1
+
+
+
+                With dgStudBehavior.Rows(i)
+
+                    If .Visible Then
+                        sql = "spInsertStudentBehavior"
+                        student = .Cells("BehaviorStudent").Value
+                        BehaviorClass = .Cells("BehaviorClass").Value
+                        behaviorType = .Cells("BehaviorType").Value
+                        behaviorDate = .Cells("BehaviorDate").Value
+                        behaviorSeverity = .Cells("BehaviorSeverity").Value
+                        BehaviorDetails = .Cells("BehaviorDetails").Value
+                        If Not IsNothing(.Cells("BehaviorRef").Value) Then
+                            behaviorReference = IIf(.Cells("BehaviorRef").Value.ToString = "", Guid.NewGuid.ToString, .Cells("BehaviorRef").Value.ToString)
+                        Else
+                            behaviorReference = Guid.NewGuid.ToString
+                        End If
+
+                        Behaviorperiod = .Cells("BehaviorPeriod").Value
+
+                        cmd = New SqlCommand(sql, cnn, trans)
+                        cmd.CommandType = CommandType.StoredProcedure
+
+                        With cmd.Parameters
+                            .AddWithValue("@stud", student)
+                            .AddWithValue("@date", behaviorDate)
+                            .AddWithValue("@class", BehaviorClass)
+                            .AddWithValue("@type", behaviorType)
+                            .AddWithValue("@severity", behaviorSeverity)
+                            .AddWithValue("@details", BehaviorDetails)
+                            .AddWithValue("@ref", behaviorReference)
+                            .AddWithValue("@period", Behaviorperiod)
+
+                        End With
+                        cmd.ExecuteNonQuery()
+
+                    Else
+                        If Not IsNothing(.Cells("BehaviorRef").Value) Then
+                            behaviorReference = IIf(.Cells("BehaviorRef").Value.ToString = "", Guid.NewGuid.ToString, .Cells("BehaviorRef").Value.ToString)
+
+                            sql = "delete studbehavior where behaviorReference = '" & behaviorReference & "'"
+                            cmd = New SqlCommand(sql, cnn, trans)
+                            cmd.ExecuteNonQuery()
+                        End If
+
+                    End If
+
+                End With
+
+
+
+
+            Next
+
+            trans.Commit()
+
+
+            MsgBox("Student Behavior Successfully updated")
+            dgStudBehavior.Rows.Clear()
+
+            LoadStudBehavior(student)
+
+        Catch ex As Exception
+
+            MsgBox("Failed to Update Student Behavior - " & ex.Message)
+
+            trans.Rollback()
+
+        Finally
+            cnn.Close()
+
+        End Try
+    End Sub
+
+    Private Sub btnNew_Click_1(sender As Object, e As EventArgs) Handles btnNew.Click
+        dgStudBehavior.Rows.Clear()
+        lbStudBehavior.Visible = False
+
+        LoadStudBehavior(Trim(txtBehaviorStud.Text))
+    End Sub
+
+    Private Sub LoadStudBehavior(stud As String)
+        Dim cmd As New SqlCommand
+        Dim cnn As New SqlConnection(ConnectionString)
+        Dim rows As Integer = 0
+
+        sql = "spLoadStudBavior"
+
+        Dim drr As SqlDataReader
+
+        Dim behaviorRecords As Integer = 0
+
+
+        Try
+
+
+            cnn.Open()
+
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@stud", stud)
+            drr = cmd.ExecuteReader
+            While drr.Read
+                dgStudBehavior.Rows.Add()
+                behaviorRecords += 1
+                With dgStudBehavior.Rows(rows)
+                    .Cells("BehaviorStudent").Value = drr("Student")
+                    .Cells("BehaviorClass").Value = drr("BehaviorClass")
+                    .Cells("BehaviorType").Value = drr("BehaviorType")
+                    .Cells("BehaviorSeverity").Value = drr("BehaviorSeverity")
+                    .Cells("BehaviorDate").Value = drr("BehaviorDate")
+                    .Cells("BehaviorDetails").Value = drr("BehaviorDetails")
+                    .Cells("BehaviorRef").Value = drr("BehaviorReference")
+                    .Cells("BehaviorPeriod").Value = drr("BehaviorPeriod")
+                    .Cells("BehaviorEdit").Value = "Edit"
+                    .Cells("BehaviorView").Value = "Report"
+                    .Cells("BehaviorDelete").Value = "Delete"
+                End With
+                rows += 1
+            End While
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        Finally
+            lbBehaviorRecourCount.Text = behaviorRecords
+            cnn.Close()
+
+        End Try
+
+    End Sub
+
+    Private Sub btnStudBeaviorSearch_Click(sender As Object, e As EventArgs) Handles btnStudBeaviorSearch.Click
+        Dim serchtext As String = Trim(txtBehaviorStud.Text)
+        lbStudBehavior.DataSource = Nothing
+        Dim dsApps As New DataSet()
+        Dim taApps As SqlDataAdapter = Nothing
+        Dim cmd As New SqlCommand
+        Dim cnn As New SqlConnection(ConnectionString)
+        lbStudBehaviorName.Visible = False
+        Try
+
+
+            cnn.Open()
+
+            Dim filter As String = " where concat(s.studentid , ' ' , studentname , ' ' , studentsurname) like '%" & serchtext & "%'"
+
+            cmd.CommandText = "spMainScreenStudentSearch"
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@filter", filter)
+
+
+
+            lbStudBehavior.Visible = True
+
+            taApps = New SqlDataAdapter(cmd)
+            taApps.Fill(dsApps)
+
+            lbStudBehavior.DataSource = dsApps.Tables(0)
+            lbStudBehavior.DisplayMember = "StudName"
+            lbStudBehavior.ValueMember = "StudentID"
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        Finally
+            cnn.Close()
+
+        End Try
+    End Sub
+
+    Private Sub lbStudBehavior_DoubleClick_1(sender As Object, e As EventArgs) Handles lbStudBehavior.DoubleClick
+        Try
+
+            txtBehaviorStud.Text = lbStudBehavior.SelectedValue
+            '      lbStudBehaviorName.Text = lbStudBehavior.GetItemText(lbStudBehavior.SelectedItem)
+            lbStudBehavior.DataSource = Nothing
+
+            lbStudBehavior.Visible = False
+            '     dgStudBehavior.Rows.Clear()
+            '        LoadStudBehavior(Trim(txtBehaviorStud.Text))
+            '     txtBehaviorRef.Text = ""
+
+            txtBehaviorStud_Validated(txtBehaviorStud, Nothing)
+
+
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub txtBehaviorStud_KeyDown(sender As Object, e As KeyEventArgs) Handles txtBehaviorStud.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            lbStudBehavior.Visible = False
+        ElseIf e.KeyCode = Keys.Enter Then
+            btnStudBeaviorSearch_Click(Me, Nothing)
+        End If
+    End Sub
+
+    Private Sub txtBehaviorStud_Validated(sender As Object, e As EventArgs) Handles txtBehaviorStud.Validated, mskBehaviorDate.Validated, txtBehaviorDetails.TextChanged, cboBehaviorSeverity.SelectedIndexChanged
+        Dim behaviordate As Date
+
+        Dim datepassed As Boolean = False
+        datepassed = Date.TryParse(mskBehaviorDate.Text, behaviordate)
+
+        If sender.GetType = GetType(TextBox) Then
+            Dim ctrl As TextBox = sender
+            Select Case ctrl.Name
+                Case txtBehaviorStud.Name
+                    dgStudBehavior.Rows.Clear()
+                    LoadStudBehavior(Trim(txtBehaviorStud.Text))
+                    txtBehaviorRef.Text = ""
+                    lbStudBehaviorName.Visible = True
+            End Select
+        End If
+
+
+
+        If Trim(txtBehaviorStud.Text) <> "" And datepassed And Trim(txtBehaviorDetails.Text) <> "" And cboBehaviorSeverity.Text <> "" And cboBehaviorType.Text <> "" And cboBehaviorClass.Text <> "" And cboBehaviorPeriod.Text <> "" And ValidStud(Trim(txtBehaviorStud.Text)) Then
+            btnAddBehavior.Enabled = True
+            btnAddBehavior.BackColor = Color.Green
+            btnAddBehavior.ForeColor = Color.White
+        Else
+            btnAddBehavior.Enabled = False
+            btnAddBehavior.BackColor = Color.Transparent
+            btnAddBehavior.ForeColor = Color.Black
+        End If
+    End Sub
+    Private Function ValidStud(id As String) As Boolean
+        Dim cmd As New SqlCommand
+        Dim cnn As New SqlConnection(ConnectionString)
+
+        Dim Studname As String = ""
+
+        sql = "ValidID"
+
+        Try
+
+
+            cnn.Open()
+
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@id", id)
+            cmd.Parameters.AddWithValue("@type", "Student")
+            Studname = cmd.ExecuteScalar
+
+            Return True
+        Catch ex As Exception
+            Return False
+
+        Finally
+            lbStudBehaviorName.Text = Studname
+            cnn.Close()
+
+        End Try
+
+
+
+    End Function
+
+    Private Sub btnAddBehavior_Click(sender As Object, e As EventArgs) Handles btnAddBehavior.Click
+        Dim rows As Integer = dgStudBehavior.Rows.Count - 1
+
+        Dim dtbehaviordate As Date
+
+        Date.TryParse(mskBehaviorDate.Text, dtbehaviordate)
+        If txtBehaviorRef.Text = "" Then
+
+            dgStudBehavior.Rows.Add()
+            rows += 1
+            lbBehaviorRecourCount.Text = CInt(lbBehaviorRecourCount.Text) + 1
+        Else
+            rows = txtBehaviorRef.Text
+        End If
+
+
+        With dgStudBehavior.Rows(rows)
+
+            .Cells("BehaviorStudent").Value = Trim(txtBehaviorStud.Text)
+            .Cells("BehaviorClass").Value = cboBehaviorClass.Text
+            .Cells("BehaviorType").Value = cboBehaviorType.Text
+            .Cells("BehaviorSeverity").Value = cboBehaviorSeverity.Text
+            .Cells("BehaviorDate").Value = dtbehaviordate
+            .Cells("BehaviorDetails").Value = txtBehaviorDetails.Text
+            .Cells("BehaviorPeriod").Value = cboBehaviorPeriod.Text
+            .Cells("BehaviorEdit").Value = "Edit"
+            .Cells("BehaviorView").Value = "Report"
+            .Cells("BehaviorDelete").Value = "Delete"
+            .DefaultCellStyle.BackColor = Color.Yellow
+
+            Dim rptbutton As DataGridViewButtonCell = CType(.Cells("BehaviorView"), DataGridViewButtonCell)
+
+
+        End With
+
+
+
+        txtBehaviorRef.Text = ""
+
+
+    End Sub
+
+    Private Sub cboBehaviorClass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboBehaviorClass.SelectedIndexChanged
+        cboBehaviorPeriod.DataSource = Nothing
+        loadExams()
+    End Sub
+
+    Private Sub cboBehaviorType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboBehaviorType.SelectedIndexChanged
+        cboBehaviorSeverity.Items.Clear()
+        If cboBehaviorType.Text = "Offence" Then
+            cboBehaviorSeverity.Items.Add("Minor")
+            cboBehaviorSeverity.Items.Add("Medium")
+            cboBehaviorSeverity.Items.Add("Serious")
+            cboBehaviorSeverity.Items.Add("Dismissable")
+            cboBehaviorSeverity.SelectedIndex = 0
+        ElseIf cboBehaviorType.Text = "Merit" Then
+            cboBehaviorSeverity.Items.Add("Academic")
+            cboBehaviorSeverity.Items.Add("Sport")
+            cboBehaviorSeverity.Items.Add("Others")
+            cboBehaviorSeverity.SelectedIndex = 0
+        End If
+    End Sub
+
+    Private Sub dgStudBehavior_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgStudBehavior.CellContentClick
+        Dim indx As Integer = dgStudBehavior.CurrentRow.Index
+
+        Try
+            Cursor = Cursors.WaitCursor
+            If dgStudBehavior.CurrentCell.Value = "Edit" Then
+
+                If txtBehaviorRef.Text <> "" Then
+                    If txtBehaviorRef.Text <> indx Then
+
+                        If MsgBox("Another Record is currently being edited,Yes to Abort Editing of that row and Load Current Row", vbYesNo) = vbYes Then
+                            dgStudBehavior.Rows(txtBehaviorRef.Text).DefaultCellStyle.BackColor = Color.FromArgb(224, 224, 224)
+                            RemoveBehaviorRow(indx)
+                        Else
+
+                        End If
+                    Else
+
+
+                        RemoveBehaviorRow(indx)
+                    End If
+                Else
+                    RemoveBehaviorRow(indx)
+
+                End If
+
+
+            ElseIf dgStudBehavior.CurrentCell.Value = "Delete" Then
+                If MsgBox("Delete Record?", vbYesNo) = vbYes Then
+                    DeleteBehaviorRow(indx)
+                End If
+
+            ElseIf dgStudBehavior.CurrentCell.Value = "Report" Then
+                If IsNothing(dgStudBehavior.CurrentRow.Cells("BehaviorRef").Value) Then
+                    MsgBox("Behavior Report cannot be viewed,Record has not yet been commited to the database.")
+                Else
+
+                    Dim rptviewer As New frmReportPreview
+                    With rptviewer
+                        .BehaviorReport = True
+                        .BehaviorReference = dgStudBehavior.CurrentRow.Cells("BehaviorRef").Value.ToString
+                        .ShowDialog()
+                    End With
+                End If
+
+
+            End If
+        Catch ex As Exception
+        Finally
+            Cursor = Cursors.Default
+
+        End Try
+
+    End Sub
+
+    Private Sub DeleteBehaviorRow(indx As Integer)
+        With dgStudBehavior.Rows(indx)
+            .Visible = False
+            MsgBox("Row Deleted, save to commit changes.")
+            lbBehaviorRecourCount.Text = CInt(lbBehaviorRecourCount.Text) - 1
+
+        End With
+
+    End Sub
+    Private Sub RemoveBehaviorRow(indx As Integer)
+
+        With dgStudBehavior.Rows(indx)
+            txtBehaviorStud.Text = .Cells("BehaviorStudent").Value
+            cboBehaviorClass.Text = .Cells("BehaviorClass").Value
+
+            cboBehaviorPeriod.Text = .Cells("BehaviorPeriod").Value
+            cboBehaviorType.Text = .Cells("BehaviorType").Value
+            cboBehaviorSeverity.Text = .Cells("BehaviorSeverity").Value
+            mskBehaviorDate.Text = .Cells("BehaviorDate").Value
+            txtBehaviorDetails.Text = .Cells("BehaviorDetails").Value
+            If Not IsNothing(.Cells("BehaviorRef").Value) Then
+                txtBehaviorRef.Text = indx
+                .DefaultCellStyle.BackColor = Color.Yellow
+            Else
+                txtBehaviorRef.Text = ""
+                dgStudBehavior.Rows.RemoveAt(indx)
+                lbBehaviorRecourCount.Text = CInt(lbBehaviorRecourCount.Text) - 1
+            End If
+
+        End With
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtBehaviorRef.TextChanged
+        If Trim(txtBehaviorRef.Text <> "") Then
+            btnAddBehavior.Text = "Update Behavior"
+        Else
+            btnAddBehavior.Text = "Add Behavior"
+        End If
     End Sub
 End Class

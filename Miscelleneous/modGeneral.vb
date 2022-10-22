@@ -87,8 +87,8 @@ Public Module modGeneral
     Public gstrExamAttExam, gstrExamAttSub As String
     Public gblnAllSubStuds, gblnExamAtt, gblnMarkSheet, gblnCourseWek, gblnPerSubject, gblnPerProgram As Boolean
     Public gstrmarksheetExam, gstrmarksheetProg, gstrmatrksheetintk As String
-    Public gstrAccPrgm, gstrAccClass, gstrAccClass2, gstrAccStatus, gstrAccLvl, gstrAccLvl2, gstrAccSem, gstrAccPrdFrom, gstrAccSection, gstrAccPrdTo, gstrAccIntk, gstrAccStud, gstraccAddinfo, gstrAccSess, gstrAccSess2, gstrAccSub As String
-    Public gblnAccPerClass, gblnAccPerForm, gblnAccDebtors, gblnAccPerSub, gblnAccPerStud, gblnClassStat, gblnSectDebts, gblnDebtorsOnly As Boolean
+    Public gstrAccPrgm, gstrAccClass, gstrAccClass2, gstrAccStatus, gstrAccLvl, gstrAccLvl2, gstrAccSem, gstrAccPrdFrom, gstrAccSection, gstrAccPrdTo, gstrAccIntk, gstrAccStud, gstraccAddinfo, gstrAccSess, gstrAccSess2, gstrAccSub, gstrAccBBFCutOffPeriod As String
+    Public gblnAccPerClass, gblnAccPerForm, gblnAccDebtors, gblnAccPerSub, gblnAccPerStud, gblnClassStat, gblnSectDebts, gblnDebtorsOnly, gblnShowReceipts, gblnShowInvoices As Boolean
     Public gdatefrom, gdateTo, gpdatefrom, gpdateto As Date
     Public gstrfizpaypfrom, gstrfizpaypto, gstrYearLeft, gstrtermleftfrom, gstrtermleftTo, gstrReasonLeft As String
     Public chckdtaerange As Boolean
@@ -185,6 +185,27 @@ Public Module modGeneral
         OfferAccepted = 8
         ApplicationWithDrawn = 9
     End Enum
+
+    Public ReadOnly Property CurrentPaymentPeriod() As String
+        Get
+            Dim period As String = ""
+            cnn = New SqlConnection(ConnectionString)
+            sql = "select [period] from paymentperiods where [current] = 1"
+            Try
+                cnn.Open()
+                cmd = New SqlCommand(sql, cnn)
+                period = cmd.ExecuteScalar
+                Return period
+            Catch ex As Exception
+            Finally
+                cnn.Close()
+            End Try
+
+
+
+            Return period
+        End Get
+    End Property
 
     Public Function SendEmail(ByVal stud As Enrol, emailtype As EmailType, Optional ByRef UI As Guid = Nothing, Optional msg As String = "") As Boolean
         Dim SmtpServer As New SmtpClient()
@@ -1003,14 +1024,21 @@ Public Module modGeneral
         Dim values As New List(Of ComboItem)
 
 
-        sql = "select ref,description from classes order by clas desc,sem desc  "
+        sql = "select ref,description,clas,sem from classes order by clas desc,sem desc  "
+
         Dim drr As SqlDataReader
         drr = ExecuteReader(sql, , True)
 
 
 
         While drr.Read
-            itm = New ComboItem(drr(1), drr(0).ToString)
+            Dim oref As New C_Classes
+            oref.ClassYear = drr(2)
+            oref.ClassSem = drr(3)
+            oref.ClassDesc = drr(1)
+
+
+            itm = New ComboItem(drr(1), drr(0).ToString, oref)
             values.Add(itm)
         End While
 
@@ -1556,14 +1584,32 @@ Public Class ComboItem
 
     End Property
 
+    Public Property Ref As Object
+
     Public Overrides Function ToString() As String
         Return _text
     End Function
 
 
-    Public Sub New(ByVal txt As String, ByVal val As String)
+    Public Sub New(ByVal txt As String, ByVal val As String, Optional propref As Object = Nothing)
         _text = txt
         _value = val
+        Ref = propref
 
     End Sub
+End Class
+
+
+Public Class C_Classes
+
+
+    Public Property ClassDesc As String
+    Public Property ClassYear As Integer
+    Public Property ClassSem As Integer
+    Public Property ClassRef As Guid
+    Public Property ClassIntk As String
+    Public Property ClassProgram As String
+    Public Property ClassSession As String
+
+
 End Class

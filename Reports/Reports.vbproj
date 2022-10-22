@@ -190,6 +190,7 @@
       <DependentUpon>Rports.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Rpts\rptFeesPaymentsPerForm.rdlc" />
     <EmbeddedResource Include="Rpts\rptHsReport_Bonda_Olevel.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -267,7 +268,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rpts\rptFeesInvoice.rdlc" />
     <EmbeddedResource Include="Rpts\rptFeesPaymentsPerClass.rdlc" />
-    <EmbeddedResource Include="Rpts\rptFeesPaymentsPerForm.rdlc" />
+    <EmbeddedResource Include="Rpts\rptFeesPaymentsPerForm_old.rdlc" />
     <EmbeddedResource Include="Rpts\rptFeesReceipt.rdlc" />
     <EmbeddedResource Include="Rpts\rptFullTranscript.rdlc" />
     <EmbeddedResource Include="Rpts\rptFullTranscriptND.rdlc" />

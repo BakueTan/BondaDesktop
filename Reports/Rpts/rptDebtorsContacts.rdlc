@@ -1030,7 +1030,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsRevoReports</rd:DataSetName>
-        <rd:SchemaPath>F:\Development\StandardDesktop_vs2017_Dev\Reports\dsRevoReports.xsd</rd:SchemaPath>
+        <rd:SchemaPath>F:\Development\Banda_Desktop_GitHub\BondaDesktop\Reports\dsRevoReports.xsd</rd:SchemaPath>
         <rd:TableName>SchoolFeesDebtors</rd:TableName>
         <rd:TableAdapterFillMethod>FillbyDebtors</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

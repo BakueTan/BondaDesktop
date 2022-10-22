@@ -46,6 +46,8 @@ Public Class frmTranscript
 
     End Sub
     Public Sub frmTranscript_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'dsRevoReports.SchoolFeesPayments' table. You can move, or remove it, as needed.
+        '    Me.SchoolFeesPaymentsTableAdapter.Fill(Me.dsRevoReports.SchoolFeesPayments)
         'TODO: This line of code loads data into the 'dsRevoReports.AcademicReport' table. You can move, or remove it, as needed.
         '  Me.AcademicReportTableAdapter.Fill(Me.dsRevoReports.AcademicReport)
         'TODO: This line of code loads data into the 'dsRevoReports.AcademicReport' table. You can move, or remove it, as needed.
@@ -145,7 +147,7 @@ Public Class frmTranscript
 
 
 
-                    Me.SchoolFeesDebtorsTableAdapter.FillbyDebtors(Me.dsRevoReports.SchoolFeesDebtors, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection)
+                    Me.SchoolFeesDebtorsTableAdapter.FillbyDebtors(Me.dsRevoReports.SchoolFeesDebtors, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, True)
 
                     rvDebtorsContacts.Dock = DockStyle.Fill
                     rvDebtorsContacts.RefreshReport()
@@ -179,7 +181,7 @@ Public Class frmTranscript
 
                     '  End If
                     Try
-                        Me.SchoolFeesStatementTableAdapter.FillByStudent(dsRevoReports.SchoolFeesStatement, gstrPayType, gstrAccStud, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo)
+                        Me.SchoolFeesStatementTableAdapter.FillByStudent(dsRevoReports.SchoolFeesStatement, gstrPayType, gstrAccStud, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccBBFCutOffPeriod, gblnShowInvoices, gblnShowReceipts)
                     Catch ex As Exception
                         MsgBox(ex.Message)
                         Close()
@@ -193,10 +195,11 @@ Public Class frmTranscript
 
 
                     Try
-                        Me.SchoolFeesStatementTableAdapter.FillByClass(dsRevoReports.SchoolFeesStatement, gstrPayType, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnDebtorsOnly)
+                        Me.SchoolFeesStatementTableAdapter.FillByClass(dsRevoReports.SchoolFeesStatement, gstrPayType, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnDebtorsOnly, gstrAccBBFCutOffPeriod)
                     Catch ex As Exception
                         MsgBox(ex.Message)
                         Close()
+
                     End Try
 
                     rvClassStat.Dock = DockStyle.Fill
@@ -205,19 +208,12 @@ Public Class frmTranscript
 
                 ElseIf gblnAccPerForm Then
 
-                    If Trim(gstrPayType.ToUpper) <> "ALL" Then
-                        Me.LedgerTransactionsTableAdapter.FillByForm(dsReports.LedgerTransactions, gstrAccPrdFrom, gstrAccPrdTo, goUser.FullName, gstrAccLvl, gstrAccLvl2, gstrAccSess, gstrAccSess2, gstrAccSem, gstrAccClass, gstrPayType)
+                    Me.SchoolFeesPaymentsTableAdapter.Fill(Me.dsRevoReports.SchoolFeesPayments, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnShowInvoices, gblnShowReceipts)
 
-                        rvPymntsPerForm.Dock = DockStyle.Fill
+                    rvPymntsPerForm.Dock = DockStyle.Fill
                         Me.rvPymntsPerForm.RefreshReport()
                         rvPymntsPerForm.Visible = True
-                    ElseIf Trim(gstrPayType.ToUpper) = "ALL" Then
-                        Me.LedgerTransactionsTableAdapter.FillByFormALL(dsReports.LedgerTransactions, gstrAccPrdFrom, gstrAccPrdTo, goUser.FullName, gstrAccLvl, gstrAccLvl2, gstrAccSess, gstrAccSess2, gstrAccSem, gstrAccClass)
 
-                        rvPymntsPerForm.Dock = DockStyle.Fill
-                        Me.rvPymntsPerForm.RefreshReport()
-                        rvPymntsPerForm.Visible = True
-                    End If
 
                 ElseIf gblnOtherDebtors Then
                     If Trim(gstrPayType.ToUpper) = "ALL" Then

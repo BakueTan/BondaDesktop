@@ -129,6 +129,8 @@ Partial Class frmSchoolParameters
         Me.txtClassSearch = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.GroupBox19 = New System.Windows.Forms.GroupBox()
+        Me.chkCurrentClass = New System.Windows.Forms.CheckBox()
+        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DescriptionTextBox1 = New System.Windows.Forms.TextBox()
         Me.ClassesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClasComboBox = New System.Windows.Forms.ComboBox()
@@ -323,7 +325,6 @@ Partial Class frmSchoolParameters
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.tbExamSessions = New System.Windows.Forms.TabPage()
         Me.pbSchoolStamp2 = New System.Windows.Forms.PictureBox()
-        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.pbSchoolStamp = New System.Windows.Forms.PictureBox()
         Me.lbExamSearch = New System.Windows.Forms.ListBox()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
@@ -534,6 +535,7 @@ Partial Class frmSchoolParameters
         Me.QualificationsTableAdapter = New SchoolParameters.dsSchoolParametersTableAdapters.QualificationsTableAdapter()
         Me.CurrenciesTableAdapter = New SchoolParameters.dsSchoolParametersTableAdapters.CurrenciesTableAdapter()
         Me.TableAdapterManager = New SchoolParameters.dsSchoolParametersTableAdapters.TableAdapterManager()
+        Me.chkRunDisplayedClass = New System.Windows.Forms.CheckBox()
         SubjectIDLabel = New System.Windows.Forms.Label()
         SubjectLabel = New System.Windows.Forms.Label()
         UserNameLabel = New System.Windows.Forms.Label()
@@ -597,6 +599,7 @@ Partial Class frmSchoolParameters
         Me.tbClasses.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
         Me.GroupBox19.SuspendLayout()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClassesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator18, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator18.SuspendLayout()
@@ -649,7 +652,6 @@ Partial Class frmSchoolParameters
         Me.GroupBox6.SuspendLayout()
         Me.tbExamSessions.SuspendLayout()
         CType(Me.pbSchoolStamp2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbSchoolStamp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox20.SuspendLayout()
@@ -1704,6 +1706,8 @@ Partial Class frmSchoolParameters
         '
         'GroupBox19
         '
+        Me.GroupBox19.Controls.Add(Me.chkRunDisplayedClass)
+        Me.GroupBox19.Controls.Add(Me.chkCurrentClass)
         Me.GroupBox19.Controls.Add(DescriptionLabel1)
         Me.GroupBox19.Controls.Add(Me.DescriptionTextBox1)
         Me.GroupBox19.Controls.Add(ClasLabel)
@@ -1716,10 +1720,25 @@ Partial Class frmSchoolParameters
         Me.GroupBox19.Controls.Add(Me.BindingNavigator18)
         Me.GroupBox19.Location = New System.Drawing.Point(204, 95)
         Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(507, 236)
-        Me.GroupBox19.TabIndex = 1
+        Me.GroupBox19.Size = New System.Drawing.Size(507, 259)
+        Me.GroupBox19.TabIndex = 0
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Classes"
+        '
+        'chkCurrentClass
+        '
+        Me.chkCurrentClass.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ClassesBindingSource, "Current", True))
+        Me.chkCurrentClass.Location = New System.Drawing.Point(227, 200)
+        Me.chkCurrentClass.Name = "chkCurrentClass"
+        Me.chkCurrentClass.Size = New System.Drawing.Size(121, 24)
+        Me.chkCurrentClass.TabIndex = 4
+        Me.chkCurrentClass.Text = "Displayed Class"
+        Me.chkCurrentClass.UseVisualStyleBackColor = True
+        '
+        'ExamSessionsBindingSource
+        '
+        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
+        Me.ExamSessionsBindingSource.DataSource = Me.DsSchoolParameters
         '
         'DescriptionTextBox1
         '
@@ -1727,7 +1746,7 @@ Partial Class frmSchoolParameters
         Me.DescriptionTextBox1.Location = New System.Drawing.Point(227, 93)
         Me.DescriptionTextBox1.Name = "DescriptionTextBox1"
         Me.DescriptionTextBox1.Size = New System.Drawing.Size(220, 20)
-        Me.DescriptionTextBox1.TabIndex = 8
+        Me.DescriptionTextBox1.TabIndex = 0
         '
         'ClassesBindingSource
         '
@@ -1743,7 +1762,7 @@ Partial Class frmSchoolParameters
         Me.ClasComboBox.Location = New System.Drawing.Point(227, 119)
         Me.ClasComboBox.Name = "ClasComboBox"
         Me.ClasComboBox.Size = New System.Drawing.Size(121, 21)
-        Me.ClasComboBox.TabIndex = 10
+        Me.ClasComboBox.TabIndex = 1
         '
         'SemComboBox
         '
@@ -1755,7 +1774,7 @@ Partial Class frmSchoolParameters
         Me.SemComboBox.Location = New System.Drawing.Point(227, 146)
         Me.SemComboBox.Name = "SemComboBox"
         Me.SemComboBox.Size = New System.Drawing.Size(121, 21)
-        Me.SemComboBox.TabIndex = 12
+        Me.SemComboBox.TabIndex = 2
         '
         'IntakeComboBox1
         '
@@ -1766,12 +1785,12 @@ Partial Class frmSchoolParameters
         Me.IntakeComboBox1.Location = New System.Drawing.Point(227, 173)
         Me.IntakeComboBox1.Name = "IntakeComboBox1"
         Me.IntakeComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.IntakeComboBox1.TabIndex = 14
+        Me.IntakeComboBox1.TabIndex = 3
         '
         'RefTextBox
         '
         Me.RefTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClassesBindingSource, "ref", True))
-        Me.RefTextBox.Location = New System.Drawing.Point(227, 200)
+        Me.RefTextBox.Location = New System.Drawing.Point(6, 233)
         Me.RefTextBox.Name = "RefTextBox"
         Me.RefTextBox.Size = New System.Drawing.Size(10, 20)
         Me.RefTextBox.TabIndex = 16
@@ -3484,11 +3503,6 @@ Partial Class frmSchoolParameters
         Me.pbSchoolStamp2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbSchoolStamp2.TabIndex = 21
         Me.pbSchoolStamp2.TabStop = False
-        '
-        'ExamSessionsBindingSource
-        '
-        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
-        Me.ExamSessionsBindingSource.DataSource = Me.DsSchoolParameters
         '
         'pbSchoolStamp
         '
@@ -5297,6 +5311,16 @@ Partial Class frmSchoolParameters
         Me.TableAdapterManager.SubjectsTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = SchoolParameters.dsSchoolParametersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'chkRunDisplayedClass
+        '
+        Me.chkRunDisplayedClass.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ClassesBindingSource, "Current", True))
+        Me.chkRunDisplayedClass.Location = New System.Drawing.Point(227, 229)
+        Me.chkRunDisplayedClass.Name = "chkRunDisplayedClass"
+        Me.chkRunDisplayedClass.Size = New System.Drawing.Size(236, 24)
+        Me.chkRunDisplayedClass.TabIndex = 5
+        Me.chkRunDisplayedClass.Text = "Update Students' Displayed Class"
+        Me.chkRunDisplayedClass.UseVisualStyleBackColor = True
+        '
         'frmSchoolParameters
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -5334,6 +5358,7 @@ Partial Class frmSchoolParameters
         Me.GroupBox11.PerformLayout()
         Me.GroupBox19.ResumeLayout(False)
         Me.GroupBox19.PerformLayout()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClassesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator18, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator18.ResumeLayout(False)
@@ -5406,7 +5431,6 @@ Partial Class frmSchoolParameters
         Me.tbExamSessions.ResumeLayout(False)
         Me.tbExamSessions.PerformLayout()
         CType(Me.pbSchoolStamp2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbSchoolStamp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox16.ResumeLayout(False)
         Me.GroupBox16.PerformLayout()
@@ -5941,4 +5965,6 @@ Partial Class frmSchoolParameters
     Friend WithEvents cboMarkFormat As Windows.Forms.ComboBox
     Friend WithEvents pbSchoolStamp As Windows.Forms.PictureBox
     Friend WithEvents pbSchoolStamp2 As Windows.Forms.PictureBox
+    Friend WithEvents chkCurrentClass As Windows.Forms.CheckBox
+    Friend WithEvents chkRunDisplayedClass As Windows.Forms.CheckBox
 End Class

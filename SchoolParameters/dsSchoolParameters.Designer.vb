@@ -1640,6 +1640,8 @@ Partial Public Class dsSchoolParameters
         
         Private columnref As Global.System.Data.DataColumn
         
+        Private columnCurrent As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -1716,6 +1718,14 @@ Partial Public Class dsSchoolParameters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrentColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrent
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1752,9 +1762,9 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddClassesRow(ByVal Description As String, ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As System.Guid) As ClassesRow
+        Public Overloads Function AddClassesRow(ByVal Description As String, ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As System.Guid, ByVal Current As Boolean) As ClassesRow
             Dim rowClassesRow As ClassesRow = CType(Me.NewRow,ClassesRow)
-            Dim columnValuesArray() As Object = New Object() {Description, Clas, Sem, Intake, ref}
+            Dim columnValuesArray() As Object = New Object() {Description, Clas, Sem, Intake, ref, Current}
             rowClassesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowClassesRow)
             Return rowClassesRow
@@ -1788,6 +1798,7 @@ Partial Public Class dsSchoolParameters
             Me.columnSem = MyBase.Columns("Sem")
             Me.columnIntake = MyBase.Columns("Intake")
             Me.columnref = MyBase.Columns("ref")
+            Me.columnCurrent = MyBase.Columns("Current")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1803,6 +1814,8 @@ Partial Public Class dsSchoolParameters
             MyBase.Columns.Add(Me.columnIntake)
             Me.columnref = New Global.System.Data.DataColumn("ref", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnref)
+            Me.columnCurrent = New Global.System.Data.DataColumn("Current", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrent)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnDescription}, true))
             Me.columnDescription.AllowDBNull = false
             Me.columnDescription.Unique = true
@@ -5386,6 +5399,12 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByCashtype(ByVal Cashtype As String) As CashtypeRow
+            Return CType(Me.Rows.Find(New Object() {Cashtype}),CashtypeRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
             Dim cln As CashtypeDataTable = CType(MyBase.Clone,CashtypeDataTable)
             cln.InitVars
@@ -5409,6 +5428,9 @@ Partial Public Class dsSchoolParameters
         Private Sub InitClass()
             Me.columnCashtype = New Global.System.Data.DataColumn("Cashtype", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCashtype)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCashtype}, true))
+            Me.columnCashtype.AllowDBNull = false
+            Me.columnCashtype.Unique = true
             Me.columnCashtype.MaxLength = 50
         End Sub
         
@@ -6718,6 +6740,21 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Current() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableClasses.CurrentColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Current' in table 'Classes' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableClasses.CurrentColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsrefNull() As Boolean
             Return Me.IsNull(Me.tableClasses.refColumn)
         End Function
@@ -6726,6 +6763,18 @@ Partial Public Class dsSchoolParameters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetrefNull()
             Me(Me.tableClasses.refColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrentNull() As Boolean
+            Return Me.IsNull(Me.tableClasses.CurrentColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrentNull()
+            Me(Me.tableClasses.CurrentColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7824,28 +7873,12 @@ Partial Public Class dsSchoolParameters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Cashtype() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableCashtype.CashtypeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Cashtype' in table 'Cashtype' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableCashtype.CashtypeColumn),String)
             End Get
             Set
                 Me(Me.tableCashtype.CashtypeColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsCashtypeNull() As Boolean
-            Return Me.IsNull(Me.tableCashtype.CashtypeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetCashtypeNull()
-            Me(Me.tableCashtype.CashtypeColumn) = Global.System.Convert.DBNull
-        End Sub
     End Class
     
     '''<summary>
@@ -9984,12 +10017,14 @@ Namespace dsSchoolParametersTableAdapters
             tableMapping.ColumnMappings.Add("Sem", "Sem")
             tableMapping.ColumnMappings.Add("Intake", "Intake")
             tableMapping.ColumnMappings.Add("ref", "ref")
+            tableMapping.ColumnMappings.Add("Current", "Current")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Classes] WHERE (([Description] = @Original_Description) AND ([Clas] "& _ 
                 "= @Original_Clas) AND ([Sem] = @Original_Sem) AND ([Intake] = @Original_Intake) "& _ 
-                "AND ((@IsNull_ref = 1 AND [ref] IS NULL) OR ([ref] = @Original_ref)))"
+                "AND ((@IsNull_ref = 1 AND [ref] IS NULL) OR ([ref] = @Original_ref)) AND ((@IsNu"& _ 
+                "ll_Current = 1 AND [Current] IS NULL) OR ([Current] = @Original_Current)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Description", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Description", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Clas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Clas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -9997,37 +10032,45 @@ Namespace dsSchoolParametersTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Intake", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Intake", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ref", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ref", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ref", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ref", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Current", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Current", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Current", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Current", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Classes] ([Description], [Clas], [Sem], [Intake], [ref]) VALUES (@De"& _ 
-                "scription, @Clas, @Sem, @Intake, @ref);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Description, Clas, Sem, Intake, "& _ 
-                "ref FROM Classes WHERE (Description = @Description)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Classes] ([Description], [Clas], [Sem], [Intake], [ref], [Current]) "& _ 
+                "VALUES (@Description, @Clas, @Sem, @Intake, @ref, @Current);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Description"& _ 
+                ", Clas, Sem, Intake, ref, [Current] FROM Classes WHERE (Description = @Descripti"& _ 
+                "on)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Description", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Description", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Clas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Clas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Sem", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Sem", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Intake", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Intake", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ref", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ref", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Current", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Current", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Classes] SET [Description] = @Description, [Clas] = @Clas, [Sem] = @Sem, "& _ 
-                "[Intake] = @Intake, [ref] = @ref WHERE (([Description] = @Original_Description) "& _ 
-                "AND ([Clas] = @Original_Clas) AND ([Sem] = @Original_Sem) AND ([Intake] = @Origi"& _ 
-                "nal_Intake) AND ((@IsNull_ref = 1 AND [ref] IS NULL) OR ([ref] = @Original_ref))"& _ 
-                ");"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Description, Clas, Sem, Intake, ref FROM Classes WHERE (Description ="& _ 
-                " @Description)"
+                "[Intake] = @Intake, [ref] = @ref, [Current] = @Current WHERE (([Description] = @"& _ 
+                "Original_Description) AND ([Clas] = @Original_Clas) AND ([Sem] = @Original_Sem) "& _ 
+                "AND ([Intake] = @Original_Intake) AND ((@IsNull_ref = 1 AND [ref] IS NULL) OR (["& _ 
+                "ref] = @Original_ref)) AND ((@IsNull_Current = 1 AND [Current] IS NULL) OR ([Cur"& _ 
+                "rent] = @Original_Current)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Description, Clas, Sem, Intake, ref, [Curr"& _ 
+                "ent] FROM Classes WHERE (Description = @Description)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Description", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Description", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Clas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Clas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Sem", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Sem", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Intake", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Intake", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ref", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ref", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Current", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Current", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Description", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Description", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Clas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Clas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Sem", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Sem", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Intake", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Intake", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ref", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ref", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ref", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ref", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Current", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Current", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Current", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Current", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10043,7 +10086,8 @@ Namespace dsSchoolParametersTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Classes.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Classes"
+            Me._commandCollection(0).CommandText = "SELECT        Description, Clas, Sem, Intake, ref, [Current]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Cla"& _ 
+                "sses"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -10142,7 +10186,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Description As String, ByVal Original_Clas As Integer, ByVal Original_Sem As Integer, ByVal Original_Intake As String, ByVal Original_ref As Global.System.Nullable(Of Global.System.Guid)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Description As String, ByVal Original_Clas As Integer, ByVal Original_Sem As Integer, ByVal Original_Intake As String, ByVal Original_ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Current As Global.System.Nullable(Of Boolean)) As Integer
             If (Original_Description Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Description")
             Else
@@ -10161,6 +10205,13 @@ Namespace dsSchoolParametersTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Current.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Current.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -10181,7 +10232,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Description As String, ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As Global.System.Nullable(Of Global.System.Guid)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Description As String, ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As Global.System.Nullable(Of Global.System.Guid), ByVal Current As Global.System.Nullable(Of Boolean)) As Integer
             If (Description Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Description")
             Else
@@ -10198,6 +10249,11 @@ Namespace dsSchoolParametersTableAdapters
                 Me.Adapter.InsertCommand.Parameters(4).Value = CType(ref.Value,System.Guid)
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Current.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Current.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -10218,7 +10274,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Description As String, ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Description As String, ByVal Original_Clas As Integer, ByVal Original_Sem As Integer, ByVal Original_Intake As String, ByVal Original_ref As Global.System.Nullable(Of Global.System.Guid)) As Integer
+        Public Overloads Overridable Function Update(ByVal Description As String, ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As Global.System.Nullable(Of Global.System.Guid), ByVal Current As Global.System.Nullable(Of Boolean), ByVal Original_Description As String, ByVal Original_Clas As Integer, ByVal Original_Sem As Integer, ByVal Original_Intake As String, ByVal Original_ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Current As Global.System.Nullable(Of Boolean)) As Integer
             If (Description Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Description")
             Else
@@ -10236,24 +10292,36 @@ Namespace dsSchoolParametersTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
+            If (Current.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Current.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
             If (Original_Description Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Description")
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Description,String)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Description,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Clas,Integer)
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Sem,Integer)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Clas,Integer)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Sem,Integer)
             If (Original_Intake Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Intake")
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Intake,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Intake,String)
             End If
             If (Original_ref.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_ref.Value,System.Guid)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ref.Value,System.Guid)
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Current.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Current.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -10274,8 +10342,8 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Description As String, ByVal Original_Clas As Integer, ByVal Original_Sem As Integer, ByVal Original_Intake As String, ByVal Original_ref As Global.System.Nullable(Of Global.System.Guid)) As Integer
-            Return Me.Update(Original_Description, Clas, Sem, Intake, ref, Original_Description, Original_Clas, Original_Sem, Original_Intake, Original_ref)
+        Public Overloads Overridable Function Update(ByVal Clas As Integer, ByVal Sem As Integer, ByVal Intake As String, ByVal ref As Global.System.Nullable(Of Global.System.Guid), ByVal Current As Global.System.Nullable(Of Boolean), ByVal Original_Description As String, ByVal Original_Clas As Integer, ByVal Original_Sem As Integer, ByVal Original_Intake As String, ByVal Original_ref As Global.System.Nullable(Of Global.System.Guid), ByVal Original_Current As Global.System.Nullable(Of Boolean)) As Integer
+            Return Me.Update(Original_Description, Clas, Sem, Intake, ref, Current, Original_Description, Original_Clas, Original_Sem, Original_Intake, Original_ref, Original_Current)
         End Function
     End Class
     
@@ -14914,11 +14982,23 @@ Namespace dsSchoolParametersTableAdapters
             tableMapping.DataSetTable = "Cashtype"
             tableMapping.ColumnMappings.Add("Cashtype", "Cashtype")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Cashtype] WHERE (([Cashtype] = @Original_Cashtype))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cashtype", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cashtype", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Cashtype] ([Cashtype]) VALUES (@Cashtype)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cashtype", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cashtype", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Cashtype] SET [Cashtype] = @Cashtype WHERE (([Cashtype] = @Original_Casht"& _ 
+                "ype))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cashtype", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cashtype", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Cashtype", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cashtype", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14993,10 +15073,35 @@ Namespace dsSchoolParametersTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Cashtype As String) As Integer
+            If (Original_Cashtype Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Cashtype")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Cashtype,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert(ByVal Cashtype As String) As Integer
             If (Cashtype Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("Cashtype")
             Else
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(Cashtype,String)
             End If
@@ -15013,6 +15118,44 @@ Namespace dsSchoolParametersTableAdapters
                     Me.Adapter.InsertCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal Cashtype As String, ByVal Original_Cashtype As String) As Integer
+            If (Cashtype Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cashtype")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Cashtype,String)
+            End If
+            If (Original_Cashtype Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Cashtype")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Original_Cashtype,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal Original_Cashtype As String) As Integer
+            Return Me.Update(Original_Cashtype, Original_Cashtype)
         End Function
     End Class
     

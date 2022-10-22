@@ -307,6 +307,8 @@
     <EmbeddedResource Include="Reports\rptIssueForm.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptStudBehaviorPerTerm.rdlc" />
+    <EmbeddedResource Include="Reports\rptStudBehaviorSpecific.rdlc" />
     <EmbeddedResource Include="Reports\rptStudentClasses.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>

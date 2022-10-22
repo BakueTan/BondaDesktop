@@ -37,6 +37,8 @@ Partial Public Class dsRevoReports
     
     Private tableClassList As ClassListDataTable
     
+    Private tableSchoolFeesPayments As SchoolFeesPaymentsDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -83,6 +85,9 @@ Partial Public Class dsRevoReports
             End If
             If (Not (ds.Tables("ClassList")) Is Nothing) Then
                 MyBase.Tables.Add(New ClassListDataTable(ds.Tables("ClassList")))
+            End If
+            If (Not (ds.Tables("SchoolFeesPayments")) Is Nothing) Then
+                MyBase.Tables.Add(New SchoolFeesPaymentsDataTable(ds.Tables("SchoolFeesPayments")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -158,6 +163,16 @@ Partial Public Class dsRevoReports
     Public ReadOnly Property ClassList() As ClassListDataTable
         Get
             Return Me.tableClassList
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property SchoolFeesPayments() As SchoolFeesPaymentsDataTable
+        Get
+            Return Me.tableSchoolFeesPayments
         End Get
     End Property
     
@@ -246,6 +261,9 @@ Partial Public Class dsRevoReports
             If (Not (ds.Tables("ClassList")) Is Nothing) Then
                 MyBase.Tables.Add(New ClassListDataTable(ds.Tables("ClassList")))
             End If
+            If (Not (ds.Tables("SchoolFeesPayments")) Is Nothing) Then
+                MyBase.Tables.Add(New SchoolFeesPaymentsDataTable(ds.Tables("SchoolFeesPayments")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -314,6 +332,12 @@ Partial Public Class dsRevoReports
                 Me.tableClassList.InitVars
             End If
         End If
+        Me.tableSchoolFeesPayments = CType(MyBase.Tables("SchoolFeesPayments"),SchoolFeesPaymentsDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableSchoolFeesPayments) Is Nothing) Then
+                Me.tableSchoolFeesPayments.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -336,6 +360,8 @@ Partial Public Class dsRevoReports
         MyBase.Tables.Add(Me.tableEnrollmentAnalysis)
         Me.tableClassList = New ClassListDataTable()
         MyBase.Tables.Add(Me.tableClassList)
+        Me.tableSchoolFeesPayments = New SchoolFeesPaymentsDataTable()
+        MyBase.Tables.Add(Me.tableSchoolFeesPayments)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -371,6 +397,12 @@ Partial Public Class dsRevoReports
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeClassList() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeSchoolFeesPayments() As Boolean
         Return false
     End Function
     
@@ -449,6 +481,9 @@ Partial Public Class dsRevoReports
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub ClassListRowChangeEventHandler(ByVal sender As Object, ByVal e As ClassListRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub SchoolFeesPaymentsRowChangeEventHandler(ByVal sender As Object, ByVal e As SchoolFeesPaymentsRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -1776,8 +1811,6 @@ Partial Public Class dsRevoReports
         
         Private columnGender As Global.System.Data.DataColumn
         
-        Private columnColumn1 As Global.System.Data.DataColumn
-        
         Private columntype As Global.System.Data.DataColumn
         
         Private columnlogo As Global.System.Data.DataColumn
@@ -1797,6 +1830,8 @@ Partial Public Class dsRevoReports
         Private columnSchoolAddress As Global.System.Data.DataColumn
         
         Private columnBBF As Global.System.Data.DataColumn
+        
+        Private columnSelectedCartegory As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -2091,14 +2126,6 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Column1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnColumn1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property typeColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columntype
@@ -2178,6 +2205,14 @@ Partial Public Class dsRevoReports
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SelectedCartegoryColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSelectedCartegory
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2247,7 +2282,6 @@ Partial Public Class dsRevoReports
                     ByVal Biltype As String,  _
                     ByVal AddInfo As String,  _
                     ByVal Gender As String,  _
-                    ByVal Column1 As Decimal,  _
                     ByVal type As String,  _
                     ByVal logo() As Byte,  _
                     ByVal ConvAmount As Decimal,  _
@@ -2257,12 +2291,19 @@ Partial Public Class dsRevoReports
                     ByVal SchoolName As String,  _
                     ByVal SchoolPhone As String,  _
                     ByVal SchoolAddress As String,  _
-                    ByVal BBF As Decimal) As SchoolFeesStatementRow
+                    ByVal BBF As Decimal,  _
+                    ByVal SelectedCartegory As String) As SchoolFeesStatementRow
             Dim rowSchoolFeesStatementRow As SchoolFeesStatementRow = CType(Me.NewRow,SchoolFeesStatementRow)
-            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, Column1, type, logo, ConvAmount, ConvRate, BaseCurrency, PtoDesc, SchoolName, SchoolPhone, SchoolAddress, BBF}
+            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, type, logo, ConvAmount, ConvRate, BaseCurrency, PtoDesc, SchoolName, SchoolPhone, SchoolAddress, BBF, SelectedCartegory}
             rowSchoolFeesStatementRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSchoolFeesStatementRow)
             Return rowSchoolFeesStatementRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByReceipt(ByVal Receipt As String) As SchoolFeesStatementRow
+            Return CType(Me.Rows.Find(New Object() {Receipt}),SchoolFeesStatementRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2314,7 +2355,6 @@ Partial Public Class dsRevoReports
             Me.columnBiltype = MyBase.Columns("Biltype")
             Me.columnAddInfo = MyBase.Columns("AddInfo")
             Me.columnGender = MyBase.Columns("Gender")
-            Me.columnColumn1 = MyBase.Columns("Column1")
             Me.columntype = MyBase.Columns("type")
             Me.columnlogo = MyBase.Columns("logo")
             Me.columnConvAmount = MyBase.Columns("ConvAmount")
@@ -2325,6 +2365,7 @@ Partial Public Class dsRevoReports
             Me.columnSchoolPhone = MyBase.Columns("SchoolPhone")
             Me.columnSchoolAddress = MyBase.Columns("SchoolAddress")
             Me.columnBBF = MyBase.Columns("BBF")
+            Me.columnSelectedCartegory = MyBase.Columns("SelectedCartegory")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2397,8 +2438,6 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnAddInfo)
             Me.columnGender = New Global.System.Data.DataColumn("Gender", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGender)
-            Me.columnColumn1 = New Global.System.Data.DataColumn("Column1", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnColumn1)
             Me.columntype = New Global.System.Data.DataColumn("type", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntype)
             Me.columnlogo = New Global.System.Data.DataColumn("logo", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
@@ -2419,12 +2458,16 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnSchoolAddress)
             Me.columnBBF = New Global.System.Data.DataColumn("BBF", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBBF)
+            Me.columnSelectedCartegory = New Global.System.Data.DataColumn("SelectedCartegory", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSelectedCartegory)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnReceipt}, true))
             Me.columnStudentID.MaxLength = 50
             Me.columnStudentName.AllowDBNull = false
             Me.columnStudentName.MaxLength = 50
             Me.columnStudentSurname.AllowDBNull = false
             Me.columnStudentSurname.MaxLength = 50
             Me.columnReceipt.AllowDBNull = false
+            Me.columnReceipt.Unique = true
             Me.columnReceipt.MaxLength = 50
             Me.columnProgram.AllowDBNull = false
             Me.columnProgram.MaxLength = 50
@@ -2438,7 +2481,6 @@ Partial Public Class dsRevoReports
             Me.columnusr.MaxLength = 50
             Me.columnCartegory.MaxLength = 50
             Me.columnPayType.MaxLength = 50
-            Me.columnline_number.AllowDBNull = false
             Me.columnCashType.MaxLength = 50
             Me.columnlogduser.ReadOnly = true
             Me.columnlogduser.MaxLength = 50
@@ -2453,7 +2495,6 @@ Partial Public Class dsRevoReports
             Me.columnAddInfo.MaxLength = 100
             Me.columnGender.AllowDBNull = false
             Me.columnGender.MaxLength = 10
-            Me.columnColumn1.ReadOnly = true
             Me.columntype.MaxLength = 1
             Me.columnlogo.ReadOnly = true
             Me.columnBaseCurrency.ReadOnly = true
@@ -2467,6 +2508,8 @@ Partial Public Class dsRevoReports
             Me.columnSchoolAddress.ReadOnly = true
             Me.columnSchoolAddress.MaxLength = 2147483647
             Me.columnBBF.ReadOnly = true
+            Me.columnSelectedCartegory.ReadOnly = true
+            Me.columnSelectedCartegory.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3671,6 +3714,7 @@ Partial Public Class dsRevoReports
             Me.columnusr.MaxLength = 50
             Me.columnCartegory.MaxLength = 50
             Me.columnPaytype.MaxLength = 50
+            Me.columnCashtype.AllowDBNull = false
             Me.columnCashtype.MaxLength = 50
             Me.columnCancelledBy.MaxLength = 50
             Me.columnLastChangedBy.MaxLength = 50
@@ -4600,6 +4644,751 @@ Partial Public Class dsRevoReports
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ClassListDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class SchoolFeesPaymentsDataTable
+        Inherits Global.System.Data.TypedTableBase(Of SchoolFeesPaymentsRow)
+        
+        Private columnSumAmount As Global.System.Data.DataColumn
+        
+        Private columnContactNumber As Global.System.Data.DataColumn
+        
+        Private columnStudentName As Global.System.Data.DataColumn
+        
+        Private columnStudentSurname As Global.System.Data.DataColumn
+        
+        Private columnEmailAddress As Global.System.Data.DataColumn
+        
+        Private columnResidentialAdress As Global.System.Data.DataColumn
+        
+        Private columnAddress2 As Global.System.Data.DataColumn
+        
+        Private columnAddress3 As Global.System.Data.DataColumn
+        
+        Private columnForms As Global.System.Data.DataColumn
+        
+        Private columnStudentID As Global.System.Data.DataColumn
+        
+        Private columnSection As Global.System.Data.DataColumn
+        
+        Private columnStatus As Global.System.Data.DataColumn
+        
+        Private columnclassdesc As Global.System.Data.DataColumn
+        
+        Private columnSession As Global.System.Data.DataColumn
+        
+        Private columnYear As Global.System.Data.DataColumn
+        
+        Private columnGender As Global.System.Data.DataColumn
+        
+        Private columnLogduser As Global.System.Data.DataColumn
+        
+        Private columnFeesSource As Global.System.Data.DataColumn
+        
+        Private columnPtoDesc As Global.System.Data.DataColumn
+        
+        Private columnPFromDesc As Global.System.Data.DataColumn
+        
+        Private columnSelectedCartegory As Global.System.Data.DataColumn
+        
+        Private columnline_number As Global.System.Data.DataColumn
+        
+        Private columnConvAmount As Global.System.Data.DataColumn
+        
+        Private columnBaseCurrency As Global.System.Data.DataColumn
+        
+        Private columndate As Global.System.Data.DataColumn
+        
+        Private columnReference As Global.System.Data.DataColumn
+        
+        Private columnCartegory As Global.System.Data.DataColumn
+        
+        Private columnPostDate As Global.System.Data.DataColumn
+        
+        Private columnReceipt As Global.System.Data.DataColumn
+        
+        Private columnAmount As Global.System.Data.DataColumn
+        
+        Private columnCurrency As Global.System.Data.DataColumn
+        
+        Private columnPaymentPeriod As Global.System.Data.DataColumn
+        
+        Private columnPaymentPeriodDescription As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "SchoolFeesPayments"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SumAmountColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSumAmount
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ContactNumberColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnContactNumber
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StudentNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStudentName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StudentSurnameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStudentSurname
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property EmailAddressColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEmailAddress
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ResidentialAdressColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnResidentialAdress
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Address2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAddress2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Address3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAddress3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FormsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnForms
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StudentIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStudentID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SectionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property StatusColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStatus
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property classdescColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnclassdesc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SessionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSession
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property YearColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYear
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GenderColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGender
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property LogduserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLogduser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FeesSourceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFeesSource
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PtoDescColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPtoDesc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PFromDescColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPFromDesc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SelectedCartegoryColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSelectedCartegory
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property line_numberColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnline_number
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ConvAmountColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnConvAmount
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BaseCurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBaseCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property dateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ReferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CartegoryColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCartegory
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PostDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPostDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ReceiptColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReceipt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AmountColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAmount
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PaymentPeriodColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPaymentPeriod
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PaymentPeriodDescriptionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPaymentPeriodDescription
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As SchoolFeesPaymentsRow
+            Get
+                Return CType(Me.Rows(index),SchoolFeesPaymentsRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event SchoolFeesPaymentsRowChanging As SchoolFeesPaymentsRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event SchoolFeesPaymentsRowChanged As SchoolFeesPaymentsRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event SchoolFeesPaymentsRowDeleting As SchoolFeesPaymentsRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event SchoolFeesPaymentsRowDeleted As SchoolFeesPaymentsRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub AddSchoolFeesPaymentsRow(ByVal row As SchoolFeesPaymentsRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function AddSchoolFeesPaymentsRow( _
+                    ByVal SumAmount As Decimal,  _
+                    ByVal ContactNumber As String,  _
+                    ByVal StudentName As String,  _
+                    ByVal StudentSurname As String,  _
+                    ByVal EmailAddress As String,  _
+                    ByVal ResidentialAdress As String,  _
+                    ByVal Address2 As String,  _
+                    ByVal Address3 As String,  _
+                    ByVal Forms As String,  _
+                    ByVal StudentID As String,  _
+                    ByVal Section As String,  _
+                    ByVal Status As String,  _
+                    ByVal classdesc As String,  _
+                    ByVal Session As String,  _
+                    ByVal Year As Integer,  _
+                    ByVal Gender As String,  _
+                    ByVal Logduser As String,  _
+                    ByVal FeesSource As String,  _
+                    ByVal PtoDesc As String,  _
+                    ByVal PFromDesc As String,  _
+                    ByVal SelectedCartegory As String,  _
+                    ByVal line_number As Integer,  _
+                    ByVal ConvAmount As Decimal,  _
+                    ByVal BaseCurrency As String,  _
+                    ByVal _date As Date,  _
+                    ByVal Reference As String,  _
+                    ByVal Cartegory As String,  _
+                    ByVal PostDate As Date,  _
+                    ByVal Receipt As String,  _
+                    ByVal Amount As Decimal,  _
+                    ByVal Currency As String,  _
+                    ByVal PaymentPeriod As Integer,  _
+                    ByVal PaymentPeriodDescription As String) As SchoolFeesPaymentsRow
+            Dim rowSchoolFeesPaymentsRow As SchoolFeesPaymentsRow = CType(Me.NewRow,SchoolFeesPaymentsRow)
+            Dim columnValuesArray() As Object = New Object() {SumAmount, ContactNumber, StudentName, StudentSurname, EmailAddress, ResidentialAdress, Address2, Address3, Forms, StudentID, Section, Status, classdesc, Session, Year, Gender, Logduser, FeesSource, PtoDesc, PFromDesc, SelectedCartegory, line_number, ConvAmount, BaseCurrency, _date, Reference, Cartegory, PostDate, Receipt, Amount, Currency, PaymentPeriod, PaymentPeriodDescription}
+            rowSchoolFeesPaymentsRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowSchoolFeesPaymentsRow)
+            Return rowSchoolFeesPaymentsRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As SchoolFeesPaymentsDataTable = CType(MyBase.Clone,SchoolFeesPaymentsDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New SchoolFeesPaymentsDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnSumAmount = MyBase.Columns("SumAmount")
+            Me.columnContactNumber = MyBase.Columns("ContactNumber")
+            Me.columnStudentName = MyBase.Columns("StudentName")
+            Me.columnStudentSurname = MyBase.Columns("StudentSurname")
+            Me.columnEmailAddress = MyBase.Columns("EmailAddress")
+            Me.columnResidentialAdress = MyBase.Columns("ResidentialAdress")
+            Me.columnAddress2 = MyBase.Columns("Address2")
+            Me.columnAddress3 = MyBase.Columns("Address3")
+            Me.columnForms = MyBase.Columns("Forms")
+            Me.columnStudentID = MyBase.Columns("StudentID")
+            Me.columnSection = MyBase.Columns("Section")
+            Me.columnStatus = MyBase.Columns("Status")
+            Me.columnclassdesc = MyBase.Columns("classdesc")
+            Me.columnSession = MyBase.Columns("Session")
+            Me.columnYear = MyBase.Columns("Year")
+            Me.columnGender = MyBase.Columns("Gender")
+            Me.columnLogduser = MyBase.Columns("Logduser")
+            Me.columnFeesSource = MyBase.Columns("FeesSource")
+            Me.columnPtoDesc = MyBase.Columns("PtoDesc")
+            Me.columnPFromDesc = MyBase.Columns("PFromDesc")
+            Me.columnSelectedCartegory = MyBase.Columns("SelectedCartegory")
+            Me.columnline_number = MyBase.Columns("line_number")
+            Me.columnConvAmount = MyBase.Columns("ConvAmount")
+            Me.columnBaseCurrency = MyBase.Columns("BaseCurrency")
+            Me.columndate = MyBase.Columns("date")
+            Me.columnReference = MyBase.Columns("Reference")
+            Me.columnCartegory = MyBase.Columns("Cartegory")
+            Me.columnPostDate = MyBase.Columns("PostDate")
+            Me.columnReceipt = MyBase.Columns("Receipt")
+            Me.columnAmount = MyBase.Columns("Amount")
+            Me.columnCurrency = MyBase.Columns("Currency")
+            Me.columnPaymentPeriod = MyBase.Columns("PaymentPeriod")
+            Me.columnPaymentPeriodDescription = MyBase.Columns("PaymentPeriodDescription")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnSumAmount = New Global.System.Data.DataColumn("SumAmount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSumAmount)
+            Me.columnContactNumber = New Global.System.Data.DataColumn("ContactNumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnContactNumber)
+            Me.columnStudentName = New Global.System.Data.DataColumn("StudentName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStudentName)
+            Me.columnStudentSurname = New Global.System.Data.DataColumn("StudentSurname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStudentSurname)
+            Me.columnEmailAddress = New Global.System.Data.DataColumn("EmailAddress", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEmailAddress)
+            Me.columnResidentialAdress = New Global.System.Data.DataColumn("ResidentialAdress", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnResidentialAdress)
+            Me.columnAddress2 = New Global.System.Data.DataColumn("Address2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAddress2)
+            Me.columnAddress3 = New Global.System.Data.DataColumn("Address3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAddress3)
+            Me.columnForms = New Global.System.Data.DataColumn("Forms", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnForms)
+            Me.columnStudentID = New Global.System.Data.DataColumn("StudentID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStudentID)
+            Me.columnSection = New Global.System.Data.DataColumn("Section", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSection)
+            Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStatus)
+            Me.columnclassdesc = New Global.System.Data.DataColumn("classdesc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnclassdesc)
+            Me.columnSession = New Global.System.Data.DataColumn("Session", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSession)
+            Me.columnYear = New Global.System.Data.DataColumn("Year", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYear)
+            Me.columnGender = New Global.System.Data.DataColumn("Gender", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGender)
+            Me.columnLogduser = New Global.System.Data.DataColumn("Logduser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLogduser)
+            Me.columnFeesSource = New Global.System.Data.DataColumn("FeesSource", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFeesSource)
+            Me.columnPtoDesc = New Global.System.Data.DataColumn("PtoDesc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPtoDesc)
+            Me.columnPFromDesc = New Global.System.Data.DataColumn("PFromDesc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPFromDesc)
+            Me.columnSelectedCartegory = New Global.System.Data.DataColumn("SelectedCartegory", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSelectedCartegory)
+            Me.columnline_number = New Global.System.Data.DataColumn("line_number", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnline_number)
+            Me.columnConvAmount = New Global.System.Data.DataColumn("ConvAmount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnConvAmount)
+            Me.columnBaseCurrency = New Global.System.Data.DataColumn("BaseCurrency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBaseCurrency)
+            Me.columndate = New Global.System.Data.DataColumn("date", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            Me.columndate.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "dateColumn")
+            Me.columndate.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columndate")
+            Me.columndate.ExtendedProperties.Add("Generator_UserColumnName", "date")
+            MyBase.Columns.Add(Me.columndate)
+            Me.columnReference = New Global.System.Data.DataColumn("Reference", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReference)
+            Me.columnCartegory = New Global.System.Data.DataColumn("Cartegory", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCartegory)
+            Me.columnPostDate = New Global.System.Data.DataColumn("PostDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPostDate)
+            Me.columnReceipt = New Global.System.Data.DataColumn("Receipt", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReceipt)
+            Me.columnAmount = New Global.System.Data.DataColumn("Amount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAmount)
+            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrency)
+            Me.columnPaymentPeriod = New Global.System.Data.DataColumn("PaymentPeriod", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPaymentPeriod)
+            Me.columnPaymentPeriodDescription = New Global.System.Data.DataColumn("PaymentPeriodDescription", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPaymentPeriodDescription)
+            Me.columnSumAmount.ReadOnly = true
+            Me.columnContactNumber.MaxLength = 50
+            Me.columnStudentName.AllowDBNull = false
+            Me.columnStudentName.MaxLength = 50
+            Me.columnStudentSurname.AllowDBNull = false
+            Me.columnStudentSurname.MaxLength = 50
+            Me.columnEmailAddress.MaxLength = 50
+            Me.columnResidentialAdress.MaxLength = 2147483647
+            Me.columnAddress2.MaxLength = 50
+            Me.columnAddress3.MaxLength = 50
+            Me.columnForms.AllowDBNull = false
+            Me.columnForms.MaxLength = 50
+            Me.columnStudentID.MaxLength = 50
+            Me.columnSection.MaxLength = 50
+            Me.columnStatus.MaxLength = 50
+            Me.columnclassdesc.AllowDBNull = false
+            Me.columnclassdesc.MaxLength = 150
+            Me.columnSession.AllowDBNull = false
+            Me.columnSession.MaxLength = 50
+            Me.columnYear.AllowDBNull = false
+            Me.columnGender.AllowDBNull = false
+            Me.columnGender.MaxLength = 10
+            Me.columnLogduser.ReadOnly = true
+            Me.columnLogduser.MaxLength = 50
+            Me.columnFeesSource.MaxLength = 50
+            Me.columnPtoDesc.ReadOnly = true
+            Me.columnPtoDesc.MaxLength = 50
+            Me.columnPFromDesc.ReadOnly = true
+            Me.columnPFromDesc.MaxLength = 50
+            Me.columnSelectedCartegory.ReadOnly = true
+            Me.columnSelectedCartegory.MaxLength = 50
+            Me.columnline_number.AllowDBNull = false
+            Me.columnBaseCurrency.ReadOnly = true
+            Me.columnBaseCurrency.MaxLength = 2147483647
+            Me.columnReference.MaxLength = 2147483647
+            Me.columnCartegory.MaxLength = 50
+            Me.columnReceipt.AllowDBNull = false
+            Me.columnReceipt.MaxLength = 50
+            Me.columnCurrency.MaxLength = 10
+            Me.columnPaymentPeriodDescription.ReadOnly = true
+            Me.columnPaymentPeriodDescription.MaxLength = 50
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function NewSchoolFeesPaymentsRow() As SchoolFeesPaymentsRow
+            Return CType(Me.NewRow,SchoolFeesPaymentsRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New SchoolFeesPaymentsRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(SchoolFeesPaymentsRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.SchoolFeesPaymentsRowChangedEvent) Is Nothing) Then
+                RaiseEvent SchoolFeesPaymentsRowChanged(Me, New SchoolFeesPaymentsRowChangeEvent(CType(e.Row,SchoolFeesPaymentsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.SchoolFeesPaymentsRowChangingEvent) Is Nothing) Then
+                RaiseEvent SchoolFeesPaymentsRowChanging(Me, New SchoolFeesPaymentsRowChangeEvent(CType(e.Row,SchoolFeesPaymentsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.SchoolFeesPaymentsRowDeletedEvent) Is Nothing) Then
+                RaiseEvent SchoolFeesPaymentsRowDeleted(Me, New SchoolFeesPaymentsRowChangeEvent(CType(e.Row,SchoolFeesPaymentsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.SchoolFeesPaymentsRowDeletingEvent) Is Nothing) Then
+                RaiseEvent SchoolFeesPaymentsRowDeleting(Me, New SchoolFeesPaymentsRowChangeEvent(CType(e.Row,SchoolFeesPaymentsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub RemoveSchoolFeesPaymentsRow(ByVal row As SchoolFeesPaymentsRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As dsRevoReports = New dsRevoReports()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "SchoolFeesPaymentsDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -6530,7 +7319,11 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property line_number() As Integer
             Get
-                Return CType(Me(Me.tableSchoolFeesStatement.line_numberColumn),Integer)
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.line_numberColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'line_number' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableSchoolFeesStatement.line_numberColumn) = value
@@ -6731,21 +7524,6 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Column1() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableSchoolFeesStatement.Column1Column),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Column1' in table 'SchoolFeesStatement' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableSchoolFeesStatement.Column1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property type() As String
             Get
                 Try 
@@ -6891,6 +7669,22 @@ Partial Public Class dsRevoReports
             End Get
             Set
                 Me(Me.tableSchoolFeesStatement.BBFColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property SelectedCartegory() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.SelectedCartegoryColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SelectedCartegory' in table 'SchoolFeesStatement' is DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.SelectedCartegoryColumn) = value
             End Set
         End Property
         
@@ -7052,6 +7846,18 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isline_numberNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.line_numberColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setline_numberNull()
+            Me(Me.tableSchoolFeesStatement.line_numberColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCashTypeNull() As Boolean
             Return Me.IsNull(Me.tableSchoolFeesStatement.CashTypeColumn)
         End Function
@@ -7196,18 +8002,6 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsColumn1Null() As Boolean
-            Return Me.IsNull(Me.tableSchoolFeesStatement.Column1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetColumn1Null()
-            Me(Me.tableSchoolFeesStatement.Column1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IstypeNull() As Boolean
             Return Me.IsNull(Me.tableSchoolFeesStatement.typeColumn)
         End Function
@@ -7324,6 +8118,18 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetBBFNull()
             Me(Me.tableSchoolFeesStatement.BBFColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSelectedCartegoryNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.SelectedCartegoryColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSelectedCartegoryNull()
+            Me(Me.tableSchoolFeesStatement.SelectedCartegoryColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8037,11 +8843,7 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Cashtype() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableFeesLedgerTransactions.CashtypeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Cashtype' in table 'FeesLedgerTransactions' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableFeesLedgerTransactions.CashtypeColumn),String)
             End Get
             Set
                 Me(Me.tableFeesLedgerTransactions.CashtypeColumn) = value
@@ -8424,18 +9226,6 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPaytypeNull()
             Me(Me.tableFeesLedgerTransactions.PaytypeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsCashtypeNull() As Boolean
-            Return Me.IsNull(Me.tableFeesLedgerTransactions.CashtypeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetCashtypeNull()
-            Me(Me.tableFeesLedgerTransactions.CashtypeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9223,6 +10013,772 @@ Partial Public Class dsRevoReports
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class SchoolFeesPaymentsRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableSchoolFeesPayments As SchoolFeesPaymentsDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableSchoolFeesPayments = CType(Me.Table,SchoolFeesPaymentsDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property SumAmount() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.SumAmountColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SumAmount' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.SumAmountColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ContactNumber() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.ContactNumberColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ContactNumber' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.ContactNumberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property StudentName() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.StudentNameColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.StudentNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property StudentSurname() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.StudentSurnameColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.StudentSurnameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property EmailAddress() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.EmailAddressColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EmailAddress' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.EmailAddressColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ResidentialAdress() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.ResidentialAdressColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ResidentialAdress' in table 'SchoolFeesPayments' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.ResidentialAdressColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Address2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.Address2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Address2' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.Address2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Address3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.Address3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Address3' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.Address3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Forms() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.FormsColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.FormsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property StudentID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.StudentIDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StudentID' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.StudentIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Section() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.SectionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Section' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.SectionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Status() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.StatusColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Status' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.StatusColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property classdesc() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.classdescColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.classdescColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Session() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.SessionColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.SessionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Year() As Integer
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.YearColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.YearColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Gender() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.GenderColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.GenderColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Logduser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.LogduserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Logduser' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.LogduserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FeesSource() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.FeesSourceColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FeesSource' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.FeesSourceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PtoDesc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.PtoDescColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PtoDesc' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.PtoDescColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PFromDesc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.PFromDescColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PFromDesc' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.PFromDescColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property SelectedCartegory() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.SelectedCartegoryColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SelectedCartegory' in table 'SchoolFeesPayments' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.SelectedCartegoryColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property line_number() As Integer
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.line_numberColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.line_numberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ConvAmount() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.ConvAmountColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ConvAmount' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.ConvAmountColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BaseCurrency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.BaseCurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BaseCurrency' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.BaseCurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _date() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.dateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'date' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.dateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Reference() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.ReferenceColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Reference' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.ReferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Cartegory() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.CartegoryColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Cartegory' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.CartegoryColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PostDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.PostDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PostDate' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.PostDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Receipt() As String
+            Get
+                Return CType(Me(Me.tableSchoolFeesPayments.ReceiptColumn),String)
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.ReceiptColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Amount() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.AmountColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Amount' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.AmountColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Currency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.CurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.CurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PaymentPeriod() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.PaymentPeriodColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PaymentPeriod' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.PaymentPeriodColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PaymentPeriodDescription() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.PaymentPeriodDescriptionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PaymentPeriodDescription' in table 'SchoolFeesPayments' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.PaymentPeriodDescriptionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSumAmountNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.SumAmountColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSumAmountNull()
+            Me(Me.tableSchoolFeesPayments.SumAmountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsContactNumberNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.ContactNumberColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetContactNumberNull()
+            Me(Me.tableSchoolFeesPayments.ContactNumberColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsEmailAddressNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.EmailAddressColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetEmailAddressNull()
+            Me(Me.tableSchoolFeesPayments.EmailAddressColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsResidentialAdressNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.ResidentialAdressColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetResidentialAdressNull()
+            Me(Me.tableSchoolFeesPayments.ResidentialAdressColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAddress2Null() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.Address2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAddress2Null()
+            Me(Me.tableSchoolFeesPayments.Address2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAddress3Null() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.Address3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAddress3Null()
+            Me(Me.tableSchoolFeesPayments.Address3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsStudentIDNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.StudentIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetStudentIDNull()
+            Me(Me.tableSchoolFeesPayments.StudentIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSectionNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.SectionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSectionNull()
+            Me(Me.tableSchoolFeesPayments.SectionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsStatusNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.StatusColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetStatusNull()
+            Me(Me.tableSchoolFeesPayments.StatusColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsLogduserNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.LogduserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetLogduserNull()
+            Me(Me.tableSchoolFeesPayments.LogduserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFeesSourceNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.FeesSourceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFeesSourceNull()
+            Me(Me.tableSchoolFeesPayments.FeesSourceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPtoDescNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.PtoDescColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPtoDescNull()
+            Me(Me.tableSchoolFeesPayments.PtoDescColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPFromDescNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.PFromDescColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPFromDescNull()
+            Me(Me.tableSchoolFeesPayments.PFromDescColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSelectedCartegoryNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.SelectedCartegoryColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSelectedCartegoryNull()
+            Me(Me.tableSchoolFeesPayments.SelectedCartegoryColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsConvAmountNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.ConvAmountColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetConvAmountNull()
+            Me(Me.tableSchoolFeesPayments.ConvAmountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBaseCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.BaseCurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBaseCurrencyNull()
+            Me(Me.tableSchoolFeesPayments.BaseCurrencyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_dateNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.dateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_dateNull()
+            Me(Me.tableSchoolFeesPayments.dateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsReferenceNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.ReferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetReferenceNull()
+            Me(Me.tableSchoolFeesPayments.ReferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCartegoryNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.CartegoryColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCartegoryNull()
+            Me(Me.tableSchoolFeesPayments.CartegoryColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPostDateNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.PostDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPostDateNull()
+            Me(Me.tableSchoolFeesPayments.PostDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAmountNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.AmountColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAmountNull()
+            Me(Me.tableSchoolFeesPayments.AmountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.CurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrencyNull()
+            Me(Me.tableSchoolFeesPayments.CurrencyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPaymentPeriodNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.PaymentPeriodColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPaymentPeriodNull()
+            Me(Me.tableSchoolFeesPayments.PaymentPeriodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPaymentPeriodDescriptionNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.PaymentPeriodDescriptionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPaymentPeriodDescriptionNull()
+            Me(Me.tableSchoolFeesPayments.PaymentPeriodDescriptionColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -9424,6 +10980,42 @@ Partial Public Class dsRevoReports
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As ClassListRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class SchoolFeesPaymentsRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As SchoolFeesPaymentsRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As SchoolFeesPaymentsRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As SchoolFeesPaymentsRow
             Get
                 Return Me.eventRow
             End Get
@@ -9946,7 +11538,6 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("Biltype", "Biltype")
             tableMapping.ColumnMappings.Add("AddInfo", "AddInfo")
             tableMapping.ColumnMappings.Add("Gender", "Gender")
-            tableMapping.ColumnMappings.Add("Column1", "Column1")
             tableMapping.ColumnMappings.Add("type", "type")
             tableMapping.ColumnMappings.Add("logo", "logo")
             tableMapping.ColumnMappings.Add("ConvAmount", "ConvAmount")
@@ -9957,6 +11548,7 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("SchoolPhone", "SchoolPhone")
             tableMapping.ColumnMappings.Add("SchoolAddress", "SchoolAddress")
             tableMapping.ColumnMappings.Add("BBF", "BBF")
+            tableMapping.ColumnMappings.Add("SelectedCartegory", "SelectedCartegory")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -9982,6 +11574,9 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@info", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@period", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@period1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CurrentPeriod", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "dbo.spClassFeesTranscations"
@@ -9997,13 +11592,14 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Classdesc", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sect", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@debtors", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currentperiod", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -10034,6 +11630,21 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(6).Value = CType(period1.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (CurrentPeriod.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(CurrentPeriod.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(8).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -10046,7 +11657,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer)) As dsRevoReports.SchoolFeesStatementDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesStatementDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -10078,6 +11689,21 @@ Namespace dsRevoReportsTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
+            If (CurrentPeriod.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(CurrentPeriod.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (showinvoices.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(8).Value = CType(showinvoices.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (showreceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
             Dim dataTable As dsRevoReports.SchoolFeesStatementDataTable = New dsRevoReports.SchoolFeesStatementDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -10087,7 +11713,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByClass(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function FillByClass(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currentperiod As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -10138,6 +11764,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(10).Value = CType(debtors.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (currentperiod.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(11).Value = CType(currentperiod.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -10150,7 +11781,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesStatementDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currentperiod As Global.System.Nullable(Of Integer)) As dsRevoReports.SchoolFeesStatementDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -10201,6 +11832,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(10).Value = CType(debtors.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (currentperiod.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(11).Value = CType(currentperiod.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsRevoReports.SchoolFeesStatementDataTable = New dsRevoReports.SchoolFeesStatementDataTable()
             Me.Adapter.Fill(dataTable)
@@ -10381,13 +12017,14 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@session", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Classdesc", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sect", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@debtors", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillbyDebtors(ByVal dataTable As dsRevoReports.SchoolFeesDebtorsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String) As Integer
+        Public Overloads Overridable Function FillbyDebtors(ByVal dataTable As dsRevoReports.SchoolFeesDebtorsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -10433,6 +12070,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(9).Value = CType(sect,String)
+            End If
+            If (debtors.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(debtors.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -10445,7 +12087,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String) As dsRevoReports.SchoolFeesDebtorsDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesDebtorsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -10491,6 +12133,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(9).Value = CType(sect,String)
+            End If
+            If (debtors.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(debtors.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsRevoReports.SchoolFeesDebtorsDataTable = New dsRevoReports.SchoolFeesDebtorsDataTable()
             Me.Adapter.Fill(dataTable)
@@ -11318,6 +12965,333 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As dsRevoReports.ClassListDataTable = New dsRevoReports.ClassListDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class SchoolFeesPaymentsTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "SchoolFeesPayments"
+            tableMapping.ColumnMappings.Add("SumAmount", "SumAmount")
+            tableMapping.ColumnMappings.Add("ContactNumber", "ContactNumber")
+            tableMapping.ColumnMappings.Add("StudentName", "StudentName")
+            tableMapping.ColumnMappings.Add("StudentSurname", "StudentSurname")
+            tableMapping.ColumnMappings.Add("EmailAddress", "EmailAddress")
+            tableMapping.ColumnMappings.Add("ResidentialAdress", "ResidentialAdress")
+            tableMapping.ColumnMappings.Add("Address2", "Address2")
+            tableMapping.ColumnMappings.Add("Address3", "Address3")
+            tableMapping.ColumnMappings.Add("Forms", "Forms")
+            tableMapping.ColumnMappings.Add("StudentID", "StudentID")
+            tableMapping.ColumnMappings.Add("Section", "Section")
+            tableMapping.ColumnMappings.Add("Status", "Status")
+            tableMapping.ColumnMappings.Add("classdesc", "classdesc")
+            tableMapping.ColumnMappings.Add("Session", "Session")
+            tableMapping.ColumnMappings.Add("Year", "Year")
+            tableMapping.ColumnMappings.Add("Gender", "Gender")
+            tableMapping.ColumnMappings.Add("Logduser", "Logduser")
+            tableMapping.ColumnMappings.Add("FeesSource", "FeesSource")
+            tableMapping.ColumnMappings.Add("PtoDesc", "PtoDesc")
+            tableMapping.ColumnMappings.Add("PFromDesc", "PFromDesc")
+            tableMapping.ColumnMappings.Add("SelectedCartegory", "SelectedCartegory")
+            tableMapping.ColumnMappings.Add("line_number", "line_number")
+            tableMapping.ColumnMappings.Add("ConvAmount", "ConvAmount")
+            tableMapping.ColumnMappings.Add("BaseCurrency", "BaseCurrency")
+            tableMapping.ColumnMappings.Add("date", "date")
+            tableMapping.ColumnMappings.Add("Reference", "Reference")
+            tableMapping.ColumnMappings.Add("Cartegory", "Cartegory")
+            tableMapping.ColumnMappings.Add("PostDate", "PostDate")
+            tableMapping.ColumnMappings.Add("Receipt", "Receipt")
+            tableMapping.ColumnMappings.Add("Amount", "Amount")
+            tableMapping.ColumnMappings.Add("Currency", "Currency")
+            tableMapping.ColumnMappings.Add("PaymentPeriod", "PaymentPeriod")
+            tableMapping.ColumnMappings.Add("PaymentPeriodDescription", "PaymentPeriodDescription")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Reports.My.MySettings.Default.soccerConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "dbo.spSchoolFeesPayments"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cart", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@user", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@info", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@period", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@period1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lvl", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@session", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Classdesc", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sect", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showBillings", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showReceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsRevoReports.SchoolFeesPaymentsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal showBillings As Global.System.Nullable(Of Boolean), ByVal showReceipts As Global.System.Nullable(Of Boolean)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (cart Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(cart,String)
+            End If
+            If (user Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(user,String)
+            End If
+            If (info Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(info,String)
+            End If
+            If (period.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(period.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (period1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(period1.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (lvl.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(6).Value = CType(lvl.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (session Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(session,String)
+            End If
+            If (Classdesc Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(8).Value = CType(Classdesc,String)
+            End If
+            If (sect Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(9).Value = CType(sect,String)
+            End If
+            If (showBillings.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(showBillings.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (showReceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(11).Value = CType(showReceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal showBillings As Global.System.Nullable(Of Boolean), ByVal showReceipts As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesPaymentsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (cart Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(cart,String)
+            End If
+            If (user Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(user,String)
+            End If
+            If (info Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(info,String)
+            End If
+            If (period.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(period.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (period1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(period1.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (lvl.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(6).Value = CType(lvl.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (session Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(7).Value = CType(session,String)
+            End If
+            If (Classdesc Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(8).Value = CType(Classdesc,String)
+            End If
+            If (sect Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(9).Value = CType(sect,String)
+            End If
+            If (showBillings.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(showBillings.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (showReceipts.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(11).Value = CType(showReceipts.Value,Boolean)
+            Else
+                Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As dsRevoReports.SchoolFeesPaymentsDataTable = New dsRevoReports.SchoolFeesPaymentsDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

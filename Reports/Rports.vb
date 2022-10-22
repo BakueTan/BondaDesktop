@@ -71,6 +71,20 @@ Public Class Rports
     End Sub
 
     Private Sub loadPaymentPeriods()
+
+        With cboBBFCutOff
+            .DataSource = FeesPaymentPeriods()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+
+        For Each itm As ComboItem In cboBBFCutOff.Items
+            If itm.Value = CurrentPaymentPeriod Then
+                cboBBFCutOff.SelectedItem = itm
+                Exit For
+            End If
+
+        Next
         With cboAccPerFrm
             .DataSource = FeesPaymentPeriods()
             .DisplayMember = "Text"
@@ -684,7 +698,7 @@ Public Class Rports
 
 
                     gstrAccClass = cboAccClass.Text
-                    gstrAccStatus = cboAccStatus.Text
+                    gstrAccStatus = cboBBFCutOff.Text
                     gstrAccLvl = cboAccLvl.Text
                     gstrAccPrdFrom = cboAccPerFrm.SelectedValue
                     gstrAccPrdTo = cboAccPerTo.SelectedValue
@@ -695,7 +709,7 @@ Public Class Rports
                     gstrAccSection = cboAccSection.Text
                     gstrAccStud = txtAccStud.Text
                     'gblnAccPerStud = rbAccPerStud.Checked
-                    gblnSectDebts = rbAccDebtPerSect.Checked
+                    '   gblnSectDebts = rbAccDebtPerSect.Checked
                     gblnAccPerStud = rbStudStatement.Checked
                     gstrPayType = cboAccPayType.Text
                     gblnClassStat = rbClassStatement.Checked
@@ -703,6 +717,9 @@ Public Class Rports
 
                     gstrAccSess = cboAccSession.Text
                     gblnDebtorsOnly = chkDebtorsOnly.Checked
+                    gstrAccBBFCutOffPeriod = cboBBFCutOff.SelectedValue
+                    gblnShowInvoices = chkAccShowInv.Checked
+                    gblnShowReceipts = chkAccShoRec.Checked
 
 
                 Case "Subject Students"
@@ -2052,9 +2069,9 @@ Public Class Rports
 
 
 
-    Private Sub RadioButton4_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbClassStatement.CheckedChanged, rbStudStatement.CheckedChanged, rbAccPerForm.CheckedChanged, rbAccDebtors.CheckedChanged, rbAccDebtPerSect.CheckedChanged
+    Private Sub RadioButton4_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbClassStatement.CheckedChanged, rbStudStatement.CheckedChanged, rbAccPerForm.CheckedChanged, rbAccDebtors.CheckedChanged
         Dim ctrl As RadioButton = sender
-
+        pnlTranstype.Enabled = True
         If ctrl.Checked Then
 
             Select Case ctrl.Name
@@ -2062,58 +2079,59 @@ Public Class Rports
                     cboAccLvl.Enabled = True
                     cboAccSection.Enabled = True
                     txtAccStud.Enabled = False
-                    cboAccPerFrm.Enabled = False
+                    cboAccPerFrm.Enabled = True
                     cboAccPerTo.Enabled = True
                     cboAccClass.Enabled = True
                     cboAccSession.Enabled = True
-                    cboAccStatus.Enabled = False
                     rtxtAccAddinfo.Enabled = True
                     chkDebtorsOnly.Enabled = True
+                    cboBBFCutOff.Enabled = True
+                    pnlTranstype.Enabled = False
+                    chkAccShoRec.Checked = True
+                    chkAccShowInv.Checked = True
                 Case rbStudStatement.Name
+                    chkAccShoRec.Checked = True
+                    chkAccShowInv.Checked = True
                     cboAccLvl.Enabled = False
                     cboAccSection.Enabled = False
                     txtAccStud.Enabled = True
-                    cboAccPerFrm.Enabled = False
+                    cboAccPerFrm.Enabled = True
                     cboAccPerTo.Enabled = True
                     cboAccClass.Enabled = False
                     cboAccSession.Enabled = False
-                    cboAccStatus.Enabled = False
                     rtxtAccAddinfo.Enabled = True
                     chkDebtorsOnly.Enabled = False
+                    cboBBFCutOff.Enabled = True
                 Case rbAccDebtors.Name
+                    chkAccShoRec.Checked = True
+                    chkAccShowInv.Checked = True
                     cboAccLvl.Enabled = True
                     cboAccSection.Enabled = True
                     txtAccStud.Enabled = False
-                    cboAccPerFrm.Enabled = False
+                    cboAccPerFrm.Enabled = True
                     cboAccPerTo.Enabled = True
                     cboAccClass.Enabled = True
                     cboAccSession.Enabled = True
-                    cboAccStatus.Enabled = False
                     rtxtAccAddinfo.Enabled = False
                     chkDebtorsOnly.Enabled = False
+                    cboBBFCutOff.Enabled = False
+                    pnlTranstype.Enabled = False
                 Case rbAccPerForm.Name
+                    chkAccShoRec.Checked = True
+                    chkAccShowInv.Checked = False
                     cboAccLvl.Enabled = True
                     cboAccSection.Enabled = True
                     txtAccStud.Enabled = False
-                    cboAccPerFrm.Enabled = False
+                    cboAccPerFrm.Enabled = True
                     cboAccPerTo.Enabled = True
                     cboAccClass.Enabled = True
                     cboAccSession.Enabled = True
-                    cboAccStatus.Enabled = False
-                    rtxtAccAddinfo.Enabled = False
-                    chkDebtorsOnly.Enabled = False
 
-                Case rbAccDebtPerSect.Name
-                    cboAccLvl.Enabled = False
-                    cboAccSection.Enabled = True
-                    txtAccStud.Enabled = False
-                    cboAccPerFrm.Enabled = False
-                    cboAccPerTo.Enabled = True
-                    cboAccClass.Enabled = True
-                    cboAccSession.Enabled = False
-                    cboAccStatus.Enabled = False
                     rtxtAccAddinfo.Enabled = False
                     chkDebtorsOnly.Enabled = False
+                    cboBBFCutOff.Enabled = False
+
+
 
             End Select
 
@@ -2707,5 +2725,9 @@ Public Class Rports
 
     Private Sub chkClssAge_CheckedChanged(sender As Object, e As EventArgs) Handles chkClssAge.CheckedChanged
         gbClassAgeRange.Enabled = chkClssAge.Checked
+    End Sub
+
+    Private Sub rbAccDebtPerSect_CheckedChanged(sender As Object, e As EventArgs)
+
     End Sub
 End Class

@@ -454,6 +454,7 @@ Public Class frmStudentProfile
 
     Private Sub LoadBehaviorReport()
         Try
+            StudBehaviorReportTableAdapter.Fill(DsSchool.StudBehaviorReport, StudentID, "", Period, "PerTerm", "")
             '   StudBehaviorReportTableAdapter.Fill(DsSchool.StudBehaviorReport, StudentID, "", Period, "PerTerm", "")
             ReportViewer3.RefreshReport()
         Catch ex As Exception

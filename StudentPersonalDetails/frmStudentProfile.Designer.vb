@@ -63,6 +63,7 @@ Partial Class frmStudentProfile
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.StudentAcademicReportTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.StudentAcademicReportTableAdapter()
+        Me.StudBehaviorReportTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.StudBehaviorReportTableAdapter()
         CType(Me.StudentAcademicReportBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.StudBehaviorReportBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -331,7 +332,7 @@ Partial Class frmStudentProfile
         ReportDataSource3.Name = "DataSet1"
         ReportDataSource3.Value = Me.StudBehaviorReportBindingSource
         Me.ReportViewer3.LocalReport.DataSources.Add(ReportDataSource3)
-        Me.ReportViewer3.LocalReport.ReportEmbeddedResource = "StudentDetails.rptStudBehaviorPerTerm.rdlc"
+        Me.ReportViewer3.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptStudBehaviorPerTerm.rdlc"
         Me.ReportViewer3.Location = New System.Drawing.Point(248, 7)
         Me.ReportViewer3.Name = "ReportViewer3"
         Me.ReportViewer3.ServerReport.BearerToken = Nothing
@@ -490,6 +491,10 @@ Partial Class frmStudentProfile
         '
         Me.StudentAcademicReportTableAdapter.ClearBeforeFill = True
         '
+        'StudBehaviorReportTableAdapter
+        '
+        Me.StudBehaviorReportTableAdapter.ClearBeforeFill = True
+        '
         'frmStudentProfile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -504,7 +509,7 @@ Partial Class frmStudentProfile
         Me.TopMost = True
         CType(Me.StudentAcademicReportBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).EndInit()
- '       CType(Me.StudBehaviorReportBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StudBehaviorReportBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -574,4 +579,5 @@ Partial Class frmStudentProfile
     Friend WithEvents ComboBox1 As Windows.Forms.ComboBox
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents lbStudPeriods As Windows.Forms.ListBox
+    Friend WithEvents StudBehaviorReportTableAdapter As dsSchoolTableAdapters.StudBehaviorReportTableAdapter
 End Class

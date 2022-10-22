@@ -646,6 +646,8 @@ Public Class frmSchoolParameters
                 .Parameters.AddWithValue("@sem", SemComboBox.Text)
                 .Parameters.AddWithValue("@intake", IntakeComboBox1.Text)
                 .Parameters.AddWithValue("@ref", IIf(RefTextBox.Text = "", Guid.NewGuid, RefTextBox.Text))
+                .Parameters.AddWithValue("@current", chkCurrentClass.Checked)
+                .Parameters.AddWithValue("@UpdateDisplayedClass", chkRunDisplayedClass.Checked)
                 .ExecuteNonQuery()
                 MsgBox("Class updated")
                 ClassesTableAdapter.Fill(DsSchoolParameters.Classes)
@@ -1987,6 +1989,11 @@ Public Class frmSchoolParameters
         If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbSchoolStamp2.ImageLocation = OpenFileDialog1.FileName
         End If
+    End Sub
+
+    Private Sub chkCurrentClass_CheckedChanged(sender As Object, e As EventArgs) Handles chkCurrentClass.CheckedChanged
+        chkRunDisplayedClass.Checked = chkCurrentClass.Checked
+        chkRunDisplayedClass.Visible = chkCurrentClass.Checked
     End Sub
 
     Private Sub ToolStripButton91_Click(sender As Object, e As EventArgs) Handles ToolStripButton91.Click

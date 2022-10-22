@@ -26,8 +26,10 @@ Partial Class frmReportPreview
         Dim ReportDataSource5 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource6 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource7 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource8 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.PnlMain = New System.Windows.Forms.Panel()
+        Me.rvBokkReturnForm = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvStudCheckList = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvFeesStatement = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.rvBookInfo = New Microsoft.Reporting.WinForms.ReportViewer()
@@ -41,6 +43,7 @@ Partial Class frmReportPreview
         Me.rvFeesReceipt = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.rvBehaviorReport = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.BookIssueFormBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dsSchool = New StudentPersonalDetails.dsSchool()
         Me.ClassListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -48,12 +51,14 @@ Partial Class frmReportPreview
         Me.ClassListTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.ClassListTableAdapter()
         Me.PrintFeesReceiptTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.PrintFeesReceiptTableAdapter()
         Me.BookIssueFormTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.BookIssueFormTableAdapter()
-        Me.rvBokkReturnForm = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.StudBehaviorReportBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.StudBehaviorReportTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.StudBehaviorReportTableAdapter()
         Me.PnlMain.SuspendLayout()
         CType(Me.BookIssueFormBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dsSchool, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClassListBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintFeesReceiptBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StudBehaviorReportBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PnlMain
@@ -61,6 +66,7 @@ Partial Class frmReportPreview
         Me.PnlMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PnlMain.Controls.Add(Me.rvBehaviorReport)
         Me.PnlMain.Controls.Add(Me.rvBokkReturnForm)
         Me.PnlMain.Controls.Add(Me.rvStudCheckList)
         Me.PnlMain.Controls.Add(Me.rvFeesStatement)
@@ -77,6 +83,20 @@ Partial Class frmReportPreview
         Me.PnlMain.Name = "PnlMain"
         Me.PnlMain.Size = New System.Drawing.Size(497, 338)
         Me.PnlMain.TabIndex = 7
+        '
+        'rvBokkReturnForm
+        '
+        Me.rvBokkReturnForm.DocumentMapWidth = 74
+        ReportDataSource2.Name = "DataSet1"
+        ReportDataSource2.Value = Me.BookIssueFormBindingSource
+        Me.rvBokkReturnForm.LocalReport.DataSources.Add(ReportDataSource2)
+        Me.rvBokkReturnForm.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptReturnForm.rdlc"
+        Me.rvBokkReturnForm.Location = New System.Drawing.Point(360, 236)
+        Me.rvBokkReturnForm.Name = "rvBokkReturnForm"
+        Me.rvBokkReturnForm.ServerReport.BearerToken = Nothing
+        Me.rvBokkReturnForm.Size = New System.Drawing.Size(76, 63)
+        Me.rvBokkReturnForm.TabIndex = 38
+        Me.rvBokkReturnForm.Visible = False
         '
         'rvStudCheckList
         '
@@ -114,9 +134,9 @@ Partial Class frmReportPreview
         'rvIssueForm
         '
         Me.rvIssueForm.DocumentMapWidth = 74
-        ReportDataSource2.Name = "DataSet1"
-        ReportDataSource2.Value = Me.BookIssueFormBindingSource
-        Me.rvIssueForm.LocalReport.DataSources.Add(ReportDataSource2)
+        ReportDataSource3.Name = "DataSet1"
+        ReportDataSource3.Value = Me.BookIssueFormBindingSource
+        Me.rvIssueForm.LocalReport.DataSources.Add(ReportDataSource3)
         Me.rvIssueForm.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptIssueForm.rdlc"
         Me.rvIssueForm.Location = New System.Drawing.Point(123, 179)
         Me.rvIssueForm.Name = "rvIssueForm"
@@ -138,9 +158,9 @@ Partial Class frmReportPreview
         'rvClassStudents
         '
         Me.rvClassStudents.DocumentMapWidth = 74
-        ReportDataSource3.Name = "DataSet1"
-        ReportDataSource3.Value = Me.ClassListBindingSource
-        Me.rvClassStudents.LocalReport.DataSources.Add(ReportDataSource3)
+        ReportDataSource4.Name = "DataSet1"
+        ReportDataSource4.Value = Me.ClassListBindingSource
+        Me.rvClassStudents.LocalReport.DataSources.Add(ReportDataSource4)
         Me.rvClassStudents.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptStudentClasses.rdlc"
         Me.rvClassStudents.Location = New System.Drawing.Point(340, 138)
         Me.rvClassStudents.Name = "rvClassStudents"
@@ -162,8 +182,8 @@ Partial Class frmReportPreview
         'rvStudDetails
         '
         Me.rvStudDetails.DocumentMapWidth = 74
-        ReportDataSource4.Value = Nothing
-        Me.rvStudDetails.LocalReport.DataSources.Add(ReportDataSource4)
+        ReportDataSource5.Value = Nothing
+        Me.rvStudDetails.LocalReport.DataSources.Add(ReportDataSource5)
         Me.rvStudDetails.LocalReport.ReportEmbeddedResource = "SMS.rptStudDetails.rdlc"
         Me.rvStudDetails.Location = New System.Drawing.Point(210, 138)
         Me.rvStudDetails.Name = "rvStudDetails"
@@ -175,8 +195,8 @@ Partial Class frmReportPreview
         'rvEnrolForm
         '
         Me.rvEnrolForm.DocumentMapWidth = 74
-        ReportDataSource5.Value = Nothing
-        Me.rvEnrolForm.LocalReport.DataSources.Add(ReportDataSource5)
+        ReportDataSource6.Value = Nothing
+        Me.rvEnrolForm.LocalReport.DataSources.Add(ReportDataSource6)
         Me.rvEnrolForm.LocalReport.ReportEmbeddedResource = "SMS.rptEnrollmenForm.rdlc"
         Me.rvEnrolForm.Location = New System.Drawing.Point(340, 38)
         Me.rvEnrolForm.Name = "rvEnrolForm"
@@ -188,9 +208,9 @@ Partial Class frmReportPreview
         'rvFeesInoice
         '
         Me.rvFeesInoice.DocumentMapWidth = 74
-        ReportDataSource6.Name = "DataSet1"
-        ReportDataSource6.Value = Me.PrintFeesReceiptBindingSource
-        Me.rvFeesInoice.LocalReport.DataSources.Add(ReportDataSource6)
+        ReportDataSource7.Name = "DataSet1"
+        ReportDataSource7.Value = Me.PrintFeesReceiptBindingSource
+        Me.rvFeesInoice.LocalReport.DataSources.Add(ReportDataSource7)
         Me.rvFeesInoice.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptFeesInvoice.rdlc"
         Me.rvFeesInoice.Location = New System.Drawing.Point(214, 38)
         Me.rvFeesInoice.Name = "rvFeesInoice"
@@ -202,9 +222,9 @@ Partial Class frmReportPreview
         'rvFeesReceipt
         '
         Me.rvFeesReceipt.DocumentMapWidth = 74
-        ReportDataSource7.Name = "DataSet1"
-        ReportDataSource7.Value = Me.PrintFeesReceiptBindingSource
-        Me.rvFeesReceipt.LocalReport.DataSources.Add(ReportDataSource7)
+        ReportDataSource8.Name = "DataSet1"
+        ReportDataSource8.Value = Me.PrintFeesReceiptBindingSource
+        Me.rvFeesReceipt.LocalReport.DataSources.Add(ReportDataSource8)
         Me.rvFeesReceipt.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptFeesReceipt.rdlc"
         Me.rvFeesReceipt.Location = New System.Drawing.Point(30, 38)
         Me.rvFeesReceipt.Name = "rvFeesReceipt"
@@ -237,6 +257,20 @@ Partial Class frmReportPreview
         Me.btnClose.TabIndex = 5
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'rvBehaviorReport
+        '
+        Me.rvBehaviorReport.DocumentMapWidth = 74
+        ReportDataSource1.Name = "DataSet1"
+        ReportDataSource1.Value = Me.StudBehaviorReportBindingSource
+        Me.rvBehaviorReport.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.rvBehaviorReport.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptStudBehaviorSpecific.rdlc"
+        Me.rvBehaviorReport.Location = New System.Drawing.Point(218, 146)
+        Me.rvBehaviorReport.Name = "rvBehaviorReport"
+        Me.rvBehaviorReport.ServerReport.BearerToken = Nothing
+        Me.rvBehaviorReport.Size = New System.Drawing.Size(76, 63)
+        Me.rvBehaviorReport.TabIndex = 40
+        Me.rvBehaviorReport.Visible = False
         '
         'BookIssueFormBindingSource
         '
@@ -271,19 +305,14 @@ Partial Class frmReportPreview
         '
         Me.BookIssueFormTableAdapter.ClearBeforeFill = True
         '
-        'rvBokkReturnForm
+        'StudBehaviorReportBindingSource
         '
-        Me.rvBokkReturnForm.DocumentMapWidth = 74
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.BookIssueFormBindingSource
-        Me.rvBokkReturnForm.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.rvBokkReturnForm.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptReturnForm.rdlc"
-        Me.rvBokkReturnForm.Location = New System.Drawing.Point(360, 236)
-        Me.rvBokkReturnForm.Name = "rvBokkReturnForm"
-        Me.rvBokkReturnForm.ServerReport.BearerToken = Nothing
-        Me.rvBokkReturnForm.Size = New System.Drawing.Size(76, 63)
-        Me.rvBokkReturnForm.TabIndex = 38
-        Me.rvBokkReturnForm.Visible = False
+        Me.StudBehaviorReportBindingSource.DataMember = "StudBehaviorReport"
+        Me.StudBehaviorReportBindingSource.DataSource = Me.dsSchool
+        '
+        'StudBehaviorReportTableAdapter
+        '
+        Me.StudBehaviorReportTableAdapter.ClearBeforeFill = True
         '
         'frmReportPreview
         '
@@ -305,6 +334,7 @@ Partial Class frmReportPreview
         CType(Me.dsSchool, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClassListBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintFeesReceiptBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StudBehaviorReportBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -340,4 +370,7 @@ Partial Class frmReportPreview
     Friend WithEvents BookIssueFormBindingSource As Windows.Forms.BindingSource
     Friend WithEvents BookIssueFormTableAdapter As dsSchoolTableAdapters.BookIssueFormTableAdapter
     Friend WithEvents rvBokkReturnForm As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents rvBehaviorReport As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents StudBehaviorReportBindingSource As Windows.Forms.BindingSource
+    Friend WithEvents StudBehaviorReportTableAdapter As dsSchoolTableAdapters.StudBehaviorReportTableAdapter
 End Class
