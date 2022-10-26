@@ -53,6 +53,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SchoolLibrary", "SchoolLibr
 		{569AA36F-6EA9-4300-9FAE-EAA148B4F36A} = {569AA36F-6EA9-4300-9FAE-EAA148B4F36A}
 	EndProjectSection
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "IncomeExpenditure", "IncomeExpenditure\IncomeExpenditure.vbproj", "{A75C4C89-35E6-461B-A4CB-0F05274C732F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{17AF85FA-C51F-43C4-AC5C-A16828E28638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17AF85FA-C51F-43C4-AC5C-A16828E28638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17AF85FA-C51F-43C4-AC5C-A16828E28638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75C4C89-35E6-461B-A4CB-0F05274C732F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75C4C89-35E6-461B-A4CB-0F05274C732F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75C4C89-35E6-461B-A4CB-0F05274C732F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75C4C89-35E6-461B-A4CB-0F05274C732F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
