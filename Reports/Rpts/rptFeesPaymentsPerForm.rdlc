@@ -1332,7 +1332,23 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Class School Fees Payments </Value>
+                  <Value>Class School Fees Payments</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>="( " &amp;  trim(Fields!BillingCurrency.Value) &amp; " )"</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve"> </Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>20pt</FontSize>
@@ -1340,13 +1356,15 @@
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <Top>0.25in</Top>
-          <Left>2.125in</Left>
+          <Left>1.58333in</Left>
           <Height>0.36in</Height>
-          <Width>4.125in</Width>
+          <Width>6.55208in</Width>
           <Style>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -1532,10 +1550,14 @@ WHERE        (feespayments_details.Period BETWEEN @period AND @period1) AND (enr
           <DataField>PaymentPeriodDescription</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="BillingCurrency">
+          <DataField>BillingCurrency</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsRevoReports</rd:DataSetName>
-        <rd:SchemaPath>F:\Development\LMS\Reports\dsRevoReports.xsd</rd:SchemaPath>
+        <rd:SchemaPath>F:\Development\Banda_Desktop_GitHub\BondaDesktop\Reports\dsRevoReports.xsd</rd:SchemaPath>
         <rd:TableName>SchoolFeesPayments</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

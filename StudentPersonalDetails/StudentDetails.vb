@@ -59,6 +59,7 @@ Public Class FrmStudent
         LoadCashtypes()
         loadFeesCartegory()
         loadPaymentPeriods()
+        LoadCurrencies()
     End Sub
 
     Private Sub loadPaymentPeriods()
@@ -84,6 +85,10 @@ Public Class FrmStudent
             .ValueMember = "Value"
 
         End With
+
+
+
+
     End Sub
     Private Sub LoadSessions()
         With CboEnrSessSearch
@@ -174,7 +179,19 @@ Public Class FrmStudent
             .DisplayMember = "Text"
             .ValueMember = "Value"
         End With
+
+
     End Sub
+
+    Private Sub LoadCurrencies()
+        With cboFeesCurrency
+            .DataSource = Currencies()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+
+        End With
+    End Sub
+
 
     Private Sub loadprograms()
         With cboOldClassprog
@@ -330,9 +347,11 @@ Public Class FrmStudent
 
         isloading = True
 
-        loadcombos()
 
         LoadDatasets()
+
+        loadcombos()
+
 
 
         enablestudscreen(False)
@@ -403,7 +422,7 @@ Public Class FrmStudent
     Private Sub LoadDatasets()
         Me.PaymentPeriodsTableAdapter.Fill(Me.DsSchool.PaymentPeriods)
         'TODO: This line of code loads data into the 'DsSchool.FeesPaymentType' table. You can move, or remove it, as needed.
-        Me.FeesPaymentTypeTableAdapter.Fill(Me.DsSchool.FeesPaymentType)
+        '     Me.FeesPaymentTypeTableAdapter.Fill(Me.DsSchool.FeesPaymentType)
         'TODO: This line of code loads data into the 'DsSchool.Currencies' table. You can move, or remove it, as needed.
         Me.CurrenciesTableAdapter.Fill(Me.DsSchool.Currencies)
 
@@ -5042,6 +5061,9 @@ Public Class FrmStudent
         Dim sql As String
         Dim trans As SqlTransaction = Nothing
         Dim curr As String
+        Dim CartCurrency As String = ""
+        Dim blnAppplyConversion As Boolean = False
+
         Dim cnn As New SqlConnection(ConnectionString)
 
         receiptprnt = True
@@ -5132,6 +5154,8 @@ Public Class FrmStudent
                     Dim dblAmount As Decimal
                     Dim intPeriod As Integer
 
+                    blnAppplyConversion = False
+
                     amount = dgFessDetails.Rows(A1).Cells("amount").Value
                     Try
                         dblAmount = CDec(amount)
@@ -5174,10 +5198,17 @@ Public Class FrmStudent
                         Throw New Exception("Invalid Currency on line " & A1 + 1)
                     End If
 
+
+
+
+
+
                     sql = "spInsertFeesDetails"
 
                     cmd = New SqlCommand(sql, cnn, trans)
                     cmd.CommandType = CommandType.StoredProcedure
+
+
 
 
                     params = New List(Of SqlParameter)
@@ -5459,7 +5490,7 @@ Public Class FrmStudent
 
                 trans.Commit()
                 FeesloadingMode()
-                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text)
+                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
                 RefreshFeesStatement()
 
                 Dim rec$ = MsgBox("Receipt " & ReceiptTextBox.Text & " successfully edited, do you want to print receipt?", MsgBoxStyle.YesNo)
@@ -5548,7 +5579,7 @@ Public Class FrmStudent
     Private Sub RefreshFeesStatement()
         Try
 
-            Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations, cboFeesCartegory.Text, txtFeesStudID.Text, gouser.userName, "", -1, -1, cboBBFCutOffPeriod.SelectedValue.ToString, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
+            Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations, cboFeesCartegory.Text, txtFeesStudID.Text, gouser.userName, "", -1, -1, cboBBFCutOffPeriod.SelectedValue.ToString, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked, cboFeesCurrency.Text)
             rvOnScreenStat.Dock = DockStyle.Fill
             rvOnScreenStat.Visible = True
             rvOnScreenStat.RefreshReport()
@@ -5562,7 +5593,7 @@ Public Class FrmStudent
         Dim studscount As Integer = dgBilling.Rows.Count
         Dim slctdcount As Integer = dgBilling.SelectedRows.Count
 
-        Dim sql, recprefix, recid, amount As String
+        Dim sql, recprefix, recid, amount, currency As String
         Dim drr As SqlDataReader = Nothing
         Dim period As String = ""
         Dim bilcart As String = ""
@@ -5630,10 +5661,14 @@ Public Class FrmStudent
                                 If dgPayType.Rows(item2).Selected = True Then
                                     bilcart = dgPayType.Rows(item2).Cells("Payment").Value
                                     amount = dgPayType.Rows(item2).Cells("BillingAmount").Value.ToString
-
+                                    currency = dgPayType.Rows(item2).Cells("BillCurrency").Value.ToString
                                     If amount = "" Then
                                         Throw New Exception("Invalid Amount for " & bilcart)
 
+                                    End If
+
+                                    If currency = "" Then
+                                        Throw New Exception("Invalid Currency for " & bilcart)
                                     End If
 
                                     param = New SqlParameter("@stud", dgBilling.Rows(A1).Cells("BillingStudentID").Value)
@@ -5691,7 +5726,7 @@ Public Class FrmStudent
                                     param = New SqlParameter("@Amount", amount)
                                     params.Add(param)
 
-                                    param = New SqlParameter("@currency", "")
+                                    param = New SqlParameter("@currency", currency)
                                     params.Add(param)
 
                                     param = New SqlParameter("@cart", bilcart)
@@ -5838,7 +5873,7 @@ Public Class FrmStudent
 
     Private Sub ReceiptTextBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReceiptTextBox.TextChanged
 
-        Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text)
+        Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
 
 
     End Sub
@@ -6444,7 +6479,7 @@ Public Class FrmStudent
 
     Private Sub Loadstudent(stud As String)
         Try
-            Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, stud, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
+            Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, stud, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked, cboFeesCurrency.Text)
             lbSeacrhFees.Visible = False
             txtFeesStudID.Text = stud
             FeesStudSearch()
@@ -6455,7 +6490,25 @@ Public Class FrmStudent
         End Try
     End Sub
 
-    Private Sub cboReceiptSearch_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboReceiptSearch.SelectedIndexChanged, cboFeesCartegory.SelectedIndexChanged
+    Private Sub FillCartegorybyCurrency(curr As String)
+
+        FeesPaymentTypeTableAdapter.FillByCurrency(DsSchool.FeesPaymentType, curr)
+
+
+
+
+
+    End Sub
+
+    Private Sub cboReceiptSearch_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboReceiptSearch.SelectedIndexChanged, cboFeesCartegory.SelectedIndexChanged, cboFeesCurrency.SelectedIndexChanged
+
+
+
+
+        FillCartegorybyCurrency(cboFeesCurrency.Text)
+
+
+
         '    txtReceiptSearch.Clear()
         If cboReceiptSearch.Text = "Date" Then
             txtReceiptSearch.Visible = False
@@ -6508,7 +6561,7 @@ Public Class FrmStudent
             Try
 
 
-                Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, txtReceiptSearch.Text, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked)
+                Me.FeesPayments_HeaderTableAdapter.FillByStudent(DsSchool.FeesPayments_Header, txtReceiptSearch.Text, cboFeesCartegory.Text, chkTransScreenShowInvoices.Checked, chkTransScreenShowReceipts.Checked, cboFeesCurrency.Text)
 
 
             Catch ex As Exception
@@ -6518,6 +6571,8 @@ Public Class FrmStudent
             RefreshFeesStatement()
 
         End If
+
+
 
 
 
@@ -6790,7 +6845,7 @@ Public Class FrmStudent
 
             Else
                 dgPayType.DataSource = dsApps.Tables(0)
-                MsgBox("No Payment Cartegories found .")
+                MsgBox("No Billing Cartegories found .")
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -8368,7 +8423,7 @@ Public Class FrmStudent
                 With dgFessDetails.Rows(e.RowIndex)
                     deleteFeesLine(.Cells("lineref").Value.ToString, ReceiptTextBox.Text, e.RowIndex + 1)
                 End With
-                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text)
+                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
             End If
             FeesloadingMode()
             RefreshFeesStatement()
@@ -8391,12 +8446,14 @@ Public Class FrmStudent
                 Date.TryParse(mskpaydate.Text, recline.RecDate)
                 UpdateFeesLines(recline)
 
-                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text)
+                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
 
             End With
 
             FeesloadingMode()
             RefreshFeesStatement()
+
+
 
         End If
     End Sub
@@ -8532,7 +8589,7 @@ Public Class FrmStudent
 
         Next
 
-        Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text)
+        Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
         FeesloadingMode()
         RefreshFeesStatement()
     End Sub
@@ -8552,7 +8609,7 @@ Public Class FrmStudent
 
                 Next
 
-                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, "All")
+                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, "All", cboFeesCurrency.Text)
                 FeesloadingMode()
                 RefreshFeesStatement()
             End If
@@ -9057,6 +9114,7 @@ Public Class FrmStudent
     End Sub
 
     Private Sub dgFessDetails_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgFessDetails.RowsAdded
+        '      FeesPaymentTypeTableAdapter.Fill(DsSchool.FeesPaymentType)
         'Try
         '    Dim paycartcombo As DataGridViewComboBoxCell = dgFessDetails.Rows(e.RowIndex).Cells("Cartegory")
         '    With paycartcombo
@@ -9630,6 +9688,7 @@ Public Class FrmStudent
 
     Private Sub cboBBFCutOffPeriod_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboBBFCutOffPeriod.SelectedIndexChanged
         RefreshFeesStatement()
+        cboReceiptSearch_SelectedIndexChanged(Me, Nothing)
 
     End Sub
 
@@ -10151,4 +10210,38 @@ Public Class FrmStudent
             btnAddBehavior.Text = "Add Behavior"
         End If
     End Sub
+
+    Private Sub dgFessDetails_CellValidated(sender As Object, e As DataGridViewCellEventArgs) Handles dgFessDetails.CellValidated
+        If dgFessDetails.Columns(e.ColumnIndex).HeaderText = "Cartegory" Then
+
+            Try
+
+                Dim cart As String = dgFessDetails.CurrentRow.Cells("Cartegory").Value
+
+                Dim cartcurrcell As DataGridViewComboBoxCell
+                cartcurrcell = CType(dgFessDetails.Rows(e.RowIndex).Cells("Currency"), DataGridViewComboBoxCell)
+
+
+
+                cartcurrcell.Value = GetCartCurrency(cart)
+
+            Catch ex As Exception
+
+            End Try
+
+
+
+        End If
+    End Sub
+
+    Private Function GetCartCurrency(cart As String) As String
+
+        Dim currency As String = ""
+        currency = DsSchool.FeesPaymentType.Where(Function(x) x.Payment = cart).Select(Function(y) y.Currency).FirstOrDefault().ToString
+        Return currency
+
+
+
+
+    End Function
 End Class

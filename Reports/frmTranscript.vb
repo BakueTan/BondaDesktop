@@ -144,14 +144,33 @@ Public Class frmTranscript
                 '    Me.rvAccPayPerSub.RefreshReport()
                 If gblnAccDebtors Then
 
+                    Dim filter As String = ""
+
+                    Select Case gstrDebtFilter
+                        Case "At Least"
+                            filter = " and SumAmount >= '" & Val(gstrDebtFrom) & "'"
+                        Case "At Most"
+                            filter = " and SumAmount <= '" & Val(gstrDebtFrom) & "'"
+                        Case "Between"
+                            filter = " and SumAmount between '" & Val(gstrDebtFrom) & "' and '" & Val(gstrDebtTo) & "'"
+                        Case "Equal To"
+                            filter = " and SumAmount = '" & Val(gstrDebtFrom) & "'"
+                    End Select
 
 
 
-                    Me.SchoolFeesDebtorsTableAdapter.FillbyDebtors(Me.dsRevoReports.SchoolFeesDebtors, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, True)
+                    Try
+                        Me.SchoolFeesDebtorsTableAdapter.FillbyDebtors(Me.dsRevoReports.SchoolFeesDebtors, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, True, gstrCurrency, filter)
 
-                    rvDebtorsContacts.Dock = DockStyle.Fill
-                    rvDebtorsContacts.RefreshReport()
-                    rvDebtorsContacts.Visible = True
+                        rvDebtorsContacts.Dock = DockStyle.Fill
+                        rvDebtorsContacts.RefreshReport()
+                        rvDebtorsContacts.Visible = True
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+
+
+
 
 
                 ElseIf gblnSectDebts Then
@@ -161,18 +180,18 @@ Public Class frmTranscript
 
 
                     If gstrAccSection <> "NonStudent" Then
-                            Me.DebtorsContactsTableAdapter.FillBysectall(Me.dsReports.DebtorsContacts, goUser.FullName, gstrAccSection, gstrAccStatus, gstrAccPrdTo, gstrAccClass, gstrAccClass2)
+                        Me.DebtorsContactsTableAdapter.FillBysectall(Me.dsReports.DebtorsContacts, goUser.FullName, gstrAccSection, gstrAccStatus, gstrAccPrdTo, gstrAccClass, gstrAccClass2)
 
-                            rvDebtorsBySection.Dock = DockStyle.Fill
-                            rvDebtorsBySection.RefreshReport()
-                            rvDebtorsBySection.Visible = True
-                        Else
-                            Me.OtherDebtorsTableAdapter.Fill(Me.dsReports.OtherDebtors, goUser.FullName, gstrAccPrdTo)
+                        rvDebtorsBySection.Dock = DockStyle.Fill
+                        rvDebtorsBySection.RefreshReport()
+                        rvDebtorsBySection.Visible = True
+                    Else
+                        Me.OtherDebtorsTableAdapter.Fill(Me.dsReports.OtherDebtors, goUser.FullName, gstrAccPrdTo)
 
-                            rvOtherDebtors.Dock = DockStyle.Fill
-                            rvOtherDebtors.RefreshReport()
-                            rvOtherDebtors.Visible = True
-                        End If
+                        rvOtherDebtors.Dock = DockStyle.Fill
+                        rvOtherDebtors.RefreshReport()
+                        rvOtherDebtors.Visible = True
+                    End If
 
                 ElseIf gblnAccPerStud Then
 
@@ -181,7 +200,7 @@ Public Class frmTranscript
 
                     '  End If
                     Try
-                        Me.SchoolFeesStatementTableAdapter.FillByStudent(dsRevoReports.SchoolFeesStatement, gstrPayType, gstrAccStud, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccBBFCutOffPeriod, gblnShowInvoices, gblnShowReceipts)
+                        Me.SchoolFeesStatementTableAdapter.FillByStudent(dsRevoReports.SchoolFeesStatement, gstrPayType, gstrAccStud, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccBBFCutOffPeriod, gblnShowInvoices, gblnShowReceipts, gstrCurrency)
                     Catch ex As Exception
                         MsgBox(ex.Message)
                         Close()
@@ -195,7 +214,7 @@ Public Class frmTranscript
 
 
                     Try
-                        Me.SchoolFeesStatementTableAdapter.FillByClass(dsRevoReports.SchoolFeesStatement, gstrPayType, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnDebtorsOnly, gstrAccBBFCutOffPeriod)
+                        Me.SchoolFeesStatementTableAdapter.FillByClass(dsRevoReports.SchoolFeesStatement, gstrPayType, goUser.FullName, gstraccAddinfo, gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnDebtorsOnly, gstrAccBBFCutOffPeriod, gstrCurrency)
                     Catch ex As Exception
                         MsgBox(ex.Message)
                         Close()
@@ -208,11 +227,20 @@ Public Class frmTranscript
 
                 ElseIf gblnAccPerForm Then
 
-                    Me.SchoolFeesPaymentsTableAdapter.Fill(Me.dsRevoReports.SchoolFeesPayments, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnShowInvoices, gblnShowReceipts)
+                    Try
+                        Me.SchoolFeesPaymentsTableAdapter.Fill(Me.dsRevoReports.SchoolFeesPayments, gstrPayType, goUser.FullName, "", gstrAccPrdFrom, gstrAccPrdTo, gstrAccLvl, gstrAccSess, gstrAccClass, gstrAccSection, gblnShowInvoices, gblnShowReceipts, gstrCurrency)
 
-                    rvPymntsPerForm.Dock = DockStyle.Fill
+                        rvPymntsPerForm.Dock = DockStyle.Fill
                         Me.rvPymntsPerForm.RefreshReport()
                         rvPymntsPerForm.Visible = True
+
+
+                    Catch ex As Exception
+
+                        MsgBox(ex.Message)
+
+                    End Try
+
 
 
                 ElseIf gblnOtherDebtors Then

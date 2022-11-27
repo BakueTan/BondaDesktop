@@ -5024,6 +5024,8 @@ Partial Public Class dsSchoolParameters
         
         Private columnAmount As Global.System.Data.DataColumn
         
+        Private columnCurrency As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -5084,6 +5086,14 @@ Partial Public Class dsSchoolParameters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5120,9 +5130,9 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddPaymentTypeRow(ByVal Payment As String, ByVal Type As String, ByVal Amount As Decimal) As PaymentTypeRow
+        Public Overloads Function AddPaymentTypeRow(ByVal Payment As String, ByVal Type As String, ByVal Amount As Decimal, ByVal Currency As String) As PaymentTypeRow
             Dim rowPaymentTypeRow As PaymentTypeRow = CType(Me.NewRow,PaymentTypeRow)
-            Dim columnValuesArray() As Object = New Object() {Payment, Type, Amount}
+            Dim columnValuesArray() As Object = New Object() {Payment, Type, Amount, Currency}
             rowPaymentTypeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPaymentTypeRow)
             Return rowPaymentTypeRow
@@ -5154,6 +5164,7 @@ Partial Public Class dsSchoolParameters
             Me.columnPayment = MyBase.Columns("Payment")
             Me.columnType = MyBase.Columns("Type")
             Me.columnAmount = MyBase.Columns("Amount")
+            Me.columnCurrency = MyBase.Columns("Currency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5165,11 +5176,14 @@ Partial Public Class dsSchoolParameters
             MyBase.Columns.Add(Me.columnType)
             Me.columnAmount = New Global.System.Data.DataColumn("Amount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAmount)
+            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrency)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPayment}, true))
             Me.columnPayment.AllowDBNull = false
             Me.columnPayment.Unique = true
             Me.columnPayment.MaxLength = 50
             Me.columnType.MaxLength = 50
+            Me.columnCurrency.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7831,6 +7845,21 @@ Partial Public Class dsSchoolParameters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Currency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePaymentType.CurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'PaymentType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePaymentType.CurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsTypeNull() As Boolean
             Return Me.IsNull(Me.tablePaymentType.TypeColumn)
         End Function
@@ -7851,6 +7880,18 @@ Partial Public Class dsSchoolParameters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAmountNull()
             Me(Me.tablePaymentType.AmountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tablePaymentType.CurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrencyNull()
+            Me(Me.tablePaymentType.CurrencyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -14608,43 +14649,52 @@ Namespace dsSchoolParametersTableAdapters
             tableMapping.ColumnMappings.Add("Payment", "Payment")
             tableMapping.ColumnMappings.Add("Type", "Type")
             tableMapping.ColumnMappings.Add("Amount", "Amount")
+            tableMapping.ColumnMappings.Add("Currency", "Currency")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [PaymentType] WHERE (([Payment] = @Original_Payment) AND ((@IsNull_Ty"& _ 
                 "pe = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Amount = "& _ 
-                "1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)))"
+                "1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency"& _ 
+                " = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Type", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Currency", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [PaymentType] ([Payment], [Type], [Amount]) VALUES (@Payment, @Type, "& _ 
-                "@Amount);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Payment, Type, Amount FROM PaymentType WHERE (Payment = @Payme"& _ 
-                "nt)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [PaymentType] ([Payment], [Type], [Amount], [Currency]) VALUES (@Paym"& _ 
+                "ent, @Type, @Amount, @Currency);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Payment, Type, Amount, Currency FROM Pa"& _ 
+                "ymentType WHERE (Payment = @Payment)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [PaymentType] SET [Payment] = @Payment, [Type] = @Type, [Amount] = @Amount"& _ 
-                " WHERE (([Payment] = @Original_Payment) AND ((@IsNull_Type = 1 AND [Type] IS NUL"& _ 
-                "L) OR ([Type] = @Original_Type)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) "& _ 
-                "OR ([Amount] = @Original_Amount)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Payment, Type, Amount FROM PaymentTy"& _ 
-                "pe WHERE (Payment = @Payment)"
+                ", [Currency] = @Currency WHERE (([Payment] = @Original_Payment) AND ((@IsNull_Ty"& _ 
+                "pe = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Amount = "& _ 
+                "1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency"& _ 
+                " = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Pay"& _ 
+                "ment, Type, Amount, Currency FROM PaymentType WHERE (Payment = @Payment)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Type", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Currency", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14660,7 +14710,7 @@ Namespace dsSchoolParametersTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Payment, Type, Amount"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PaymentType"
+            Me._commandCollection(0).CommandText = "SELECT        Payment, Type, Amount, Currency"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PaymentType"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -14720,7 +14770,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal), ByVal Original_Currency As String) As Integer
             If (Original_Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Payment")
             Else
@@ -14739,6 +14789,13 @@ Namespace dsSchoolParametersTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Currency Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Currency,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -14759,7 +14816,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Currency As String) As Integer
             If (Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Payment")
             Else
@@ -14774,6 +14831,11 @@ Namespace dsSchoolParametersTableAdapters
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(Amount.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (Currency Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Currency,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -14794,7 +14856,7 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Update(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Currency As String, ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal), ByVal Original_Currency As String) As Integer
             If (Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Payment")
             Else
@@ -14810,24 +14872,36 @@ Namespace dsSchoolParametersTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
+            If (Currency Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Currency,String)
+            End If
             If (Original_Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Payment")
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_Payment,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_Payment,String)
             End If
             If (Original_Type Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Type,String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Type,String)
             End If
             If (Original_Amount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Amount.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Amount.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Currency Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Currency,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -14848,8 +14922,8 @@ Namespace dsSchoolParametersTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(Original_Payment, Type, Amount, Original_Payment, Original_Type, Original_Amount)
+        Public Overloads Overridable Function Update(ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Currency As String, ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal), ByVal Original_Currency As String) As Integer
+            Return Me.Update(Original_Payment, Type, Amount, Currency, Original_Payment, Original_Type, Original_Amount, Original_Currency)
         End Function
     End Class
     

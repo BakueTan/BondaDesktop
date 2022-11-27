@@ -69,31 +69,32 @@ Partial Class FrmStudent
         Dim Label3 As System.Windows.Forms.Label
         Dim Label9 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmStudent))
-        Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle68 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("EditMarks")
-        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("StudentMarks", New System.Windows.Forms.TreeNode() {TreeNode7})
-        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle85 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle86 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle87 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle88 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("EditMarks")
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("StudentMarks", New System.Windows.Forms.TreeNode() {TreeNode1})
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.StudentFeesTranscationsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsSchool = New StudentPersonalDetails.dsSchool()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
@@ -159,9 +160,6 @@ Partial Class FrmStudent
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.dgPayType = New System.Windows.Forms.DataGridView()
-        Me.Payment = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.FeesPaymentTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BillingAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.chkBilPeriods = New System.Windows.Forms.CheckedListBox()
         Me.cboBillType = New System.Windows.Forms.ComboBox()
         Me.dgBilling = New System.Windows.Forms.DataGridView()
@@ -177,6 +175,7 @@ Partial Class FrmStudent
         Me.cboBillingLevel = New System.Windows.Forms.ComboBox()
         Me.Label64 = New System.Windows.Forms.Label()
         Me.cboBillingProg = New System.Windows.Forms.ComboBox()
+        Me.FeesPaymentTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.tbClassTRansferring = New System.Windows.Forms.TabPage()
         Me.SplitContainer7 = New System.Windows.Forms.SplitContainer()
         Me.Button25 = New System.Windows.Forms.Button()
@@ -379,6 +378,8 @@ Partial Class FrmStudent
         Me.lblfullname = New System.Windows.Forms.Label()
         Me.ReceiptTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.cboFeesCurrency = New System.Windows.Forms.ComboBox()
+        Me.Label70 = New System.Windows.Forms.Label()
         Me.cboFeesCartegory = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.FeesDateSearch = New System.Windows.Forms.MaskedTextBox()
@@ -580,6 +581,9 @@ Partial Class FrmStudent
         Me.cxtToolDeleteEnrollment = New System.Windows.Forms.ToolStripMenuItem()
         Me.cxtToolEditEnrollment = New System.Windows.Forms.ToolStripMenuItem()
         Me.cxtToolCopyEnrollment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Payment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BillingAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BillCurrency = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Label43 = New System.Windows.Forms.Label()
         ReceiptLabel = New System.Windows.Forms.Label()
         Label35 = New System.Windows.Forms.Label()
@@ -632,9 +636,9 @@ Partial Class FrmStudent
         Me.SplitContainer8.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
         CType(Me.dgPayType, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FeesPaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgBilling, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox12.SuspendLayout()
+        CType(Me.FeesPaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbClassTRansferring.SuspendLayout()
         CType(Me.SplitContainer7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer7.Panel1.SuspendLayout()
@@ -1394,7 +1398,7 @@ Partial Class FrmStudent
         'cmdRefreshPastel
         '
         Me.cmdRefreshPastel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdRefreshPastel.Location = New System.Drawing.Point(2740, 638)
+        Me.cmdRefreshPastel.Location = New System.Drawing.Point(2878, 638)
         Me.cmdRefreshPastel.Name = "cmdRefreshPastel"
         Me.cmdRefreshPastel.Size = New System.Drawing.Size(140, 44)
         Me.cmdRefreshPastel.TabIndex = 3
@@ -1404,7 +1408,7 @@ Partial Class FrmStudent
         'Button21
         '
         Me.Button21.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button21.Location = New System.Drawing.Point(2887, 638)
+        Me.Button21.Location = New System.Drawing.Point(3025, 638)
         Me.Button21.Name = "Button21"
         Me.Button21.Size = New System.Drawing.Size(140, 44)
         Me.Button21.TabIndex = 4
@@ -1414,7 +1418,7 @@ Partial Class FrmStudent
         'Button22
         '
         Me.Button22.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button22.Location = New System.Drawing.Point(3028, 638)
+        Me.Button22.Location = New System.Drawing.Point(3166, 638)
         Me.Button22.Name = "Button22"
         Me.Button22.Size = New System.Drawing.Size(140, 44)
         Me.Button22.TabIndex = 5
@@ -1424,7 +1428,7 @@ Partial Class FrmStudent
         'cmdClose
         '
         Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdClose.Location = New System.Drawing.Point(1474, 747)
+        Me.cmdClose.Location = New System.Drawing.Point(1612, 747)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(125, 34)
         Me.cmdClose.TabIndex = 6
@@ -1434,7 +1438,7 @@ Partial Class FrmStudent
         'cmdLink
         '
         Me.cmdLink.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdLink.Location = New System.Drawing.Point(1342, 747)
+        Me.cmdLink.Location = New System.Drawing.Point(1480, 747)
         Me.cmdLink.Name = "cmdLink"
         Me.cmdLink.Size = New System.Drawing.Size(125, 34)
         Me.cmdLink.TabIndex = 7
@@ -1444,7 +1448,7 @@ Partial Class FrmStudent
         'Button4
         '
         Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Location = New System.Drawing.Point(1211, 747)
+        Me.Button4.Location = New System.Drawing.Point(1349, 747)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(125, 34)
         Me.Button4.TabIndex = 8
@@ -1459,7 +1463,7 @@ Partial Class FrmStudent
         Me.tbBilling.Location = New System.Drawing.Point(4, 23)
         Me.tbBilling.Name = "tbBilling"
         Me.tbBilling.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbBilling.Size = New System.Drawing.Size(1587, 715)
+        Me.tbBilling.Size = New System.Drawing.Size(1725, 715)
         Me.tbBilling.TabIndex = 11
         Me.tbBilling.Tag = "68"
         Me.tbBilling.Text = "StudentsBilling"
@@ -1495,8 +1499,8 @@ Partial Class FrmStudent
         Me.SplitContainer8.Panel2.Controls.Add(Me.GroupBox11)
         Me.SplitContainer8.Panel2.Controls.Add(Me.dgBilling)
         Me.SplitContainer8.Panel2.Controls.Add(Me.GroupBox12)
-        Me.SplitContainer8.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer8.SplitterDistance = 243
+        Me.SplitContainer8.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer8.SplitterDistance = 263
         Me.SplitContainer8.SplitterWidth = 1
         Me.SplitContainer8.TabIndex = 0
         '
@@ -1527,7 +1531,7 @@ Partial Class FrmStudent
         Me.lbBillStud.FormattingEnabled = True
         Me.lbBillStud.Location = New System.Drawing.Point(25, 274)
         Me.lbBillStud.Name = "lbBillStud"
-        Me.lbBillStud.Size = New System.Drawing.Size(213, 134)
+        Me.lbBillStud.Size = New System.Drawing.Size(233, 134)
         Me.lbBillStud.TabIndex = 14
         Me.lbBillStud.ValueMember = "StudentID"
         Me.lbBillStud.Visible = False
@@ -1656,33 +1660,11 @@ Partial Class FrmStudent
         Me.dgPayType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgPayType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgPayType.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Payment, Me.BillingAmount})
+        Me.dgPayType.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Payment, Me.BillingAmount, Me.BillCurrency})
         Me.dgPayType.Location = New System.Drawing.Point(67, 254)
         Me.dgPayType.Name = "dgPayType"
-        Me.dgPayType.Size = New System.Drawing.Size(246, 153)
+        Me.dgPayType.Size = New System.Drawing.Size(299, 153)
         Me.dgPayType.TabIndex = 30
-        '
-        'Payment
-        '
-        Me.Payment.DataPropertyName = "Payment"
-        Me.Payment.DataSource = Me.FeesPaymentTypeBindingSource
-        Me.Payment.DisplayMember = "Payment"
-        Me.Payment.HeaderText = "Cartegory"
-        Me.Payment.Name = "Payment"
-        Me.Payment.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Payment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Payment.ValueMember = "Payment"
-        '
-        'FeesPaymentTypeBindingSource
-        '
-        Me.FeesPaymentTypeBindingSource.DataMember = "FeesPaymentType"
-        Me.FeesPaymentTypeBindingSource.DataSource = Me.DsSchool
-        '
-        'BillingAmount
-        '
-        Me.BillingAmount.DataPropertyName = "Amount"
-        Me.BillingAmount.HeaderText = "Amount"
-        Me.BillingAmount.Name = "BillingAmount"
         '
         'chkBilPeriods
         '
@@ -1709,35 +1691,35 @@ Partial Class FrmStudent
         Me.dgBilling.AllowUserToAddRows = False
         Me.dgBilling.AllowUserToDeleteRows = False
         Me.dgBilling.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle67.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle67.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle67.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle67.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle67.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle67.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBilling.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle67
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBilling.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgBilling.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgBilling.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BillingStudentID, Me.BillingStudName, Me.BillingEnrolRef})
-        DataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle68.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle68.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle68.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle68.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle68.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle68.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgBilling.DefaultCellStyle = DataGridViewCellStyle68
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgBilling.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgBilling.GridColor = System.Drawing.Color.LightSteelBlue
         Me.dgBilling.Location = New System.Drawing.Point(576, 142)
         Me.dgBilling.Name = "dgBilling"
-        DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle69.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle69.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle69.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle69.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBilling.RowHeadersDefaultCellStyle = DataGridViewCellStyle69
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBilling.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgBilling.Size = New System.Drawing.Size(260, 382)
         Me.dgBilling.TabIndex = 25
         '
@@ -1860,6 +1842,11 @@ Partial Class FrmStudent
         Me.cboBillingProg.Size = New System.Drawing.Size(104, 21)
         Me.cboBillingProg.TabIndex = 1
         '
+        'FeesPaymentTypeBindingSource
+        '
+        Me.FeesPaymentTypeBindingSource.DataMember = "FeesPaymentType"
+        Me.FeesPaymentTypeBindingSource.DataSource = Me.DsSchool
+        '
         'tbClassTRansferring
         '
         Me.tbClassTRansferring.AutoScroll = True
@@ -1868,7 +1855,7 @@ Partial Class FrmStudent
         Me.tbClassTRansferring.Location = New System.Drawing.Point(4, 23)
         Me.tbClassTRansferring.Name = "tbClassTRansferring"
         Me.tbClassTRansferring.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbClassTRansferring.Size = New System.Drawing.Size(1587, 715)
+        Me.tbClassTRansferring.Size = New System.Drawing.Size(1660, 715)
         Me.tbClassTRansferring.TabIndex = 10
         Me.tbClassTRansferring.Tag = "82"
         Me.tbClassTRansferring.Text = "Class Transferring"
@@ -1905,7 +1892,7 @@ Partial Class FrmStudent
         '
         Me.SplitContainer7.Panel2.AutoScroll = True
         Me.SplitContainer7.Panel2Collapsed = True
-        Me.SplitContainer7.Size = New System.Drawing.Size(1581, 709)
+        Me.SplitContainer7.Size = New System.Drawing.Size(1654, 709)
         Me.SplitContainer7.SplitterDistance = 1057
         Me.SplitContainer7.SplitterWidth = 1
         Me.SplitContainer7.TabIndex = 0
@@ -2242,7 +2229,7 @@ Partial Class FrmStudent
         Me.tbSMS.Location = New System.Drawing.Point(4, 23)
         Me.tbSMS.Name = "tbSMS"
         Me.tbSMS.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbSMS.Size = New System.Drawing.Size(1587, 715)
+        Me.tbSMS.Size = New System.Drawing.Size(1660, 715)
         Me.tbSMS.TabIndex = 9
         Me.tbSMS.Tag = "16"
         Me.tbSMS.Text = "Student SMS  Notification"
@@ -2276,8 +2263,8 @@ Partial Class FrmStudent
         Me.SplitContainer10.Panel2.Controls.Add(Me.specific)
         Me.SplitContainer10.Panel2.Controls.Add(Me.Label7)
         Me.SplitContainer10.Panel2.Controls.Add(Me.RichTextBox)
-        Me.SplitContainer10.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer10.SplitterDistance = 288
+        Me.SplitContainer10.Size = New System.Drawing.Size(1654, 709)
+        Me.SplitContainer10.SplitterDistance = 301
         Me.SplitContainer10.SplitterWidth = 1
         Me.SplitContainer10.TabIndex = 0
         Me.SplitContainer10.Tag = "16"
@@ -2598,35 +2585,35 @@ Partial Class FrmStudent
         '
         Me.dgClassList.AllowUserToAddRows = False
         Me.dgClassList.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle70.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle70.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle70.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle70.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle70.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle70.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgClassList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle70
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgClassList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgClassList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgClassList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NOKContactNumber})
-        DataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle71.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle71.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgClassList.DefaultCellStyle = DataGridViewCellStyle71
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgClassList.DefaultCellStyle = DataGridViewCellStyle6
         Me.dgClassList.GridColor = System.Drawing.Color.LightSteelBlue
         Me.dgClassList.Location = New System.Drawing.Point(4, 54)
         Me.dgClassList.Name = "dgClassList"
-        DataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle72.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle72.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle72.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgClassList.RowHeadersDefaultCellStyle = DataGridViewCellStyle72
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgClassList.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgClassList.Size = New System.Drawing.Size(782, 247)
         Me.dgClassList.TabIndex = 17
         '
@@ -2760,7 +2747,7 @@ Partial Class FrmStudent
         Me.Marks.Location = New System.Drawing.Point(4, 23)
         Me.Marks.Name = "Marks"
         Me.Marks.Padding = New System.Windows.Forms.Padding(3)
-        Me.Marks.Size = New System.Drawing.Size(1587, 715)
+        Me.Marks.Size = New System.Drawing.Size(1725, 715)
         Me.Marks.TabIndex = 4
         Me.Marks.Tag = "19"
         Me.Marks.Text = "Student Marks"
@@ -2789,8 +2776,8 @@ Partial Class FrmStudent
         Me.SplitContainer5.Panel2.Controls.Add(Me.Button34)
         Me.SplitContainer5.Panel2.Controls.Add(Me.GroupBox15)
         Me.SplitContainer5.Panel2.Controls.Add(Me.StudentMarks)
-        Me.SplitContainer5.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer5.SplitterDistance = 269
+        Me.SplitContainer5.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer5.SplitterDistance = 292
         Me.SplitContainer5.SplitterWidth = 1
         Me.SplitContainer5.TabIndex = 1
         '
@@ -2829,7 +2816,7 @@ Partial Class FrmStudent
         Me.lbStudMarks.FormattingEnabled = True
         Me.lbStudMarks.Location = New System.Drawing.Point(3, 257)
         Me.lbStudMarks.Name = "lbStudMarks"
-        Me.lbStudMarks.Size = New System.Drawing.Size(252, 95)
+        Me.lbStudMarks.Size = New System.Drawing.Size(275, 95)
         Me.lbStudMarks.TabIndex = 13
         Me.lbStudMarks.Visible = False
         '
@@ -2844,12 +2831,12 @@ Partial Class FrmStudent
         '
         Me.tvEditMarks.Location = New System.Drawing.Point(22, 370)
         Me.tvEditMarks.Name = "tvEditMarks"
-        TreeNode7.Name = "Node1"
-        TreeNode7.Tag = "23"
-        TreeNode7.Text = "EditMarks"
-        TreeNode8.Name = "Node0"
-        TreeNode8.Text = "StudentMarks"
-        Me.tvEditMarks.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode8})
+        TreeNode1.Name = "Node1"
+        TreeNode1.Tag = "23"
+        TreeNode1.Text = "EditMarks"
+        TreeNode2.Name = "Node0"
+        TreeNode2.Text = "StudentMarks"
+        Me.tvEditMarks.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2})
         Me.tvEditMarks.Size = New System.Drawing.Size(121, 97)
         Me.tvEditMarks.TabIndex = 1
         Me.tvEditMarks.Tag = ""
@@ -3233,37 +3220,37 @@ Partial Class FrmStudent
         Me.gdStudents.AllowUserToAddRows = False
         Me.gdStudents.AllowUserToDeleteRows = False
         Me.gdStudents.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle73.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle73.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle73.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle73.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle73.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gdStudents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle73
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gdStudents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.gdStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gdStudents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MarksStudentID, Me.MarksStudName, Me.MarksEnrolRef})
-        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle74.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle74.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle74.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle74.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle74.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gdStudents.DefaultCellStyle = DataGridViewCellStyle74
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gdStudents.DefaultCellStyle = DataGridViewCellStyle9
         Me.gdStudents.GridColor = System.Drawing.Color.White
         Me.gdStudents.Location = New System.Drawing.Point(911, 45)
         Me.gdStudents.MultiSelect = False
         Me.gdStudents.Name = "gdStudents"
         Me.gdStudents.ReadOnly = True
-        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle75.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gdStudents.RowHeadersDefaultCellStyle = DataGridViewCellStyle75
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gdStudents.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.gdStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gdStudents.Size = New System.Drawing.Size(346, 293)
         Me.gdStudents.TabIndex = 0
@@ -3306,7 +3293,7 @@ Partial Class FrmStudent
         Me.tbStudentReceipts.Location = New System.Drawing.Point(4, 23)
         Me.tbStudentReceipts.Name = "tbStudentReceipts"
         Me.tbStudentReceipts.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbStudentReceipts.Size = New System.Drawing.Size(1587, 715)
+        Me.tbStudentReceipts.Size = New System.Drawing.Size(1725, 715)
         Me.tbStudentReceipts.TabIndex = 3
         Me.tbStudentReceipts.Tag = "18"
         Me.tbStudentReceipts.Text = "StudentReceipts"
@@ -3332,8 +3319,8 @@ Partial Class FrmStudent
         Me.SplitContainer4.Panel2.Controls.Add(Me.Button37)
         Me.SplitContainer4.Panel2.Controls.Add(Me.GroupBox7)
         Me.SplitContainer4.Panel2.Controls.Add(Me.GroupBox17)
-        Me.SplitContainer4.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer4.SplitterDistance = 782
+        Me.SplitContainer4.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer4.SplitterDistance = 850
         Me.SplitContainer4.SplitterWidth = 1
         Me.SplitContainer4.TabIndex = 0
         '
@@ -3350,9 +3337,9 @@ Partial Class FrmStudent
         '
         'rvOnScreenStat
         '
-        ReportDataSource4.Name = "DataSet1"
-        ReportDataSource4.Value = Me.StudentFeesTranscationsBindingSource
-        Me.rvOnScreenStat.LocalReport.DataSources.Add(ReportDataSource4)
+        ReportDataSource1.Name = "DataSet1"
+        ReportDataSource1.Value = Me.StudentFeesTranscationsBindingSource
+        Me.rvOnScreenStat.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rvOnScreenStat.LocalReport.ReportEmbeddedResource = "StudentPersonalDetails.rptStudFeesStatement.rdlc"
         Me.rvOnScreenStat.Location = New System.Drawing.Point(116, 216)
         Me.rvOnScreenStat.Name = "rvOnScreenStat"
@@ -3394,7 +3381,7 @@ Partial Class FrmStudent
         Me.GroupBox6.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox6.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(778, 73)
+        Me.GroupBox6.Size = New System.Drawing.Size(846, 73)
         Me.GroupBox6.TabIndex = 0
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "ClassSearch"
@@ -3642,7 +3629,7 @@ Partial Class FrmStudent
         Me.dgFessDetails.Enabled = False
         Me.dgFessDetails.Location = New System.Drawing.Point(8, 239)
         Me.dgFessDetails.Name = "dgFessDetails"
-        Me.dgFessDetails.Size = New System.Drawing.Size(650, 151)
+        Me.dgFessDetails.Size = New System.Drawing.Size(646, 151)
         Me.dgFessDetails.TabIndex = 1
         '
         'Cartegory
@@ -3702,10 +3689,10 @@ Partial Class FrmStudent
         '
         'btnUpdate
         '
-        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle76.BackColor = System.Drawing.Color.Blue
-        DataGridViewCellStyle76.ForeColor = System.Drawing.Color.White
-        Me.btnUpdate.DefaultCellStyle = DataGridViewCellStyle76
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        Me.btnUpdate.DefaultCellStyle = DataGridViewCellStyle11
         Me.btnUpdate.HeaderText = "Update"
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Text = "Update"
@@ -3714,11 +3701,11 @@ Partial Class FrmStudent
         '
         'btnDelete
         '
-        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle77.BackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle77.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle77.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.DefaultCellStyle = DataGridViewCellStyle77
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
+        Me.btnDelete.DefaultCellStyle = DataGridViewCellStyle12
         Me.btnDelete.HeaderText = "Delete"
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Text = "Delete"
@@ -4028,6 +4015,8 @@ Partial Class FrmStudent
         'GroupBox17
         '
         Me.GroupBox17.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.GroupBox17.Controls.Add(Me.cboFeesCurrency)
+        Me.GroupBox17.Controls.Add(Me.Label70)
         Me.GroupBox17.Controls.Add(Me.cboFeesCartegory)
         Me.GroupBox17.Controls.Add(Me.Label16)
         Me.GroupBox17.Controls.Add(Me.FeesDateSearch)
@@ -4037,10 +4026,31 @@ Partial Class FrmStudent
         Me.GroupBox17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox17.Location = New System.Drawing.Point(82, 3)
         Me.GroupBox17.Name = "GroupBox17"
-        Me.GroupBox17.Size = New System.Drawing.Size(649, 41)
+        Me.GroupBox17.Size = New System.Drawing.Size(779, 41)
         Me.GroupBox17.TabIndex = 0
         Me.GroupBox17.TabStop = False
         Me.GroupBox17.Text = "Payment Search"
+        '
+        'cboFeesCurrency
+        '
+        Me.cboFeesCurrency.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cboFeesCurrency.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboFeesCurrency.DisplayMember = "Payment"
+        Me.cboFeesCurrency.FormattingEnabled = True
+        Me.cboFeesCurrency.Location = New System.Drawing.Point(657, 11)
+        Me.cboFeesCurrency.Name = "cboFeesCurrency"
+        Me.cboFeesCurrency.Size = New System.Drawing.Size(109, 21)
+        Me.cboFeesCurrency.TabIndex = 7
+        Me.cboFeesCurrency.ValueMember = "Payment"
+        '
+        'Label70
+        '
+        Me.Label70.AutoSize = True
+        Me.Label70.Location = New System.Drawing.Point(597, 17)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(65, 13)
+        Me.Label70.TabIndex = 6
+        Me.Label70.Text = "Currency: "
         '
         'cboFeesCartegory
         '
@@ -4048,7 +4058,7 @@ Partial Class FrmStudent
         Me.cboFeesCartegory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboFeesCartegory.DisplayMember = "Payment"
         Me.cboFeesCartegory.FormattingEnabled = True
-        Me.cboFeesCartegory.Location = New System.Drawing.Point(495, 16)
+        Me.cboFeesCartegory.Location = New System.Drawing.Point(487, 16)
         Me.cboFeesCartegory.Name = "cboFeesCartegory"
         Me.cboFeesCartegory.Size = New System.Drawing.Size(104, 21)
         Me.cboFeesCartegory.TabIndex = 5
@@ -4057,7 +4067,7 @@ Partial Class FrmStudent
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(416, 24)
+        Me.Label16.Location = New System.Drawing.Point(416, 19)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(73, 13)
         Me.Label16.TabIndex = 4
@@ -4109,7 +4119,7 @@ Partial Class FrmStudent
         Me.tbStudentSubjects.Location = New System.Drawing.Point(4, 23)
         Me.tbStudentSubjects.Name = "tbStudentSubjects"
         Me.tbStudentSubjects.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbStudentSubjects.Size = New System.Drawing.Size(1587, 715)
+        Me.tbStudentSubjects.Size = New System.Drawing.Size(1725, 715)
         Me.tbStudentSubjects.TabIndex = 1
         Me.tbStudentSubjects.Tag = "17"
         Me.tbStudentSubjects.Text = "Student Subjects"
@@ -4138,8 +4148,8 @@ Partial Class FrmStudent
         Me.SplitContainer2.Panel2.Controls.Add(Me.btnSubSearchPanel)
         Me.SplitContainer2.Panel2.Controls.Add(Me.Academics)
         Me.SplitContainer2.Panel2.Controls.Add(Me.GroupBox9)
-        Me.SplitContainer2.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer2.SplitterDistance = 231
+        Me.SplitContainer2.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer2.SplitterDistance = 250
         Me.SplitContainer2.SplitterWidth = 1
         Me.SplitContainer2.TabIndex = 0
         '
@@ -4170,7 +4180,7 @@ Partial Class FrmStudent
         Me.lbSubStudSearch.FormattingEnabled = True
         Me.lbSubStudSearch.Location = New System.Drawing.Point(19, 255)
         Me.lbSubStudSearch.Name = "lbSubStudSearch"
-        Me.lbSubStudSearch.Size = New System.Drawing.Size(207, 186)
+        Me.lbSubStudSearch.Size = New System.Drawing.Size(226, 186)
         Me.lbSubStudSearch.TabIndex = 10
         Me.lbSubStudSearch.ValueMember = "StudentID"
         Me.lbSubStudSearch.Visible = False
@@ -4332,35 +4342,35 @@ Partial Class FrmStudent
         Me.dgSubStuds.AllowUserToAddRows = False
         Me.dgSubStuds.AllowUserToDeleteRows = False
         Me.dgSubStuds.BackgroundColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle78.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle78.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle78.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle78.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle78.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSubStuds.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle78
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSubStuds.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.dgSubStuds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgSubStuds.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SubjectsStudentID, Me.StudentName, Me.EnrolRef})
-        DataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle79.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgSubStuds.DefaultCellStyle = DataGridViewCellStyle79
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgSubStuds.DefaultCellStyle = DataGridViewCellStyle14
         Me.dgSubStuds.Location = New System.Drawing.Point(529, 91)
         Me.dgSubStuds.Name = "dgSubStuds"
         Me.dgSubStuds.ReadOnly = True
-        DataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle80.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgSubStuds.RowHeadersDefaultCellStyle = DataGridViewCellStyle80
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgSubStuds.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.dgSubStuds.RowTemplate.Height = 24
         Me.dgSubStuds.Size = New System.Drawing.Size(346, 424)
         Me.dgSubStuds.TabIndex = 0
@@ -4533,7 +4543,7 @@ Partial Class FrmStudent
         Me.tbPersonalDetails.Location = New System.Drawing.Point(4, 23)
         Me.tbPersonalDetails.Name = "tbPersonalDetails"
         Me.tbPersonalDetails.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbPersonalDetails.Size = New System.Drawing.Size(1587, 715)
+        Me.tbPersonalDetails.Size = New System.Drawing.Size(1725, 715)
         Me.tbPersonalDetails.TabIndex = 0
         Me.tbPersonalDetails.Tag = "15"
         Me.tbPersonalDetails.Text = "Personal Details"
@@ -4579,8 +4589,8 @@ Partial Class FrmStudent
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbPic)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbContactDetails)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbNok)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer1.SplitterDistance = 242
+        Me.SplitContainer1.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer1.SplitterDistance = 262
         Me.SplitContainer1.SplitterWidth = 1
         Me.SplitContainer1.TabIndex = 0
         Me.SplitContainer1.Tag = "15"
@@ -4591,7 +4601,7 @@ Partial Class FrmStudent
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tvEnrol.Location = New System.Drawing.Point(6, 255)
         Me.tvEnrol.Name = "tvEnrol"
-        Me.tvEnrol.Size = New System.Drawing.Size(204, 199)
+        Me.tvEnrol.Size = New System.Drawing.Size(224, 199)
         Me.tvEnrol.TabIndex = 20
         '
         'Button31
@@ -4630,7 +4640,7 @@ Partial Class FrmStudent
         Me.lstResult.FormattingEnabled = True
         Me.lstResult.Location = New System.Drawing.Point(6, 115)
         Me.lstResult.Name = "lstResult"
-        Me.lstResult.Size = New System.Drawing.Size(213, 134)
+        Me.lstResult.Size = New System.Drawing.Size(233, 134)
         Me.lstResult.TabIndex = 11
         Me.lstResult.Visible = False
         '
@@ -4909,7 +4919,7 @@ Partial Class FrmStudent
         'Button12
         '
         Me.Button12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button12.Location = New System.Drawing.Point(-510, 25593)
+        Me.Button12.Location = New System.Drawing.Point(-374, 25593)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(118, 34)
         Me.Button12.TabIndex = 1
@@ -4920,7 +4930,7 @@ Partial Class FrmStudent
         '
         Me.cmdConnect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdConnect.Enabled = False
-        Me.cmdConnect.Location = New System.Drawing.Point(-758, 25593)
+        Me.cmdConnect.Location = New System.Drawing.Point(-622, 25593)
         Me.cmdConnect.Name = "cmdConnect"
         Me.cmdConnect.Size = New System.Drawing.Size(118, 34)
         Me.cmdConnect.TabIndex = 3
@@ -4931,7 +4941,7 @@ Partial Class FrmStudent
         'Button13
         '
         Me.Button13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button13.Location = New System.Drawing.Point(-633, 25593)
+        Me.Button13.Location = New System.Drawing.Point(-497, 25593)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(118, 34)
         Me.Button13.TabIndex = 0
@@ -4952,7 +4962,7 @@ Partial Class FrmStudent
         Me.BindingNavigator1.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem
-        Me.BindingNavigator1.Size = New System.Drawing.Size(1336, 25)
+        Me.BindingNavigator1.Size = New System.Drawing.Size(1454, 25)
         Me.BindingNavigator1.TabIndex = 40
         Me.BindingNavigator1.Text = "BindingNavigator1"
         '
@@ -5646,7 +5656,7 @@ Partial Class FrmStudent
         Me.PersonalDetails.Location = New System.Drawing.Point(8, 3)
         Me.PersonalDetails.Name = "PersonalDetails"
         Me.PersonalDetails.SelectedIndex = 0
-        Me.PersonalDetails.Size = New System.Drawing.Size(1595, 742)
+        Me.PersonalDetails.Size = New System.Drawing.Size(1733, 742)
         Me.PersonalDetails.TabIndex = 0
         '
         'tbStudBehavior
@@ -5655,7 +5665,7 @@ Partial Class FrmStudent
         Me.tbStudBehavior.Location = New System.Drawing.Point(4, 23)
         Me.tbStudBehavior.Name = "tbStudBehavior"
         Me.tbStudBehavior.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbStudBehavior.Size = New System.Drawing.Size(1587, 715)
+        Me.tbStudBehavior.Size = New System.Drawing.Size(1660, 715)
         Me.tbStudBehavior.TabIndex = 12
         Me.tbStudBehavior.Text = "StudentBehavior"
         Me.tbStudBehavior.UseVisualStyleBackColor = True
@@ -5669,8 +5679,8 @@ Partial Class FrmStudent
         'SplitContainer3.Panel2
         '
         Me.SplitContainer3.Panel2.Controls.Add(Me.GroupBox20)
-        Me.SplitContainer3.Size = New System.Drawing.Size(1581, 709)
-        Me.SplitContainer3.SplitterDistance = 282
+        Me.SplitContainer3.Size = New System.Drawing.Size(1654, 709)
+        Me.SplitContainer3.SplitterDistance = 295
         Me.SplitContainer3.TabIndex = 0
         '
         'GroupBox20
@@ -5936,16 +5946,16 @@ Partial Class FrmStudent
         '
         'BehaviorStudent
         '
-        DataGridViewCellStyle81.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorStudent.DefaultCellStyle = DataGridViewCellStyle81
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorStudent.DefaultCellStyle = DataGridViewCellStyle16
         Me.BehaviorStudent.HeaderText = "Student"
         Me.BehaviorStudent.Name = "BehaviorStudent"
         Me.BehaviorStudent.ReadOnly = True
         '
         'BehaviorClass
         '
-        DataGridViewCellStyle82.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorClass.DefaultCellStyle = DataGridViewCellStyle82
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorClass.DefaultCellStyle = DataGridViewCellStyle17
         Me.BehaviorClass.HeaderText = "Class"
         Me.BehaviorClass.Name = "BehaviorClass"
         Me.BehaviorClass.ReadOnly = True
@@ -5953,24 +5963,24 @@ Partial Class FrmStudent
         '
         'BehaviorPeriod
         '
-        DataGridViewCellStyle83.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorPeriod.DefaultCellStyle = DataGridViewCellStyle83
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorPeriod.DefaultCellStyle = DataGridViewCellStyle18
         Me.BehaviorPeriod.HeaderText = "Period"
         Me.BehaviorPeriod.Name = "BehaviorPeriod"
         Me.BehaviorPeriod.ReadOnly = True
         '
         'BehaviorDate
         '
-        DataGridViewCellStyle84.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorDate.DefaultCellStyle = DataGridViewCellStyle84
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorDate.DefaultCellStyle = DataGridViewCellStyle19
         Me.BehaviorDate.HeaderText = "Date"
         Me.BehaviorDate.Name = "BehaviorDate"
         Me.BehaviorDate.ReadOnly = True
         '
         'BehaviorType
         '
-        DataGridViewCellStyle85.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorType.DefaultCellStyle = DataGridViewCellStyle85
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorType.DefaultCellStyle = DataGridViewCellStyle20
         Me.BehaviorType.HeaderText = "Cartegory"
         Me.BehaviorType.Name = "BehaviorType"
         Me.BehaviorType.ReadOnly = True
@@ -5978,8 +5988,8 @@ Partial Class FrmStudent
         '
         'BehaviorSeverity
         '
-        DataGridViewCellStyle86.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorSeverity.DefaultCellStyle = DataGridViewCellStyle86
+        DataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorSeverity.DefaultCellStyle = DataGridViewCellStyle21
         Me.BehaviorSeverity.HeaderText = "Type"
         Me.BehaviorSeverity.Name = "BehaviorSeverity"
         Me.BehaviorSeverity.ReadOnly = True
@@ -5988,8 +5998,8 @@ Partial Class FrmStudent
         '
         'BehaviorDetails
         '
-        DataGridViewCellStyle87.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorDetails.DefaultCellStyle = DataGridViewCellStyle87
+        DataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorDetails.DefaultCellStyle = DataGridViewCellStyle22
         Me.BehaviorDetails.HeaderText = "Details"
         Me.BehaviorDetails.MaxInputLength = 1000000
         Me.BehaviorDetails.Name = "BehaviorDetails"
@@ -6018,8 +6028,8 @@ Partial Class FrmStudent
         '
         'BehaviorRef
         '
-        DataGridViewCellStyle88.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BehaviorRef.DefaultCellStyle = DataGridViewCellStyle88
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BehaviorRef.DefaultCellStyle = DataGridViewCellStyle23
         Me.BehaviorRef.HeaderText = "Reference"
         Me.BehaviorRef.Name = "BehaviorRef"
         Me.BehaviorRef.ReadOnly = True
@@ -6147,6 +6157,30 @@ Partial Class FrmStudent
         Me.cxtToolCopyEnrollment.Size = New System.Drawing.Size(165, 22)
         Me.cxtToolCopyEnrollment.Text = "Copy Enrollment"
         '
+        'Payment
+        '
+        Me.Payment.DataPropertyName = "Payment"
+        Me.Payment.HeaderText = "Cartegory"
+        Me.Payment.Name = "Payment"
+        Me.Payment.ReadOnly = True
+        Me.Payment.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'BillingAmount
+        '
+        Me.BillingAmount.DataPropertyName = "Amount"
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Yellow
+        Me.BillingAmount.DefaultCellStyle = DataGridViewCellStyle1
+        Me.BillingAmount.HeaderText = "Amount"
+        Me.BillingAmount.Name = "BillingAmount"
+        '
+        'BillCurrency
+        '
+        Me.BillCurrency.DataPropertyName = "Currency"
+        Me.BillCurrency.HeaderText = "Currency"
+        Me.BillCurrency.Name = "BillCurrency"
+        Me.BillCurrency.ReadOnly = True
+        Me.BillCurrency.Width = 50
+        '
         'FrmStudent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -6155,7 +6189,7 @@ Partial Class FrmStudent
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1615, 788)
+        Me.ClientSize = New System.Drawing.Size(1753, 788)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.cmdLink)
         Me.Controls.Add(Me.cmdClose)
@@ -6182,10 +6216,10 @@ Partial Class FrmStudent
         Me.GroupBox11.ResumeLayout(False)
         Me.GroupBox11.PerformLayout()
         CType(Me.dgPayType, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FeesPaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgBilling, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
+        CType(Me.FeesPaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbClassTRansferring.ResumeLayout(False)
         Me.SplitContainer7.Panel1.ResumeLayout(False)
         Me.SplitContainer7.Panel1.PerformLayout()
@@ -6617,8 +6651,6 @@ Partial Class FrmStudent
 
     Friend WithEvents Button27 As System.Windows.Forms.Button
 
-    Friend WithEvents rvOnScreenDatPay As Microsoft.Reporting.WinForms.ReportViewer
-
     Friend WithEvents Label52 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents lbStudMarks As System.Windows.Forms.ListBox
@@ -6779,8 +6811,6 @@ Partial Class FrmStudent
     Friend WithEvents Button38 As Button
     Friend WithEvents lnkRemoveImage As LinkLabel
     Friend WithEvents Label12 As Label
-    Friend WithEvents Payment As DataGridViewComboBoxColumn
-    Friend WithEvents BillingAmount As DataGridViewTextBoxColumn
     Friend WithEvents Check As DataGridViewCheckBoxColumn
     Friend WithEvents Item As DataGridViewTextBoxColumn
     Friend WithEvents Subject As DataGridViewTextBoxColumn
@@ -6805,14 +6835,6 @@ Partial Class FrmStudent
     Friend WithEvents chkTransScreenShowInvoices As CheckBox
     Friend WithEvents Label14 As Label
     Friend WithEvents cboBBFCutOffPeriod As ComboBox
-    Friend WithEvents Cartegory As DataGridViewComboBoxColumn
-    Friend WithEvents amount As DataGridViewTextBoxColumn
-    Friend WithEvents Currency As DataGridViewComboBoxColumn
-    Friend WithEvents Period As DataGridViewComboBoxColumn
-    Friend WithEvents Reference As DataGridViewTextBoxColumn
-    Friend WithEvents btnUpdate As DataGridViewButtonColumn
-    Friend WithEvents btnDelete As DataGridViewButtonColumn
-    Friend WithEvents LineRef As DataGridViewTextBoxColumn
     Friend WithEvents Button28 As Button
     Friend WithEvents chkAllClassesInCalendarYear As CheckBox
     Friend WithEvents chkOtherClassList As CheckedListBox
@@ -6856,4 +6878,18 @@ Partial Class FrmStudent
     Friend WithEvents btnSave As Button
     Friend WithEvents txtBehaviorStud As TextBox
     Friend WithEvents Label69 As Label
+    Friend WithEvents Cartegory As DataGridViewComboBoxColumn
+    Friend WithEvents amount As DataGridViewTextBoxColumn
+    Friend WithEvents Currency As DataGridViewComboBoxColumn
+    Friend WithEvents Period As DataGridViewComboBoxColumn
+    Friend WithEvents Reference As DataGridViewTextBoxColumn
+    Friend WithEvents btnUpdate As DataGridViewButtonColumn
+    Friend WithEvents btnDelete As DataGridViewButtonColumn
+    Friend WithEvents LineRef As DataGridViewTextBoxColumn
+    Friend WithEvents rvOnScreenDatPay As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents cboFeesCurrency As ComboBox
+    Friend WithEvents Label70 As Label
+    Friend WithEvents Payment As DataGridViewTextBoxColumn
+    Friend WithEvents BillingAmount As DataGridViewTextBoxColumn
+    Friend WithEvents BillCurrency As DataGridViewTextBoxColumn
 End Class

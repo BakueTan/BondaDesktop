@@ -535,7 +535,15 @@ Partial Class Rports
         Me.Label58 = New System.Windows.Forms.Label()
         Me.dtpPayDateTo = New System.Windows.Forms.DateTimePicker()
         Me.dtpPayDateFrom = New System.Windows.Forms.DateTimePicker()
-        Me.gbAccounts = New System.Windows.Forms.GroupBox()
+        Me.AA = New System.Windows.Forms.GroupBox()
+        Me.gbDebtorsAmountFilter = New System.Windows.Forms.GroupBox()
+        Me.Label51 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cboDebtFilter = New System.Windows.Forms.ComboBox()
+        Me.txtDebtFilter2 = New System.Windows.Forms.TextBox()
+        Me.txtDebtFilter1 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.cboFeesCurrency = New System.Windows.Forms.ComboBox()
         Me.pnlTranstype = New System.Windows.Forms.Panel()
         Me.chkAccShoRec = New System.Windows.Forms.CheckBox()
         Me.chkAccShowInv = New System.Windows.Forms.CheckBox()
@@ -658,7 +666,8 @@ Partial Class Rports
         Me.gbPaymentsPerDate.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.gbAccounts.SuspendLayout()
+        Me.AA.SuspendLayout()
+        Me.gbDebtorsAmountFilter.SuspendLayout()
         Me.pnlTranstype.SuspendLayout()
         Me.gbExamAttendance.SuspendLayout()
         Me.gbContactDetails.SuspendLayout()
@@ -721,7 +730,7 @@ Partial Class Rports
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbPersDetails)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbStudClasses)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbPaymentsPerDate)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.gbAccounts)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.AA)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbExamAttendance)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbContactDetails)
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbSubjectPoints)
@@ -6182,41 +6191,124 @@ Partial Class Rports
         Me.dtpPayDateFrom.Size = New System.Drawing.Size(164, 20)
         Me.dtpPayDateFrom.TabIndex = 16
         '
-        'gbAccounts
+        'AA
         '
-        Me.gbAccounts.Controls.Add(Me.pnlTranstype)
-        Me.gbAccounts.Controls.Add(Me.chkDebtorsOnly)
-        Me.gbAccounts.Controls.Add(Me.Label7)
-        Me.gbAccounts.Controls.Add(Me.cboAccClass)
-        Me.gbAccounts.Controls.Add(Me.txtAccStud)
-        Me.gbAccounts.Controls.Add(Me.Label101)
-        Me.gbAccounts.Controls.Add(Me.rtxtAccAddinfo)
-        Me.gbAccounts.Controls.Add(Me.Label32)
-        Me.gbAccounts.Controls.Add(Me.cboBBFCutOff)
-        Me.gbAccounts.Controls.Add(Me.rbClassStatement)
-        Me.gbAccounts.Controls.Add(Me.Label132)
-        Me.gbAccounts.Controls.Add(Me.cboAccPayType)
-        Me.gbAccounts.Controls.Add(Me.rbStudStatement)
-        Me.gbAccounts.Controls.Add(Me.lbAccStud)
-        Me.gbAccounts.Controls.Add(Me.Label77)
-        Me.gbAccounts.Controls.Add(Me.Label74)
-        Me.gbAccounts.Controls.Add(Me.cboAccSection)
-        Me.gbAccounts.Controls.Add(Me.rbAccDebtors)
-        Me.gbAccounts.Controls.Add(Me.cboAccSession)
-        Me.gbAccounts.Controls.Add(Me.Label55)
-        Me.gbAccounts.Controls.Add(Me.cboAccPerTo)
-        Me.gbAccounts.Controls.Add(Me.Label54)
-        Me.gbAccounts.Controls.Add(Me.cboAccPerFrm)
-        Me.gbAccounts.Controls.Add(Me.Label52)
-        Me.gbAccounts.Controls.Add(Me.cboAccLvl)
-        Me.gbAccounts.Controls.Add(Me.rbAccPerForm)
-        Me.gbAccounts.Location = New System.Drawing.Point(219, 179)
-        Me.gbAccounts.Name = "gbAccounts"
-        Me.gbAccounts.Size = New System.Drawing.Size(655, 249)
-        Me.gbAccounts.TabIndex = 13
-        Me.gbAccounts.TabStop = False
-        Me.gbAccounts.Text = "Accounting"
-        Me.gbAccounts.Visible = False
+        Me.AA.Controls.Add(Me.gbDebtorsAmountFilter)
+        Me.AA.Controls.Add(Me.Label11)
+        Me.AA.Controls.Add(Me.cboFeesCurrency)
+        Me.AA.Controls.Add(Me.pnlTranstype)
+        Me.AA.Controls.Add(Me.chkDebtorsOnly)
+        Me.AA.Controls.Add(Me.Label7)
+        Me.AA.Controls.Add(Me.cboAccClass)
+        Me.AA.Controls.Add(Me.txtAccStud)
+        Me.AA.Controls.Add(Me.Label101)
+        Me.AA.Controls.Add(Me.rtxtAccAddinfo)
+        Me.AA.Controls.Add(Me.Label32)
+        Me.AA.Controls.Add(Me.cboBBFCutOff)
+        Me.AA.Controls.Add(Me.rbClassStatement)
+        Me.AA.Controls.Add(Me.Label132)
+        Me.AA.Controls.Add(Me.cboAccPayType)
+        Me.AA.Controls.Add(Me.rbStudStatement)
+        Me.AA.Controls.Add(Me.lbAccStud)
+        Me.AA.Controls.Add(Me.Label77)
+        Me.AA.Controls.Add(Me.Label74)
+        Me.AA.Controls.Add(Me.cboAccSection)
+        Me.AA.Controls.Add(Me.rbAccDebtors)
+        Me.AA.Controls.Add(Me.cboAccSession)
+        Me.AA.Controls.Add(Me.Label55)
+        Me.AA.Controls.Add(Me.cboAccPerTo)
+        Me.AA.Controls.Add(Me.Label54)
+        Me.AA.Controls.Add(Me.cboAccPerFrm)
+        Me.AA.Controls.Add(Me.Label52)
+        Me.AA.Controls.Add(Me.cboAccLvl)
+        Me.AA.Controls.Add(Me.rbAccPerForm)
+        Me.AA.Location = New System.Drawing.Point(217, 173)
+        Me.AA.Name = "AA"
+        Me.AA.Size = New System.Drawing.Size(655, 309)
+        Me.AA.TabIndex = 13
+        Me.AA.TabStop = False
+        Me.AA.Text = "Student Fees"
+        Me.AA.Visible = False
+        '
+        'gbDebtorsAmountFilter
+        '
+        Me.gbDebtorsAmountFilter.Controls.Add(Me.Label51)
+        Me.gbDebtorsAmountFilter.Controls.Add(Me.Label14)
+        Me.gbDebtorsAmountFilter.Controls.Add(Me.cboDebtFilter)
+        Me.gbDebtorsAmountFilter.Controls.Add(Me.txtDebtFilter2)
+        Me.gbDebtorsAmountFilter.Controls.Add(Me.txtDebtFilter1)
+        Me.gbDebtorsAmountFilter.Location = New System.Drawing.Point(190, 196)
+        Me.gbDebtorsAmountFilter.Name = "gbDebtorsAmountFilter"
+        Me.gbDebtorsAmountFilter.Size = New System.Drawing.Size(334, 49)
+        Me.gbDebtorsAmountFilter.TabIndex = 65
+        Me.gbDebtorsAmountFilter.TabStop = False
+        Me.gbDebtorsAmountFilter.Text = "gbDebtorsAmountFilter"
+        Me.gbDebtorsAmountFilter.Visible = False
+        '
+        'Label51
+        '
+        Me.Label51.AutoSize = True
+        Me.Label51.Location = New System.Drawing.Point(193, 23)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(34, 13)
+        Me.Label51.TabIndex = 66
+        Me.Label51.Text = "and $"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(99, 23)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(13, 13)
+        Me.Label14.TabIndex = 65
+        Me.Label14.Text = "$"
+        '
+        'cboDebtFilter
+        '
+        Me.cboDebtFilter.DisplayMember = "Payment"
+        Me.cboDebtFilter.FormattingEnabled = True
+        Me.cboDebtFilter.Items.AddRange(New Object() {"At Least", "At Most", "Equal To", "Between"})
+        Me.cboDebtFilter.Location = New System.Drawing.Point(3, 17)
+        Me.cboDebtFilter.Name = "cboDebtFilter"
+        Me.cboDebtFilter.Size = New System.Drawing.Size(93, 21)
+        Me.cboDebtFilter.TabIndex = 62
+        Me.cboDebtFilter.ValueMember = "Payment"
+        '
+        'txtDebtFilter2
+        '
+        Me.txtDebtFilter2.Location = New System.Drawing.Point(227, 20)
+        Me.txtDebtFilter2.Name = "txtDebtFilter2"
+        Me.txtDebtFilter2.Size = New System.Drawing.Size(100, 20)
+        Me.txtDebtFilter2.TabIndex = 64
+        Me.txtDebtFilter2.Visible = False
+        '
+        'txtDebtFilter1
+        '
+        Me.txtDebtFilter1.Location = New System.Drawing.Point(110, 19)
+        Me.txtDebtFilter1.Name = "txtDebtFilter1"
+        Me.txtDebtFilter1.Size = New System.Drawing.Size(82, 20)
+        Me.txtDebtFilter1.TabIndex = 63
+        Me.txtDebtFilter1.Text = "1"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(221, 253)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(52, 13)
+        Me.Label11.TabIndex = 61
+        Me.Label11.Text = "Currency:"
+        '
+        'cboFeesCurrency
+        '
+        Me.cboFeesCurrency.DisplayMember = "Payment"
+        Me.cboFeesCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboFeesCurrency.FormattingEnabled = True
+        Me.cboFeesCurrency.Location = New System.Drawing.Point(274, 250)
+        Me.cboFeesCurrency.Name = "cboFeesCurrency"
+        Me.cboFeesCurrency.Size = New System.Drawing.Size(93, 21)
+        Me.cboFeesCurrency.TabIndex = 60
+        Me.cboFeesCurrency.ValueMember = "Payment"
         '
         'pnlTranstype
         '
@@ -6250,7 +6342,7 @@ Partial Class Rports
         'chkDebtorsOnly
         '
         Me.chkDebtorsOnly.AutoSize = True
-        Me.chkDebtorsOnly.Location = New System.Drawing.Point(91, 194)
+        Me.chkDebtorsOnly.Location = New System.Drawing.Point(95, 214)
         Me.chkDebtorsOnly.Name = "chkDebtorsOnly"
         Me.chkDebtorsOnly.Size = New System.Drawing.Size(87, 17)
         Me.chkDebtorsOnly.TabIndex = 55
@@ -6327,7 +6419,7 @@ Partial Class Rports
         'rbClassStatement
         '
         Me.rbClassStatement.AutoSize = True
-        Me.rbClassStatement.Location = New System.Drawing.Point(330, 220)
+        Me.rbClassStatement.Location = New System.Drawing.Point(287, 280)
         Me.rbClassStatement.Name = "rbClassStatement"
         Me.rbClassStatement.Size = New System.Drawing.Size(103, 17)
         Me.rbClassStatement.TabIndex = 39
@@ -6338,27 +6430,27 @@ Partial Class Rports
         'Label132
         '
         Me.Label132.AutoSize = True
-        Me.Label132.Location = New System.Drawing.Point(19, 219)
+        Me.Label132.Location = New System.Drawing.Point(17, 252)
         Me.Label132.Name = "Label132"
-        Me.Label132.Size = New System.Drawing.Size(34, 13)
+        Me.Label132.Size = New System.Drawing.Size(55, 13)
         Me.Label132.TabIndex = 38
-        Me.Label132.Text = "Type:"
+        Me.Label132.Text = "Cartegory:"
         '
         'cboAccPayType
         '
         Me.cboAccPayType.DisplayMember = "Payment"
         Me.cboAccPayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboAccPayType.FormattingEnabled = True
-        Me.cboAccPayType.Location = New System.Drawing.Point(54, 216)
+        Me.cboAccPayType.Location = New System.Drawing.Point(90, 250)
         Me.cboAccPayType.Name = "cboAccPayType"
-        Me.cboAccPayType.Size = New System.Drawing.Size(72, 21)
+        Me.cboAccPayType.Size = New System.Drawing.Size(124, 21)
         Me.cboAccPayType.TabIndex = 37
         Me.cboAccPayType.ValueMember = "Payment"
         '
         'rbStudStatement
         '
         Me.rbStudStatement.AutoSize = True
-        Me.rbStudStatement.Location = New System.Drawing.Point(219, 220)
+        Me.rbStudStatement.Location = New System.Drawing.Point(176, 280)
         Me.rbStudStatement.Name = "rbStudStatement"
         Me.rbStudStatement.Size = New System.Drawing.Size(110, 17)
         Me.rbStudStatement.TabIndex = 36
@@ -6410,7 +6502,7 @@ Partial Class Rports
         'rbAccDebtors
         '
         Me.rbAccDebtors.AutoSize = True
-        Me.rbAccDebtors.Location = New System.Drawing.Point(439, 220)
+        Me.rbAccDebtors.Location = New System.Drawing.Point(396, 280)
         Me.rbAccDebtors.Name = "rbAccDebtors"
         Me.rbAccDebtors.Size = New System.Drawing.Size(99, 17)
         Me.rbAccDebtors.TabIndex = 27
@@ -6497,7 +6589,7 @@ Partial Class Rports
         'rbAccPerForm
         '
         Me.rbAccPerForm.AutoSize = True
-        Me.rbAccPerForm.Location = New System.Drawing.Point(136, 220)
+        Me.rbAccPerForm.Location = New System.Drawing.Point(93, 280)
         Me.rbAccPerForm.Name = "rbAccPerForm"
         Me.rbAccPerForm.Size = New System.Drawing.Size(84, 17)
         Me.rbAccPerForm.TabIndex = 5
@@ -7106,8 +7198,10 @@ Partial Class Rports
         Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.gbAccounts.ResumeLayout(False)
-        Me.gbAccounts.PerformLayout()
+        Me.AA.ResumeLayout(False)
+        Me.AA.PerformLayout()
+        Me.gbDebtorsAmountFilter.ResumeLayout(False)
+        Me.gbDebtorsAmountFilter.PerformLayout()
         Me.pnlTranstype.ResumeLayout(False)
         Me.pnlTranstype.PerformLayout()
         Me.gbExamAttendance.ResumeLayout(False)
@@ -7225,7 +7319,7 @@ Partial Class Rports
     Friend WithEvents cboTransIntk As System.Windows.Forms.ComboBox
     Friend WithEvents Label47 As System.Windows.Forms.Label
     Friend WithEvents cboSubPntIntk As System.Windows.Forms.ComboBox
-    Friend WithEvents gbAccounts As System.Windows.Forms.GroupBox
+    Friend WithEvents AA As System.Windows.Forms.GroupBox
     Friend WithEvents rbAccPerForm As System.Windows.Forms.RadioButton
     Friend WithEvents Label52 As System.Windows.Forms.Label
     Friend WithEvents cboAccLvl As System.Windows.Forms.ComboBox
@@ -7712,6 +7806,14 @@ Partial Class Rports
     Friend WithEvents pnlTranstype As Panel
     Friend WithEvents chkAccShoRec As CheckBox
     Friend WithEvents chkAccShowInv As CheckBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents cboFeesCurrency As ComboBox
+    Friend WithEvents cboDebtFilter As ComboBox
+    Friend WithEvents txtDebtFilter2 As TextBox
+    Friend WithEvents txtDebtFilter1 As TextBox
+    Friend WithEvents gbDebtorsAmountFilter As GroupBox
+    Friend WithEvents Label51 As Label
+    Friend WithEvents Label14 As Label
     ' Friend WithEvents DebtPaymentTableAdapter As SMS.dsschoolTableAdapters.DebtPaymentTableAdapter
     ' Friend WithEvents AssertliquidationTableAdapter As SMS.dsschoolTableAdapters.assertliquidationTableAdapter
     'Friend WithEvents ReceitsdonationsTableAdapter As SMS.dsschoolTableAdapters.receitsdonationsTableAdapter

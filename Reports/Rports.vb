@@ -145,6 +145,11 @@ Public Class Rports
             .DisplayMember = "Text"
             .ValueMember = "Value"
         End With
+        With cboFeesCurrency
+            .DataSource = Currencies()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
     End Sub
 
     Private Sub LoadCombos()
@@ -468,7 +473,7 @@ Public Class Rports
         gbContactDetails.Visible = False
         gbHsStudMarks.Visible = False
         gbExamAttendance.Visible = False
-        gbAccounts.Visible = False
+        AA.Visible = False
         gbPaymentsPerDate.Visible = False
         gbLeftStudents.Visible = False
         gbSubjectsDropped.Visible = False
@@ -543,7 +548,7 @@ Public Class Rports
             Case "ExamAttendance"
                 InitGroupBox(gbExamAttendance, 397, 125)
             Case "Cumulative Payments"
-                InitGroupBox(gbAccounts, 746, 331)
+                InitGroupBox(AA, 746, 331)
                 rbClassStatement.Checked = True
             Case "PaymentsPerDate"
                 InitGroupBox(gbPaymentsPerDate, 598, 224)
@@ -720,6 +725,10 @@ Public Class Rports
                     gstrAccBBFCutOffPeriod = cboBBFCutOff.SelectedValue
                     gblnShowInvoices = chkAccShowInv.Checked
                     gblnShowReceipts = chkAccShoRec.Checked
+                    gstrCurrency = cboFeesCurrency.Text
+                    gstrDebtFilter = cboDebtFilter.Text
+                    gstrDebtFrom = txtDebtFilter1.Text
+                    gstrDebtTo = txtDebtFilter2.Text
 
 
                 Case "Subject Students"
@@ -2072,6 +2081,8 @@ Public Class Rports
     Private Sub RadioButton4_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbClassStatement.CheckedChanged, rbStudStatement.CheckedChanged, rbAccPerForm.CheckedChanged, rbAccDebtors.CheckedChanged
         Dim ctrl As RadioButton = sender
         pnlTranstype.Enabled = True
+        gbDebtorsAmountFilter.Visible = False
+        Label51.Visible = False
         If ctrl.Checked Then
 
             Select Case ctrl.Name
@@ -2085,6 +2096,7 @@ Public Class Rports
                     cboAccSession.Enabled = True
                     rtxtAccAddinfo.Enabled = True
                     chkDebtorsOnly.Enabled = True
+                    chkDebtorsOnly_CheckedChanged(Me, Nothing)
                     cboBBFCutOff.Enabled = True
                     pnlTranstype.Enabled = False
                     chkAccShoRec.Checked = True
@@ -2103,6 +2115,10 @@ Public Class Rports
                     chkDebtorsOnly.Enabled = False
                     cboBBFCutOff.Enabled = True
                 Case rbAccDebtors.Name
+                    gbDebtorsAmountFilter.Visible = True
+
+                    cboDebtFilter.Text = "At Least"
+                    cboDebtFilter_SelectedIndexChanged(Me, Nothing)
                     chkAccShoRec.Checked = True
                     chkAccShowInv.Checked = True
                     cboAccLvl.Enabled = True
@@ -2729,5 +2745,32 @@ Public Class Rports
 
     Private Sub rbAccDebtPerSect_CheckedChanged(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub gbAccounts_Enter(sender As Object, e As EventArgs) Handles AA.Enter
+
+    End Sub
+
+    Private Sub cboDebtFilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDebtFilter.SelectedIndexChanged
+        Select Case cboDebtFilter.Text
+            Case "Between"
+                txtDebtFilter2.Visible = True
+                Label51.Visible = True
+            Case Else
+                txtDebtFilter2.Visible = False
+                Label51.Visible = False
+        End Select
+
+    End Sub
+
+    Private Sub chkDebtorsOnly_CheckedChanged(sender As Object, e As EventArgs) Handles chkDebtorsOnly.CheckedChanged
+        If chkDebtorsOnly.Checked Then
+            gbDebtorsAmountFilter.Visible = True
+            cboDebtFilter.Text = "At Least"
+            cboDebtFilter_SelectedIndexChanged(Me,Nothing)
+        Else
+            gbDebtorsAmountFilter.Visible = False
+
+        End If
     End Sub
 End Class

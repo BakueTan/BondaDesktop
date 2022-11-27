@@ -129,10 +129,10 @@ Partial Class frmSchoolParameters
         Me.txtClassSearch = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.GroupBox19 = New System.Windows.Forms.GroupBox()
-        Me.chkCurrentClass = New System.Windows.Forms.CheckBox()
-        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DescriptionTextBox1 = New System.Windows.Forms.TextBox()
+        Me.chkRunDisplayedClass = New System.Windows.Forms.CheckBox()
         Me.ClassesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.chkCurrentClass = New System.Windows.Forms.CheckBox()
+        Me.DescriptionTextBox1 = New System.Windows.Forms.TextBox()
         Me.ClasComboBox = New System.Windows.Forms.ComboBox()
         Me.SemComboBox = New System.Windows.Forms.ComboBox()
         Me.IntakeComboBox1 = New System.Windows.Forms.ComboBox()
@@ -268,6 +268,7 @@ Partial Class frmSchoolParameters
         Me.MailfromTextBox = New System.Windows.Forms.TextBox()
         Me.PortTextBox = New System.Windows.Forms.TextBox()
         Me.PasswordTextBox1 = New System.Windows.Forms.TextBox()
+        Me.ExamSessionsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
@@ -436,9 +437,6 @@ Partial Class frmSchoolParameters
         Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton39 = New System.Windows.Forms.ToolStripButton()
         Me.PaymentTypeDataGridView = New System.Windows.Forms.DataGridView()
-        Me.PaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TypeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tbPAyMethods = New System.Windows.Forms.TabPage()
         Me.GroupBox22 = New System.Windows.Forms.GroupBox()
         Me.BindingNavigator10 = New System.Windows.Forms.BindingNavigator(Me.components)
@@ -535,7 +533,10 @@ Partial Class frmSchoolParameters
         Me.QualificationsTableAdapter = New SchoolParameters.dsSchoolParametersTableAdapters.QualificationsTableAdapter()
         Me.CurrenciesTableAdapter = New SchoolParameters.dsSchoolParametersTableAdapters.CurrenciesTableAdapter()
         Me.TableAdapterManager = New SchoolParameters.dsSchoolParametersTableAdapters.TableAdapterManager()
-        Me.chkRunDisplayedClass = New System.Windows.Forms.CheckBox()
+        Me.PaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Currency = New System.Windows.Forms.DataGridViewComboBoxColumn()
         SubjectIDLabel = New System.Windows.Forms.Label()
         SubjectLabel = New System.Windows.Forms.Label()
         UserNameLabel = New System.Windows.Forms.Label()
@@ -599,7 +600,6 @@ Partial Class frmSchoolParameters
         Me.tbClasses.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
         Me.GroupBox19.SuspendLayout()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClassesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator18, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator18.SuspendLayout()
@@ -636,6 +636,7 @@ Partial Class frmSchoolParameters
         CType(Me.BindingNavigator17, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator17.SuspendLayout()
         CType(Me.SmtpBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator5.SuspendLayout()
         Me.TabControl2.SuspendLayout()
@@ -1725,6 +1726,21 @@ Partial Class frmSchoolParameters
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Classes"
         '
+        'chkRunDisplayedClass
+        '
+        Me.chkRunDisplayedClass.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ClassesBindingSource, "Current", True))
+        Me.chkRunDisplayedClass.Location = New System.Drawing.Point(227, 229)
+        Me.chkRunDisplayedClass.Name = "chkRunDisplayedClass"
+        Me.chkRunDisplayedClass.Size = New System.Drawing.Size(236, 24)
+        Me.chkRunDisplayedClass.TabIndex = 5
+        Me.chkRunDisplayedClass.Text = "Update Students' Displayed Class"
+        Me.chkRunDisplayedClass.UseVisualStyleBackColor = True
+        '
+        'ClassesBindingSource
+        '
+        Me.ClassesBindingSource.DataMember = "Classes"
+        Me.ClassesBindingSource.DataSource = Me.DsSchoolParameters
+        '
         'chkCurrentClass
         '
         Me.chkCurrentClass.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ClassesBindingSource, "Current", True))
@@ -1735,11 +1751,6 @@ Partial Class frmSchoolParameters
         Me.chkCurrentClass.Text = "Displayed Class"
         Me.chkCurrentClass.UseVisualStyleBackColor = True
         '
-        'ExamSessionsBindingSource
-        '
-        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
-        Me.ExamSessionsBindingSource.DataSource = Me.DsSchoolParameters
-        '
         'DescriptionTextBox1
         '
         Me.DescriptionTextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ClassesBindingSource, "Description", True))
@@ -1747,11 +1758,6 @@ Partial Class frmSchoolParameters
         Me.DescriptionTextBox1.Name = "DescriptionTextBox1"
         Me.DescriptionTextBox1.Size = New System.Drawing.Size(220, 20)
         Me.DescriptionTextBox1.TabIndex = 0
-        '
-        'ClassesBindingSource
-        '
-        Me.ClassesBindingSource.DataMember = "Classes"
-        Me.ClassesBindingSource.DataSource = Me.DsSchoolParameters
         '
         'ClasComboBox
         '
@@ -2956,6 +2962,11 @@ Partial Class frmSchoolParameters
         Me.PasswordTextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox1.Size = New System.Drawing.Size(179, 20)
         Me.PasswordTextBox1.TabIndex = 7
+        '
+        'ExamSessionsBindingSource
+        '
+        Me.ExamSessionsBindingSource.DataMember = "ExamSessions"
+        Me.ExamSessionsBindingSource.DataSource = Me.DsSchoolParameters
         '
         'OpenFileDialog1
         '
@@ -4376,7 +4387,7 @@ Partial Class frmSchoolParameters
         Me.GroupBox21.Controls.Add(Me.PaymentTypeDataGridView)
         Me.GroupBox21.Location = New System.Drawing.Point(138, 28)
         Me.GroupBox21.Name = "GroupBox21"
-        Me.GroupBox21.Size = New System.Drawing.Size(634, 282)
+        Me.GroupBox21.Size = New System.Drawing.Size(634, 318)
         Me.GroupBox21.TabIndex = 0
         Me.GroupBox21.TabStop = False
         Me.GroupBox21.Text = "Payment Cartegories"
@@ -4504,33 +4515,12 @@ Partial Class frmSchoolParameters
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PaymentTypeDataGridView.AutoGenerateColumns = False
         Me.PaymentTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.PaymentTypeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn1, Me.AmountDataGridViewTextBoxColumn})
+        Me.PaymentTypeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn1, Me.AmountDataGridViewTextBoxColumn, Me.Currency})
         Me.PaymentTypeDataGridView.DataSource = Me.PaymentTypeBindingSource
-        Me.PaymentTypeDataGridView.Location = New System.Drawing.Point(69, 76)
+        Me.PaymentTypeDataGridView.Location = New System.Drawing.Point(17, 54)
         Me.PaymentTypeDataGridView.Name = "PaymentTypeDataGridView"
-        Me.PaymentTypeDataGridView.Size = New System.Drawing.Size(496, 174)
+        Me.PaymentTypeDataGridView.Size = New System.Drawing.Size(596, 210)
         Me.PaymentTypeDataGridView.TabIndex = 10
-        '
-        'PaymentDataGridViewTextBoxColumn
-        '
-        Me.PaymentDataGridViewTextBoxColumn.DataPropertyName = "Payment"
-        Me.PaymentDataGridViewTextBoxColumn.HeaderText = "Payment"
-        Me.PaymentDataGridViewTextBoxColumn.Name = "PaymentDataGridViewTextBoxColumn"
-        '
-        'TypeDataGridViewTextBoxColumn1
-        '
-        Me.TypeDataGridViewTextBoxColumn1.DataPropertyName = "Type"
-        Me.TypeDataGridViewTextBoxColumn1.HeaderText = "Type"
-        Me.TypeDataGridViewTextBoxColumn1.Items.AddRange(New Object() {"SchoolFees", "Ancillary"})
-        Me.TypeDataGridViewTextBoxColumn1.Name = "TypeDataGridViewTextBoxColumn1"
-        Me.TypeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.TypeDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'AmountDataGridViewTextBoxColumn
-        '
-        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
-        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
-        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
         '
         'tbPAyMethods
         '
@@ -5311,15 +5301,36 @@ Partial Class frmSchoolParameters
         Me.TableAdapterManager.SubjectsTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = SchoolParameters.dsSchoolParametersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'chkRunDisplayedClass
+        'PaymentDataGridViewTextBoxColumn
         '
-        Me.chkRunDisplayedClass.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ClassesBindingSource, "Current", True))
-        Me.chkRunDisplayedClass.Location = New System.Drawing.Point(227, 229)
-        Me.chkRunDisplayedClass.Name = "chkRunDisplayedClass"
-        Me.chkRunDisplayedClass.Size = New System.Drawing.Size(236, 24)
-        Me.chkRunDisplayedClass.TabIndex = 5
-        Me.chkRunDisplayedClass.Text = "Update Students' Displayed Class"
-        Me.chkRunDisplayedClass.UseVisualStyleBackColor = True
+        Me.PaymentDataGridViewTextBoxColumn.DataPropertyName = "Payment"
+        Me.PaymentDataGridViewTextBoxColumn.HeaderText = "Payment"
+        Me.PaymentDataGridViewTextBoxColumn.Name = "PaymentDataGridViewTextBoxColumn"
+        Me.PaymentDataGridViewTextBoxColumn.Width = 250
+        '
+        'TypeDataGridViewTextBoxColumn1
+        '
+        Me.TypeDataGridViewTextBoxColumn1.DataPropertyName = "Type"
+        Me.TypeDataGridViewTextBoxColumn1.HeaderText = "Type"
+        Me.TypeDataGridViewTextBoxColumn1.Items.AddRange(New Object() {"SchoolFees", "Ancillary"})
+        Me.TypeDataGridViewTextBoxColumn1.Name = "TypeDataGridViewTextBoxColumn1"
+        Me.TypeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.TypeDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'AmountDataGridViewTextBoxColumn
+        '
+        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
+        '
+        'Currency
+        '
+        Me.Currency.DataPropertyName = "Currency"
+        Me.Currency.DataSource = Me.CurrenciesBindingSource
+        Me.Currency.DisplayMember = "Currency"
+        Me.Currency.HeaderText = "Currency"
+        Me.Currency.Name = "Currency"
+        Me.Currency.ValueMember = "Currency"
         '
         'frmSchoolParameters
         '
@@ -5358,7 +5369,6 @@ Partial Class frmSchoolParameters
         Me.GroupBox11.PerformLayout()
         Me.GroupBox19.ResumeLayout(False)
         Me.GroupBox19.PerformLayout()
-        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClassesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator18, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator18.ResumeLayout(False)
@@ -5409,6 +5419,7 @@ Partial Class frmSchoolParameters
         Me.BindingNavigator17.ResumeLayout(False)
         Me.BindingNavigator17.PerformLayout()
         CType(Me.SmtpBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExamSessionsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator5.ResumeLayout(False)
         Me.BindingNavigator5.PerformLayout()
@@ -5949,9 +5960,6 @@ Partial Class frmSchoolParameters
     Friend WithEvents ColumnHeader7 As Windows.Forms.ColumnHeader
     Friend WithEvents Label27 As Windows.Forms.Label
     Friend WithEvents cboCurrFromCurr As Windows.Forms.ComboBox
-    Friend WithEvents PaymentDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TypeDataGridViewTextBoxColumn1 As Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents AmountDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Section As Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents type As Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents WeightDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
@@ -5967,4 +5975,8 @@ Partial Class frmSchoolParameters
     Friend WithEvents pbSchoolStamp2 As Windows.Forms.PictureBox
     Friend WithEvents chkCurrentClass As Windows.Forms.CheckBox
     Friend WithEvents chkRunDisplayedClass As Windows.Forms.CheckBox
+    Friend WithEvents PaymentDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TypeDataGridViewTextBoxColumn1 As Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents AmountDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Currency As Windows.Forms.DataGridViewComboBoxColumn
 End Class

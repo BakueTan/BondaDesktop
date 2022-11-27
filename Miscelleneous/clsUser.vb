@@ -41,7 +41,7 @@ Public Class clsUser
             Dim oResult As Object = Nothing
             Try
                 sql = "SELECT COUNT(Usr_User) FROM dbo.Users WHERE Usr_User ='" & mstrUsername &
-                "' AND Usr_Password ='" & mstrPassWord & "'"
+                "' AND Usr_Password ='" & mstrPassWord & "' and usr_active = 1 "
                 oResult = ExecuteScalar(sql)
                 If Not IsNothing(oResult) Then
                     If CInt(oResult) > 0 Then

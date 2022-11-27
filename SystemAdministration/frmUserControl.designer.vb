@@ -19,119 +19,119 @@ Partial Class frmUserControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim lblGP As System.Windows.Forms.Label
         Dim lblConfirm As System.Windows.Forms.Label
         Dim lblPassword As System.Windows.Forms.Label
         Dim lblFullName As System.Windows.Forms.Label
         Dim lblUserName As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserControl))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.gbOne = New System.Windows.Forms.GroupBox
-        Me.tbOne = New System.Windows.Forms.TabControl
-        Me.tbGroups = New System.Windows.Forms.TabPage
-        Me.gbCC = New System.Windows.Forms.GroupBox
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.gbOne = New System.Windows.Forms.GroupBox()
+        Me.tbOne = New System.Windows.Forms.TabControl()
+        Me.tbGroups = New System.Windows.Forms.TabPage()
+        Me.gbCC = New System.Windows.Forms.GroupBox()
         Me.BindingNavigator2 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.UserGroups1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsSecurity = New dsSecurity
-        Me.BindingNavigatorCountItem3 = New System.Windows.Forms.ToolStripLabel
-        Me.BindingNavigatorMoveFirstItem3 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMovePreviousItem3 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator9 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorPositionItem3 = New System.Windows.Forms.ToolStripTextBox
-        Me.BindingNavigatorSeparator10 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorMoveNextItem3 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMoveLastItem3 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator11 = New System.Windows.Forms.ToolStripSeparator
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Ugp_GroupName = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.DsSecurity = New SystemAdministration.dsSecurity()
+        Me.BindingNavigatorCountItem3 = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorMoveFirstItem3 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem3 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator9 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem3 = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator10 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorMoveNextItem3 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem3 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator11 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ugp_GroupName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGroups1BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.bnUserGp = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel
-        Me.delgp = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.savegp = New System.Windows.Forms.ToolStripButton
-        Me.dgvUserGps = New System.Windows.Forms.DataGridView
-        Me.tbAuthorization = New System.Windows.Forms.TabPage
-        Me.gbGD = New System.Windows.Forms.GroupBox
-        Me.clstAuth = New System.Windows.Forms.CheckedListBox
-        Me.lblSelectGp = New System.Windows.Forms.Label
-        Me.cboGp = New System.Windows.Forms.ComboBox
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+        Me.delgp = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.savegp = New System.Windows.Forms.ToolStripButton()
+        Me.dgvUserGps = New System.Windows.Forms.DataGridView()
+        Me.tbAuthorization = New System.Windows.Forms.TabPage()
+        Me.gbGD = New System.Windows.Forms.GroupBox()
+        Me.clstAuth = New System.Windows.Forms.CheckedListBox()
+        Me.lblSelectGp = New System.Windows.Forms.Label()
+        Me.cboGp = New System.Windows.Forms.ComboBox()
         Me.UserGroupsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.tbUsers = New System.Windows.Forms.TabPage
-        Me.gbAuth = New System.Windows.Forms.GroupBox
-        Me.btnChangGroup = New System.Windows.Forms.Button
-        Me.lbusers = New System.Windows.Forms.ListBox
-        Me.txtUserSearch = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.btnLockUser = New System.Windows.Forms.Button
-        Me.cboGp_for_Users = New System.Windows.Forms.ComboBox
+        Me.tbUsers = New System.Windows.Forms.TabPage()
+        Me.gbAuth = New System.Windows.Forms.GroupBox()
+        Me.btnChangGroup = New System.Windows.Forms.Button()
+        Me.lbusers = New System.Windows.Forms.ListBox()
+        Me.txtUserSearch = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnLockUser = New System.Windows.Forms.Button()
+        Me.cboGp_for_Users = New System.Windows.Forms.ComboBox()
         Me.bnUsers = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.AddNew = New System.Windows.Forms.ToolStripButton
+        Me.AddNew = New System.Windows.Forms.ToolStripButton()
         Me.UsersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingNavigatorCountItem1 = New System.Windows.Forms.ToolStripLabel
-        Me.BindingNavigatorMoveFirstItem1 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMovePreviousItem1 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorPositionItem1 = New System.Windows.Forms.ToolStripTextBox
-        Me.BindingNavigatorSeparator4 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorMoveNextItem1 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMoveLastItem1 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator5 = New System.Windows.Forms.ToolStripSeparator
-        Me.txtUid = New System.Windows.Forms.TextBox
-        Me.spltHelp = New System.Windows.Forms.SplitContainer
-        Me.rtbHelp = New System.Windows.Forms.RichTextBox
-        Me.UserNameTextBox = New System.Windows.Forms.TextBox
-        Me.FullNameTextBox = New System.Windows.Forms.TextBox
-        Me.PasswordTextBox = New System.Windows.Forms.TextBox
-        Me.UserGroupTextBox = New System.Windows.Forms.TextBox
-        Me.btnResetPass = New System.Windows.Forms.Button
-        Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.BindingNavigatorCountItem1 = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorMoveFirstItem1 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem1 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem1 = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorMoveNextItem1 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem1 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.txtUid = New System.Windows.Forms.TextBox()
+        Me.spltHelp = New System.Windows.Forms.SplitContainer()
+        Me.rtbHelp = New System.Windows.Forms.RichTextBox()
+        Me.UserNameTextBox = New System.Windows.Forms.TextBox()
+        Me.FullNameTextBox = New System.Windows.Forms.TextBox()
+        Me.PasswordTextBox = New System.Windows.Forms.TextBox()
+        Me.UserGroupTextBox = New System.Windows.Forms.TextBox()
+        Me.btnResetPass = New System.Windows.Forms.Button()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton
+        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.ComponentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsComponents = New dsComponents
-        Me.BindingNavigatorCountItem2 = New System.Windows.Forms.ToolStripLabel
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMoveFirstItem2 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMovePreviousItem2 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator6 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorPositionItem2 = New System.Windows.Forms.ToolStripTextBox
-        Me.BindingNavigatorSeparator7 = New System.Windows.Forms.ToolStripSeparator
-        Me.BindingNavigatorMoveNextItem2 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorMoveLastItem2 = New System.Windows.Forms.ToolStripButton
-        Me.BindingNavigatorSeparator8 = New System.Windows.Forms.ToolStripSeparator
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.CompAccessIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.CompCompNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.btnClose = New System.Windows.Forms.Button
+        Me.DsComponents = New SystemAdministration.dsComponents()
+        Me.BindingNavigatorCountItem2 = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveFirstItem2 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem2 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem2 = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorMoveNextItem2 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem2 = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.CompAccessIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompCompNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.tmr = New System.Windows.Forms.Timer(Me.components)
-        Me.btnSave = New System.Windows.Forms.Button
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.ttOne = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ComponentsTableAdapter = New dsComponentsTableAdapters.ComponentsTableAdapter
-        Me.TableAdapterManager = New dsComponentsTableAdapters.TableAdapterManager
+        Me.ComponentsTableAdapter = New SystemAdministration.dsComponentsTableAdapters.ComponentsTableAdapter()
+        Me.TableAdapterManager = New SystemAdministration.dsComponentsTableAdapters.TableAdapterManager()
         Me.UserAuthorisationsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.UserAuthorisationsTableAdapter = New dsSecurityTableAdapters.UserAuthorisationsTableAdapter
-        Me.TableAdapterManager1 = New dsSecurityTableAdapters.TableAdapterManager
-        Me.UserGroups1TableAdapter = New dsSecurityTableAdapters.UserGroups1TableAdapter
-        Me.UsersTableAdapter = New dsSecurityTableAdapters.UsersTableAdapter
-        Me.UserGroupsTableAdapter = New dsSecurityTableAdapters.UserGroupsTableAdapter
-        lblGP = New System.Windows.Forms.Label
-        lblConfirm = New System.Windows.Forms.Label
-        lblPassword = New System.Windows.Forms.Label
-        lblFullName = New System.Windows.Forms.Label
-        lblUserName = New System.Windows.Forms.Label
+        Me.UserAuthorisationsTableAdapter = New SystemAdministration.dsSecurityTableAdapters.UserAuthorisationsTableAdapter()
+        Me.TableAdapterManager1 = New SystemAdministration.dsSecurityTableAdapters.TableAdapterManager()
+        Me.UserGroups1TableAdapter = New SystemAdministration.dsSecurityTableAdapters.UserGroups1TableAdapter()
+        Me.UsersTableAdapter = New SystemAdministration.dsSecurityTableAdapters.UsersTableAdapter()
+        Me.UserGroupsTableAdapter = New SystemAdministration.dsSecurityTableAdapters.UserGroupsTableAdapter()
+        lblGP = New System.Windows.Forms.Label()
+        lblConfirm = New System.Windows.Forms.Label()
+        lblPassword = New System.Windows.Forms.Label()
+        lblFullName = New System.Windows.Forms.Label()
+        lblUserName = New System.Windows.Forms.Label()
         Me.gbOne.SuspendLayout()
         Me.tbOne.SuspendLayout()
         Me.tbGroups.SuspendLayout()
@@ -153,6 +153,7 @@ Partial Class frmUserControl
         CType(Me.bnUsers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bnUsers.SuspendLayout()
         CType(Me.UsersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spltHelp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.spltHelp.Panel1.SuspendLayout()
         Me.spltHelp.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -652,7 +653,7 @@ Partial Class frmUserControl
         Me.lbusers.FormattingEnabled = True
         Me.lbusers.Location = New System.Drawing.Point(336, 36)
         Me.lbusers.Name = "lbusers"
-        Me.lbusers.Size = New System.Drawing.Size(185, 17)
+        Me.lbusers.Size = New System.Drawing.Size(185, 95)
         Me.lbusers.TabIndex = 116
         Me.lbusers.Visible = False
         '
@@ -815,7 +816,7 @@ Partial Class frmUserControl
         'spltHelp
         '
         Me.spltHelp.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.spltHelp.Location = New System.Drawing.Point(429, 173)
         Me.spltHelp.Name = "spltHelp"
         '
@@ -1090,7 +1091,7 @@ Partial Class frmUserControl
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.ComponentsTableAdapter = Me.ComponentsTableAdapter
-        Me.TableAdapterManager.UpdateOrder = dsComponentsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.UpdateOrder = SystemAdministration.dsComponentsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'UserAuthorisationsBindingSource
         '
@@ -1104,7 +1105,7 @@ Partial Class frmUserControl
         'TableAdapterManager1
         '
         Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.UpdateOrder = dsSecurityTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager1.UpdateOrder = SystemAdministration.dsSecurityTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager1.UserAuthorisationsTableAdapter = Me.UserAuthorisationsTableAdapter
         Me.TableAdapterManager1.UserGroups1TableAdapter = Me.UserGroups1TableAdapter
         Me.TableAdapterManager1.UsersTableAdapter = Me.UsersTableAdapter
@@ -1163,6 +1164,7 @@ Partial Class frmUserControl
         Me.bnUsers.PerformLayout()
         CType(Me.UsersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.spltHelp.Panel1.ResumeLayout(False)
+        CType(Me.spltHelp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.spltHelp.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()

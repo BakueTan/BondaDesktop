@@ -297,6 +297,11 @@ Public Class frmUserControl
             FullNameTextBox.Focus()
             Exit Sub
         End If
+
+        If Trim(PasswordTextBox.Text) = "" Then
+
+        End If
+
         If PasswordTextBox.Text <> UserGroupTextBox.Text Then
             MsgBox("Passwords do not match", MsgBoxStyle.Exclamation, "confirm password")
             UserGroupTextBox.Text = ""
@@ -709,7 +714,24 @@ Public Class frmUserControl
     End Sub
 
     Private Sub UserNameTextBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserNameTextBox.TextChanged
-        If Not mblnLoading Then mblnUserChange = True
+        Dim blnActive As Boolean
+
+        If Not mblnLoading Then
+            mblnUserChange = True
+
+            blnActive = DsSecurity.Users.Where(Function(x) x.Usr_User = Trim(UserNameTextBox.Text)).ToList().Select(Function(y) y.Usr_Active).SingleOrDefault()
+
+            If blnactive Then
+                btnLockUser.Text = "Lock"
+            Else
+                btnLockUser.Text = "UnLock"
+            End If
+
+
+
+
+        End If
+
     End Sub
 
     Private Sub FullNameTextBox_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles FullNameTextBox.Click
@@ -1085,39 +1107,32 @@ Public Class frmUserControl
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLockUser.Click
 
+        Dim sql As String = "spDeactivateUser"
+
+        Dim cmd As SqlCommand
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+
+
+
+
         If mblnAddingUser = False Then
-
-            Dim sql As String
-            Dim active As Boolean
-
-            sql = "select usr_active from users where usr_user = '" & UserNameTextBox.Text & "'"
-            active = ExecuteScalar(sql)
-
-            If active = False Then
-
-                sql = "update  users set usr_active = 1 where usr_user = '" & UserNameTextBox.Text & "'"
-
-                ExecuteNonQuery(sql)
-
-                If era = False Then
-
-                    MsgBox("User has been succefully locked")
-                End If
-            Else
-                '  If MsgBox("User is already locked do you want to unlock ", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
-                sql = "update  users set usr_active = 0 where usr_user = '" & UserNameTextBox.Text & "'"
-                ExecuteNonQuery(sql)
-                If era = False Then
-                    sql = " update userlogin set failedattempts = '0' where [user] = '" & UserNameTextBox.Text & "'"
-                    ExecuteNonQuery(sql)
-                    If era = False Then
-                        MsgBox("User has been succefully Unlocked ")
-                    End If
-                End If
-                'End If
+            Try
+                cnn.Open()
+                cmd = New SqlCommand(sql, cnn)
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.AddWithValue("@user", UserNameTextBox.Text)
+                cmd.ExecuteNonQuery()
+                MsgBox("User Updated")
+                Me.UsersTableAdapter.FillBy(DsSecurity.Users)
 
 
-            End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                cnn.Close()
+
+            End Try
+
         End If
     End Sub
 
@@ -1154,13 +1169,33 @@ Public Class frmUserControl
 
 
 
+
+
             Dim a As Integer = Me.UsersBindingSource.Find("Usr_User", Trim(txtUserSearch.Text))
 
             If a >= 0 Then
+                Dim blnactive As Boolean
 
                 Me.UsersBindingSource.Position = a
+                blnactive = DsSecurity.Users.Where(Function(x) x.Usr_User = Trim(txtUserSearch.Text)).ToList().Select(Function(y) y.Usr_Active).SingleOrDefault()
+
+                If blnactive Then
+                    btnLockUser.Text = "Lock"
+                Else
+                    btnLockUser.Text = "UnLock"
+                End If
             Else
                 MsgBox("User cannot be found in the current group")
+
+
+
+
+
+
+
+
+
+
             End If
 
 

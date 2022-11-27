@@ -1,4 +1,13 @@
 ﻿Partial Class dsRevoReports
+    Partial Public Class SchoolFeesDebtorsDataTable
+        Private Sub SchoolFeesDebtorsDataTable_ColumnChanging(sender As Object, e As DataColumnChangeEventArgs) Handles Me.ColumnChanging
+            If (e.Column.ColumnName = Me.BillingCurrencyColumn.ColumnName) Then
+                'Add user code here
+            End If
+
+        End Sub
+
+    End Class
 End Class
 
 Namespace dsRevoReportsTableAdapters

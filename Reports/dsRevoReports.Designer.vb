@@ -1803,8 +1803,6 @@ Partial Public Class dsRevoReports
         
         Private columnAddress3 As Global.System.Data.DataColumn
         
-        Private columnImage As Global.System.Data.DataColumn
-        
         Private columnBiltype As Global.System.Data.DataColumn
         
         Private columnAddInfo As Global.System.Data.DataColumn
@@ -1812,8 +1810,6 @@ Partial Public Class dsRevoReports
         Private columnGender As Global.System.Data.DataColumn
         
         Private columntype As Global.System.Data.DataColumn
-        
-        Private columnlogo As Global.System.Data.DataColumn
         
         Private columnConvAmount As Global.System.Data.DataColumn
         
@@ -1832,6 +1828,10 @@ Partial Public Class dsRevoReports
         Private columnBBF As Global.System.Data.DataColumn
         
         Private columnSelectedCartegory As Global.System.Data.DataColumn
+        
+        Private columnCurrency As Global.System.Data.DataColumn
+        
+        Private columnBillingCurrency As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -2094,14 +2094,6 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ImageColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnImage
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property BiltypeColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnBiltype
@@ -2129,14 +2121,6 @@ Partial Public Class dsRevoReports
         Public ReadOnly Property typeColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columntype
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property logoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlogo
             End Get
         End Property
         
@@ -2213,6 +2197,22 @@ Partial Public Class dsRevoReports
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BillingCurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBillingCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2278,12 +2278,10 @@ Partial Public Class dsRevoReports
                     ByVal EmailAddress As String,  _
                     ByVal Address2 As String,  _
                     ByVal Address3 As String,  _
-                    ByVal Image() As Byte,  _
                     ByVal Biltype As String,  _
                     ByVal AddInfo As String,  _
                     ByVal Gender As String,  _
                     ByVal type As String,  _
-                    ByVal logo() As Byte,  _
                     ByVal ConvAmount As Decimal,  _
                     ByVal ConvRate As Decimal,  _
                     ByVal BaseCurrency As String,  _
@@ -2292,9 +2290,11 @@ Partial Public Class dsRevoReports
                     ByVal SchoolPhone As String,  _
                     ByVal SchoolAddress As String,  _
                     ByVal BBF As Decimal,  _
-                    ByVal SelectedCartegory As String) As SchoolFeesStatementRow
+                    ByVal SelectedCartegory As String,  _
+                    ByVal Currency As String,  _
+                    ByVal BillingCurrency As String) As SchoolFeesStatementRow
             Dim rowSchoolFeesStatementRow As SchoolFeesStatementRow = CType(Me.NewRow,SchoolFeesStatementRow)
-            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, type, logo, ConvAmount, ConvRate, BaseCurrency, PtoDesc, SchoolName, SchoolPhone, SchoolAddress, BBF, SelectedCartegory}
+            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Biltype, AddInfo, Gender, type, ConvAmount, ConvRate, BaseCurrency, PtoDesc, SchoolName, SchoolPhone, SchoolAddress, BBF, SelectedCartegory, Currency, BillingCurrency}
             rowSchoolFeesStatementRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSchoolFeesStatementRow)
             Return rowSchoolFeesStatementRow
@@ -2351,12 +2351,10 @@ Partial Public Class dsRevoReports
             Me.columnEmailAddress = MyBase.Columns("EmailAddress")
             Me.columnAddress2 = MyBase.Columns("Address2")
             Me.columnAddress3 = MyBase.Columns("Address3")
-            Me.columnImage = MyBase.Columns("Image")
             Me.columnBiltype = MyBase.Columns("Biltype")
             Me.columnAddInfo = MyBase.Columns("AddInfo")
             Me.columnGender = MyBase.Columns("Gender")
             Me.columntype = MyBase.Columns("type")
-            Me.columnlogo = MyBase.Columns("logo")
             Me.columnConvAmount = MyBase.Columns("ConvAmount")
             Me.columnConvRate = MyBase.Columns("ConvRate")
             Me.columnBaseCurrency = MyBase.Columns("BaseCurrency")
@@ -2366,6 +2364,8 @@ Partial Public Class dsRevoReports
             Me.columnSchoolAddress = MyBase.Columns("SchoolAddress")
             Me.columnBBF = MyBase.Columns("BBF")
             Me.columnSelectedCartegory = MyBase.Columns("SelectedCartegory")
+            Me.columnCurrency = MyBase.Columns("Currency")
+            Me.columnBillingCurrency = MyBase.Columns("BillingCurrency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2430,8 +2430,6 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnAddress2)
             Me.columnAddress3 = New Global.System.Data.DataColumn("Address3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAddress3)
-            Me.columnImage = New Global.System.Data.DataColumn("Image", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnImage)
             Me.columnBiltype = New Global.System.Data.DataColumn("Biltype", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBiltype)
             Me.columnAddInfo = New Global.System.Data.DataColumn("AddInfo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -2440,8 +2438,6 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnGender)
             Me.columntype = New Global.System.Data.DataColumn("type", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntype)
-            Me.columnlogo = New Global.System.Data.DataColumn("logo", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlogo)
             Me.columnConvAmount = New Global.System.Data.DataColumn("ConvAmount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnConvAmount)
             Me.columnConvRate = New Global.System.Data.DataColumn("ConvRate", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
@@ -2460,6 +2456,10 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnBBF)
             Me.columnSelectedCartegory = New Global.System.Data.DataColumn("SelectedCartegory", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSelectedCartegory)
+            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrency)
+            Me.columnBillingCurrency = New Global.System.Data.DataColumn("BillingCurrency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBillingCurrency)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnReceipt}, true))
             Me.columnStudentID.MaxLength = 50
             Me.columnStudentName.AllowDBNull = false
@@ -2496,7 +2496,6 @@ Partial Public Class dsRevoReports
             Me.columnGender.AllowDBNull = false
             Me.columnGender.MaxLength = 10
             Me.columntype.MaxLength = 1
-            Me.columnlogo.ReadOnly = true
             Me.columnBaseCurrency.ReadOnly = true
             Me.columnBaseCurrency.MaxLength = 2147483647
             Me.columnPtoDesc.ReadOnly = true
@@ -2510,6 +2509,9 @@ Partial Public Class dsRevoReports
             Me.columnBBF.ReadOnly = true
             Me.columnSelectedCartegory.ReadOnly = true
             Me.columnSelectedCartegory.MaxLength = 50
+            Me.columnCurrency.ReadOnly = true
+            Me.columnCurrency.MaxLength = 50
+            Me.columnBillingCurrency.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2682,6 +2684,10 @@ Partial Public Class dsRevoReports
         Private columnLogduser As Global.System.Data.DataColumn
         
         Private columnFeesSource As Global.System.Data.DataColumn
+        
+        Private columnCurrency As Global.System.Data.DataColumn
+        
+        Private columnBillingCurrency As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -2863,6 +2869,22 @@ Partial Public Class dsRevoReports
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BillingCurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBillingCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2917,9 +2939,11 @@ Partial Public Class dsRevoReports
                     ByVal Year As Integer,  _
                     ByVal Gender As String,  _
                     ByVal Logduser As String,  _
-                    ByVal FeesSource As String) As SchoolFeesDebtorsRow
+                    ByVal FeesSource As String,  _
+                    ByVal Currency As String,  _
+                    ByVal BillingCurrency As String) As SchoolFeesDebtorsRow
             Dim rowSchoolFeesDebtorsRow As SchoolFeesDebtorsRow = CType(Me.NewRow,SchoolFeesDebtorsRow)
-            Dim columnValuesArray() As Object = New Object() {SumAmount, ContactNumber, StudentName, StudentSurname, EmailAddress, ResidentialAdress, Address2, Address3, Forms, StudentID, Section, Status, classdesc, Session, Year, Gender, Logduser, FeesSource}
+            Dim columnValuesArray() As Object = New Object() {SumAmount, ContactNumber, StudentName, StudentSurname, EmailAddress, ResidentialAdress, Address2, Address3, Forms, StudentID, Section, Status, classdesc, Session, Year, Gender, Logduser, FeesSource, Currency, BillingCurrency}
             rowSchoolFeesDebtorsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSchoolFeesDebtorsRow)
             Return rowSchoolFeesDebtorsRow
@@ -2966,6 +2990,8 @@ Partial Public Class dsRevoReports
             Me.columnGender = MyBase.Columns("Gender")
             Me.columnLogduser = MyBase.Columns("Logduser")
             Me.columnFeesSource = MyBase.Columns("FeesSource")
+            Me.columnCurrency = MyBase.Columns("Currency")
+            Me.columnBillingCurrency = MyBase.Columns("BillingCurrency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3007,6 +3033,10 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnLogduser)
             Me.columnFeesSource = New Global.System.Data.DataColumn("FeesSource", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFeesSource)
+            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrency)
+            Me.columnBillingCurrency = New Global.System.Data.DataColumn("BillingCurrency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBillingCurrency)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnForms}, true))
             Me.columnSumAmount.ReadOnly = true
             Me.columnContactNumber.MaxLength = 50
@@ -3034,6 +3064,9 @@ Partial Public Class dsRevoReports
             Me.columnLogduser.ReadOnly = true
             Me.columnLogduser.MaxLength = 50
             Me.columnFeesSource.MaxLength = 50
+            Me.columnCurrency.ReadOnly = true
+            Me.columnCurrency.MaxLength = 50
+            Me.columnBillingCurrency.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4761,6 +4794,8 @@ Partial Public Class dsRevoReports
         
         Private columnPaymentPeriodDescription As Global.System.Data.DataColumn
         
+        Private columnBillingCurrency As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -5061,6 +5096,14 @@ Partial Public Class dsRevoReports
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BillingCurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBillingCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5130,12 +5173,19 @@ Partial Public Class dsRevoReports
                     ByVal Amount As Decimal,  _
                     ByVal Currency As String,  _
                     ByVal PaymentPeriod As Integer,  _
-                    ByVal PaymentPeriodDescription As String) As SchoolFeesPaymentsRow
+                    ByVal PaymentPeriodDescription As String,  _
+                    ByVal BillingCurrency As String) As SchoolFeesPaymentsRow
             Dim rowSchoolFeesPaymentsRow As SchoolFeesPaymentsRow = CType(Me.NewRow,SchoolFeesPaymentsRow)
-            Dim columnValuesArray() As Object = New Object() {SumAmount, ContactNumber, StudentName, StudentSurname, EmailAddress, ResidentialAdress, Address2, Address3, Forms, StudentID, Section, Status, classdesc, Session, Year, Gender, Logduser, FeesSource, PtoDesc, PFromDesc, SelectedCartegory, line_number, ConvAmount, BaseCurrency, _date, Reference, Cartegory, PostDate, Receipt, Amount, Currency, PaymentPeriod, PaymentPeriodDescription}
+            Dim columnValuesArray() As Object = New Object() {SumAmount, ContactNumber, StudentName, StudentSurname, EmailAddress, ResidentialAdress, Address2, Address3, Forms, StudentID, Section, Status, classdesc, Session, Year, Gender, Logduser, FeesSource, PtoDesc, PFromDesc, SelectedCartegory, line_number, ConvAmount, BaseCurrency, _date, Reference, Cartegory, PostDate, Receipt, Amount, Currency, PaymentPeriod, PaymentPeriodDescription, BillingCurrency}
             rowSchoolFeesPaymentsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSchoolFeesPaymentsRow)
             Return rowSchoolFeesPaymentsRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByFormsline_numberReceipt(ByVal Forms As String, ByVal line_number As Integer, ByVal Receipt As String) As SchoolFeesPaymentsRow
+            Return CType(Me.Rows.Find(New Object() {Forms, line_number, Receipt}),SchoolFeesPaymentsRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5188,6 +5238,7 @@ Partial Public Class dsRevoReports
             Me.columnCurrency = MyBase.Columns("Currency")
             Me.columnPaymentPeriod = MyBase.Columns("PaymentPeriod")
             Me.columnPaymentPeriodDescription = MyBase.Columns("PaymentPeriodDescription")
+            Me.columnBillingCurrency = MyBase.Columns("BillingCurrency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5262,6 +5313,9 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnPaymentPeriod)
             Me.columnPaymentPeriodDescription = New Global.System.Data.DataColumn("PaymentPeriodDescription", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPaymentPeriodDescription)
+            Me.columnBillingCurrency = New Global.System.Data.DataColumn("BillingCurrency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBillingCurrency)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnForms, Me.columnline_number, Me.columnReceipt}, true))
             Me.columnSumAmount.ReadOnly = true
             Me.columnContactNumber.MaxLength = 50
             Me.columnStudentName.AllowDBNull = false
@@ -5303,6 +5357,7 @@ Partial Public Class dsRevoReports
             Me.columnCurrency.MaxLength = 10
             Me.columnPaymentPeriodDescription.ReadOnly = true
             Me.columnPaymentPeriodDescription.MaxLength = 50
+            Me.columnBillingCurrency.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7468,21 +7523,6 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Image() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tableSchoolFeesStatement.ImageColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Image' in table 'SchoolFeesStatement' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableSchoolFeesStatement.ImageColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Biltype() As String
             Get
                 Try 
@@ -7534,21 +7574,6 @@ Partial Public Class dsRevoReports
             End Get
             Set
                 Me(Me.tableSchoolFeesStatement.typeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property logo() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tableSchoolFeesStatement.logoColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'logo' in table 'SchoolFeesStatement' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableSchoolFeesStatement.logoColumn) = value
             End Set
         End Property
         
@@ -7685,6 +7710,36 @@ Partial Public Class dsRevoReports
             End Get
             Set
                 Me(Me.tableSchoolFeesStatement.SelectedCartegoryColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Currency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.CurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.CurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BillingCurrency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.BillingCurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BillingCurrency' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.BillingCurrencyColumn) = value
             End Set
         End Property
         
@@ -7966,18 +8021,6 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsImageNull() As Boolean
-            Return Me.IsNull(Me.tableSchoolFeesStatement.ImageColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetImageNull()
-            Me(Me.tableSchoolFeesStatement.ImageColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsBiltypeNull() As Boolean
             Return Me.IsNull(Me.tableSchoolFeesStatement.BiltypeColumn)
         End Function
@@ -8010,18 +8053,6 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SettypeNull()
             Me(Me.tableSchoolFeesStatement.typeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IslogoNull() As Boolean
-            Return Me.IsNull(Me.tableSchoolFeesStatement.logoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetlogoNull()
-            Me(Me.tableSchoolFeesStatement.logoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8130,6 +8161,30 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSelectedCartegoryNull()
             Me(Me.tableSchoolFeesStatement.SelectedCartegoryColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.CurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrencyNull()
+            Me(Me.tableSchoolFeesStatement.CurrencyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBillingCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.BillingCurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBillingCurrencyNull()
+            Me(Me.tableSchoolFeesStatement.BillingCurrencyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8392,6 +8447,36 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Currency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesDebtors.CurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'SchoolFeesDebtors' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesDebtors.CurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BillingCurrency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesDebtors.BillingCurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BillingCurrency' in table 'SchoolFeesDebtors' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesDebtors.BillingCurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsSumAmountNull() As Boolean
             Return Me.IsNull(Me.tableSchoolFeesDebtors.SumAmountColumn)
         End Function
@@ -8520,6 +8605,30 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetFeesSourceNull()
             Me(Me.tableSchoolFeesDebtors.FeesSourceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesDebtors.CurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrencyNull()
+            Me(Me.tableSchoolFeesDebtors.CurrencyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBillingCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesDebtors.BillingCurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBillingCurrencyNull()
+            Me(Me.tableSchoolFeesDebtors.BillingCurrencyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -10491,6 +10600,21 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BillingCurrency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesPayments.BillingCurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BillingCurrency' in table 'SchoolFeesPayments' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesPayments.BillingCurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsSumAmountNull() As Boolean
             Return Me.IsNull(Me.tableSchoolFeesPayments.SumAmountColumn)
         End Function
@@ -10775,6 +10899,18 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPaymentPeriodDescriptionNull()
             Me(Me.tableSchoolFeesPayments.PaymentPeriodDescriptionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBillingCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesPayments.BillingCurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBillingCurrencyNull()
+            Me(Me.tableSchoolFeesPayments.BillingCurrencyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -11534,12 +11670,10 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("EmailAddress", "EmailAddress")
             tableMapping.ColumnMappings.Add("Address2", "Address2")
             tableMapping.ColumnMappings.Add("Address3", "Address3")
-            tableMapping.ColumnMappings.Add("Image", "Image")
             tableMapping.ColumnMappings.Add("Biltype", "Biltype")
             tableMapping.ColumnMappings.Add("AddInfo", "AddInfo")
             tableMapping.ColumnMappings.Add("Gender", "Gender")
             tableMapping.ColumnMappings.Add("type", "type")
-            tableMapping.ColumnMappings.Add("logo", "logo")
             tableMapping.ColumnMappings.Add("ConvAmount", "ConvAmount")
             tableMapping.ColumnMappings.Add("ConvRate", "ConvRate")
             tableMapping.ColumnMappings.Add("BaseCurrency", "BaseCurrency")
@@ -11549,6 +11683,8 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("SchoolAddress", "SchoolAddress")
             tableMapping.ColumnMappings.Add("BBF", "BBF")
             tableMapping.ColumnMappings.Add("SelectedCartegory", "SelectedCartegory")
+            tableMapping.ColumnMappings.Add("Currency", "Currency")
+            tableMapping.ColumnMappings.Add("BillingCurrency", "BillingCurrency")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -11577,6 +11713,7 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CurrentPeriod", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "dbo.spClassFeesTranscations"
@@ -11593,13 +11730,14 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sect", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@debtors", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currentperiod", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -11645,6 +11783,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(currency,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -11657,7 +11800,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesStatementDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As dsRevoReports.SchoolFeesStatementDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -11704,6 +11847,11 @@ Namespace dsRevoReportsTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(currency,String)
+            End If
             Dim dataTable As dsRevoReports.SchoolFeesStatementDataTable = New dsRevoReports.SchoolFeesStatementDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -11713,7 +11861,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByClass(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currentperiod As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillByClass(ByVal dataTable As dsRevoReports.SchoolFeesStatementDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currentperiod As Global.System.Nullable(Of Integer), ByVal currency As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -11769,6 +11917,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(11).Value = CType(currentperiod.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(12).Value = CType(currency,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -11781,7 +11934,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currentperiod As Global.System.Nullable(Of Integer)) As dsRevoReports.SchoolFeesStatementDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currentperiod As Global.System.Nullable(Of Integer), ByVal currency As String) As dsRevoReports.SchoolFeesStatementDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -11837,6 +11990,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(11).Value = CType(currentperiod.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(12).Value = CType(currency,String)
             End If
             Dim dataTable As dsRevoReports.SchoolFeesStatementDataTable = New dsRevoReports.SchoolFeesStatementDataTable()
             Me.Adapter.Fill(dataTable)
@@ -11989,6 +12147,8 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("Gender", "Gender")
             tableMapping.ColumnMappings.Add("Logduser", "Logduser")
             tableMapping.ColumnMappings.Add("FeesSource", "FeesSource")
+            tableMapping.ColumnMappings.Add("Currency", "Currency")
+            tableMapping.ColumnMappings.Add("BillingCurrency", "BillingCurrency")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -12018,13 +12178,15 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Classdesc", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sect", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@debtors", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@filter", Global.System.Data.SqlDbType.NVarChar, 500, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillbyDebtors(ByVal dataTable As dsRevoReports.SchoolFeesDebtorsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function FillbyDebtors(ByVal dataTable As dsRevoReports.SchoolFeesDebtorsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currency As String, ByVal filter As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -12075,6 +12237,16 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(10).Value = CType(debtors.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(11).Value = CType(currency,String)
+            End If
+            If (filter Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(12).Value = CType(filter,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -12087,7 +12259,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesDebtorsDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal debtors As Global.System.Nullable(Of Boolean), ByVal currency As String, ByVal filter As String) As dsRevoReports.SchoolFeesDebtorsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -12138,6 +12310,16 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(10).Value = CType(debtors.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(11).Value = CType(currency,String)
+            End If
+            If (filter Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(12).Value = CType(filter,String)
             End If
             Dim dataTable As dsRevoReports.SchoolFeesDebtorsDataTable = New dsRevoReports.SchoolFeesDebtorsDataTable()
             Me.Adapter.Fill(dataTable)
@@ -13130,6 +13312,7 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("Currency", "Currency")
             tableMapping.ColumnMappings.Add("PaymentPeriod", "PaymentPeriod")
             tableMapping.ColumnMappings.Add("PaymentPeriodDescription", "PaymentPeriodDescription")
+            tableMapping.ColumnMappings.Add("BillingCurrency", "BillingCurrency")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -13160,13 +13343,14 @@ Namespace dsRevoReportsTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sect", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showBillings", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showReceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsRevoReports.SchoolFeesPaymentsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal showBillings As Global.System.Nullable(Of Boolean), ByVal showReceipts As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsRevoReports.SchoolFeesPaymentsDataTable, ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal showBillings As Global.System.Nullable(Of Boolean), ByVal showReceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -13222,6 +13406,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(11).Value = CType(showReceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(12).Value = CType(currency,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -13234,7 +13423,7 @@ Namespace dsRevoReportsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal showBillings As Global.System.Nullable(Of Boolean), ByVal showReceipts As Global.System.Nullable(Of Boolean)) As dsRevoReports.SchoolFeesPaymentsDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal lvl As Global.System.Nullable(Of Integer), ByVal session As String, ByVal Classdesc As String, ByVal sect As String, ByVal showBillings As Global.System.Nullable(Of Boolean), ByVal showReceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As dsRevoReports.SchoolFeesPaymentsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -13290,6 +13479,11 @@ Namespace dsRevoReportsTableAdapters
                 Me.Adapter.SelectCommand.Parameters(11).Value = CType(showReceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(12).Value = CType(currency,String)
             End If
             Dim dataTable As dsRevoReports.SchoolFeesPaymentsDataTable = New dsRevoReports.SchoolFeesPaymentsDataTable()
             Me.Adapter.Fill(dataTable)

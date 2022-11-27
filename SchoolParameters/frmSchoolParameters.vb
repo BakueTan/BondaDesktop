@@ -90,7 +90,7 @@ Public Class frmSchoolParameters
         End With
 
         With cboCurrToCurr
-            .DataSource = Currencies(True)
+            .DataSource = Currencies()
             .DisplayMember = "Text"
             .ValueMember = "Value"
         End With

@@ -15,6 +15,13 @@
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
+              <TextRun>
+                <Value>=" (" &amp; fields!BillingCurrency.Value &amp; " )"</Value>
+                <Style>
+                  <FontSize>26pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
             </TextRuns>
             <Style>
               <TextAlign>Center</TextAlign>
@@ -25,7 +32,7 @@
         <Top>0.31746cm</Top>
         <Left>5.36903cm</Left>
         <Height>0.5in</Height>
-        <Width>8.88889cm</Width>
+        <Width>10.3441cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -1025,6 +1032,14 @@
         </Field>
         <Field Name="FeesSource">
           <DataField>FeesSource</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Currency">
+          <DataField>Currency</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillingCurrency">
+          <DataField>BillingCurrency</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

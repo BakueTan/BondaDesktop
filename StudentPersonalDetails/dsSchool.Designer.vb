@@ -3022,11 +3022,7 @@ Partial Public Class dsSchool
         
         Private columntype As Global.System.Data.DataColumn
         
-        Private columnbbf As Global.System.Data.DataColumn
-        
         Private columnlogo As Global.System.Data.DataColumn
-        
-        Private columnColumn1 As Global.System.Data.DataColumn
         
         Private columnConvAmount As Global.System.Data.DataColumn
         
@@ -3045,6 +3041,10 @@ Partial Public Class dsSchool
         Private columnSchoolAddress As Global.System.Data.DataColumn
         
         Private columnSelectedCartegory As Global.System.Data.DataColumn
+        
+        Private columnCurrency As Global.System.Data.DataColumn
+        
+        Private columnBillingCurrency As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -3347,25 +3347,9 @@ Partial Public Class dsSchool
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property bbfColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnbbf
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property logoColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnlogo
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Column1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnColumn1
             End Get
         End Property
         
@@ -3442,6 +3426,22 @@ Partial Public Class dsSchool
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BillingCurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBillingCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3512,9 +3512,7 @@ Partial Public Class dsSchool
                     ByVal AddInfo As String,  _
                     ByVal Gender As String,  _
                     ByVal type As String,  _
-                    ByVal bbf As Decimal,  _
                     ByVal logo() As Byte,  _
-                    ByVal Column1 As Decimal,  _
                     ByVal ConvAmount As Decimal,  _
                     ByVal ConvRate As Decimal,  _
                     ByVal BaseCurrency As String,  _
@@ -3523,9 +3521,11 @@ Partial Public Class dsSchool
                     ByVal SchoolName As String,  _
                     ByVal SchoolPhone As String,  _
                     ByVal SchoolAddress As String,  _
-                    ByVal SelectedCartegory As String) As StudentFeesTranscationsRow
+                    ByVal SelectedCartegory As String,  _
+                    ByVal Currency As String,  _
+                    ByVal BillingCurrency As String) As StudentFeesTranscationsRow
             Dim rowStudentFeesTranscationsRow As StudentFeesTranscationsRow = CType(Me.NewRow,StudentFeesTranscationsRow)
-            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, type, bbf, logo, Column1, ConvAmount, ConvRate, BaseCurrency, PtoDesc, _BBF, SchoolName, SchoolPhone, SchoolAddress, SelectedCartegory}
+            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Image, Biltype, AddInfo, Gender, type, logo, ConvAmount, ConvRate, BaseCurrency, PtoDesc, _BBF, SchoolName, SchoolPhone, SchoolAddress, SelectedCartegory, Currency, BillingCurrency}
             rowStudentFeesTranscationsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowStudentFeesTranscationsRow)
             Return rowStudentFeesTranscationsRow
@@ -3587,9 +3587,7 @@ Partial Public Class dsSchool
             Me.columnAddInfo = MyBase.Columns("AddInfo")
             Me.columnGender = MyBase.Columns("Gender")
             Me.columntype = MyBase.Columns("type")
-            Me.columnbbf = MyBase.Columns("bbf")
             Me.columnlogo = MyBase.Columns("logo")
-            Me.columnColumn1 = MyBase.Columns("Column1")
             Me.columnConvAmount = MyBase.Columns("ConvAmount")
             Me.columnConvRate = MyBase.Columns("ConvRate")
             Me.columnBaseCurrency = MyBase.Columns("BaseCurrency")
@@ -3599,6 +3597,8 @@ Partial Public Class dsSchool
             Me.columnSchoolPhone = MyBase.Columns("SchoolPhone")
             Me.columnSchoolAddress = MyBase.Columns("SchoolAddress")
             Me.columnSelectedCartegory = MyBase.Columns("SelectedCartegory")
+            Me.columnCurrency = MyBase.Columns("Currency")
+            Me.columnBillingCurrency = MyBase.Columns("BillingCurrency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3673,12 +3673,8 @@ Partial Public Class dsSchool
             MyBase.Columns.Add(Me.columnGender)
             Me.columntype = New Global.System.Data.DataColumn("type", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntype)
-            Me.columnbbf = New Global.System.Data.DataColumn("bbf", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnbbf)
             Me.columnlogo = New Global.System.Data.DataColumn("logo", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnlogo)
-            Me.columnColumn1 = New Global.System.Data.DataColumn("Column1", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnColumn1)
             Me.columnConvAmount = New Global.System.Data.DataColumn("ConvAmount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnConvAmount)
             Me.columnConvRate = New Global.System.Data.DataColumn("ConvRate", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
@@ -3701,6 +3697,10 @@ Partial Public Class dsSchool
             MyBase.Columns.Add(Me.columnSchoolAddress)
             Me.columnSelectedCartegory = New Global.System.Data.DataColumn("SelectedCartegory", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSelectedCartegory)
+            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrency)
+            Me.columnBillingCurrency = New Global.System.Data.DataColumn("BillingCurrency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBillingCurrency)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnReceipt}, true))
             Me.columnStudentID.MaxLength = 50
             Me.columnStudentName.AllowDBNull = false
@@ -3738,7 +3738,6 @@ Partial Public Class dsSchool
             Me.columnGender.MaxLength = 10
             Me.columntype.MaxLength = 1
             Me.columnlogo.ReadOnly = true
-            Me.columnColumn1.ReadOnly = true
             Me.columnBaseCurrency.ReadOnly = true
             Me.columnBaseCurrency.MaxLength = 2147483647
             Me.columnPtoDesc.ReadOnly = true
@@ -3752,6 +3751,8 @@ Partial Public Class dsSchool
             Me.columnSchoolAddress.MaxLength = 2147483647
             Me.columnSelectedCartegory.ReadOnly = true
             Me.columnSelectedCartegory.MaxLength = 50
+            Me.columnCurrency.MaxLength = 10
+            Me.columnBillingCurrency.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6364,6 +6365,8 @@ Partial Public Class dsSchool
         
         Private columnAmount As Global.System.Data.DataColumn
         
+        Private columnCurrency As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -6424,6 +6427,14 @@ Partial Public Class dsSchool
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCurrency
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6460,9 +6471,9 @@ Partial Public Class dsSchool
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddFeesPaymentTypeRow(ByVal Payment As String, ByVal Type As String, ByVal Amount As Decimal) As FeesPaymentTypeRow
+        Public Overloads Function AddFeesPaymentTypeRow(ByVal Payment As String, ByVal Type As String, ByVal Amount As Decimal, ByVal Currency As String) As FeesPaymentTypeRow
             Dim rowFeesPaymentTypeRow As FeesPaymentTypeRow = CType(Me.NewRow,FeesPaymentTypeRow)
-            Dim columnValuesArray() As Object = New Object() {Payment, Type, Amount}
+            Dim columnValuesArray() As Object = New Object() {Payment, Type, Amount, Currency}
             rowFeesPaymentTypeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowFeesPaymentTypeRow)
             Return rowFeesPaymentTypeRow
@@ -6494,6 +6505,7 @@ Partial Public Class dsSchool
             Me.columnPayment = MyBase.Columns("Payment")
             Me.columnType = MyBase.Columns("Type")
             Me.columnAmount = MyBase.Columns("Amount")
+            Me.columnCurrency = MyBase.Columns("Currency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6505,11 +6517,14 @@ Partial Public Class dsSchool
             MyBase.Columns.Add(Me.columnType)
             Me.columnAmount = New Global.System.Data.DataColumn("Amount", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAmount)
+            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCurrency)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPayment}, true))
             Me.columnPayment.AllowDBNull = false
             Me.columnPayment.Unique = true
             Me.columnPayment.MaxLength = 50
             Me.columnType.MaxLength = 50
+            Me.columnCurrency.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11275,21 +11290,6 @@ Partial Public Class dsSchool
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property bbf() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableStudentFeesTranscations.bbfColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'bbf' in table 'StudentFeesTranscations' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableStudentFeesTranscations.bbfColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property logo() As Byte()
             Get
                 Try 
@@ -11300,21 +11300,6 @@ Partial Public Class dsSchool
             End Get
             Set
                 Me(Me.tableStudentFeesTranscations.logoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Column1() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableStudentFeesTranscations.Column1Column),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Column1' in table 'StudentFeesTranscations' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableStudentFeesTranscations.Column1Column) = value
             End Set
         End Property
         
@@ -11453,6 +11438,37 @@ Partial Public Class dsSchool
             End Get
             Set
                 Me(Me.tableStudentFeesTranscations.SelectedCartegoryColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Currency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudentFeesTranscations.CurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'StudentFeesTranscations' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudentFeesTranscations.CurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property BillingCurrency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableStudentFeesTranscations.BillingCurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BillingCurrency' in table 'StudentFeesTranscations' is DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableStudentFeesTranscations.BillingCurrencyColumn) = value
             End Set
         End Property
         
@@ -11782,18 +11798,6 @@ Partial Public Class dsSchool
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsbbfNull() As Boolean
-            Return Me.IsNull(Me.tableStudentFeesTranscations.bbfColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetbbfNull()
-            Me(Me.tableStudentFeesTranscations.bbfColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IslogoNull() As Boolean
             Return Me.IsNull(Me.tableStudentFeesTranscations.logoColumn)
         End Function
@@ -11802,18 +11806,6 @@ Partial Public Class dsSchool
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetlogoNull()
             Me(Me.tableStudentFeesTranscations.logoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsColumn1Null() As Boolean
-            Return Me.IsNull(Me.tableStudentFeesTranscations.Column1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetColumn1Null()
-            Me(Me.tableStudentFeesTranscations.Column1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11922,6 +11914,30 @@ Partial Public Class dsSchool
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetSelectedCartegoryNull()
             Me(Me.tableStudentFeesTranscations.SelectedCartegoryColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableStudentFeesTranscations.CurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrencyNull()
+            Me(Me.tableStudentFeesTranscations.CurrencyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBillingCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableStudentFeesTranscations.BillingCurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBillingCurrencyNull()
+            Me(Me.tableStudentFeesTranscations.BillingCurrencyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -14323,6 +14339,21 @@ Partial Public Class dsSchool
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Currency() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableFeesPaymentType.CurrencyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'FeesPaymentType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableFeesPaymentType.CurrencyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsTypeNull() As Boolean
             Return Me.IsNull(Me.tableFeesPaymentType.TypeColumn)
         End Function
@@ -14343,6 +14374,18 @@ Partial Public Class dsSchool
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetAmountNull()
             Me(Me.tableFeesPaymentType.AmountColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCurrencyNull() As Boolean
+            Return Me.IsNull(Me.tableFeesPaymentType.CurrencyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCurrencyNull()
+            Me(Me.tableFeesPaymentType.CurrencyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -16373,6 +16416,7 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cart", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16531,7 +16575,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal student As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function FillByStudent(ByVal dataTable As dsSchool.FeesPayments_HeaderDataTable, ByVal student As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (student Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -16552,6 +16596,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(4).Value = CType(showreceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(currency,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -16564,7 +16613,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy1(ByVal student As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsSchool.FeesPayments_HeaderDataTable
+        Public Overloads Overridable Function GetDataBy1(ByVal student As String, ByVal cart As String, ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As dsSchool.FeesPayments_HeaderDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (student Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -16585,6 +16634,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(4).Value = CType(showreceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(currency,String)
             End If
             Dim dataTable As dsSchool.FeesPayments_HeaderDataTable = New dsSchool.FeesPayments_HeaderDataTable()
             Me.Adapter.Fill(dataTable)
@@ -17507,6 +17561,7 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@receipt", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cart", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -17537,7 +17592,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByReceipt(ByVal dataTable As dsSchool.feespayments_detailsDataTable, ByVal receipt As String, ByVal cart As String) As Integer
+        Public Overloads Overridable Function FillByReceipt(ByVal dataTable As dsSchool.feespayments_detailsDataTable, ByVal receipt As String, ByVal cart As String, ByVal currency As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (receipt Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -17548,6 +17603,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(currency,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -17560,7 +17620,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal receipt As String, ByVal cart As String) As dsSchool.feespayments_detailsDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal receipt As String, ByVal cart As String, ByVal currency As String) As dsSchool.feespayments_detailsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (receipt Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -17571,6 +17631,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(cart,String)
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(currency,String)
             End If
             Dim dataTable As dsSchool.feespayments_detailsDataTable = New dsSchool.feespayments_detailsDataTable()
             Me.Adapter.Fill(dataTable)
@@ -18344,9 +18409,7 @@ Namespace dsSchoolTableAdapters
             tableMapping.ColumnMappings.Add("AddInfo", "AddInfo")
             tableMapping.ColumnMappings.Add("Gender", "Gender")
             tableMapping.ColumnMappings.Add("type", "type")
-            tableMapping.ColumnMappings.Add("bbf", "bbf")
             tableMapping.ColumnMappings.Add("logo", "logo")
-            tableMapping.ColumnMappings.Add("Column1", "Column1")
             tableMapping.ColumnMappings.Add("ConvAmount", "ConvAmount")
             tableMapping.ColumnMappings.Add("ConvRate", "ConvRate")
             tableMapping.ColumnMappings.Add("BaseCurrency", "BaseCurrency")
@@ -18356,6 +18419,8 @@ Namespace dsSchoolTableAdapters
             tableMapping.ColumnMappings.Add("SchoolPhone", "SchoolPhone")
             tableMapping.ColumnMappings.Add("SchoolAddress", "SchoolAddress")
             tableMapping.ColumnMappings.Add("SelectedCartegory", "SelectedCartegory")
+            tableMapping.ColumnMappings.Add("Currency", "Currency")
+            tableMapping.ColumnMappings.Add("BillingCurrency", "BillingCurrency")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -18384,13 +18449,14 @@ Namespace dsSchoolTableAdapters
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CurrentPeriod", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showinvoices", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@showreceipts", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsSchool.StudentFeesTranscationsDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsSchool.StudentFeesTranscationsDataTable, ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -18436,6 +18502,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(currency,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -18448,7 +18519,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean)) As dsSchool.StudentFeesTranscationsDataTable
+        Public Overloads Overridable Function GetData(ByVal cart As String, ByVal stud As String, ByVal user As String, ByVal info As String, ByVal period As Global.System.Nullable(Of Integer), ByVal period1 As Global.System.Nullable(Of Integer), ByVal CurrentPeriod As Global.System.Nullable(Of Integer), ByVal showinvoices As Global.System.Nullable(Of Boolean), ByVal showreceipts As Global.System.Nullable(Of Boolean), ByVal currency As String) As dsSchool.StudentFeesTranscationsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (cart Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -18494,6 +18565,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.SelectCommand.Parameters(9).Value = CType(showreceipts.Value,Boolean)
             Else
                 Me.Adapter.SelectCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(10).Value = CType(currency,String)
             End If
             Dim dataTable As dsSchool.StudentFeesTranscationsDataTable = New dsSchool.StudentFeesTranscationsDataTable()
             Me.Adapter.Fill(dataTable)
@@ -19708,43 +19784,52 @@ Namespace dsSchoolTableAdapters
             tableMapping.ColumnMappings.Add("Payment", "Payment")
             tableMapping.ColumnMappings.Add("Type", "Type")
             tableMapping.ColumnMappings.Add("Amount", "Amount")
+            tableMapping.ColumnMappings.Add("Currency", "Currency")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [PaymentType] WHERE (([Payment] = @Original_Payment) AND ((@IsNull_Ty"& _ 
                 "pe = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Amount = "& _ 
-                "1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)))"
+                "1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency"& _ 
+                " = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Type", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Currency", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [PaymentType] ([Payment], [Type], [Amount]) VALUES (@Payment, @Type, "& _ 
-                "@Amount);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Payment, Type, Amount FROM PaymentType WHERE (Payment = @Payme"& _ 
-                "nt)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [PaymentType] ([Payment], [Type], [Amount], [Currency]) VALUES (@Paym"& _ 
+                "ent, @Type, @Amount, @Currency);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Payment, Type, Amount, Currency FROM Pa"& _ 
+                "ymentType WHERE (Payment = @Payment)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [PaymentType] SET [Payment] = @Payment, [Type] = @Type, [Amount] = @Amount"& _ 
-                " WHERE (([Payment] = @Original_Payment) AND ((@IsNull_Type = 1 AND [Type] IS NUL"& _ 
-                "L) OR ([Type] = @Original_Type)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) "& _ 
-                "OR ([Amount] = @Original_Amount)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Payment, Type, Amount FROM PaymentTy"& _ 
-                "pe WHERE (Payment = @Payment)"
+                ", [Currency] = @Currency WHERE (([Payment] = @Original_Payment) AND ((@IsNull_Ty"& _ 
+                "pe = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Amount = "& _ 
+                "1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency"& _ 
+                " = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Pay"& _ 
+                "ment, Type, Amount, Currency FROM PaymentType WHERE (Payment = @Payment)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Payment", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Type", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Type", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Amount", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Amount", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Amount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Currency", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Currency", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Currency", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19757,12 +19842,24 @@ Namespace dsSchoolTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        PaymentType.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PaymentType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where type = 'SchoolFee"& _ 
                 "s'"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "dbo.spFillCartegoryByCurrency"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@currency", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        PaymentType.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PaymentType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where type = 'SchoolFee"& _ 
+                "s' and Payment = @pay"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pay", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Payment", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19784,6 +19881,74 @@ Namespace dsSchoolTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As dsSchool.FeesPaymentTypeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As dsSchool.FeesPaymentTypeDataTable = New dsSchool.FeesPaymentTypeDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByCurrency(ByVal dataTable As dsSchool.FeesPaymentTypeDataTable, ByVal currency As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(currency,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy1(ByVal currency As String) As dsSchool.FeesPaymentTypeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (currency Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(currency,String)
+            End If
+            Dim dataTable As dsSchool.FeesPaymentTypeDataTable = New dsSchool.FeesPaymentTypeDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByPaymentType(ByVal dataTable As dsSchool.FeesPaymentTypeDataTable, ByVal pay As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (pay Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("pay")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(pay,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal pay As String) As dsSchool.FeesPaymentTypeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (pay Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("pay")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(pay,String)
+            End If
             Dim dataTable As dsSchool.FeesPaymentTypeDataTable = New dsSchool.FeesPaymentTypeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -19821,7 +19986,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal), ByVal Original_Currency As String) As Integer
             If (Original_Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Payment")
             Else
@@ -19840,6 +20005,13 @@ Namespace dsSchoolTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Currency Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Currency,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -19860,7 +20032,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Currency As String) As Integer
             If (Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Payment")
             Else
@@ -19875,6 +20047,11 @@ Namespace dsSchoolTableAdapters
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(Amount.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (Currency Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Currency,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -19895,7 +20072,7 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Update(ByVal Payment As String, ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Currency As String, ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal), ByVal Original_Currency As String) As Integer
             If (Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Payment")
             Else
@@ -19911,24 +20088,36 @@ Namespace dsSchoolTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
+            If (Currency Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Currency,String)
+            End If
             If (Original_Payment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Payment")
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_Payment,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_Payment,String)
             End If
             If (Original_Type Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Type,String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Type,String)
             End If
             If (Original_Amount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Amount.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Amount.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Currency Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Currency,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -19949,8 +20138,8 @@ Namespace dsSchoolTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(Original_Payment, Type, Amount, Original_Payment, Original_Type, Original_Amount)
+        Public Overloads Overridable Function Update(ByVal Type As String, ByVal Amount As Global.System.Nullable(Of Decimal), ByVal Currency As String, ByVal Original_Payment As String, ByVal Original_Type As String, ByVal Original_Amount As Global.System.Nullable(Of Decimal), ByVal Original_Currency As String) As Integer
+            Return Me.Update(Original_Payment, Type, Amount, Currency, Original_Payment, Original_Type, Original_Amount, Original_Currency)
         End Function
     End Class
     

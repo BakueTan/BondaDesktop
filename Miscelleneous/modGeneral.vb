@@ -87,7 +87,7 @@ Public Module modGeneral
     Public gstrExamAttExam, gstrExamAttSub As String
     Public gblnAllSubStuds, gblnExamAtt, gblnMarkSheet, gblnCourseWek, gblnPerSubject, gblnPerProgram As Boolean
     Public gstrmarksheetExam, gstrmarksheetProg, gstrmatrksheetintk As String
-    Public gstrAccPrgm, gstrAccClass, gstrAccClass2, gstrAccStatus, gstrAccLvl, gstrAccLvl2, gstrAccSem, gstrAccPrdFrom, gstrAccSection, gstrAccPrdTo, gstrAccIntk, gstrAccStud, gstraccAddinfo, gstrAccSess, gstrAccSess2, gstrAccSub, gstrAccBBFCutOffPeriod As String
+    Public gstrAccPrgm, gstrAccClass, gstrAccClass2, gstrAccStatus, gstrAccLvl, gstrAccLvl2, gstrAccSem, gstrAccPrdFrom, gstrAccSection, gstrAccPrdTo, gstrAccIntk, gstrAccStud, gstraccAddinfo, gstrAccSess, gstrAccSess2, gstrAccSub, gstrAccBBFCutOffPeriod, gstrDebtFilter, gstrDebtFrom, gstrDebtTo As String
     Public gblnAccPerClass, gblnAccPerForm, gblnAccDebtors, gblnAccPerSub, gblnAccPerStud, gblnClassStat, gblnSectDebts, gblnDebtorsOnly, gblnShowReceipts, gblnShowInvoices As Boolean
     Public gdatefrom, gdateTo, gpdatefrom, gpdateto As Date
     Public gstrfizpaypfrom, gstrfizpaypto, gstrYearLeft, gstrtermleftfrom, gstrtermleftTo, gstrReasonLeft As String
@@ -1019,7 +1019,7 @@ Public Module modGeneral
     End Function
 
 
-    Public Function Classes() As List(Of ComboItem)
+    Public Function Classes(Optional includeall As Boolean = False) As List(Of ComboItem)
         Dim itm As ComboItem
         Dim values As New List(Of ComboItem)
 
@@ -1332,6 +1332,32 @@ Public Module modGeneral
             values.Add(itm)
         End While
 
+
+
+        Return values
+    End Function
+
+
+    Public Function Currencies() As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim sql As String = "select * from Currencies "
+        Dim drr As SqlDataReader
+        drr = ExecuteReader(sql, , True)
+
+
+        itm = New ComboItem("All", "All")
+        values.Add(itm)
+
+        While drr.Read
+            itm = New ComboItem(drr("Currency"), drr("Currency"))
+            values.Add(itm)
+        End While
+
+
+
+        Return values
 
 
         Return values

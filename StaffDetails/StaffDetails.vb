@@ -489,7 +489,17 @@ Public Class frmStaffDetails
                     While subs.Read
                         With dgSubsTaught
                             .Rows.Add()
+
+
                             .Rows(rows).Cells("SubTaughtProgram").Value = subs("Form")
+
+                            Dim cbosubs As DataGridViewComboBoxCell = CType(.Rows(rows).Cells("subTaughtSubject"), DataGridViewComboBoxCell)
+                            cbosubs.DataSource = ProgramSubjects(subs("Form"))
+                            cbosubs.DisplayMember = "Text"
+                            cbosubs.ValueMember = "Value"
+
+
+
 
                             Dim cmblvl As DataGridViewComboBoxCell = CType(.Rows(rows).Cells("SubTaughtLevel"), DataGridViewComboBoxCell)
                             cmblvl.DataSource = Ints()
@@ -498,7 +508,7 @@ Public Class frmStaffDetails
                             cmblvl.Value = subs("Year")
                             .Rows(rows).Cells("SubTaughtSession").Value = subs("Session")
                             .Rows(rows).Cells("SubTaughtClass").Value = subs("ClassDesc")
-                            .Rows(rows).Cells("SubTaughtSubject").Value = subs("SubjectID")
+                            cbosubs.Value = subs("SubjectID")
                             rows += 1
                         End With
 
