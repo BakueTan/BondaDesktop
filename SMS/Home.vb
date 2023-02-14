@@ -6,6 +6,7 @@ Imports Reports
 Imports SystemAdministration
 Imports StaffDetails
 Imports SchoolLibrary
+Imports IncomeExpenditure
 
 
 Public Class frmMain
@@ -351,16 +352,16 @@ Public Class frmMain
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
-        Dim sql$ = "update [UserActivityLog] set sessionstate = 0,logoutdate = getdate() where usr = '" & goUser.userName & "' and session in ( select session from  [UserActivityLog] where usr = '" & goUser.userName & "' and sessionstate = 1 ) "
+        Dim sql$ = "update [UserActivityLog] set sessionstate = 0,logoutdate = getdate() where usr = '" & gouser.userName & "' and session in ( select session from  [UserActivityLog] where usr = '" & gouser.userName & "' and sessionstate = 1 ) "
         '    ExecuteNonQuery(sql)
         Close()
     End Sub
 
     Private Sub UserAdministationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserAdministationToolStripMenuItem.Click
         Dim frmusercontrol As New frmUserControl
-        With frmUserControl
+        With frmusercontrol
             .frmMain = Me
-            .Show
+            .Show()
         End With
     End Sub
 
@@ -600,5 +601,69 @@ Public Class frmMain
         End With
 
 
+    End Sub
+
+    Private Sub PayablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PayablesToolStripMenuItem.Click
+        Dim accpayables As New frmLiabilities
+
+        Cursor = Cursors.WaitCursor
+
+        With accpayables
+            .frmmain = Me
+            .Init()
+            .Show()
+        End With
+
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        Dim AccSettings As New frmAccountingSettings
+
+        With AccSettings
+            .frmmain = Me
+            .Show()
+        End With
+    End Sub
+
+    Private Sub BanksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BanksToolStripMenuItem.Click
+        Dim banks As New frmCoA
+
+        With banks
+            .frmmain = Me
+            .Show()
+        End With
+    End Sub
+
+    Private Sub AccountsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AccountsToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ReeivablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReeivablesToolStripMenuItem.Click
+        Dim accAsserts As New frmAsserts
+
+        Cursor = Cursors.WaitCursor
+
+        With accAsserts
+            .frmmain = Me
+            .Init()
+            .Show()
+        End With
+
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub ReportsToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ReportsToolStripMenuItem1.Click
+        Dim accReports As New frmAccountingReports
+
+        Cursor = Cursors.WaitCursor
+
+        With accReports
+            .frmMain = Me
+            .Intit()
+            .Show()
+        End With
+
+        Cursor = Cursors.Default
     End Sub
 End Class

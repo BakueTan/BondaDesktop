@@ -185,7 +185,20 @@ Public Module modGeneral
         OfferAccepted = 8
         ApplicationWithDrawn = 9
     End Enum
+    Public Sub InitGroupBox(ByVal gB As GroupBox, SC As SplitContainer, Optional ByVal Wth! = 495,
+                           Optional ByVal Hth! = 276, Optional ByVal cboExpand As ComboBox = Nothing)
+        Try
+            With gB
+                .Width = Wth
+                .Height = Hth
+                .Left = (SC.Panel2.Width - gB.Width) / 2
+                .Top = (SC.Panel2.Height - gB.Height) / 2
+                .Visible = True
 
+            End With
+        Catch
+        End Try
+    End Sub
     Public ReadOnly Property CurrentPaymentPeriod() As String
         Get
             Dim period As String = ""
@@ -206,6 +219,42 @@ Public Module modGeneral
             Return period
         End Get
     End Property
+
+
+    Public Function GetData(sql As String, cmdtype As CommandType) As DataTable
+
+        Dim cnn As SqlConnection
+
+        Try
+            cnn = New SqlConnection(ConnectionString)
+            'cnn.Open()
+            Dim cmd As SqlCommand = New SqlCommand(sql, cnn) With {
+                .CommandType = cmdtype
+            }
+
+            Dim adapter As SqlDataAdapter = New SqlDataAdapter With {
+                .SelectCommand = cmd
+            }
+
+            Dim table As DataTable = New DataTable With {
+                .Locale = System.Globalization.CultureInfo.InvariantCulture
+            }
+            adapter.Fill(table)
+
+            Return table
+        Catch ex As Exception
+        Finally
+            '   cnn.close()
+
+        End Try
+
+
+
+
+
+
+
+    End Function
 
     Public Function SendEmail(ByVal stud As Enrol, emailtype As EmailType, Optional ByRef UI As Guid = Nothing, Optional msg As String = "") As Boolean
         Dim SmtpServer As New SmtpClient()
@@ -487,98 +536,6 @@ Public Module modGeneral
         End Try
         Return TheThing
     End Function
-    ''Private Sub CheckQty()
-    ''    Try
-    ''        Sql = "SELECT Stk_Quantity FROM dbo.StockItems WHERE Stk_Code ='" & Itm & "'"
-    ''        oResult = ExecuteScalar(Sql)
-    ''        If Not IsNothing(oResult) Then
-    ''            k = CInt(oResult)
-    ''            If Val(txtQty.Text) > k Then
-    ''                ItsOk = False
-    ''                MsgBox("Amount in stock is " & k & " enter a valid amount", MsgBoxStyle.Exclamation, "qauntity too large")
-    ''                Exit Sub
-    ''            End If
-    ''        End If
-    ''    Catch ex As Exception
-    ''    End Try
-    ''End Sub
-    'Public Sub RptPreview(ByVal frm As Form, ByVal CloseBtn As System.Windows.Forms.Button, _
-    '   ByVal PreviewBtn As System.Windows.Forms.Button, ByVal rpt$, _
-    'Optional ByVal Exportable As Boolean = True, _
-    'Optional ByVal Dt As DataSet = Nothing, _
-    'Optional ByVal DataTable$ = "", _
-    'Optional ByVal arrDtSub() As DataSet = Nothing, _
-    'Optional ByVal arrDataTableSub$() = Nothing, _
-    'Optional ByVal ZoomLevel% = 100, _
-    'Optional ByVal Customised As Boolean = False, _
-    'Optional ByVal Condensed As Boolean = False, _
-    'Optional ByVal Pnl As Panel = Nothing, _
-    'Optional ByVal ReportTile$ = "<< Report Preview >>", _
-    'Optional ByVal JustPrintItOk As Boolean = False)
-    ' Try
-    '     Try
-    '         If Dt.Tables(DataTable).Rows.Count = 0 Then
-    '             MsgBox("no data for the current selection range", MsgBoxStyle.Information, "no data for report")
-    '             Exit Sub
-    '         End If
-    '     Catch ex As Exception
-    '     End Try
-    '     frm.Cursor = Cursors.WaitCursor
-    '     gstrReportPath = My.Application.Info.DirectoryPath & "\Reports\"
-    '     goCurrentForm = frm
-    '     InitViewer(Pnl, ReportTile)
-    '     If Not IsNothing(PreviewBtn) Then PreviewBtn.Visible = False
-    '     If Not IsNothing(CloseBtn) Then CloseBtn.Visible = False
-    '     ''frm.Hide()
-    '     Dim thePath$
-    '     If Customised Then
-    '         thePath = gstrCustomPath & rpt
-    '     Else
-    '         If Condensed Then
-    '             thePath = gstrCondensedPath & rpt
-    '         Else
-    '             thePath = gstrReportPath & rpt
-    '         End If
-    '     End If
-    '     Dim Crx As New ReportDocument
-    '     Crx.FileName = thePath
-
-    '     Crx.Database.Tables.Item(DataTable).SetDataSource(Dt)
-
-    '     If Not IsNothing(arrDataTableSub) Then
-    '         Dim i% = arrDataTableSub.GetUpperBound(0)
-    '         Dim j% = 0
-    '         For j = 0 To i
-    '             Crx.Subreports(arrDataTableSub(j)).SetDataSource(arrDtSub(j))
-    '         Next
-    '     End If
-
-    '     With gcrvMain
-    '         .ReportSource = Crx
-    '         If JustPrintItOk Then
-    '             Try
-    '                 Crx.PrintToPrinter(1, False, 1, 1)
-    '                 If IsNothing(Pnl) Then
-    '                     frmReportPreview.Close()
-    '                 Else
-    '                     Pnl.Dispose()
-    '                 End If
-    '             Catch
-    '             End Try
-    '         Else
-    '             .Dock = DockStyle.Fill
-    '             .ShowExportButton = CType(IIf(Exportable, True, False), Boolean)
-    '             .Zoom(ZoomLevel)
-    '             .Visible = True
-    '         End If
-    '     End With
-    ' Catch ex As Exception
-    '     MsgBox(ex.Message, MsgBoxStyle.Exclamation, "error with report data")
-    ' End Try
-    ' If Not IsNothing(PreviewBtn) Then PreviewBtn.Visible = True
-    ' If Not IsNothing(CloseBtn) Then CloseBtn.Visible = True
-    ' frm.Cursor = Cursors.Default
-    'End Sub
 
 
     Public Function TrueDate$(ByVal Dte$, Optional ByVal plsql As Boolean = False, Optional ByVal ABAP As Boolean = False)
@@ -756,39 +713,7 @@ Public Module modGeneral
             CloseConnection(DoPlanB, DoPlanC)
         End Try
     End Sub
-    Public Function v(ByVal Tbl$, ByVal KeyFld$, ByVal SoughtFld$, ByVal Val$,
-                          ByVal Numerical As Boolean, Optional ByVal PlanB As Boolean = False,
-                          Optional ByVal PlanC As Boolean = False) As Object
-        Dim oResult As Object = Nothing
-        Dim sql$ = ""
-        Dim cnt% = 0
-        If Numerical Then
-            sql = "SELECT " & SoughtFld & " FROM " & Tbl & " WHERE " & KeyFld & " = " & Val
-        Else
-            sql = "SELECT " & SoughtFld & " FROM " & Tbl & " WHERE " & KeyFld & " = '" & Val & "'"
-        End If
 
-        Try
-            While cnt < 3
-                Try
-                    OpenConnection(PlanB, PlanC)
-                    PrepareCmdText(sql, , PlanB, PlanC)
-                    oResult = gcmdPos.ExecuteScalar()
-                    cnt = 3
-                Catch
-                    cnt += 1
-                End Try
-            End While
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Exclamation, " error getting value from the table : " & Tbl)
-        Finally
-            CloseConnection(PlanB, PlanC)
-        End Try
-        If IsNothing(oResult) Then
-            oResult = "-1"
-        End If
-        Return oResult
-    End Function
 
 
 
@@ -1316,6 +1241,41 @@ Public Module modGeneral
 
     End Sub
 
+
+
+
+    Public Function AccountCartegories(Acctype As String) As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+        Dim sql As String = "spLoadAccountCartegories"
+        Dim cmd As New SqlCommand
+        Dim cnn As New SqlConnection(ConnectionString)
+        Dim drr As SqlDataReader
+
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@acctype", Acctype)
+
+            drr = cmd.ExecuteReader()
+
+            While drr.Read
+                itm = New ComboItem(drr("Cartegory"), drr("Cartegory"))
+                values.Add(itm)
+            End While
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+
+
+    End Function
     Public Function FeesPaymentPeriods() As List(Of ComboItem)
         Dim itm As ComboItem
         Dim values As New List(Of ComboItem)
@@ -1337,32 +1297,285 @@ Public Module modGeneral
         Return values
     End Function
 
-
-    Public Function Currencies() As List(Of ComboItem)
+    Public Function AccountingPeriods() As List(Of ComboItem)
         Dim itm As ComboItem
         Dim values As New List(Of ComboItem)
 
-        Dim sql As String = "select * from Currencies "
+
+        Dim sql As String = "spLoadAccountingPeriods"
+
+
         Dim drr As SqlDataReader
-        drr = ExecuteReader(sql, , True)
-
-
-        itm = New ComboItem("All", "All")
-        values.Add(itm)
+        drr = ExecuteReader(sql, , True,, , False)
 
         While drr.Read
-            itm = New ComboItem(drr("Currency"), drr("Currency"))
+            itm = New ComboItem(drr("Description"), drr("AccountingPeriod"))
             values.Add(itm)
         End While
 
 
 
         Return values
+    End Function
+
+    Public Function ChartOfAccounts(Optional ByVal Filter As String = "") As List(Of ComboItem)
+
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadChartOfAccounts"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+                Dim oref As New c_CoA
+                oref.Balance = drr("Balance")
+                oref.Acctype = drr("AccType")
+
+
+
+                itm = New ComboItem(drr("Description2"), Val(drr("AccountNumber").ToString), oref)
+                values.Add(itm)
+            End While
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         Return values
     End Function
 
+    Public Function Customers(Optional ByVal Filter As String = "") As List(Of ComboItem)
+
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadCustomers"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+                Dim oref As New c_Customer
+                oref.Name = drr("Description").ToString
+                oref.AccountNumber = drr("AccountNumber").ToString
+                oref.TaxCode = drr("TaxDescription").ToString
+                oref.PaymentTerms = drr("PayDays").ToString
+                oref.Currency = drr("Currency").ToString
+
+                itm = New ComboItem(drr("Description").ToString, Val(drr("Accountnumber").ToString), oref)
+                values.Add(itm)
+            End While
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+    End Function
+
+    Public Function Vendors(Optional ByVal Filter As String = "") As List(Of ComboItem)
+
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spSearchVendor"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+                Dim oref As New c_Vendor
+                oref.Name = drr("Name").ToString
+                oref.AccountNumber = drr("AccNumber").ToString
+                oref.TaxCode = drr("TaxDescription").ToString
+                oref.PaymentTerms = drr("PayDays").ToString
+                oref.Currency = drr("Currency").ToString
+
+                itm = New ComboItem(drr("Name").ToString, Val(drr("AccNumber").ToString), oref)
+                values.Add(itm)
+            End While
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+    End Function
+
+    Public Function AccountingCompanies(Optional ByVal Filter As String = "") As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadAccountingCompanies"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+
+
+
+
+                itm = New ComboItem(drr("CompanyName"), drr("CompanyRef").ToString)
+                values.Add(itm)
+            End While
+
+            Return values
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+    End Function
+
+    Public Function VATS(Optional ByVal Filter As String = "") As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadVat"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+
+                Dim oref As New c_Taxes
+                With oref
+                    .Descrption = drr("TaxDescription").ToString
+                    .TaxRate = drr("TaxRate").ToString
+                    .RaxIncl = drr("TaxInclusive").ToString
+                End With
+
+
+
+
+                itm = New ComboItem(drr("TaxDescription"), drr("TaxRef").ToString, oref)
+                values.Add(itm)
+            End While
+
+            Return values
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+    End Function
+
+    Public Function PaymentTerms(Optional ByVal Filter As String = "") As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadPaymentTerms"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+
+
+
+
+                itm = New ComboItem(drr("PayTermDescription"), drr("PayTermRef").ToString)
+                values.Add(itm)
+            End While
+
+            Return values
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+
+    End Function
     Public Function Subjects() As List(Of ComboItem)
 
         Dim itm As ComboItem
@@ -1637,5 +1850,74 @@ Public Class C_Classes
     Public Property ClassProgram As String
     Public Property ClassSession As String
 
+
+End Class
+
+Public Class c_CoA
+    Public Property Description As String
+    Public Property AccountNumber As Int64
+    Public Property Balance As Double
+    Public Property Acctype As String
+
+    Public Property Currency As String
+End Class
+
+Public Class c_Customer
+    Public Property Name As String
+    Public Property AccountNumber As Int64
+    Public Property PaymentTerms As Double
+    Public Property TaxCode As String
+
+    Public Property Currency As String
+End Class
+
+Public Class c_Vendor
+    Public Property Name As String
+    Public Property AccountNumber As Int64
+    Public Property PaymentTerms As Double
+    Public Property TaxCode As String
+
+    Public Property Currency As String
+End Class
+
+
+Public Class c_Taxes
+    Public Property Descrption As String
+    Public Property TaxRate As Double
+
+    Public Property RaxIncl As Boolean
+End Class
+
+
+Public Class GenericTrans
+
+    Public Property InvVendorAccNumber As Long
+    Public Property InvoiceNumber As Long
+    Public Property InvAmount As Double
+    Public Property InvCurrency As String
+    Public Property InvConvAmount As Double
+    Public Property Period As String
+    Public Property InvDate As Date
+    Public Property InvPostDate As Date
+    Public Property InvDueDate As Date
+    Public Property InvNotes As String
+    Public Property InvBalance As Double
+    Public Property InvCleared As Boolean
+    Public Property InvRef As Guid
+    Public Property InvPostedBy As String
+    Public Property InvActive As Boolean
+    Public Property InvPaymentRef As String
+    Public Property InvCartegory As Long
+    Public Property InvTransType As String
+    Public Property InvDoc As Byte()
+    Public Property InvDocNumber As String
+    Public Property DateLastEdited As Date
+    Public Property LastEditedBy As String
+    Public Property InvBankAccount As Long
+    Public Property InvCompany As Guid
+    Public Property InvPaymentType As String
+    Public Property DC As String
+
+    Public Property VatCode As Guid
 
 End Class

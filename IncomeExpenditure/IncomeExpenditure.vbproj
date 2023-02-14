@@ -10,8 +10,9 @@
     <AssemblyName>IncomeExpenditure</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,9 +63,17 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Miscelleneous">
+      <HintPath>..\Miscelleneous\bin\Debug\Miscelleneous.dll</HintPath>
+    </Reference>
+    <Reference Include="RevoModelC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SMS\bin\Debug\RevoModelC.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -85,29 +94,80 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.vb" />
-    <Compile Include="dsIncomeExpenditure.Designer.vb">
-      <DependentUpon>dsIncomeExpenditure.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <Compile Include="dgAdjustInvoice.Designer.vb">
+      <DependentUpon>dgAdjustInvoice.vb</DependentUpon>
     </Compile>
-    <Compile Include="dsIncomeExpenditureReports.Designer.vb">
-      <DependentUpon>dsIncomeExpenditureReports.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="dsIncomeExpenditureReports.vb">
-      <DependentUpon>dsIncomeExpenditureReports.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="frmLedgerAccounts.Designer.vb">
-      <DependentUpon>frmLedgerAccounts.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmLedgerAccounts.vb">
+    <Compile Include="dgAdjustInvoice.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dgViewVendorInvoice.Designer.vb">
+      <DependentUpon>dgViewVendorInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dgViewVendorInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dsAccountsPayable.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAccountsPayable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsAccountsReceivable.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAccountsReceivable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsAccountsSettings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAccountsSettings.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsCoA.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCoA.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmAccountingReports.Designer.vb">
+      <DependentUpon>frmAccountingReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAccountingReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAccountingSettings.Designer.vb">
+      <DependentUpon>frmAccountingSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAccountingSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAsserts.Designer.vb">
+      <DependentUpon>frmAsserts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAsserts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLiabilities.Designer.vb">
+      <DependentUpon>frmLiabilities.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLiabilities.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCOA.Designer.vb">
+      <DependentUpon>frmCOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCOA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportsPreview.Designer.vb">
+      <DependentUpon>frmReportsPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportsPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modAccounting.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -119,10 +179,37 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Resources\dgAdjustCustomerInvoice.Designer.vb">
+      <DependentUpon>dgAdjustCustomerInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\dgAdjustCustomerInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmLedgerAccounts.resx">
-      <DependentUpon>frmLedgerAccounts.vb</DependentUpon>
+    <EmbeddedResource Include="dgAdjustInvoice.resx">
+      <DependentUpon>dgAdjustInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dgViewVendorInvoice.resx">
+      <DependentUpon>dgViewVendorInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAccountingReports.resx">
+      <DependentUpon>frmAccountingReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAccountingSettings.resx">
+      <DependentUpon>frmAccountingSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAsserts.resx">
+      <DependentUpon>frmAsserts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLiabilities.resx">
+      <DependentUpon>frmLiabilities.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCOA.resx">
+      <DependentUpon>frmCOA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportsPreview.resx">
+      <DependentUpon>frmReportsPreview.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -130,30 +217,67 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptProfitLoss - Copy.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptProfitLoss.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInvoiceStatement.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInvoice.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\dgAdjustCustomerInvoice.resx">
+      <DependentUpon>dgAdjustCustomerInvoice.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="dsIncomeExpenditure.xsc">
-      <DependentUpon>dsIncomeExpenditure.xsd</DependentUpon>
+    <None Include="dsAccountsPayable.xsc">
+      <DependentUpon>dsAccountsPayable.xsd</DependentUpon>
     </None>
-    <None Include="dsIncomeExpenditure.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsIncomeExpenditure.Designer.vb</LastGenOutput>
+    <None Include="dsAccountsPayable.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="dsIncomeExpenditure.xss">
-      <DependentUpon>dsIncomeExpenditure.xsd</DependentUpon>
-    </None>
-    <None Include="dsIncomeExpenditureReports.xsc">
-      <DependentUpon>dsIncomeExpenditureReports.xsd</DependentUpon>
-    </None>
-    <None Include="dsIncomeExpenditureReports.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsIncomeExpenditureReports.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
+      <LastGenOutput>dsAccountsPayable.Designer.vb</LastGenOutput>
     </None>
-    <None Include="dsIncomeExpenditureReports.xss">
-      <DependentUpon>dsIncomeExpenditureReports.xsd</DependentUpon>
+    <None Include="dsAccountsPayable.xss">
+      <DependentUpon>dsAccountsPayable.xsd</DependentUpon>
+    </None>
+    <None Include="dsAccountsReceivable.xsc">
+      <DependentUpon>dsAccountsReceivable.xsd</DependentUpon>
+    </None>
+    <None Include="dsAccountsReceivable.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAccountsReceivable.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsAccountsReceivable.xss">
+      <DependentUpon>dsAccountsReceivable.xsd</DependentUpon>
+    </None>
+    <None Include="dsAccountsSettings.xsc">
+      <DependentUpon>dsAccountsSettings.xsd</DependentUpon>
+    </None>
+    <None Include="dsAccountsSettings.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAccountsSettings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsAccountsSettings.xss">
+      <DependentUpon>dsAccountsSettings.xsd</DependentUpon>
+    </None>
+    <None Include="dsCoA.xsc">
+      <DependentUpon>dsCoA.xsd</DependentUpon>
+    </None>
+    <None Include="dsCoA.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCoA.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsCoA.xss">
+      <DependentUpon>dsCoA.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -167,20 +291,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SqlServerTypes\Loader.cs" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Reports\rptGLStatement.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptVendorStatement.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

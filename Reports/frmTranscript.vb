@@ -268,7 +268,7 @@ Public Class frmTranscript
                 End If
 
                 'If clsperiodanalysis Then
-                '    where = where & " and e.date_enrolled between '" & gdtenrolPeriodAnalysisDatefrom & "' and '" & gdtenrolPeriodAnalysisDatefrom & "'"
+                ''     where = where & " and e.date_enrolled between '" & gdtenrolPeriodAnalysisDatefrom & "' and '" & gdtenrolPeriodAnalysisDatefrom & "'"
                 'End If
 
 

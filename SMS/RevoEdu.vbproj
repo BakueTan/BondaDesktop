@@ -12,7 +12,7 @@
     <AssemblyName>RevoEdu</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -90,6 +90,9 @@
     <Reference Include="BarcodeLib.Barcode.WinForms, Version=5.0.0.30712, Culture=neutral, PublicKeyToken=ef1bae04ecfd0461, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\SMS\bin\Debug\BarcodeLib.Barcode.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IncomeExpenditure">
+      <HintPath>..\IncomeExpenditure\bin\Debug\IncomeExpenditure.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -237,6 +240,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="REDU2.ico" />
+    <Content Include="Resources\AccountsPayables.jpg" />
+    <Content Include="Resources\AccountsReceivables.png" />
+    <Content Include="Resources\Bank.jpg" />
+    <Content Include="Resources\Settings.jpg" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

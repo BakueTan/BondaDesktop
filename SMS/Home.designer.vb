@@ -3,7 +3,7 @@ Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,10 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.ImageList1 = New System.Windows.Forms.ImageList()
         Me.ServiceController1 = New System.ServiceProcess.ServiceController()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -39,6 +38,14 @@ Partial Class frmMain
         Me.StudentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StudentDetailsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckFeesBalancesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StaffToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StaffDetailsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AccountsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BanksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PayablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReeivablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserManualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserManualToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -48,8 +55,6 @@ Partial Class frmMain
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.StaffDetailsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StaffToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.ssMain.SuspendLayout()
@@ -169,7 +174,7 @@ Partial Class frmMain
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.Transparent
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.UserDefinedInputsToolStripMenuItem, Me.AdministrationToolStripMenuItem1, Me.ReportsToolStripMenuItem, Me.ToolStripMenuItem4, Me.StudentsToolStripMenuItem, Me.StaffToolStripMenuItem, Me.UserManualToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.UserDefinedInputsToolStripMenuItem, Me.AdministrationToolStripMenuItem1, Me.ReportsToolStripMenuItem, Me.ToolStripMenuItem4, Me.StudentsToolStripMenuItem, Me.StaffToolStripMenuItem, Me.AccountsToolStripMenuItem, Me.UserManualToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1142, 24)
@@ -268,6 +273,62 @@ Partial Class frmMain
         Me.CheckFeesBalancesToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.CheckFeesBalancesToolStripMenuItem.Text = "CheckFeesBalances"
         '
+        'StaffToolStripMenuItem
+        '
+        Me.StaffToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StaffDetailsToolStripMenuItem})
+        Me.StaffToolStripMenuItem.Name = "StaffToolStripMenuItem"
+        Me.StaffToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
+        Me.StaffToolStripMenuItem.Tag = "52"
+        Me.StaffToolStripMenuItem.Text = "StaffCentre"
+        '
+        'StaffDetailsToolStripMenuItem
+        '
+        Me.StaffDetailsToolStripMenuItem.Name = "StaffDetailsToolStripMenuItem"
+        Me.StaffDetailsToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.StaffDetailsToolStripMenuItem.Tag = "53"
+        Me.StaffDetailsToolStripMenuItem.Text = "StaffDetails"
+        '
+        'AccountsToolStripMenuItem
+        '
+        Me.AccountsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.BanksToolStripMenuItem, Me.PayablesToolStripMenuItem, Me.ReeivablesToolStripMenuItem, Me.ReportsToolStripMenuItem1})
+        Me.AccountsToolStripMenuItem.Name = "AccountsToolStripMenuItem"
+        Me.AccountsToolStripMenuItem.Size = New System.Drawing.Size(81, 20)
+        Me.AccountsToolStripMenuItem.Text = "Accounting"
+        '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.Image = Global.RevoEdu.My.Resources.Resources.Settings
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
+        'BanksToolStripMenuItem
+        '
+        Me.BanksToolStripMenuItem.Image = Global.RevoEdu.My.Resources.Resources.Bank
+        Me.BanksToolStripMenuItem.Name = "BanksToolStripMenuItem"
+        Me.BanksToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BanksToolStripMenuItem.Text = "Chart Of Accounts"
+        '
+        'PayablesToolStripMenuItem
+        '
+        Me.PayablesToolStripMenuItem.Image = Global.RevoEdu.My.Resources.Resources.AccountsPayables
+        Me.PayablesToolStripMenuItem.Name = "PayablesToolStripMenuItem"
+        Me.PayablesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PayablesToolStripMenuItem.Text = "Payables"
+        '
+        'ReeivablesToolStripMenuItem
+        '
+        Me.ReeivablesToolStripMenuItem.Image = Global.RevoEdu.My.Resources.Resources.AccountsReceivables
+        Me.ReeivablesToolStripMenuItem.Name = "ReeivablesToolStripMenuItem"
+        Me.ReeivablesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ReeivablesToolStripMenuItem.Text = "Receivables"
+        '
+        'ReportsToolStripMenuItem1
+        '
+        Me.ReportsToolStripMenuItem1.Name = "ReportsToolStripMenuItem1"
+        Me.ReportsToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ReportsToolStripMenuItem1.Text = "Reports"
+        '
         'UserManualToolStripMenuItem
         '
         Me.UserManualToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserManualToolStripMenuItem1, Me.AboutToolStripMenuItem})
@@ -280,14 +341,14 @@ Partial Class frmMain
         'UserManualToolStripMenuItem1
         '
         Me.UserManualToolStripMenuItem1.Name = "UserManualToolStripMenuItem1"
-        Me.UserManualToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.UserManualToolStripMenuItem1.Size = New System.Drawing.Size(137, 22)
         Me.UserManualToolStripMenuItem1.Tag = "85"
         Me.UserManualToolStripMenuItem1.Text = "UserManual"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(137, 22)
         Me.AboutToolStripMenuItem.Tag = "86"
         Me.AboutToolStripMenuItem.Text = "About"
         '
@@ -322,35 +383,20 @@ Partial Class frmMain
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(119, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(119, 17)
         Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(119, 17)
         Me.ToolStripStatusLabel3.Text = "ToolStripStatusLabel3"
-        '
-        'StaffDetailsToolStripMenuItem
-        '
-        Me.StaffDetailsToolStripMenuItem.Name = "StaffDetailsToolStripMenuItem"
-        Me.StaffDetailsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.StaffDetailsToolStripMenuItem.Tag = "53"
-        Me.StaffDetailsToolStripMenuItem.Text = "StaffDetails"
-        '
-        'StaffToolStripMenuItem
-        '
-        Me.StaffToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StaffDetailsToolStripMenuItem})
-        Me.StaffToolStripMenuItem.Name = "StaffToolStripMenuItem"
-        Me.StaffToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
-        Me.StaffToolStripMenuItem.Tag = "52"
-        Me.StaffToolStripMenuItem.Text = "StaffCentre"
         '
         'frmMain
         '
@@ -410,4 +456,10 @@ Partial Class frmMain
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents StaffToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StaffDetailsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AccountsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PayablesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReeivablesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BanksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReportsToolStripMenuItem1 As ToolStripMenuItem
 End Class
