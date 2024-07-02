@@ -948,8 +948,13 @@ Public Module modGeneral
         Dim itm As ComboItem
         Dim values As New List(Of ComboItem)
 
+        If includeall Then
+            sql = "select ref,description,clas,sem from classes  union   " &
+             " select newid(),'ALL',99999,0 order by clas desc,sem desc"
+        Else
+            sql = "select ref,description,clas,sem from classes order by clas desc,sem desc  "
 
-        sql = "select ref,description,clas,sem from classes order by clas desc,sem desc  "
+        End If
 
         Dim drr As SqlDataReader
         drr = ExecuteReader(sql, , True)
@@ -999,28 +1004,26 @@ Public Module modGeneral
         Return values
     End Function
 
-    Public Function Currencies(Optional blnbase As Boolean = False) As List(Of ComboItem)
+    Public Function Currencies() As List(Of ComboItem)
         Dim itm As ComboItem
         Dim values As New List(Of ComboItem)
 
-        If Not blnbase Then
-            sql = "select currency from currencies  "
-        Else
-            sql = "select isnull(basecurrency,'') from schoolinfo"
-        End If
-
+        Dim sql As String = "select * from Currencies "
         Dim drr As SqlDataReader
         drr = ExecuteReader(sql, , True)
 
 
+        itm = New ComboItem("All", "All")
+        values.Add(itm)
 
         While drr.Read
-            itm = New ComboItem(drr(0), drr(0))
+            itm = New ComboItem(drr("Currency"), drr("Currency"))
             values.Add(itm)
         End While
 
 
 
+        Return values
 
 
         Return values
@@ -1302,14 +1305,16 @@ Public Module modGeneral
         Dim values As New List(Of ComboItem)
 
 
-        Dim sql As String = "spLoadAccountingPeriods"
+        ''    Dim sql As String = "spLoadAccountingPeriods"
+
+        Dim sql As String = "spLoadFeesPeriods"
 
 
         Dim drr As SqlDataReader
         drr = ExecuteReader(sql, , True,, , False)
 
         While drr.Read
-            itm = New ComboItem(drr("Description"), drr("AccountingPeriod"))
+            itm = New ComboItem(drr("Description"), drr("Period"))
             values.Add(itm)
         End While
 
@@ -1576,6 +1581,128 @@ Public Module modGeneral
         Return values
 
     End Function
+
+    Public Function AccountSubTypes(Optional ByVal Filter As String = "") As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadAccountSubTypes"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+
+
+
+
+                itm = New ComboItem(drr("SubType"), drr("SubType").ToString)
+                values.Add(itm)
+            End While
+
+            Return values
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+
+    End Function
+
+
+
+    Public Function AccountTypes(Optional ByVal Filter As String = "") As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadAccountTypes"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+
+
+
+
+                itm = New ComboItem(drr("Cartegory"), drr("Cartegory").ToString)
+                values.Add(itm)
+            End While
+
+            Return values
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+
+    End Function
+
+    Public Function AccountTypeSubTypes(Optional ByVal Filter As String = "") As List(Of ComboItem)
+        Dim itm As ComboItem
+        Dim values As New List(Of ComboItem)
+
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+        Dim cmd As SqlCommand
+        Dim sql As String = "spLoadAccountTypeSubTypes"
+
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(sql, cnn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@filter", Filter)
+
+            Dim drr As SqlDataReader
+            drr = cmd.ExecuteReader()
+
+
+
+            While drr.Read
+
+
+
+
+                itm = New ComboItem(drr("AccountSubType"), drr("AccountSubType").ToString)
+                values.Add(itm)
+            End While
+
+            Return values
+
+        Catch ex As Exception
+        Finally
+            cnn.Close()
+
+        End Try
+
+        Return values
+
+    End Function
     Public Function Subjects() As List(Of ComboItem)
 
         Dim itm As ComboItem
@@ -1679,7 +1806,7 @@ Public Module modGeneral
         Return values
     End Function
 
-    Public Function FormTeachers(cls As String, lvl As Integer, sess As String) As List(Of ComboItem)
+    Public Function FormTeachers(filter As String) As List(Of ComboItem)
         Dim itm As ComboItem
         Dim values As New List(Of ComboItem)
         Dim drr As SqlDataReader
@@ -1690,9 +1817,8 @@ Public Module modGeneral
         Try
             cnn.Open()
             cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.AddWithValue("@classdesc", cls)
-            cmd.Parameters.AddWithValue("@lvl", lvl)
-            cmd.Parameters.AddWithValue("@sess", sess)
+            cmd.Parameters.AddWithValue("@filter", filter)
+
             drr = cmd.ExecuteReader
 
 

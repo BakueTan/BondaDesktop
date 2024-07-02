@@ -44,10 +44,14 @@ Partial Class frmAccountingSettings
         Dim Label2 As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
         Dim CartegoryLabel As System.Windows.Forms.Label
+        Dim Label1 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAccountingSettings))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tbAccSettings = New System.Windows.Forms.TabControl()
         Me.tbCompanies = New System.Windows.Forms.TabPage()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
@@ -144,8 +148,14 @@ Partial Class frmAccountingSettings
         Me.ToolStripButton8 = New System.Windows.Forms.ToolStripButton()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.FiscalYearComboBox = New System.Windows.Forms.ComboBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.AccountingPeriodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FiscalYearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OpenDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.RefDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AccountingPeriodsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FiscalYearComboBox = New System.Windows.Forms.ComboBox()
         Me.BindingNavigator4 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.ToolStripButton22 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
@@ -202,6 +212,23 @@ Partial Class frmAccountingSettings
         Me.txtPaymentTerm = New System.Windows.Forms.TextBox()
         Me.txtPaymentDays = New System.Windows.Forms.TextBox()
         Me.txtPaymentRef = New System.Windows.Forms.TextBox()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.BindingNavigator8 = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.ToolStripButton50 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel8 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripButton51 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton52 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator22 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripTextBox8 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator23 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton53 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton54 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator24 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton55 = New System.Windows.Forms.ToolStripButton()
         Me.AccountNumberValueTableAdapter = New IncomeExpenditure.dsAccountsSettingsTableAdapters.AccountNumberValueTableAdapter()
         Me.TableAdapterManager = New IncomeExpenditure.dsAccountsSettingsTableAdapters.TableAdapterManager()
         Me.AccountCartegoriesTableAdapter = New IncomeExpenditure.dsAccountsSettingsTableAdapters.AccountCartegoriesTableAdapter()
@@ -214,12 +241,15 @@ Partial Class frmAccountingSettings
         Me.VATTableAdapter = New IncomeExpenditure.dsAccountsSettingsTableAdapters.VATTableAdapter()
         Me.PaymentTermsTableAdapter = New IncomeExpenditure.dsAccountsSettingsTableAdapters.PaymentTermsTableAdapter()
         Me.btnSettingsRefresh = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.AccountingPeriodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FiscalYearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OpenDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.RefDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AccountSubTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AccountSubTypeTableAdapter = New IncomeExpenditure.dsAccountsSettingsTableAdapters.AccountSubTypeTableAdapter()
+        Me.SubTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.chkAccSubTypes = New System.Windows.Forms.CheckedListBox()
+        Me.cboAccTypeSubType_AccType = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         SchoolLabel = New System.Windows.Forms.Label()
         DocNameLabel = New System.Windows.Forms.Label()
         DocFromLabel = New System.Windows.Forms.Label()
@@ -241,6 +271,7 @@ Partial Class frmAccountingSettings
         Label2 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
         CartegoryLabel = New System.Windows.Forms.Label()
+        Label1 = New System.Windows.Forms.Label()
         Me.tbAccSettings.SuspendLayout()
         Me.tbCompanies.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -269,6 +300,7 @@ Partial Class frmAccountingSettings
         Me.BindingNavigator1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AccountingPeriodsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator4.SuspendLayout()
@@ -282,9 +314,16 @@ Partial Class frmAccountingSettings
         CType(Me.BindingNavigator7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator7.SuspendLayout()
         CType(Me.PaymentTermsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage5.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox8.SuspendLayout()
+        CType(Me.BindingNavigator8, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BindingNavigator8.SuspendLayout()
         CType(Me.DsCoA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ChartOfAccountsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountSubTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage6.SuspendLayout()
+        Me.GroupBox9.SuspendLayout()
         Me.SuspendLayout()
         '
         'SchoolLabel
@@ -476,6 +515,15 @@ Partial Class frmAccountingSettings
         CartegoryLabel.TabIndex = 2
         CartegoryLabel.Text = "Cartegory:"
         '
+        'Label1
+        '
+        Label1.AutoSize = True
+        Label1.Location = New System.Drawing.Point(0, 62)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(53, 13)
+        Label1.TabIndex = 2
+        Label1.Text = "SubType:"
+        '
         'tbAccSettings
         '
         Me.tbAccSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -485,9 +533,11 @@ Partial Class frmAccountingSettings
         Me.tbAccSettings.Controls.Add(Me.tbAccDocuments)
         Me.tbAccSettings.Controls.Add(Me.tbAccNumbers)
         Me.tbAccSettings.Controls.Add(Me.TabPage2)
+        Me.tbAccSettings.Controls.Add(Me.TabPage5)
         Me.tbAccSettings.Controls.Add(Me.TabPage1)
         Me.tbAccSettings.Controls.Add(Me.TabPage3)
         Me.tbAccSettings.Controls.Add(Me.TabPage4)
+        Me.tbAccSettings.Controls.Add(Me.TabPage6)
         Me.tbAccSettings.Location = New System.Drawing.Point(0, 0)
         Me.tbAccSettings.Name = "tbAccSettings"
         Me.tbAccSettings.SelectedIndex = 0
@@ -614,7 +664,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox5.AccessibleName = "Position"
         Me.ToolStripTextBox5.AutoSize = False
-        Me.ToolStripTextBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox5.Name = "ToolStripTextBox5"
         Me.ToolStripTextBox5.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox5.Text = "0"
@@ -814,7 +863,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox2.AccessibleName = "Position"
         Me.ToolStripTextBox2.AutoSize = False
-        Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
         Me.ToolStripTextBox2.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox2.Text = "0"
@@ -1048,7 +1096,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox3.AccessibleName = "Position"
         Me.ToolStripTextBox3.AutoSize = False
-        Me.ToolStripTextBox3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox3.Name = "ToolStripTextBox3"
         Me.ToolStripTextBox3.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox3.Text = "0"
@@ -1175,7 +1222,7 @@ Partial Class frmAccountingSettings
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(1091, 420)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Account Cartegories"
+        Me.TabPage2.Text = "Account Types"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'AccountCartegoriesDataGridView
@@ -1186,36 +1233,36 @@ Partial Class frmAccountingSettings
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AccountCartegoriesDataGridView.AutoGenerateColumns = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AccountCartegoriesDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AccountCartegoriesDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.AccountCartegoriesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.AccountCartegoriesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cartegory, Me.CartRef})
         Me.AccountCartegoriesDataGridView.DataSource = Me.AccountCartegoriesBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.AccountCartegoriesDataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.AccountCartegoriesDataGridView.DefaultCellStyle = DataGridViewCellStyle14
         Me.AccountCartegoriesDataGridView.Location = New System.Drawing.Point(456, 22)
         Me.AccountCartegoriesDataGridView.Name = "AccountCartegoriesDataGridView"
         Me.AccountCartegoriesDataGridView.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AccountCartegoriesDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AccountCartegoriesDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.AccountCartegoriesDataGridView.Size = New System.Drawing.Size(612, 392)
         Me.AccountCartegoriesDataGridView.TabIndex = 8
         '
@@ -1333,7 +1380,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox1.AccessibleName = "Position"
         Me.ToolStripTextBox1.AutoSize = False
-        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
         Me.ToolStripTextBox1.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox1.Text = "0"
@@ -1418,6 +1464,64 @@ Partial Class frmAccountingSettings
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "AccountingPeriods"
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AccountingPeriodDataGridViewTextBoxColumn, Me.FiscalYearDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.OpenDataGridViewCheckBoxColumn, Me.RefDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.AccountingPeriodsBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(307, 44)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(752, 334)
+        Me.DataGridView1.TabIndex = 10
+        '
+        'AccountingPeriodDataGridViewTextBoxColumn
+        '
+        Me.AccountingPeriodDataGridViewTextBoxColumn.DataPropertyName = "AccountingPeriod"
+        Me.AccountingPeriodDataGridViewTextBoxColumn.HeaderText = "AccountingPeriod"
+        Me.AccountingPeriodDataGridViewTextBoxColumn.Name = "AccountingPeriodDataGridViewTextBoxColumn"
+        Me.AccountingPeriodDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FiscalYearDataGridViewTextBoxColumn
+        '
+        Me.FiscalYearDataGridViewTextBoxColumn.DataPropertyName = "FiscalYear"
+        Me.FiscalYearDataGridViewTextBoxColumn.HeaderText = "FiscalYear"
+        Me.FiscalYearDataGridViewTextBoxColumn.Name = "FiscalYearDataGridViewTextBoxColumn"
+        Me.FiscalYearDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescriptionDataGridViewTextBoxColumn
+        '
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'OpenDataGridViewCheckBoxColumn
+        '
+        Me.OpenDataGridViewCheckBoxColumn.DataPropertyName = "Open"
+        Me.OpenDataGridViewCheckBoxColumn.HeaderText = "Open"
+        Me.OpenDataGridViewCheckBoxColumn.Name = "OpenDataGridViewCheckBoxColumn"
+        Me.OpenDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'RefDataGridViewTextBoxColumn
+        '
+        Me.RefDataGridViewTextBoxColumn.DataPropertyName = "Ref"
+        Me.RefDataGridViewTextBoxColumn.HeaderText = "Ref"
+        Me.RefDataGridViewTextBoxColumn.Name = "RefDataGridViewTextBoxColumn"
+        Me.RefDataGridViewTextBoxColumn.ReadOnly = True
+        Me.RefDataGridViewTextBoxColumn.Visible = False
+        '
+        'AccountingPeriodsBindingSource
+        '
+        Me.AccountingPeriodsBindingSource.DataMember = "AccountingPeriods"
+        Me.AccountingPeriodsBindingSource.DataSource = Me.DsAccountsSettings
+        '
         'FiscalYearComboBox
         '
         Me.FiscalYearComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AccountingPeriodsBindingSource, "FiscalYear", True))
@@ -1426,11 +1530,6 @@ Partial Class frmAccountingSettings
         Me.FiscalYearComboBox.Name = "FiscalYearComboBox"
         Me.FiscalYearComboBox.Size = New System.Drawing.Size(104, 21)
         Me.FiscalYearComboBox.TabIndex = 9
-        '
-        'AccountingPeriodsBindingSource
-        '
-        Me.AccountingPeriodsBindingSource.DataMember = "AccountingPeriods"
-        Me.AccountingPeriodsBindingSource.DataSource = Me.DsAccountsSettings
         '
         'BindingNavigator4
         '
@@ -1493,7 +1592,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox4.AccessibleName = "Position"
         Me.ToolStripTextBox4.AutoSize = False
-        Me.ToolStripTextBox4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox4.Name = "ToolStripTextBox4"
         Me.ToolStripTextBox4.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox4.Text = "0"
@@ -1676,7 +1774,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox6.AccessibleName = "Position"
         Me.ToolStripTextBox6.AutoSize = False
-        Me.ToolStripTextBox6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox6.Name = "ToolStripTextBox6"
         Me.ToolStripTextBox6.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox6.Text = "0"
@@ -1857,7 +1954,6 @@ Partial Class frmAccountingSettings
         '
         Me.ToolStripTextBox7.AccessibleName = "Position"
         Me.ToolStripTextBox7.AutoSize = False
-        Me.ToolStripTextBox7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox7.Name = "ToolStripTextBox7"
         Me.ToolStripTextBox7.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox7.Text = "0"
@@ -1934,6 +2030,192 @@ Partial Class frmAccountingSettings
         Me.txtPaymentRef.Size = New System.Drawing.Size(307, 20)
         Me.txtPaymentRef.TabIndex = 7
         '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.DataGridView2)
+        Me.TabPage5.Controls.Add(Me.GroupBox8)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage5.Size = New System.Drawing.Size(1091, 420)
+        Me.TabPage5.TabIndex = 7
+        Me.TabPage5.Text = "Account SubTypes"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridView2.AutoGenerateColumns = False
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SubTypeDataGridViewTextBoxColumn})
+        Me.DataGridView2.DataSource = Me.AccountSubTypeBindingSource
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView2.DefaultCellStyle = DataGridViewCellStyle17
+        Me.DataGridView2.Location = New System.Drawing.Point(453, 14)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle18
+        Me.DataGridView2.Size = New System.Drawing.Size(612, 392)
+        Me.DataGridView2.TabIndex = 10
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox8.Controls.Add(Label1)
+        Me.GroupBox8.Controls.Add(Me.TextBox1)
+        Me.GroupBox8.Controls.Add(Me.TextBox2)
+        Me.GroupBox8.Controls.Add(Me.BindingNavigator8)
+        Me.GroupBox8.Location = New System.Drawing.Point(26, 14)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(405, 392)
+        Me.GroupBox8.TabIndex = 9
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Account SubTypes"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AccountSubTypeBindingSource, "SubType", True))
+        Me.TextBox1.Location = New System.Drawing.Point(61, 55)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(225, 20)
+        Me.TextBox1.TabIndex = 3
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AccountCartegoriesBindingSource, "CartRef", True))
+        Me.TextBox2.Location = New System.Drawing.Point(0, 366)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(399, 20)
+        Me.TextBox2.TabIndex = 5
+        '
+        'BindingNavigator8
+        '
+        Me.BindingNavigator8.AddNewItem = Me.ToolStripButton50
+        Me.BindingNavigator8.BindingSource = Me.AccountSubTypeBindingSource
+        Me.BindingNavigator8.CountItem = Me.ToolStripLabel8
+        Me.BindingNavigator8.DeleteItem = Nothing
+        Me.BindingNavigator8.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton51, Me.ToolStripButton52, Me.ToolStripSeparator22, Me.ToolStripTextBox8, Me.ToolStripLabel8, Me.ToolStripSeparator23, Me.ToolStripButton53, Me.ToolStripButton54, Me.ToolStripSeparator24, Me.ToolStripButton50, Me.ToolStripButton55})
+        Me.BindingNavigator8.Location = New System.Drawing.Point(3, 16)
+        Me.BindingNavigator8.MoveFirstItem = Me.ToolStripButton51
+        Me.BindingNavigator8.MoveLastItem = Me.ToolStripButton54
+        Me.BindingNavigator8.MoveNextItem = Me.ToolStripButton53
+        Me.BindingNavigator8.MovePreviousItem = Me.ToolStripButton52
+        Me.BindingNavigator8.Name = "BindingNavigator8"
+        Me.BindingNavigator8.PositionItem = Me.ToolStripTextBox8
+        Me.BindingNavigator8.Size = New System.Drawing.Size(399, 25)
+        Me.BindingNavigator8.TabIndex = 1
+        Me.BindingNavigator8.Text = "BindingNavigator8"
+        '
+        'ToolStripButton50
+        '
+        Me.ToolStripButton50.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton50.Image = CType(resources.GetObject("ToolStripButton50.Image"), System.Drawing.Image)
+        Me.ToolStripButton50.Name = "ToolStripButton50"
+        Me.ToolStripButton50.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton50.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton50.Text = "Add new"
+        '
+        'ToolStripLabel8
+        '
+        Me.ToolStripLabel8.Name = "ToolStripLabel8"
+        Me.ToolStripLabel8.Size = New System.Drawing.Size(35, 22)
+        Me.ToolStripLabel8.Text = "of {0}"
+        Me.ToolStripLabel8.ToolTipText = "Total number of items"
+        '
+        'ToolStripButton51
+        '
+        Me.ToolStripButton51.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton51.Image = CType(resources.GetObject("ToolStripButton51.Image"), System.Drawing.Image)
+        Me.ToolStripButton51.Name = "ToolStripButton51"
+        Me.ToolStripButton51.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton51.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton51.Text = "Move first"
+        '
+        'ToolStripButton52
+        '
+        Me.ToolStripButton52.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton52.Image = CType(resources.GetObject("ToolStripButton52.Image"), System.Drawing.Image)
+        Me.ToolStripButton52.Name = "ToolStripButton52"
+        Me.ToolStripButton52.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton52.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton52.Text = "Move previous"
+        '
+        'ToolStripSeparator22
+        '
+        Me.ToolStripSeparator22.Name = "ToolStripSeparator22"
+        Me.ToolStripSeparator22.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripTextBox8
+        '
+        Me.ToolStripTextBox8.AccessibleName = "Position"
+        Me.ToolStripTextBox8.AutoSize = False
+        Me.ToolStripTextBox8.Name = "ToolStripTextBox8"
+        Me.ToolStripTextBox8.Size = New System.Drawing.Size(50, 23)
+        Me.ToolStripTextBox8.Text = "0"
+        Me.ToolStripTextBox8.ToolTipText = "Current position"
+        '
+        'ToolStripSeparator23
+        '
+        Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
+        Me.ToolStripSeparator23.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton53
+        '
+        Me.ToolStripButton53.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton53.Image = CType(resources.GetObject("ToolStripButton53.Image"), System.Drawing.Image)
+        Me.ToolStripButton53.Name = "ToolStripButton53"
+        Me.ToolStripButton53.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton53.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton53.Text = "Move next"
+        '
+        'ToolStripButton54
+        '
+        Me.ToolStripButton54.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton54.Image = CType(resources.GetObject("ToolStripButton54.Image"), System.Drawing.Image)
+        Me.ToolStripButton54.Name = "ToolStripButton54"
+        Me.ToolStripButton54.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton54.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton54.Text = "Move last"
+        '
+        'ToolStripSeparator24
+        '
+        Me.ToolStripSeparator24.Name = "ToolStripSeparator24"
+        Me.ToolStripSeparator24.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton55
+        '
+        Me.ToolStripButton55.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton55.Image = CType(resources.GetObject("ToolStripButton55.Image"), System.Drawing.Image)
+        Me.ToolStripButton55.Name = "ToolStripButton55"
+        Me.ToolStripButton55.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton55.Text = "Save Data"
+        '
         'AccountNumberValueTableAdapter
         '
         Me.AccountNumberValueTableAdapter.ClearBeforeFill = True
@@ -1944,6 +2226,7 @@ Partial Class frmAccountingSettings
         Me.TableAdapterManager.AccountingCompaniesTableAdapter = Nothing
         Me.TableAdapterManager.AccountingDocumentsTableAdapter = Nothing
         Me.TableAdapterManager.AccountingPeriodsTableAdapter = Nothing
+        Me.TableAdapterManager.AccountSubTypeTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.PaymentTermsTableAdapter = Nothing
@@ -1969,6 +2252,7 @@ Partial Class frmAccountingSettings
         'DsCoA
         '
         Me.DsCoA.DataSetName = "dsCoA"
+        Me.DsCoA.EnforceConstraints = False
         Me.DsCoA.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ChartOfAccountsBindingSource
@@ -1998,58 +2282,81 @@ Partial Class frmAccountingSettings
         Me.btnSettingsRefresh.Text = "Refresh"
         Me.btnSettingsRefresh.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'AccountSubTypeBindingSource
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.AutoGenerateColumns = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AccountingPeriodDataGridViewTextBoxColumn, Me.FiscalYearDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.OpenDataGridViewCheckBoxColumn, Me.RefDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.AccountingPeriodsBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(307, 44)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(752, 334)
-        Me.DataGridView1.TabIndex = 10
+        Me.AccountSubTypeBindingSource.DataMember = "AccountSubType"
+        Me.AccountSubTypeBindingSource.DataSource = Me.DsAccountsSettings
         '
-        'AccountingPeriodDataGridViewTextBoxColumn
+        'AccountSubTypeTableAdapter
         '
-        Me.AccountingPeriodDataGridViewTextBoxColumn.DataPropertyName = "AccountingPeriod"
-        Me.AccountingPeriodDataGridViewTextBoxColumn.HeaderText = "AccountingPeriod"
-        Me.AccountingPeriodDataGridViewTextBoxColumn.Name = "AccountingPeriodDataGridViewTextBoxColumn"
-        Me.AccountingPeriodDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AccountSubTypeTableAdapter.ClearBeforeFill = True
         '
-        'FiscalYearDataGridViewTextBoxColumn
+        'SubTypeDataGridViewTextBoxColumn
         '
-        Me.FiscalYearDataGridViewTextBoxColumn.DataPropertyName = "FiscalYear"
-        Me.FiscalYearDataGridViewTextBoxColumn.HeaderText = "FiscalYear"
-        Me.FiscalYearDataGridViewTextBoxColumn.Name = "FiscalYearDataGridViewTextBoxColumn"
-        Me.FiscalYearDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SubTypeDataGridViewTextBoxColumn.DataPropertyName = "SubType"
+        Me.SubTypeDataGridViewTextBoxColumn.HeaderText = "SubType"
+        Me.SubTypeDataGridViewTextBoxColumn.Name = "SubTypeDataGridViewTextBoxColumn"
+        Me.SubTypeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SubTypeDataGridViewTextBoxColumn.Width = 150
         '
-        'DescriptionDataGridViewTextBoxColumn
+        'TabPage6
         '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TabPage6.Controls.Add(Me.GroupBox9)
+        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage6.Size = New System.Drawing.Size(1091, 420)
+        Me.TabPage6.TabIndex = 8
+        Me.TabPage6.Text = "AccountType SubTypes"
+        Me.TabPage6.UseVisualStyleBackColor = True
         '
-        'OpenDataGridViewCheckBoxColumn
+        'GroupBox9
         '
-        Me.OpenDataGridViewCheckBoxColumn.DataPropertyName = "Open"
-        Me.OpenDataGridViewCheckBoxColumn.HeaderText = "Open"
-        Me.OpenDataGridViewCheckBoxColumn.Name = "OpenDataGridViewCheckBoxColumn"
-        Me.OpenDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.GroupBox9.Controls.Add(Me.Button1)
+        Me.GroupBox9.Controls.Add(Me.cboAccTypeSubType_AccType)
+        Me.GroupBox9.Controls.Add(Me.chkAccSubTypes)
+        Me.GroupBox9.Controls.Add(Me.Label4)
+        Me.GroupBox9.Location = New System.Drawing.Point(217, 6)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(640, 396)
+        Me.GroupBox9.TabIndex = 0
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "GroupBox9"
         '
-        'RefDataGridViewTextBoxColumn
+        'Label4
         '
-        Me.RefDataGridViewTextBoxColumn.DataPropertyName = "Ref"
-        Me.RefDataGridViewTextBoxColumn.HeaderText = "Ref"
-        Me.RefDataGridViewTextBoxColumn.Name = "RefDataGridViewTextBoxColumn"
-        Me.RefDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RefDataGridViewTextBoxColumn.Visible = False
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(144, 45)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(79, 13)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Account Types"
+        '
+        'chkAccSubTypes
+        '
+        Me.chkAccSubTypes.FormattingEnabled = True
+        Me.chkAccSubTypes.Location = New System.Drawing.Point(147, 79)
+        Me.chkAccSubTypes.Name = "chkAccSubTypes"
+        Me.chkAccSubTypes.Size = New System.Drawing.Size(305, 259)
+        Me.chkAccSubTypes.TabIndex = 1
+        '
+        'cboAccTypeSubType_AccType
+        '
+        Me.cboAccTypeSubType_AccType.FormattingEnabled = True
+        Me.cboAccTypeSubType_AccType.Location = New System.Drawing.Point(232, 42)
+        Me.cboAccTypeSubType_AccType.Name = "cboAccTypeSubType_AccType"
+        Me.cboAccTypeSubType_AccType.Size = New System.Drawing.Size(220, 21)
+        Me.cboAccTypeSubType_AccType.TabIndex = 2
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Location = New System.Drawing.Point(232, 344)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(118, 30)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "Save"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmAccountingSettings
         '
@@ -2098,6 +2405,7 @@ Partial Class frmAccountingSettings
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AccountingPeriodsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator4.ResumeLayout(False)
@@ -2116,9 +2424,19 @@ Partial Class frmAccountingSettings
         Me.BindingNavigator7.ResumeLayout(False)
         Me.BindingNavigator7.PerformLayout()
         CType(Me.PaymentTermsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage5.ResumeLayout(False)
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        CType(Me.BindingNavigator8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BindingNavigator8.ResumeLayout(False)
+        Me.BindingNavigator8.PerformLayout()
         CType(Me.DsCoA, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartOfAccountsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountSubTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage6.ResumeLayout(False)
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2297,4 +2615,30 @@ Partial Class frmAccountingSettings
     Friend WithEvents DescriptionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents OpenDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents RefDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TabPage5 As Windows.Forms.TabPage
+    Friend WithEvents DataGridView2 As Windows.Forms.DataGridView
+    Friend WithEvents GroupBox8 As Windows.Forms.GroupBox
+    Friend WithEvents TextBox1 As Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As Windows.Forms.TextBox
+    Friend WithEvents BindingNavigator8 As Windows.Forms.BindingNavigator
+    Friend WithEvents ToolStripButton50 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripLabel8 As Windows.Forms.ToolStripLabel
+    Friend WithEvents ToolStripButton51 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton52 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator22 As Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripTextBox8 As Windows.Forms.ToolStripTextBox
+    Friend WithEvents ToolStripSeparator23 As Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton53 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton54 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator24 As Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton55 As Windows.Forms.ToolStripButton
+    Friend WithEvents AccountSubTypeBindingSource As Windows.Forms.BindingSource
+    Friend WithEvents AccountSubTypeTableAdapter As dsAccountsSettingsTableAdapters.AccountSubTypeTableAdapter
+    Friend WithEvents SubTypeDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TabPage6 As Windows.Forms.TabPage
+    Friend WithEvents GroupBox9 As Windows.Forms.GroupBox
+    Friend WithEvents cboAccTypeSubType_AccType As Windows.Forms.ComboBox
+    Friend WithEvents chkAccSubTypes As Windows.Forms.CheckedListBox
+    Friend WithEvents Label4 As Windows.Forms.Label
+    Friend WithEvents Button1 As Windows.Forms.Button
 End Class

@@ -8,12 +8,16 @@ Public Class frmAccountingSettings
 
 
     Private Sub frmAccountingSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DsAccountsSettings.AccountSubType' table. You can move, or remove it, as needed.
+        Me.AccountSubTypeTableAdapter.Fill(Me.DsAccountsSettings.AccountSubType)
         'TODO: This line of code loads data into the 'DsAccountsSettings.PaymentTerms' table. You can move, or remove it, as needed.
 
         'TODO: This line of code loads data into the 'DsAccountsSettings.AccountingCompanies' table. You can move, or remove it, as needed.
 
         LoadYears()
         LoadCurrencies()
+        LoadAccountTypes()
+        LoadAccountSubTypes()
 
         LoadDatasets()
 
@@ -55,6 +59,22 @@ Public Class frmAccountingSettings
         End With
     End Sub
 
+    Private Sub LoadAccountTypes()
+        With cboAccTypeSubType_AccType
+            .DataSource = AccountTypes()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+    End Sub
+
+    Private Sub LoadAccountSubTypes()
+        With chkAccSubTypes
+            .DataSource = AccountSubTypes()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+    End Sub
+
     Private Sub LoadCurrencies()
 
 
@@ -81,6 +101,7 @@ Public Class frmAccountingSettings
         Try
             AccountCartegoriesTableAdapter.InsertCartegory(DsAccountsSettings.AccountCartegories, CartegoryTextBox.Text, cartref)
             Me.AccountCartegoriesTableAdapter.Fill(Me.DsAccountsSettings.AccountCartegories)
+            LoadAccountTypes()
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -339,5 +360,84 @@ Public Class frmAccountingSettings
 
     Private Sub btnSettingsRefresh_Click(sender As Object, e As EventArgs) Handles btnSettingsRefresh.Click
         LoadDatasets()
+    End Sub
+
+    Private Sub ToolStripButton55_Click(sender As Object, e As EventArgs) Handles ToolStripButton55.Click
+        Try
+            Me.Validate()
+            Me.AccountSubTypeBindingSource.EndEdit()
+            Me.AccountSubTypeTableAdapter.Update(Me.DsAccountsSettings.AccountSubType)
+            MsgBox("Save Successful")
+
+            Me.AccountSubTypeTableAdapter.Fill(DsAccountsSettings.AccountSubType)
+            LoadAccountSubTypes()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim sql As String = ""
+        Dim cnn As SqlConnection = New SqlConnection(ConnectionString)
+
+        Dim cmd As SqlCommand
+
+        Dim trans As SqlTransaction
+
+        Try
+
+            cnn.Open()
+            trans = cnn.BeginTransaction
+
+            sql = "Delete AccountTypeSubtypes where accounttype = '" & cboAccTypeSubType_AccType.Text & "'"
+
+            cmd = New SqlCommand(sql, cnn, trans)
+            cmd.ExecuteNonQuery()
+
+            For i = 0 To chkAccSubTypes.Items.Count - 1
+                If chkAccSubTypes.GetItemChecked(i) = True Then
+                    sql = "spInsertAccountTypeSubTypes"
+                    cmd = New SqlCommand(sql, cnn, trans)
+
+                    cmd.CommandType = CommandType.StoredProcedure
+                    cmd.Parameters.AddWithValue("@acctype", cboAccTypeSubType_AccType.Text)
+                    cmd.Parameters.AddWithValue("@subtype", chkAccSubTypes.Items(i).value)
+                    cmd.ExecuteNonQuery()
+                End If
+            Next
+
+            trans.Commit()
+            MsgBox("Account SubTypes Updated")
+        Catch ex As Exception
+
+            If Not IsNothing(trans) Then trans.Rollback()
+
+            MsgBox(ex.Message)
+
+        Finally
+            cnn.Close()
+
+        End Try
+
+    End Sub
+
+    Private Sub cboAccTypeSubType_AccType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAccTypeSubType_AccType.SelectedIndexChanged
+        Dim SubTYpes As New List(Of ComboItem)
+        SubTYpes = AccountTypeSubTypes(" where accounttype = '" & cboAccTypeSubType_AccType.Text & "'")
+
+        For i = 0 To chkAccSubTypes.Items.Count - 1
+            chkAccSubTypes.SetItemChecked(i, False)
+        Next
+
+        For Each itm In SubTYpes
+            For i = 0 To chkAccSubTypes.Items.Count - 1
+                If itm.Text = chkAccSubTypes.Items(i).value Then
+                    chkAccSubTypes.SetItemChecked(i, True)
+                    Exit For
+                End If
+            Next
+
+        Next
     End Sub
 End Class

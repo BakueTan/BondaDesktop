@@ -1833,6 +1833,14 @@ Partial Public Class dsRevoReports
         
         Private columnBillingCurrency As Global.System.Data.DataColumn
         
+        Private columnLineBalance As Global.System.Data.DataColumn
+        
+        Private columndc As Global.System.Data.DataColumn
+        
+        Private columnOvBalance As Global.System.Data.DataColumn
+        
+        Private columnCreatedOn As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2213,6 +2221,38 @@ Partial Public Class dsRevoReports
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property LineBalanceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLineBalance
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property dcColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property OvBalanceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOvBalance
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CreatedOnColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCreatedOn
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2292,9 +2332,13 @@ Partial Public Class dsRevoReports
                     ByVal BBF As Decimal,  _
                     ByVal SelectedCartegory As String,  _
                     ByVal Currency As String,  _
-                    ByVal BillingCurrency As String) As SchoolFeesStatementRow
+                    ByVal BillingCurrency As String,  _
+                    ByVal LineBalance As Decimal,  _
+                    ByVal dc As String,  _
+                    ByVal OvBalance As Decimal,  _
+                    ByVal CreatedOn As Date) As SchoolFeesStatementRow
             Dim rowSchoolFeesStatementRow As SchoolFeesStatementRow = CType(Me.NewRow,SchoolFeesStatementRow)
-            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Biltype, AddInfo, Gender, type, ConvAmount, ConvRate, BaseCurrency, PtoDesc, SchoolName, SchoolPhone, SchoolAddress, BBF, SelectedCartegory, Currency, BillingCurrency}
+            Dim columnValuesArray() As Object = New Object() {StudentID, Amount, StudentName, StudentSurname, Period, _Date, Receipt, Program, Year, classdesc, Perioddesc, Description, Pfrom, Pto, Session, usr, Cartegory, PayType, line_number, CashType, logduser, PostDate, Reference, ResidentialAdress, ContactNumber, EmailAddress, Address2, Address3, Biltype, AddInfo, Gender, type, ConvAmount, ConvRate, BaseCurrency, PtoDesc, SchoolName, SchoolPhone, SchoolAddress, BBF, SelectedCartegory, Currency, BillingCurrency, LineBalance, dc, OvBalance, CreatedOn}
             rowSchoolFeesStatementRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSchoolFeesStatementRow)
             Return rowSchoolFeesStatementRow
@@ -2366,6 +2410,10 @@ Partial Public Class dsRevoReports
             Me.columnSelectedCartegory = MyBase.Columns("SelectedCartegory")
             Me.columnCurrency = MyBase.Columns("Currency")
             Me.columnBillingCurrency = MyBase.Columns("BillingCurrency")
+            Me.columnLineBalance = MyBase.Columns("LineBalance")
+            Me.columndc = MyBase.Columns("dc")
+            Me.columnOvBalance = MyBase.Columns("OvBalance")
+            Me.columnCreatedOn = MyBase.Columns("CreatedOn")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2460,6 +2508,14 @@ Partial Public Class dsRevoReports
             MyBase.Columns.Add(Me.columnCurrency)
             Me.columnBillingCurrency = New Global.System.Data.DataColumn("BillingCurrency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBillingCurrency)
+            Me.columnLineBalance = New Global.System.Data.DataColumn("LineBalance", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLineBalance)
+            Me.columndc = New Global.System.Data.DataColumn("dc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndc)
+            Me.columnOvBalance = New Global.System.Data.DataColumn("OvBalance", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOvBalance)
+            Me.columnCreatedOn = New Global.System.Data.DataColumn("CreatedOn", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCreatedOn)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnReceipt}, true))
             Me.columnStudentID.MaxLength = 50
             Me.columnStudentName.AllowDBNull = false
@@ -2512,6 +2568,9 @@ Partial Public Class dsRevoReports
             Me.columnCurrency.ReadOnly = true
             Me.columnCurrency.MaxLength = 50
             Me.columnBillingCurrency.MaxLength = 50
+            Me.columnLineBalance.ReadOnly = true
+            Me.columndc.MaxLength = 50
+            Me.columnOvBalance.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7745,6 +7804,66 @@ Partial Public Class dsRevoReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property LineBalance() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.LineBalanceColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LineBalance' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.LineBalanceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property dc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.dcColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'dc' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.dcColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property OvBalance() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.OvBalanceColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OvBalance' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.OvBalanceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CreatedOn() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSchoolFeesStatement.CreatedOnColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CreatedOn' in table 'SchoolFeesStatement' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSchoolFeesStatement.CreatedOnColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsStudentIDNull() As Boolean
             Return Me.IsNull(Me.tableSchoolFeesStatement.StudentIDColumn)
         End Function
@@ -8185,6 +8304,54 @@ Partial Public Class dsRevoReports
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetBillingCurrencyNull()
             Me(Me.tableSchoolFeesStatement.BillingCurrencyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsLineBalanceNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.LineBalanceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetLineBalanceNull()
+            Me(Me.tableSchoolFeesStatement.LineBalanceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdcNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.dcColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdcNull()
+            Me(Me.tableSchoolFeesStatement.dcColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsOvBalanceNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.OvBalanceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetOvBalanceNull()
+            Me(Me.tableSchoolFeesStatement.OvBalanceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCreatedOnNull() As Boolean
+            Return Me.IsNull(Me.tableSchoolFeesStatement.CreatedOnColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCreatedOnNull()
+            Me(Me.tableSchoolFeesStatement.CreatedOnColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -11685,6 +11852,10 @@ Namespace dsRevoReportsTableAdapters
             tableMapping.ColumnMappings.Add("SelectedCartegory", "SelectedCartegory")
             tableMapping.ColumnMappings.Add("Currency", "Currency")
             tableMapping.ColumnMappings.Add("BillingCurrency", "BillingCurrency")
+            tableMapping.ColumnMappings.Add("LineBalance", "LineBalance")
+            tableMapping.ColumnMappings.Add("dc", "dc")
+            tableMapping.ColumnMappings.Add("OvBalance", "OvBalance")
+            tableMapping.ColumnMappings.Add("CreatedOn", "CreatedOn")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

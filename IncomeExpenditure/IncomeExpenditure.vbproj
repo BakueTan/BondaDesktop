@@ -126,6 +126,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCoA.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsCoA.vb">
+      <DependentUpon>dsCoA.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmAccountingReports.Designer.vb">
       <DependentUpon>frmAccountingReports.vb</DependentUpon>
     </Compile>

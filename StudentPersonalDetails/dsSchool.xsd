@@ -306,10 +306,10 @@ SELECT StudentID, Date, Receipt, invoice, Status, type, usr, CancelledBy, DateCa
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="feespayments_detailsTableAdapter" GeneratorDataComponentClassName="feespayments_detailsTableAdapter" Name="feespayments_details" UserDataComponentName="feespayments_detailsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="MarchWoodConnectionString (MySettings)" DbObjectName="MarchWood.dbo.feespayments_details" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="MarchWoodConnectionString (MySettings)" DbObjectName="RevoEduBonda.dbo.feespayments_details" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [feespayments_details] WHERE (([Receipt] = @Original_Receipt) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_Cartegory = 1 AND [Cartegory] IS NULL) OR ([Cartegory] = @Original_Cartegory)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ([line_number] = @Original_line_number) AND ((@IsNull_Biltype = 1 AND [Biltype] IS NULL) OR ([Biltype] = @Original_Biltype)) AND ((@IsNull_LineRef = 1 AND [LineRef] IS NULL) OR ([LineRef] = @Original_LineRef)) AND ((@IsNull_Createdby = 1 AND [Createdby] IS NULL) OR ([Createdby] = @Original_Createdby)) AND ((@IsNull_CreatedOn = 1 AND [CreatedOn] IS NULL) OR ([CreatedOn] = @Original_CreatedOn)) AND ((@IsNull_LastEditedBy = 1 AND [LastEditedBy] IS NULL) OR ([LastEditedBy] = @Original_LastEditedBy)) AND ((@IsNull_LastEditedOn = 1 AND [LastEditedOn] IS NULL) OR ([LastEditedOn] = @Original_LastEditedOn)) AND ((@IsNull_Cancelledby = 1 AND [Cancelledby] IS NULL) OR ([Cancelledby] = @Original_Cancelledby)) AND ((@IsNull_CancelledOn = 1 AND [CancelledOn] IS NULL) OR ([CancelledOn] = @Original_CancelledOn)) AND ((@IsNull_LineStatus = 1 AND [LineStatus] IS NULL) OR ([LineStatus] = @Original_LineStatus)) AND ((@IsNull_ConvAmount = 1 AND [ConvAmount] IS NULL) OR ([ConvAmount] = @Original_ConvAmount)) AND ((@IsNull_ConvRate = 1 AND [ConvRate] IS NULL) OR ([ConvRate] = @Original_ConvRate)))</CommandText>
+                    <CommandText>DELETE FROM [feespayments_details] WHERE (([Receipt] = @Original_Receipt) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_Cartegory = 1 AND [Cartegory] IS NULL) OR ([Cartegory] = @Original_Cartegory)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ([line_number] = @Original_line_number) AND ((@IsNull_Biltype = 1 AND [Biltype] IS NULL) OR ([Biltype] = @Original_Biltype)) AND ((@IsNull_LineRef = 1 AND [LineRef] IS NULL) OR ([LineRef] = @Original_LineRef)) AND ((@IsNull_Createdby = 1 AND [Createdby] IS NULL) OR ([Createdby] = @Original_Createdby)) AND ((@IsNull_CreatedOn = 1 AND [CreatedOn] IS NULL) OR ([CreatedOn] = @Original_CreatedOn)) AND ((@IsNull_LastEditedBy = 1 AND [LastEditedBy] IS NULL) OR ([LastEditedBy] = @Original_LastEditedBy)) AND ((@IsNull_LastEditedOn = 1 AND [LastEditedOn] IS NULL) OR ([LastEditedOn] = @Original_LastEditedOn)) AND ((@IsNull_Cancelledby = 1 AND [Cancelledby] IS NULL) OR ([Cancelledby] = @Original_Cancelledby)) AND ((@IsNull_CancelledOn = 1 AND [CancelledOn] IS NULL) OR ([CancelledOn] = @Original_CancelledOn)) AND ((@IsNull_LineStatus = 1 AND [LineStatus] IS NULL) OR ([LineStatus] = @Original_LineStatus)) AND ((@IsNull_ConvAmount = 1 AND [ConvAmount] IS NULL) OR ([ConvAmount] = @Original_ConvAmount)) AND ((@IsNull_ConvRate = 1 AND [ConvRate] IS NULL) OR ([ConvRate] = @Original_ConvRate)) AND ((@IsNull_Bank = 1 AND [Bank] IS NULL) OR ([Bank] = @Original_Bank)) AND ((@IsNull_RevenueAccount = 1 AND [RevenueAccount] IS NULL) OR ([RevenueAccount] = @Original_RevenueAccount)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Receipt" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Receipt" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Amount" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Amount" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -343,13 +343,17 @@ SELECT StudentID, Date, Receipt, invoice, Status, type, usr, CancelledBy, DateCa
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ConvAmount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvAmount" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ConvRate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ConvRate" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ConvRate" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvRate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Bank" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Bank" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_Bank" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="Bank" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RevenueAccount" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RevenueAccount" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_RevenueAccount" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="RevenueAccount" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [feespayments_details] ([Receipt], [Amount], [Currency], [Cartegory], [Period], [Reference], [line_number], [Biltype], [Comment], [LineRef], [Createdby], [CreatedOn], [LastEditedBy], [LastEditedOn], [Cancelledby], [CancelledOn], [LineStatus], [ConvAmount], [ConvRate]) VALUES (@Receipt, @Amount, @Currency, @Cartegory, @Period, @Reference, @line_number, @Biltype, @Comment, @LineRef, @Createdby, @CreatedOn, @LastEditedBy, @LastEditedOn, @Cancelledby, @CancelledOn, @LineStatus, @ConvAmount, @ConvRate);
-SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Biltype, Comment, LineRef, Createdby, CreatedOn, LastEditedBy, LastEditedOn, Cancelledby, CancelledOn, LineStatus, ConvAmount, ConvRate FROM feespayments_details WHERE (Receipt = @Receipt) AND (line_number = @line_number)</CommandText>
+                    <CommandText>INSERT INTO [feespayments_details] ([Receipt], [Amount], [Currency], [Cartegory], [Period], [Reference], [line_number], [Biltype], [Comment], [LineRef], [Createdby], [CreatedOn], [LastEditedBy], [LastEditedOn], [Cancelledby], [CancelledOn], [LineStatus], [ConvAmount], [ConvRate], [Bank], [RevenueAccount]) VALUES (@Receipt, @Amount, @Currency, @Cartegory, @Period, @Reference, @line_number, @Biltype, @Comment, @LineRef, @Createdby, @CreatedOn, @LastEditedBy, @LastEditedOn, @Cancelledby, @CancelledOn, @LineStatus, @ConvAmount, @ConvRate, @Bank, @RevenueAccount);
+SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Biltype, Comment, LineRef, Createdby, CreatedOn, LastEditedBy, LastEditedOn, Cancelledby, CancelledOn, LineStatus, ConvAmount, ConvRate, Bank, RevenueAccount, '' AS BankDescription FROM feespayments_details WHERE (Receipt = @Receipt) AND (line_number = @line_number)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Receipt" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Receipt" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Amount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Amount" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -370,20 +374,23 @@ SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Bil
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@LineStatus" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="LineStatus" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ConvAmount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvAmount" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ConvRate" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Bank" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="Bank" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@RevenueAccount" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="RevenueAccount" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Biltype, Comment, LineRef, Createdby, CreatedOn, LastEditedBy, LastEditedOn, Cancelledby, CancelledOn, LineStatus, ConvAmount, ConvRate
+                    <CommandText>SELECT        Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Biltype, Comment, LineRef, Createdby, CreatedOn, LastEditedBy, LastEditedOn, Cancelledby, CancelledOn, LineStatus, ConvAmount, ConvRate, Bank, 
+                         RevenueAccount,'' as BankDescription
 FROM            feespayments_details</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [feespayments_details] SET [Receipt] = @Receipt, [Amount] = @Amount, [Currency] = @Currency, [Cartegory] = @Cartegory, [Period] = @Period, [Reference] = @Reference, [line_number] = @line_number, [Biltype] = @Biltype, [Comment] = @Comment, [LineRef] = @LineRef, [Createdby] = @Createdby, [CreatedOn] = @CreatedOn, [LastEditedBy] = @LastEditedBy, [LastEditedOn] = @LastEditedOn, [Cancelledby] = @Cancelledby, [CancelledOn] = @CancelledOn, [LineStatus] = @LineStatus, [ConvAmount] = @ConvAmount, [ConvRate] = @ConvRate WHERE (([Receipt] = @Original_Receipt) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_Cartegory = 1 AND [Cartegory] IS NULL) OR ([Cartegory] = @Original_Cartegory)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ([line_number] = @Original_line_number) AND ((@IsNull_Biltype = 1 AND [Biltype] IS NULL) OR ([Biltype] = @Original_Biltype)) AND ((@IsNull_LineRef = 1 AND [LineRef] IS NULL) OR ([LineRef] = @Original_LineRef)) AND ((@IsNull_Createdby = 1 AND [Createdby] IS NULL) OR ([Createdby] = @Original_Createdby)) AND ((@IsNull_CreatedOn = 1 AND [CreatedOn] IS NULL) OR ([CreatedOn] = @Original_CreatedOn)) AND ((@IsNull_LastEditedBy = 1 AND [LastEditedBy] IS NULL) OR ([LastEditedBy] = @Original_LastEditedBy)) AND ((@IsNull_LastEditedOn = 1 AND [LastEditedOn] IS NULL) OR ([LastEditedOn] = @Original_LastEditedOn)) AND ((@IsNull_Cancelledby = 1 AND [Cancelledby] IS NULL) OR ([Cancelledby] = @Original_Cancelledby)) AND ((@IsNull_CancelledOn = 1 AND [CancelledOn] IS NULL) OR ([CancelledOn] = @Original_CancelledOn)) AND ((@IsNull_LineStatus = 1 AND [LineStatus] IS NULL) OR ([LineStatus] = @Original_LineStatus)) AND ((@IsNull_ConvAmount = 1 AND [ConvAmount] IS NULL) OR ([ConvAmount] = @Original_ConvAmount)) AND ((@IsNull_ConvRate = 1 AND [ConvRate] IS NULL) OR ([ConvRate] = @Original_ConvRate)));
-SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Biltype, Comment, LineRef, Createdby, CreatedOn, LastEditedBy, LastEditedOn, Cancelledby, CancelledOn, LineStatus, ConvAmount, ConvRate FROM feespayments_details WHERE (Receipt = @Receipt) AND (line_number = @line_number)</CommandText>
+                    <CommandText>UPDATE [feespayments_details] SET [Receipt] = @Receipt, [Amount] = @Amount, [Currency] = @Currency, [Cartegory] = @Cartegory, [Period] = @Period, [Reference] = @Reference, [line_number] = @line_number, [Biltype] = @Biltype, [Comment] = @Comment, [LineRef] = @LineRef, [Createdby] = @Createdby, [CreatedOn] = @CreatedOn, [LastEditedBy] = @LastEditedBy, [LastEditedOn] = @LastEditedOn, [Cancelledby] = @Cancelledby, [CancelledOn] = @CancelledOn, [LineStatus] = @LineStatus, [ConvAmount] = @ConvAmount, [ConvRate] = @ConvRate, [Bank] = @Bank, [RevenueAccount] = @RevenueAccount WHERE (([Receipt] = @Original_Receipt) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Currency = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND ((@IsNull_Cartegory = 1 AND [Cartegory] IS NULL) OR ([Cartegory] = @Original_Cartegory)) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Period)) AND ([line_number] = @Original_line_number) AND ((@IsNull_Biltype = 1 AND [Biltype] IS NULL) OR ([Biltype] = @Original_Biltype)) AND ((@IsNull_LineRef = 1 AND [LineRef] IS NULL) OR ([LineRef] = @Original_LineRef)) AND ((@IsNull_Createdby = 1 AND [Createdby] IS NULL) OR ([Createdby] = @Original_Createdby)) AND ((@IsNull_CreatedOn = 1 AND [CreatedOn] IS NULL) OR ([CreatedOn] = @Original_CreatedOn)) AND ((@IsNull_LastEditedBy = 1 AND [LastEditedBy] IS NULL) OR ([LastEditedBy] = @Original_LastEditedBy)) AND ((@IsNull_LastEditedOn = 1 AND [LastEditedOn] IS NULL) OR ([LastEditedOn] = @Original_LastEditedOn)) AND ((@IsNull_Cancelledby = 1 AND [Cancelledby] IS NULL) OR ([Cancelledby] = @Original_Cancelledby)) AND ((@IsNull_CancelledOn = 1 AND [CancelledOn] IS NULL) OR ([CancelledOn] = @Original_CancelledOn)) AND ((@IsNull_LineStatus = 1 AND [LineStatus] IS NULL) OR ([LineStatus] = @Original_LineStatus)) AND ((@IsNull_ConvAmount = 1 AND [ConvAmount] IS NULL) OR ([ConvAmount] = @Original_ConvAmount)) AND ((@IsNull_ConvRate = 1 AND [ConvRate] IS NULL) OR ([ConvRate] = @Original_ConvRate)) AND ((@IsNull_Bank = 1 AND [Bank] IS NULL) OR ([Bank] = @Original_Bank)) AND ((@IsNull_RevenueAccount = 1 AND [RevenueAccount] IS NULL) OR ([RevenueAccount] = @Original_RevenueAccount)));
+SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Biltype, Comment, LineRef, Createdby, CreatedOn, LastEditedBy, LastEditedOn, Cancelledby, CancelledOn, LineStatus, ConvAmount, ConvRate, Bank, RevenueAccount, '' AS BankDescription FROM feespayments_details WHERE (Receipt = @Receipt) AND (line_number = @line_number)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Receipt" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Receipt" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Amount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Amount" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -404,6 +411,8 @@ SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Bil
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@LineStatus" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="LineStatus" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ConvAmount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvAmount" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ConvRate" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvRate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Bank" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="Bank" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@RevenueAccount" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="RevenueAccount" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Receipt" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Receipt" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Amount" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Amount" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Amount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Amount" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -436,6 +445,10 @@ SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Bil
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ConvAmount" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvAmount" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ConvRate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ConvRate" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ConvRate" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ConvRate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Bank" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Bank" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_Bank" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="Bank" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RevenueAccount" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RevenueAccount" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_RevenueAccount" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="RevenueAccount" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -461,6 +474,9 @@ SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Bil
               <Mapping SourceColumn="LineStatus" DataSetColumn="LineStatus" />
               <Mapping SourceColumn="ConvAmount" DataSetColumn="ConvAmount" />
               <Mapping SourceColumn="ConvRate" DataSetColumn="ConvRate" />
+              <Mapping SourceColumn="Bank" DataSetColumn="Bank" />
+              <Mapping SourceColumn="RevenueAccount" DataSetColumn="RevenueAccount" />
+              <Mapping SourceColumn="BankDescription" DataSetColumn="BankDescription" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="MarchWoodConnectionString (MySettings)" DbObjectName="RevoEduBonda.dbo.spFillPaymentDetailsByReceipt" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillByReceipt" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByReceipt" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByReceipt">
@@ -547,6 +563,14 @@ SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Bil
               <Mapping SourceColumn="SelectedCartegory" DataSetColumn="SelectedCartegory" />
               <Mapping SourceColumn="Currency" DataSetColumn="Currency" />
               <Mapping SourceColumn="BillingCurrency" DataSetColumn="BillingCurrency" />
+              <Mapping SourceColumn="LineBalance" DataSetColumn="LineBalance" />
+              <Mapping SourceColumn="dc" DataSetColumn="dc" />
+              <Mapping SourceColumn="OvBalance" DataSetColumn="OvBalance" />
+              <Mapping SourceColumn="CreatedOn" DataSetColumn="CreatedOn" />
+              <Mapping SourceColumn="TermBal" DataSetColumn="TermBal" />
+              <Mapping SourceColumn="TermBalPeriod" DataSetColumn="TermBalPeriod" />
+              <Mapping SourceColumn="TermBalCurr" DataSetColumn="TermBalCurr" />
+              <Mapping SourceColumn="TermBalPeriodDesc" DataSetColumn="TermBalPeriodDesc" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -717,6 +741,8 @@ SELECT Receipt, Amount, Currency, Cartegory, Period, Reference, line_number, Bil
               <Mapping SourceColumn="CreatedOn" DataSetColumn="CreatedOn" />
               <Mapping SourceColumn="LastEditedBy" DataSetColumn="LastEditedBy" />
               <Mapping SourceColumn="DateLastEdited" DataSetColumn="DateLastEdited" />
+              <Mapping SourceColumn="AccountNumber" DataSetColumn="AccountNumber" />
+              <Mapping SourceColumn="SchoolCompany" DataSetColumn="SchoolCompany" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1018,6 +1044,48 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
               <Mapping SourceColumn="logo" DataSetColumn="logo" />
             </Mappings>
             <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="COATableAdapter" GeneratorDataComponentClassName="COATableAdapter" Name="COA" UserDataComponentName="COATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MarchWoodConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select C.*,A.companyname,'' as Description2 from chartofaccounts C 
+inner join accountingCompanies A on a.companyref = c.companyref </CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Balance" DataSetColumn="Balance" />
+              <Mapping SourceColumn="AccountNumber" DataSetColumn="AccountNumber" />
+              <Mapping SourceColumn="AccType" DataSetColumn="AccType" />
+              <Mapping SourceColumn="Currency" DataSetColumn="Currency" />
+              <Mapping SourceColumn="CoARef" DataSetColumn="CoARef" />
+              <Mapping SourceColumn="Blocked" DataSetColumn="Blocked" />
+              <Mapping SourceColumn="OpeningBalAsof" DataSetColumn="OpeningBalAsof" />
+              <Mapping SourceColumn="isSubAccount" DataSetColumn="isSubAccount" />
+              <Mapping SourceColumn="ParentAccount" DataSetColumn="ParentAccount" />
+              <Mapping SourceColumn="CompanyRef" DataSetColumn="CompanyRef" />
+              <Mapping SourceColumn="companyname" DataSetColumn="companyname" />
+              <Mapping SourceColumn="Description2" DataSetColumn="Description2" />
+              <Mapping SourceColumn="SubAccType" DataSetColumn="SubAccType" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="MarchWoodConnectionString (MySettings)" DbObjectName="RevoEduBonda.dbo.spLoadChartOfAccounts" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="LoadAccounts" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="LoadAccounts" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="LoadAccounts">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.spLoadChartOfAccounts</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@filter" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -1564,6 +1632,15 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
               <xs:element name="LineStatus" msprop:Generator_ColumnVarNameInTable="columnLineStatus" msprop:Generator_ColumnPropNameInRow="LineStatus" msprop:Generator_ColumnPropNameInTable="LineStatusColumn" msprop:Generator_UserColumnName="LineStatus" type="xs:boolean" minOccurs="0" />
               <xs:element name="ConvAmount" msprop:Generator_ColumnVarNameInTable="columnConvAmount" msprop:Generator_ColumnPropNameInRow="ConvAmount" msprop:Generator_ColumnPropNameInTable="ConvAmountColumn" msprop:Generator_UserColumnName="ConvAmount" type="xs:decimal" minOccurs="0" />
               <xs:element name="ConvRate" msprop:Generator_ColumnVarNameInTable="columnConvRate" msprop:Generator_ColumnPropNameInRow="ConvRate" msprop:Generator_ColumnPropNameInTable="ConvRateColumn" msprop:Generator_UserColumnName="ConvRate" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Bank" msprop:Generator_ColumnVarNameInTable="columnBank" msprop:Generator_ColumnPropNameInRow="Bank" msprop:Generator_ColumnPropNameInTable="BankColumn" msprop:Generator_UserColumnName="Bank" type="xs:long" minOccurs="0" />
+              <xs:element name="RevenueAccount" msprop:Generator_ColumnVarNameInTable="columnRevenueAccount" msprop:Generator_ColumnPropNameInRow="RevenueAccount" msprop:Generator_ColumnPropNameInTable="RevenueAccountColumn" msprop:Generator_UserColumnName="RevenueAccount" type="xs:long" minOccurs="0" />
+              <xs:element name="BankDescription" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBankDescription" msprop:Generator_ColumnPropNameInRow="BankDescription" msprop:Generator_ColumnPropNameInTable="BankDescriptionColumn" msprop:Generator_UserColumnName="BankDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1801,6 +1878,32 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="BillingCurrency" msprop:Generator_ColumnVarNameInTable="columnBillingCurrency" msprop:Generator_ColumnPropNameInRow="BillingCurrency" msprop:Generator_ColumnPropNameInTable="BillingCurrencyColumn" msprop:Generator_UserColumnName="BillingCurrency" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LineBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLineBalance" msprop:Generator_ColumnPropNameInRow="LineBalance" msprop:Generator_ColumnPropNameInTable="LineBalanceColumn" msprop:Generator_UserColumnName="LineBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dc" msprop:Generator_ColumnVarNameInTable="columndc" msprop:Generator_ColumnPropNameInRow="dc" msprop:Generator_ColumnPropNameInTable="dcColumn" msprop:Generator_UserColumnName="dc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OvBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOvBalance" msprop:Generator_ColumnPropNameInRow="OvBalance" msprop:Generator_ColumnPropNameInTable="OvBalanceColumn" msprop:Generator_UserColumnName="OvBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CreatedOn" msprop:Generator_ColumnVarNameInTable="columnCreatedOn" msprop:Generator_ColumnPropNameInRow="CreatedOn" msprop:Generator_ColumnPropNameInTable="CreatedOnColumn" msprop:Generator_UserColumnName="CreatedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TermBal" msprop:Generator_ColumnVarNameInTable="columnTermBal" msprop:Generator_ColumnPropNameInRow="TermBal" msprop:Generator_ColumnPropNameInTable="TermBalColumn" msprop:Generator_UserColumnName="TermBal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TermBalPeriod" msprop:Generator_ColumnVarNameInTable="columnTermBalPeriod" msprop:Generator_ColumnPropNameInRow="TermBalPeriod" msprop:Generator_ColumnPropNameInTable="TermBalPeriodColumn" msprop:Generator_UserColumnName="TermBalPeriod" type="xs:int" minOccurs="0" />
+              <xs:element name="TermBalCurr" msprop:Generator_ColumnVarNameInTable="columnTermBalCurr" msprop:Generator_ColumnPropNameInRow="TermBalCurr" msprop:Generator_ColumnPropNameInTable="TermBalCurrColumn" msprop:Generator_UserColumnName="TermBalCurr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TermBalPeriodDesc" msprop:Generator_ColumnVarNameInTable="columnTermBalPeriodDesc" msprop:Generator_ColumnPropNameInRow="TermBalPeriodDesc" msprop:Generator_ColumnPropNameInTable="TermBalPeriodDescColumn" msprop:Generator_UserColumnName="TermBalPeriodDesc" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -2295,6 +2398,8 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DateLastEdited" msprop:Generator_ColumnVarNameInTable="columnDateLastEdited" msprop:Generator_ColumnPropNameInRow="DateLastEdited" msprop:Generator_ColumnPropNameInTable="DateLastEditedColumn" msprop:Generator_UserColumnName="DateLastEdited" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AccountNumber" msprop:Generator_ColumnVarNameInTable="columnAccountNumber" msprop:Generator_ColumnPropNameInRow="AccountNumber" msprop:Generator_ColumnPropNameInTable="AccountNumberColumn" msprop:Generator_UserColumnName="AccountNumber" type="xs:long" minOccurs="0" />
+              <xs:element name="SchoolCompany" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnSchoolCompany" msprop:Generator_ColumnPropNameInRow="SchoolCompany" msprop:Generator_ColumnPropNameInTable="SchoolCompanyColumn" msprop:Generator_UserColumnName="SchoolCompany" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2531,6 +2636,62 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="COA" msprop:Generator_TableClassName="COADataTable" msprop:Generator_TableVarName="tableCOA" msprop:Generator_TablePropName="COA" msprop:Generator_RowDeletingName="COARowDeleting" msprop:Generator_RowChangingName="COARowChanging" msprop:Generator_RowEvHandlerName="COARowChangeEventHandler" msprop:Generator_RowDeletedName="COARowDeleted" msprop:Generator_UserTableName="COA" msprop:Generator_RowChangedName="COARowChanged" msprop:Generator_RowEvArgName="COARowChangeEvent" msprop:Generator_RowClassName="COARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Balance" msprop:Generator_ColumnVarNameInTable="columnBalance" msprop:Generator_ColumnPropNameInRow="Balance" msprop:Generator_ColumnPropNameInTable="BalanceColumn" msprop:Generator_UserColumnName="Balance" type="xs:decimal" />
+              <xs:element name="AccountNumber" msprop:Generator_ColumnVarNameInTable="columnAccountNumber" msprop:Generator_ColumnPropNameInRow="AccountNumber" msprop:Generator_ColumnPropNameInTable="AccountNumberColumn" msprop:Generator_UserColumnName="AccountNumber" type="xs:long" />
+              <xs:element name="AccType" msprop:Generator_ColumnVarNameInTable="columnAccType" msprop:Generator_ColumnPropNameInRow="AccType" msprop:Generator_ColumnPropNameInTable="AccTypeColumn" msprop:Generator_UserColumnName="AccType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Currency" msprop:Generator_ColumnVarNameInTable="columnCurrency" msprop:Generator_ColumnPropNameInRow="Currency" msprop:Generator_ColumnPropNameInTable="CurrencyColumn" msprop:Generator_UserColumnName="Currency" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CoARef" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnCoARef" msprop:Generator_ColumnPropNameInRow="CoARef" msprop:Generator_ColumnPropNameInTable="CoARefColumn" msprop:Generator_UserColumnName="CoARef" type="xs:string" minOccurs="0" />
+              <xs:element name="Blocked" msprop:Generator_ColumnVarNameInTable="columnBlocked" msprop:Generator_ColumnPropNameInRow="Blocked" msprop:Generator_ColumnPropNameInTable="BlockedColumn" msprop:Generator_UserColumnName="Blocked" type="xs:boolean" minOccurs="0" />
+              <xs:element name="OpeningBalAsof" msprop:Generator_ColumnVarNameInTable="columnOpeningBalAsof" msprop:Generator_ColumnPropNameInRow="OpeningBalAsof" msprop:Generator_ColumnPropNameInTable="OpeningBalAsofColumn" msprop:Generator_UserColumnName="OpeningBalAsof" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="isSubAccount" msprop:Generator_ColumnVarNameInTable="columnisSubAccount" msprop:Generator_ColumnPropNameInRow="isSubAccount" msprop:Generator_ColumnPropNameInTable="isSubAccountColumn" msprop:Generator_UserColumnName="isSubAccount" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ParentAccount" msprop:Generator_ColumnVarNameInTable="columnParentAccount" msprop:Generator_ColumnPropNameInRow="ParentAccount" msprop:Generator_ColumnPropNameInTable="ParentAccountColumn" msprop:Generator_UserColumnName="ParentAccount" type="xs:long" minOccurs="0" />
+              <xs:element name="CompanyRef" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnCompanyRef" msprop:Generator_ColumnPropNameInRow="CompanyRef" msprop:Generator_ColumnPropNameInTable="CompanyRefColumn" msprop:Generator_UserColumnName="CompanyRef" type="xs:string" minOccurs="0" />
+              <xs:element name="companyname" msprop:Generator_ColumnVarNameInTable="columncompanyname" msprop:Generator_ColumnPropNameInRow="companyname" msprop:Generator_ColumnPropNameInTable="companynameColumn" msprop:Generator_UserColumnName="companyname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDescription2" msprop:Generator_ColumnPropNameInRow="Description2" msprop:Generator_ColumnPropNameInTable="Description2Column" msprop:Generator_UserColumnName="Description2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SubAccType" msprop:Generator_ColumnVarNameInTable="columnSubAccType" msprop:Generator_ColumnPropNameInRow="SubAccType" msprop:Generator_ColumnPropNameInTable="SubAccTypeColumn" msprop:Generator_UserColumnName="SubAccType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -2540,11 +2701,6 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
     <xs:unique name="FeesPayments_Header_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:FeesPayments_Header" />
       <xs:field xpath="mstns:Receipt" />
-    </xs:unique>
-    <xs:unique name="feespayments_details_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:feespayments_details" />
-      <xs:field xpath="mstns:Receipt" />
-      <xs:field xpath="mstns:line_number" />
     </xs:unique>
     <xs:unique name="StudentFeesTranscations_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:StudentFeesTranscations" />
@@ -2576,6 +2732,11 @@ SELECT Session FROM ExamSessions WHERE (Session = @Session)</CommandText>
     <xs:unique name="BookIssueForm_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:BookIssueForm" />
       <xs:field xpath="mstns:issueno" />
+    </xs:unique>
+    <xs:unique name="COA_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:COA" />
+      <xs:field xpath="mstns:Description" />
+      <xs:field xpath="mstns:companyname" />
     </xs:unique>
   </xs:element>
 </xs:schema>

@@ -26,6 +26,27 @@ Public Class frmSchoolParameters
             .DisplayMember = "Text"
             .ValueMember = "Value"
         End With
+
+
+        With YearComboBox
+            .DataSource = Years()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+    End Sub
+
+    Private Sub LoadAccountingCompanies()
+
+
+
+
+        With cboSchoolCompany
+            .DataSource = AccountingCompanies()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+
+
     End Sub
 
     Private Sub LoadExchangeRates()
@@ -90,6 +111,12 @@ Public Class frmSchoolParameters
         End With
 
         With cboCurrToCurr
+            .DataSource = Currencies()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+
+        With CurrencyComboBox
             .DataSource = Currencies()
             .DisplayMember = "Text"
             .ValueMember = "Value"
@@ -169,6 +196,14 @@ Public Class frmSchoolParameters
         End With
     End Sub
 
+    Private Sub LoadChartOfAccounts()
+        With RevenueAccountComboBox
+            .DataSource = ChartOfAccounts(" where accountnumber not in (select isnull(parentaccount,'') from chartofaccounts)   and C.acctype = 'Revenue' ")
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
+    End Sub
+
     Private Sub frmSchoolParameters_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'DsSchoolParameters.Currencies' table. You can move, or remove it, as needed.
 
@@ -195,6 +230,8 @@ Public Class frmSchoolParameters
         LoadClasses()
         loadSessions()
         loadcurrencies()
+        LoadChartOfAccounts()
+        LoadAccountingCompanies()
     End Sub
 
     Private Sub loadSets()
@@ -203,7 +240,7 @@ Public Class frmSchoolParameters
             Me.QualificationsTableAdapter.Fill(Me.DsSchoolParameters.Qualifications)
             Me.CashtypeTableAdapter.Fill(Me.DsSchoolParameters.Cashtype)
             'TODO: This line of code loads data into the 'DsSchoolParameters.PaymentType' table. You can move, or remove it, as needed.
-            Me.PaymentTypeTableAdapter.Fill(Me.DsSchoolParameters.PaymentType)
+            Me.PaymentTypeTableAdapter.LoadPaymentCartegories(Me.DsSchoolParameters.PaymentType, "")
             'TODO: This line of code loads data into the 'DsSchoolParameters.PaymentPeriods' table. You can move, or remove it, as needed.
             Me.PaymentPeriodsTableAdapter.Fill(Me.DsSchoolParameters.PaymentPeriods)
             'TODO: This line of code loads data into the 'DsSchoolParameters.MarkWeighting' table. You can move, or remove it, as needed.
@@ -229,7 +266,7 @@ Public Class frmSchoolParameters
             'TODO: This line of code loads data into the 'DsSchoolParameters.forms' table. You can move, or remove it, as needed.
             Me.FormsTableAdapter.Fill(Me.DsSchoolParameters.forms)
             'TODO: This line of code loads data into the 'DsSchoolParameters.schoolinfo' table. You can move, or remove it, as needed.
-            Me.SchoolinfoTableAdapter.Fill(Me.DsSchoolParameters.schoolinfo)
+            Me.SchoolinfoTableAdapter.LoadSchoolInfo(Me.DsSchoolParameters.schoolinfo, "")
             LoadExchangeRates()
 
         Catch ex As Exception
@@ -293,7 +330,7 @@ Public Class frmSchoolParameters
         '       BindingNavigator7.Items("AddNew7").Visible = True
         BindingNavigator8.Items("AddNew8").Visible = True
         BindingNavigator9.Items("AddNew9").Visible = True
-        BindingNavigator10.Items("AddNew10").Visible = True
+
     End Sub
 
     Private Sub cbosubSearch_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -418,9 +455,7 @@ Public Class frmSchoolParameters
     End Sub
 
 
-    Private Sub AddNew10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        BindingNavigator10.Items("AddNew10").Visible = False
-    End Sub
+
 
 
 
@@ -704,9 +739,10 @@ Public Class frmSchoolParameters
                 .Parameters.AddWithValue("@idlength", StudIdLengthTextBox.Text)
                 .Parameters.AddWithValue("@ref", IIf(txtschoolref.Text = "", Guid.NewGuid, txtschoolref.Text))
                 .Parameters.AddWithValue("@curr", cboBaseCurrency.Text)
+                .Parameters.AddWithValue("@company", cboSchoolCompany.SelectedValue)
                 .ExecuteNonQuery()
                 MsgBox("School Info Saved")
-                Me.SchoolinfoTableAdapter.Fill(DsSchoolParameters.schoolinfo)
+                Me.SchoolinfoTableAdapter.LoadSchoolInfo(DsSchoolParameters.schoolinfo, "")
 
 
             End With
@@ -734,7 +770,7 @@ Public Class frmSchoolParameters
                     cmd.CommandType = CommandType.Text
                     cmd.ExecuteNonQuery()
                     MsgBox("Record Deleted")
-                    Me.SchoolinfoTableAdapter.Fill(DsSchoolParameters.schoolinfo)
+                    Me.SchoolinfoTableAdapter.LoadSchoolInfo(DsSchoolParameters.schoolinfo, "")
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 Finally
@@ -1356,7 +1392,7 @@ Public Class frmSchoolParameters
         End Try
     End Sub
 
-    Private Sub ToolStripButton18_Click_1(sender As Object, e As EventArgs) Handles ToolStripButton18.Click
+    Private Sub ToolStripButton18_Click_1(sender As Object, e As EventArgs)
         Dim sql, period, descr As String
         Dim curr As Boolean
         Dim truecnt As Integer = 0
@@ -1437,40 +1473,48 @@ Public Class frmSchoolParameters
         End If
     End Sub
 
-    Private Sub AddNew6_Click_1(sender As Object, e As EventArgs) Handles AddNew6.Click
+    Private Sub AddNew6_Click_1(sender As Object, e As EventArgs)
         mblnaddingperiod = True
 
         '  mblnedtngperiod = False
         BindingNavigator6.Items("AddNew6").Visible = False
     End Sub
 
-    Private Sub ToolStripButton13_Click(sender As Object, e As EventArgs) Handles ToolStripButton13.Click
+    Private Sub ToolStripButton13_Click(sender As Object, e As EventArgs)
 
     End Sub
 
     Private Sub ToolStripButton39_Click_1(sender As Object, e As EventArgs) Handles ToolStripButton39.Click
+        Dim cnn As New SqlConnection(ConnectionString)
+        Dim sql As String = "spInsertSchoolFeesPaymentsCartegories"
+        Dim cmd As New SqlCommand(sql, cnn)
+
         Try
-            Me.Validate()
-            Me.PaymentTypeBindingSource.EndEdit()
-            Me.PaymentTypeTableAdapter.Update(Me.DsSchoolParameters.PaymentType)
-            MsgBox("Save Successful")
-            BindingNavigator9.Items("AddNew9").Visible = True
+
+
+            cnn.Open()
+
+            With cmd
+                .CommandType = CommandType.StoredProcedure
+                .Parameters.AddWithValue("@payment", PaymentTextBox.Text)
+                .Parameters.AddWithValue("@currency", CurrencyComboBox.Text)
+                .Parameters.AddWithValue("@RevAccount", RevenueAccountComboBox.SelectedValue)
+                .Parameters.AddWithValue("@Amount", AmountTextBox.Text)
+                .Parameters.AddWithValue("@Payref", IIf(txtPayCartRef.Text = "", Guid.NewGuid, txtPayCartRef.Text))
+                .Parameters.AddWithValue("@type", TypeComboBox2.Text)
+
+                .ExecuteNonQuery()
+                MsgBox("Payment Cartegory updated")
+                PaymentTypeTableAdapter.LoadPaymentCartegories(DsSchoolParameters.PaymentType, "")
+            End With
         Catch ex As Exception
             MsgBox(ex.Message)
+        Finally
+            cnn.Close()
         End Try
     End Sub
 
-    Private Sub ToolStripButton46_Click_1(sender As Object, e As EventArgs) Handles ToolStripButton46.Click
-        Try
-            Me.Validate()
-            Me.CashtypeBindingSource.EndEdit()
-            Me.CashtypeTableAdapter.Update(Me.DsSchoolParameters.Cashtype)
-            MsgBox("Save Successful")
-            BindingNavigator10.Items("AddNew10").Visible = True
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
+
 
     Private Sub ToolStripButton53_Click_1(sender As Object, e As EventArgs) Handles ToolStripButton53.Click
         Try
@@ -1994,6 +2038,103 @@ Public Class frmSchoolParameters
     Private Sub chkCurrentClass_CheckedChanged(sender As Object, e As EventArgs) Handles chkCurrentClass.CheckedChanged
         chkRunDisplayedClass.Checked = chkCurrentClass.Checked
         chkRunDisplayedClass.Visible = chkCurrentClass.Checked
+    End Sub
+
+    Private Sub PaymentTypeDataGridView_CellValidated(sender As Object, e As DataGridViewCellEventArgs) Handles PaymentTypeDataGridView.CellValidated
+        Try
+            'If e.ColumnIndex = 3 Then
+
+
+
+
+            '    cboRevenueAccount.DataSource = ChartOfAccounts(strwhere)
+            '    cboRevenueAccount.DisplayMember = "Text"
+            '    cboRevenueAccount.ValueMember = "Value"
+            'End If
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub PaymentTypeDataGridView_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles PaymentTypeDataGridView.RowsAdded
+        Try
+
+            'Dim currency As String = ""
+            'currency = PaymentTypeDataGridView.Rows(e.RowIndex).Cells("colPayCartCurrency").Value
+            'Dim cboRevenueAccount As DataGridViewComboBoxCell = CType(PaymentTypeDataGridView.Rows(e.RowIndex).Cells("colRevenueAccount"), DataGridViewComboBoxCell)
+
+
+            'cboRevenueAccount.DataSource = ChartOfAccounts(" where accountnumber not in (select isnull(parentaccount,'') from chartofaccounts)   and acctype = 'Revenue' and currency = '" & currency & "'")
+            'cboRevenueAccount.DisplayMember = "Text"
+            'cboRevenueAccount.ValueMember = "Value"
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub CurrencyComboBox_Validated(sender As Object, e As EventArgs) Handles CurrencyComboBox.Validated
+
+        Dim currency As String = ""
+
+        Try
+            currency = CurrencyComboBox.Text
+            Dim strwhere As String = ""
+            strwhere = " where accountnumber not in (select isnull(parentaccount,'') from chartofaccounts)   and C.acctype = 'Revenue' and C.currency = '" & currency & "'"
+
+            With RevenueAccountComboBox
+                .DataSource = ChartOfAccounts(strwhere)
+                .DisplayMember = "Text"
+                .ValueMember = "Value"
+            End With
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub CurrencyComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CurrencyComboBox.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub ToolStripButton18_Click(sender As Object, e As EventArgs) Handles ToolStripButton18.Click
+        Dim cnn As New SqlConnection(ConnectionString)
+        Dim sql As String = "spInsertFeesPaymentsPeriods"
+        Dim cmd As New SqlCommand(sql, cnn)
+
+        Try
+
+
+            cnn.Open()
+
+            With cmd
+                .CommandType = CommandType.StoredProcedure
+                .Parameters.AddWithValue("@period", PeriodTextBox.Text)
+                .Parameters.AddWithValue("@description", DescriptionTextBox2.Text)
+                .Parameters.AddWithValue("@year", YearComboBox.SelectedValue)
+                .Parameters.AddWithValue("@curr", CurrentCheckBox.Checked)
+                .Parameters.AddWithValue("@PerRef", IIf(PeriodRefLabel1.Text = "", Guid.NewGuid, PeriodRefLabel1.Text))
+                .Parameters.AddWithValue("@open", OpenCheckBox.Checked)
+
+                .ExecuteNonQuery()
+                MsgBox("Periods updated")
+                PaymentPeriodsTableAdapter.Fill(DsSchoolParameters.PaymentPeriods)
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Private Sub AddNew6_Click_2(sender As Object, e As EventArgs) Handles AddNew6.Click
+        mblnaddingperiod = True
+
+        '  mblnedtngperiod = False
+        BindingNavigator6.Items("AddNew6").Visible = False
     End Sub
 
     Private Sub ToolStripButton91_Click(sender As Object, e As EventArgs) Handles ToolStripButton91.Click

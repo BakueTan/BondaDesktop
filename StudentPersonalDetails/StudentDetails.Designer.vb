@@ -29,7 +29,6 @@ Partial Class FrmStudent
         Dim ReceiptLabel As System.Windows.Forms.Label
         Dim Label35 As System.Windows.Forms.Label
         Dim StudentIDLabel1 As System.Windows.Forms.Label
-        Dim CashTypeLabel As System.Windows.Forms.Label
         Dim NokNameLabel As System.Windows.Forms.Label
         Dim NOKAddressLabel As System.Windows.Forms.Label
         Dim NOKContactNumberLabel As System.Windows.Forms.Label
@@ -68,6 +67,7 @@ Partial Class FrmStudent
         Dim Label26 As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
         Dim Label9 As System.Windows.Forms.Label
+        Dim Label72 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmStudent))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -81,8 +81,6 @@ Partial Class FrmStudent
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -94,6 +92,8 @@ Partial Class FrmStudent
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.StudentFeesTranscationsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsSchool = New StudentPersonalDetails.dsSchool()
@@ -336,16 +336,9 @@ Partial Class FrmStudent
         Me.btnUpdateAllLines = New System.Windows.Forms.Button()
         Me.lbSeacrhFees = New System.Windows.Forms.ListBox()
         Me.dgFessDetails = New System.Windows.Forms.DataGridView()
-        Me.Cartegory = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Currency = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.CurrenciesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Period = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.PaymentPeriodsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Reference = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnUpdate = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.btnDelete = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.LineRef = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.COABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FeespaymentsdetailsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingNavigator2 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.Insert = New System.Windows.Forms.ToolStripButton()
@@ -369,12 +362,9 @@ Partial Class FrmStudent
         Me.Button28 = New System.Windows.Forms.Button()
         Me.pnlReversal = New System.Windows.Forms.Panel()
         Me.ReasonForReversalComboBox = New System.Windows.Forms.ComboBox()
-        Me.lbStudRef = New System.Windows.Forms.TextBox()
         Me.txtFeesStudID = New System.Windows.Forms.TextBox()
         Me.PostDateDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.lbStudFees = New System.Windows.Forms.ListBox()
-        Me.cboCashType = New System.Windows.Forms.ComboBox()
-        Me.mskpaydate = New System.Windows.Forms.MaskedTextBox()
         Me.lblfullname = New System.Windows.Forms.Label()
         Me.ReceiptTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox17 = New System.Windows.Forms.GroupBox()
@@ -485,6 +475,7 @@ Partial Class FrmStudent
         Me.Label49 = New System.Windows.Forms.Label()
         Me.cboEnrLevSearch = New System.Windows.Forms.ComboBox()
         Me.gbStudPersonalDetails = New System.Windows.Forms.GroupBox()
+        Me.txtschoolFeesAccount = New System.Windows.Forms.TextBox()
         Me.DateOfBirthMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.PlaceOfBirthTextBox = New System.Windows.Forms.TextBox()
         Me.FeesSourceComboBox = New System.Windows.Forms.ComboBox()
@@ -581,6 +572,17 @@ Partial Class FrmStudent
         Me.cxtToolDeleteEnrollment = New System.Windows.Forms.ToolStripMenuItem()
         Me.cxtToolEditEnrollment = New System.Windows.Forms.ToolStripMenuItem()
         Me.cxtToolCopyEnrollment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.COATableAdapter1 = New StudentPersonalDetails.dsSchoolTableAdapters.COATableAdapter()
+        Me.Cartegory = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.amount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Currency = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Period = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Reference = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFeesBank = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.btnUpdate = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.btnDelete = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.LineRef = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dtpRecDate = New System.Windows.Forms.DateTimePicker()
         Me.Payment = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BillingAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BillCurrency = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -588,7 +590,6 @@ Partial Class FrmStudent
         ReceiptLabel = New System.Windows.Forms.Label()
         Label35 = New System.Windows.Forms.Label()
         StudentIDLabel1 = New System.Windows.Forms.Label()
-        CashTypeLabel = New System.Windows.Forms.Label()
         NokNameLabel = New System.Windows.Forms.Label()
         NOKAddressLabel = New System.Windows.Forms.Label()
         NOKContactNumberLabel = New System.Windows.Forms.Label()
@@ -627,6 +628,7 @@ Partial Class FrmStudent
         Label26 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
         Label9 = New System.Windows.Forms.Label()
+        Label72 = New System.Windows.Forms.Label()
         CType(Me.StudentFeesTranscationsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbBilling.SuspendLayout()
@@ -680,6 +682,7 @@ Partial Class FrmStudent
         CType(Me.dgFessDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CurrenciesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PaymentPeriodsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.COABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FeespaymentsdetailsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator2.SuspendLayout()
@@ -738,7 +741,7 @@ Partial Class FrmStudent
         'ReceiptLabel
         '
         ReceiptLabel.AutoSize = True
-        ReceiptLabel.Location = New System.Drawing.Point(6, 107)
+        ReceiptLabel.Location = New System.Drawing.Point(6, 75)
         ReceiptLabel.Name = "ReceiptLabel"
         ReceiptLabel.Size = New System.Drawing.Size(47, 13)
         ReceiptLabel.TabIndex = 12
@@ -747,7 +750,7 @@ Partial Class FrmStudent
         'Label35
         '
         Label35.AutoSize = True
-        Label35.Location = New System.Drawing.Point(6, 82)
+        Label35.Location = New System.Drawing.Point(6, 56)
         Label35.Name = "Label35"
         Label35.Size = New System.Drawing.Size(70, 13)
         Label35.TabIndex = 10
@@ -761,15 +764,6 @@ Partial Class FrmStudent
         StudentIDLabel1.Size = New System.Drawing.Size(47, 13)
         StudentIDLabel1.TabIndex = 0
         StudentIDLabel1.Text = "Student:"
-        '
-        'CashTypeLabel
-        '
-        CashTypeLabel.AutoSize = True
-        CashTypeLabel.Location = New System.Drawing.Point(6, 56)
-        CashTypeLabel.Name = "CashTypeLabel"
-        CashTypeLabel.Size = New System.Drawing.Size(52, 13)
-        CashTypeLabel.TabIndex = 23
-        CashTypeLabel.Text = "PayType:"
         '
         'NokNameLabel
         '
@@ -918,7 +912,7 @@ Partial Class FrmStudent
         'ReligionLabel
         '
         ReligionLabel.AutoSize = True
-        ReligionLabel.Location = New System.Drawing.Point(4, 111)
+        ReligionLabel.Location = New System.Drawing.Point(302, 86)
         ReligionLabel.Name = "ReligionLabel"
         ReligionLabel.Size = New System.Drawing.Size(100, 13)
         ReligionLabel.TabIndex = 14
@@ -954,7 +948,7 @@ Partial Class FrmStudent
         'PostDateLabel
         '
         PostDateLabel.AutoSize = True
-        PostDateLabel.Location = New System.Drawing.Point(6, 135)
+        PostDateLabel.Location = New System.Drawing.Point(6, 99)
         PostDateLabel.Name = "PostDateLabel"
         PostDateLabel.Size = New System.Drawing.Size(57, 13)
         PostDateLabel.TabIndex = 23
@@ -1112,6 +1106,15 @@ Partial Class FrmStudent
         Label9.Size = New System.Drawing.Size(43, 13)
         Label9.TabIndex = 23
         Label9.Text = "Siblings"
+        '
+        'Label72
+        '
+        Label72.AutoSize = True
+        Label72.Location = New System.Drawing.Point(6, 112)
+        Label72.Name = "Label72"
+        Label72.Size = New System.Drawing.Size(106, 13)
+        Label72.TabIndex = 20
+        Label72.Text = "SchoolFeesAccount:"
         '
         'StudentFeesTranscationsBindingSource
         '
@@ -1661,9 +1664,9 @@ Partial Class FrmStudent
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgPayType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgPayType.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Payment, Me.BillingAmount, Me.BillCurrency})
-        Me.dgPayType.Location = New System.Drawing.Point(67, 254)
+        Me.dgPayType.Location = New System.Drawing.Point(24, 254)
         Me.dgPayType.Name = "dgPayType"
-        Me.dgPayType.Size = New System.Drawing.Size(299, 153)
+        Me.dgPayType.Size = New System.Drawing.Size(453, 153)
         Me.dgPayType.TabIndex = 30
         '
         'chkBilPeriods
@@ -1855,7 +1858,7 @@ Partial Class FrmStudent
         Me.tbClassTRansferring.Location = New System.Drawing.Point(4, 23)
         Me.tbClassTRansferring.Name = "tbClassTRansferring"
         Me.tbClassTRansferring.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbClassTRansferring.Size = New System.Drawing.Size(1660, 715)
+        Me.tbClassTRansferring.Size = New System.Drawing.Size(1725, 715)
         Me.tbClassTRansferring.TabIndex = 10
         Me.tbClassTRansferring.Tag = "82"
         Me.tbClassTRansferring.Text = "Class Transferring"
@@ -1892,7 +1895,7 @@ Partial Class FrmStudent
         '
         Me.SplitContainer7.Panel2.AutoScroll = True
         Me.SplitContainer7.Panel2Collapsed = True
-        Me.SplitContainer7.Size = New System.Drawing.Size(1654, 709)
+        Me.SplitContainer7.Size = New System.Drawing.Size(1719, 709)
         Me.SplitContainer7.SplitterDistance = 1057
         Me.SplitContainer7.SplitterWidth = 1
         Me.SplitContainer7.TabIndex = 0
@@ -2229,7 +2232,7 @@ Partial Class FrmStudent
         Me.tbSMS.Location = New System.Drawing.Point(4, 23)
         Me.tbSMS.Name = "tbSMS"
         Me.tbSMS.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbSMS.Size = New System.Drawing.Size(1660, 715)
+        Me.tbSMS.Size = New System.Drawing.Size(1725, 715)
         Me.tbSMS.TabIndex = 9
         Me.tbSMS.Tag = "16"
         Me.tbSMS.Text = "Student SMS  Notification"
@@ -2263,8 +2266,8 @@ Partial Class FrmStudent
         Me.SplitContainer10.Panel2.Controls.Add(Me.specific)
         Me.SplitContainer10.Panel2.Controls.Add(Me.Label7)
         Me.SplitContainer10.Panel2.Controls.Add(Me.RichTextBox)
-        Me.SplitContainer10.Size = New System.Drawing.Size(1654, 709)
-        Me.SplitContainer10.SplitterDistance = 301
+        Me.SplitContainer10.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer10.SplitterDistance = 312
         Me.SplitContainer10.SplitterWidth = 1
         Me.SplitContainer10.TabIndex = 0
         Me.SplitContainer10.Tag = "16"
@@ -3584,29 +3587,27 @@ Partial Class FrmStudent
         Me.GroupBox7.Controls.Add(Me.gbFeesPay)
         Me.GroupBox7.Location = New System.Drawing.Point(27, 48)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(725, 435)
-        Me.GroupBox7.TabIndex = 21
+        Me.GroupBox7.Size = New System.Drawing.Size(803, 443)
+        Me.GroupBox7.TabIndex = 0
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Fees Payments"
         '
         'btnCancelAllLines
         '
-        Me.btnCancelAllLines.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCancelAllLines.Location = New System.Drawing.Point(281, 395)
+        Me.btnCancelAllLines.Location = New System.Drawing.Point(351, 407)
         Me.btnCancelAllLines.Name = "btnCancelAllLines"
         Me.btnCancelAllLines.Size = New System.Drawing.Size(125, 34)
-        Me.btnCancelAllLines.TabIndex = 43
+        Me.btnCancelAllLines.TabIndex = 2
         Me.btnCancelAllLines.Tag = " "
         Me.btnCancelAllLines.Text = "Cancel All Selected Lines"
         Me.btnCancelAllLines.UseVisualStyleBackColor = True
         '
         'btnUpdateAllLines
         '
-        Me.btnUpdateAllLines.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnUpdateAllLines.Location = New System.Drawing.Point(103, 395)
+        Me.btnUpdateAllLines.Location = New System.Drawing.Point(179, 407)
         Me.btnUpdateAllLines.Name = "btnUpdateAllLines"
         Me.btnUpdateAllLines.Size = New System.Drawing.Size(125, 34)
-        Me.btnUpdateAllLines.TabIndex = 42
+        Me.btnUpdateAllLines.TabIndex = 1
         Me.btnUpdateAllLines.Tag = " "
         Me.btnUpdateAllLines.Text = "Update All Selected Lines"
         Me.btnUpdateAllLines.UseVisualStyleBackColor = True
@@ -3624,100 +3625,28 @@ Partial Class FrmStudent
         '
         Me.dgFessDetails.AutoGenerateColumns = False
         Me.dgFessDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgFessDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cartegory, Me.amount, Me.Currency, Me.Period, Me.Reference, Me.btnUpdate, Me.btnDelete, Me.LineRef})
+        Me.dgFessDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cartegory, Me.amount, Me.Currency, Me.Period, Me.Reference, Me.colFeesBank, Me.btnUpdate, Me.btnDelete, Me.LineRef})
         Me.dgFessDetails.DataSource = Me.FeespaymentsdetailsBindingSource
         Me.dgFessDetails.Enabled = False
-        Me.dgFessDetails.Location = New System.Drawing.Point(8, 239)
+        Me.dgFessDetails.Location = New System.Drawing.Point(6, 204)
         Me.dgFessDetails.Name = "dgFessDetails"
-        Me.dgFessDetails.Size = New System.Drawing.Size(646, 151)
-        Me.dgFessDetails.TabIndex = 1
-        '
-        'Cartegory
-        '
-        Me.Cartegory.DataPropertyName = "Cartegory"
-        Me.Cartegory.DataSource = Me.FeesPaymentTypeBindingSource
-        Me.Cartegory.DisplayMember = "Payment"
-        Me.Cartegory.HeaderText = "Cartegory"
-        Me.Cartegory.Name = "Cartegory"
-        Me.Cartegory.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Cartegory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Cartegory.ValueMember = "Payment"
-        '
-        'amount
-        '
-        Me.amount.DataPropertyName = "Amount"
-        Me.amount.HeaderText = "Amount"
-        Me.amount.Name = "amount"
-        '
-        'Currency
-        '
-        Me.Currency.DataPropertyName = "Currency"
-        Me.Currency.DataSource = Me.CurrenciesBindingSource
-        Me.Currency.DisplayMember = "Currency"
-        Me.Currency.HeaderText = "Currency"
-        Me.Currency.Name = "Currency"
-        Me.Currency.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Currency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Currency.ValueMember = "Currency"
+        Me.dgFessDetails.Size = New System.Drawing.Size(711, 197)
+        Me.dgFessDetails.TabIndex = 0
         '
         'CurrenciesBindingSource
         '
         Me.CurrenciesBindingSource.DataMember = "Currencies"
         Me.CurrenciesBindingSource.DataSource = Me.DsSchool
         '
-        'Period
-        '
-        Me.Period.DataPropertyName = "Period"
-        Me.Period.DataSource = Me.PaymentPeriodsBindingSource
-        Me.Period.DisplayMember = "Description"
-        Me.Period.HeaderText = "Period"
-        Me.Period.Name = "Period"
-        Me.Period.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Period.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Period.ValueMember = "Period"
-        '
         'PaymentPeriodsBindingSource
         '
         Me.PaymentPeriodsBindingSource.DataMember = "PaymentPeriods"
         Me.PaymentPeriodsBindingSource.DataSource = Me.DsSchool
         '
-        'Reference
+        'COABindingSource
         '
-        Me.Reference.DataPropertyName = "Reference"
-        Me.Reference.HeaderText = "Reference"
-        Me.Reference.Name = "Reference"
-        '
-        'btnUpdate
-        '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Blue
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
-        Me.btnUpdate.DefaultCellStyle = DataGridViewCellStyle11
-        Me.btnUpdate.HeaderText = "Update"
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Text = "Update"
-        Me.btnUpdate.UseColumnTextForButtonValue = True
-        Me.btnUpdate.Visible = False
-        '
-        'btnDelete
-        '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.DefaultCellStyle = DataGridViewCellStyle12
-        Me.btnDelete.HeaderText = "Delete"
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseColumnTextForButtonValue = True
-        Me.btnDelete.Visible = False
-        '
-        'LineRef
-        '
-        Me.LineRef.DataPropertyName = "LineRef"
-        Me.LineRef.HeaderText = "LineRef"
-        Me.LineRef.Name = "LineRef"
-        Me.LineRef.Visible = False
+        Me.COABindingSource.DataMember = "COA"
+        Me.COABindingSource.DataSource = Me.DsSchool
         '
         'FeespaymentsdetailsBindingSource
         '
@@ -3880,16 +3809,13 @@ Partial Class FrmStudent
         'gbFeesPay
         '
         Me.gbFeesPay.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.gbFeesPay.Controls.Add(Me.dtpRecDate)
         Me.gbFeesPay.Controls.Add(Me.Button28)
         Me.gbFeesPay.Controls.Add(Me.pnlReversal)
-        Me.gbFeesPay.Controls.Add(Me.lbStudRef)
         Me.gbFeesPay.Controls.Add(Me.txtFeesStudID)
         Me.gbFeesPay.Controls.Add(PostDateLabel)
         Me.gbFeesPay.Controls.Add(Me.PostDateDateTimePicker)
-        Me.gbFeesPay.Controls.Add(CashTypeLabel)
         Me.gbFeesPay.Controls.Add(Me.lbStudFees)
-        Me.gbFeesPay.Controls.Add(Me.cboCashType)
-        Me.gbFeesPay.Controls.Add(Me.mskpaydate)
         Me.gbFeesPay.Controls.Add(Me.lblfullname)
         Me.gbFeesPay.Controls.Add(StudentIDLabel1)
         Me.gbFeesPay.Controls.Add(Label35)
@@ -3898,7 +3824,7 @@ Partial Class FrmStudent
         Me.gbFeesPay.Enabled = False
         Me.gbFeesPay.Location = New System.Drawing.Point(6, 44)
         Me.gbFeesPay.Name = "gbFeesPay"
-        Me.gbFeesPay.Size = New System.Drawing.Size(482, 189)
+        Me.gbFeesPay.Size = New System.Drawing.Size(482, 160)
         Me.gbFeesPay.TabIndex = 0
         Me.gbFeesPay.TabStop = False
         '
@@ -3909,17 +3835,17 @@ Partial Class FrmStudent
         Me.Button28.Location = New System.Drawing.Point(335, 27)
         Me.Button28.Name = "Button28"
         Me.Button28.Size = New System.Drawing.Size(19, 20)
-        Me.Button28.TabIndex = 52
+        Me.Button28.TabIndex = 1
         Me.Button28.UseVisualStyleBackColor = True
         '
         'pnlReversal
         '
         Me.pnlReversal.Controls.Add(ReasonForReversalLabel)
         Me.pnlReversal.Controls.Add(Me.ReasonForReversalComboBox)
-        Me.pnlReversal.Location = New System.Drawing.Point(6, 151)
+        Me.pnlReversal.Location = New System.Drawing.Point(6, 119)
         Me.pnlReversal.Name = "pnlReversal"
         Me.pnlReversal.Size = New System.Drawing.Size(321, 35)
-        Me.pnlReversal.TabIndex = 51
+        Me.pnlReversal.TabIndex = 6
         Me.pnlReversal.Visible = False
         '
         'ReasonForReversalComboBox
@@ -3934,15 +3860,6 @@ Partial Class FrmStudent
         Me.ReasonForReversalComboBox.Size = New System.Drawing.Size(141, 21)
         Me.ReasonForReversalComboBox.TabIndex = 0
         '
-        'lbStudRef
-        '
-        Me.lbStudRef.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FeesPaymentsHeaderBindingSource, "FeesEnrolRef", True))
-        Me.lbStudRef.Location = New System.Drawing.Point(294, 129)
-        Me.lbStudRef.Name = "lbStudRef"
-        Me.lbStudRef.ReadOnly = True
-        Me.lbStudRef.Size = New System.Drawing.Size(10, 20)
-        Me.lbStudRef.TabIndex = 50
-        '
         'txtFeesStudID
         '
         Me.txtFeesStudID.Location = New System.Drawing.Point(135, 27)
@@ -3956,42 +3873,20 @@ Partial Class FrmStudent
         Me.PostDateDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FeesPaymentsHeaderBindingSource, "PostDate", True))
         Me.PostDateDateTimePicker.Enabled = False
         Me.PostDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.PostDateDateTimePicker.Location = New System.Drawing.Point(135, 129)
+        Me.PostDateDateTimePicker.Location = New System.Drawing.Point(135, 93)
         Me.PostDateDateTimePicker.Name = "PostDateDateTimePicker"
         Me.PostDateDateTimePicker.Size = New System.Drawing.Size(153, 20)
-        Me.PostDateDateTimePicker.TabIndex = 4
+        Me.PostDateDateTimePicker.TabIndex = 5
         Me.PostDateDateTimePicker.Value = New Date(2015, 2, 10, 0, 0, 0, 0)
         '
         'lbStudFees
         '
         Me.lbStudFees.FormattingEnabled = True
-        Me.lbStudFees.Location = New System.Drawing.Point(135, 52)
+        Me.lbStudFees.Location = New System.Drawing.Point(294, 49)
         Me.lbStudFees.Name = "lbStudFees"
-        Me.lbStudFees.Size = New System.Drawing.Size(341, 69)
-        Me.lbStudFees.TabIndex = 22
+        Me.lbStudFees.Size = New System.Drawing.Size(182, 69)
+        Me.lbStudFees.TabIndex = 3
         Me.lbStudFees.Visible = False
-        '
-        'cboCashType
-        '
-        Me.cboCashType.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FeesPaymentsHeaderBindingSource, "CashType", True))
-        Me.cboCashType.DisplayMember = "CashType"
-        Me.cboCashType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCashType.FormattingEnabled = True
-        Me.cboCashType.Location = New System.Drawing.Point(135, 53)
-        Me.cboCashType.Name = "cboCashType"
-        Me.cboCashType.Size = New System.Drawing.Size(121, 21)
-        Me.cboCashType.TabIndex = 1
-        Me.cboCashType.ValueMember = "CashType"
-        '
-        'mskpaydate
-        '
-        Me.mskpaydate.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FeesPaymentsHeaderBindingSource, "Date", True))
-        Me.mskpaydate.Location = New System.Drawing.Point(135, 79)
-        Me.mskpaydate.Mask = "00/00/0000"
-        Me.mskpaydate.Name = "mskpaydate"
-        Me.mskpaydate.Size = New System.Drawing.Size(121, 20)
-        Me.mskpaydate.TabIndex = 2
-        Me.mskpaydate.ValidatingType = GetType(Date)
         '
         'lblfullname
         '
@@ -4006,11 +3901,11 @@ Partial Class FrmStudent
         'ReceiptTextBox
         '
         Me.ReceiptTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FeesPaymentsHeaderBindingSource, "Receipt", True))
-        Me.ReceiptTextBox.Location = New System.Drawing.Point(135, 104)
+        Me.ReceiptTextBox.Location = New System.Drawing.Point(135, 72)
         Me.ReceiptTextBox.Name = "ReceiptTextBox"
         Me.ReceiptTextBox.ReadOnly = True
-        Me.ReceiptTextBox.Size = New System.Drawing.Size(200, 20)
-        Me.ReceiptTextBox.TabIndex = 3
+        Me.ReceiptTextBox.Size = New System.Drawing.Size(180, 20)
+        Me.ReceiptTextBox.TabIndex = 4
         '
         'GroupBox17
         '
@@ -4919,7 +4814,7 @@ Partial Class FrmStudent
         'Button12
         '
         Me.Button12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button12.Location = New System.Drawing.Point(-374, 25593)
+        Me.Button12.Location = New System.Drawing.Point(-350, 25593)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(118, 34)
         Me.Button12.TabIndex = 1
@@ -4930,7 +4825,7 @@ Partial Class FrmStudent
         '
         Me.cmdConnect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdConnect.Enabled = False
-        Me.cmdConnect.Location = New System.Drawing.Point(-622, 25593)
+        Me.cmdConnect.Location = New System.Drawing.Point(-598, 25593)
         Me.cmdConnect.Name = "cmdConnect"
         Me.cmdConnect.Size = New System.Drawing.Size(118, 34)
         Me.cmdConnect.TabIndex = 3
@@ -4941,7 +4836,7 @@ Partial Class FrmStudent
         'Button13
         '
         Me.Button13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button13.Location = New System.Drawing.Point(-497, 25593)
+        Me.Button13.Location = New System.Drawing.Point(-473, 25593)
         Me.Button13.Name = "Button13"
         Me.Button13.Size = New System.Drawing.Size(118, 34)
         Me.Button13.TabIndex = 0
@@ -5121,7 +5016,7 @@ Partial Class FrmStudent
         'txtStudRef
         '
         Me.txtStudRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtStudRef.Location = New System.Drawing.Point(587, 20)
+        Me.txtStudRef.Location = New System.Drawing.Point(587, 21)
         Me.txtStudRef.Name = "txtStudRef"
         Me.txtStudRef.ReadOnly = True
         Me.txtStudRef.Size = New System.Drawing.Size(10, 20)
@@ -5217,6 +5112,8 @@ Partial Class FrmStudent
         Me.gbStudPersonalDetails.AutoSize = True
         Me.gbStudPersonalDetails.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.gbStudPersonalDetails.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.gbStudPersonalDetails.Controls.Add(Me.txtschoolFeesAccount)
+        Me.gbStudPersonalDetails.Controls.Add(Label72)
         Me.gbStudPersonalDetails.Controls.Add(Me.DateOfBirthMaskedTextBox)
         Me.gbStudPersonalDetails.Controls.Add(PlaceOfBirthLabel)
         Me.gbStudPersonalDetails.Controls.Add(Me.PlaceOfBirthTextBox)
@@ -5239,6 +5136,16 @@ Partial Class FrmStudent
         Me.gbStudPersonalDetails.TabIndex = 0
         Me.gbStudPersonalDetails.TabStop = False
         Me.gbStudPersonalDetails.Text = "PersonalDetails"
+        '
+        'txtschoolFeesAccount
+        '
+        Me.txtschoolFeesAccount.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtschoolFeesAccount.Enabled = False
+        Me.txtschoolFeesAccount.Location = New System.Drawing.Point(115, 109)
+        Me.txtschoolFeesAccount.Name = "txtschoolFeesAccount"
+        Me.txtschoolFeesAccount.ReadOnly = True
+        Me.txtschoolFeesAccount.Size = New System.Drawing.Size(183, 20)
+        Me.txtschoolFeesAccount.TabIndex = 8
         '
         'DateOfBirthMaskedTextBox
         '
@@ -5264,9 +5171,9 @@ Partial Class FrmStudent
         Me.FeesSourceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.FeesSourceComboBox.FormattingEnabled = True
         Me.FeesSourceComboBox.Items.AddRange(New Object() {"Beam", "Scholarship", "Guardian/Parent"})
-        Me.FeesSourceComboBox.Location = New System.Drawing.Point(115, 108)
+        Me.FeesSourceComboBox.Location = New System.Drawing.Point(408, 85)
         Me.FeesSourceComboBox.Name = "FeesSourceComboBox"
-        Me.FeesSourceComboBox.Size = New System.Drawing.Size(135, 21)
+        Me.FeesSourceComboBox.Size = New System.Drawing.Size(158, 21)
         Me.FeesSourceComboBox.TabIndex = 7
         '
         'GenderComboBox
@@ -5302,7 +5209,7 @@ Partial Class FrmStudent
         Me.NationalIDTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.NationalIDTextBox.Location = New System.Drawing.Point(115, 86)
         Me.NationalIDTextBox.Name = "NationalIDTextBox"
-        Me.NationalIDTextBox.Size = New System.Drawing.Size(135, 20)
+        Me.NationalIDTextBox.Size = New System.Drawing.Size(183, 20)
         Me.NationalIDTextBox.TabIndex = 6
         '
         'StudentIDTextBox
@@ -5665,7 +5572,7 @@ Partial Class FrmStudent
         Me.tbStudBehavior.Location = New System.Drawing.Point(4, 23)
         Me.tbStudBehavior.Name = "tbStudBehavior"
         Me.tbStudBehavior.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbStudBehavior.Size = New System.Drawing.Size(1660, 715)
+        Me.tbStudBehavior.Size = New System.Drawing.Size(1725, 715)
         Me.tbStudBehavior.TabIndex = 12
         Me.tbStudBehavior.Text = "StudentBehavior"
         Me.tbStudBehavior.UseVisualStyleBackColor = True
@@ -5679,8 +5586,8 @@ Partial Class FrmStudent
         'SplitContainer3.Panel2
         '
         Me.SplitContainer3.Panel2.Controls.Add(Me.GroupBox20)
-        Me.SplitContainer3.Size = New System.Drawing.Size(1654, 709)
-        Me.SplitContainer3.SplitterDistance = 295
+        Me.SplitContainer3.Size = New System.Drawing.Size(1719, 709)
+        Me.SplitContainer3.SplitterDistance = 306
         Me.SplitContainer3.TabIndex = 0
         '
         'GroupBox20
@@ -6157,6 +6064,107 @@ Partial Class FrmStudent
         Me.cxtToolCopyEnrollment.Size = New System.Drawing.Size(165, 22)
         Me.cxtToolCopyEnrollment.Text = "Copy Enrollment"
         '
+        'COATableAdapter1
+        '
+        Me.COATableAdapter1.ClearBeforeFill = True
+        '
+        'Cartegory
+        '
+        Me.Cartegory.DataPropertyName = "Cartegory"
+        Me.Cartegory.DataSource = Me.FeesPaymentTypeBindingSource
+        Me.Cartegory.DisplayMember = "Payment"
+        Me.Cartegory.HeaderText = "Cartegory"
+        Me.Cartegory.Name = "Cartegory"
+        Me.Cartegory.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Cartegory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Cartegory.ValueMember = "Payment"
+        '
+        'amount
+        '
+        Me.amount.DataPropertyName = "Amount"
+        Me.amount.HeaderText = "Amount"
+        Me.amount.Name = "amount"
+        '
+        'Currency
+        '
+        Me.Currency.DataPropertyName = "Currency"
+        Me.Currency.DataSource = Me.CurrenciesBindingSource
+        Me.Currency.DisplayMember = "Currency"
+        Me.Currency.HeaderText = "Currency"
+        Me.Currency.Name = "Currency"
+        Me.Currency.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Currency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Currency.ValueMember = "Currency"
+        '
+        'Period
+        '
+        Me.Period.DataPropertyName = "Period"
+        Me.Period.DataSource = Me.PaymentPeriodsBindingSource
+        Me.Period.DisplayMember = "Description"
+        Me.Period.HeaderText = "Period"
+        Me.Period.Name = "Period"
+        Me.Period.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Period.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Period.ValueMember = "Period"
+        '
+        'Reference
+        '
+        Me.Reference.DataPropertyName = "Reference"
+        Me.Reference.HeaderText = "Reference"
+        Me.Reference.Name = "Reference"
+        '
+        'colFeesBank
+        '
+        Me.colFeesBank.DataPropertyName = "Bank"
+        Me.colFeesBank.DataSource = Me.COABindingSource
+        Me.colFeesBank.DisplayMember = "Description2"
+        Me.colFeesBank.HeaderText = "DepositTo"
+        Me.colFeesBank.Name = "colFeesBank"
+        Me.colFeesBank.ValueMember = "AccountNumber"
+        '
+        'btnUpdate
+        '
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Blue
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        Me.btnUpdate.DefaultCellStyle = DataGridViewCellStyle11
+        Me.btnUpdate.HeaderText = "Update"
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseColumnTextForButtonValue = True
+        Me.btnUpdate.Visible = False
+        '
+        'btnDelete
+        '
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
+        Me.btnDelete.DefaultCellStyle = DataGridViewCellStyle12
+        Me.btnDelete.HeaderText = "Delete"
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseColumnTextForButtonValue = True
+        Me.btnDelete.Visible = False
+        '
+        'LineRef
+        '
+        Me.LineRef.DataPropertyName = "LineRef"
+        Me.LineRef.HeaderText = "LineRef"
+        Me.LineRef.Name = "LineRef"
+        Me.LineRef.Visible = False
+        '
+        'dtpRecDate
+        '
+        Me.dtpRecDate.CustomFormat = ""
+        Me.dtpRecDate.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.FeesPaymentsHeaderBindingSource, "Date", True))
+        Me.dtpRecDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpRecDate.Location = New System.Drawing.Point(135, 49)
+        Me.dtpRecDate.Name = "dtpRecDate"
+        Me.dtpRecDate.Size = New System.Drawing.Size(153, 20)
+        Me.dtpRecDate.TabIndex = 2
+        Me.dtpRecDate.Value = New Date(2015, 2, 10, 0, 0, 0, 0)
+        '
         'Payment
         '
         Me.Payment.DataPropertyName = "Payment"
@@ -6164,6 +6172,7 @@ Partial Class FrmStudent
         Me.Payment.Name = "Payment"
         Me.Payment.ReadOnly = True
         Me.Payment.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Payment.Width = 200
         '
         'BillingAmount
         '
@@ -6172,6 +6181,7 @@ Partial Class FrmStudent
         Me.BillingAmount.DefaultCellStyle = DataGridViewCellStyle1
         Me.BillingAmount.HeaderText = "Amount"
         Me.BillingAmount.Name = "BillingAmount"
+        Me.BillingAmount.Width = 110
         '
         'BillCurrency
         '
@@ -6179,7 +6189,6 @@ Partial Class FrmStudent
         Me.BillCurrency.HeaderText = "Currency"
         Me.BillCurrency.Name = "BillCurrency"
         Me.BillCurrency.ReadOnly = True
-        Me.BillCurrency.Width = 50
         '
         'FrmStudent
         '
@@ -6277,6 +6286,7 @@ Partial Class FrmStudent
         CType(Me.dgFessDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CurrenciesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PaymentPeriodsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.COABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FeespaymentsdetailsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator2.ResumeLayout(False)
@@ -6523,8 +6533,6 @@ Partial Class FrmStudent
     Friend WithEvents Reprint As System.Windows.Forms.ToolStripButton
     Friend WithEvents Edt As System.Windows.Forms.ToolStripButton
     Friend WithEvents gbFeesPay As System.Windows.Forms.GroupBox
-    Friend WithEvents cboCashType As System.Windows.Forms.ComboBox
-    Friend WithEvents mskpaydate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents lblfullname As System.Windows.Forms.Label
     Friend WithEvents ReceiptTextBox As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox17 As System.Windows.Forms.GroupBox
@@ -6742,7 +6750,6 @@ Partial Class FrmStudent
     Friend WithEvents btnFessClass As Button
     Friend WithEvents txtPos As TextBox
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents lbStudRef As TextBox
     Friend WithEvents pnlReversal As Panel
     Friend WithEvents rvOnScreenStat As Microsoft.Reporting.WinForms.ReportViewer
     Friend WithEvents StudentFeesTranscationsTableAdapter As dsSchoolTableAdapters.StudentFeesTranscationsTableAdapter
@@ -6878,17 +6885,23 @@ Partial Class FrmStudent
     Friend WithEvents btnSave As Button
     Friend WithEvents txtBehaviorStud As TextBox
     Friend WithEvents Label69 As Label
+    Friend WithEvents rvOnScreenDatPay As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents cboFeesCurrency As ComboBox
+    Friend WithEvents Label70 As Label
+    Friend WithEvents COATableAdapter As dsSchoolTableAdapters.COATableAdapter
+    Friend WithEvents txtschoolFeesAccount As TextBox
+    Friend WithEvents COABindingSource As BindingSource
+    Friend WithEvents COATableAdapter1 As dsSchoolTableAdapters.COATableAdapter
     Friend WithEvents Cartegory As DataGridViewComboBoxColumn
     Friend WithEvents amount As DataGridViewTextBoxColumn
     Friend WithEvents Currency As DataGridViewComboBoxColumn
     Friend WithEvents Period As DataGridViewComboBoxColumn
     Friend WithEvents Reference As DataGridViewTextBoxColumn
+    Friend WithEvents colFeesBank As DataGridViewComboBoxColumn
     Friend WithEvents btnUpdate As DataGridViewButtonColumn
     Friend WithEvents btnDelete As DataGridViewButtonColumn
     Friend WithEvents LineRef As DataGridViewTextBoxColumn
-    Friend WithEvents rvOnScreenDatPay As Microsoft.Reporting.WinForms.ReportViewer
-    Friend WithEvents cboFeesCurrency As ComboBox
-    Friend WithEvents Label70 As Label
+    Friend WithEvents dtpRecDate As DateTimePicker
     Friend WithEvents Payment As DataGridViewTextBoxColumn
     Friend WithEvents BillingAmount As DataGridViewTextBoxColumn
     Friend WithEvents BillCurrency As DataGridViewTextBoxColumn

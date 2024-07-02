@@ -360,6 +360,7 @@
     <EmbeddedResource Include="Rpts\rptStudProfile.rdlc" />
     <EmbeddedResource Include="Rpts\rptStudStatementOfAcc - Copy.rdlc" />
     <EmbeddedResource Include="Rpts\rptStudStatementOfAcc.rdlc" />
+    <EmbeddedResource Include="Rpts\rptStudStatementOfAcc_OLD.rdlc" />
     <EmbeddedResource Include="Rpts\rptStudStatementOfAccPastel.rdlc" />
     <EmbeddedResource Include="Rpts\rptStudSubReg.rdlc" />
     <EmbeddedResource Include="Rpts\rptSubjectPoints.rdlc" />

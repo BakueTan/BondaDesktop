@@ -132,6 +132,7 @@ Public Class CFeesLines
     Public Property User As String
     Public Property Ref As String
     Public Property RecDate As Date
+    Public Property FeesBank As Long
 End Class
 
 

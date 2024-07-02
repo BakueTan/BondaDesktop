@@ -12,6 +12,9 @@
     Public Property gender As String
     Public Property Center As String
     Public Property Status As String
+    Public Property AccNumber As Long
+    Public Property Company As Guid
+
 
     Public Property Student() As String
         Get

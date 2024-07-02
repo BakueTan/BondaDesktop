@@ -1209,4 +1209,8 @@ Public Class frmAsserts
 
         End Try
     End Sub
+
+    Private Sub TbCustContact_Click(sender As Object, e As EventArgs) Handles TbCustContact.Click
+
+    End Sub
 End Class

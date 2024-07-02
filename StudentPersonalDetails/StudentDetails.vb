@@ -60,6 +60,7 @@ Public Class FrmStudent
         loadFeesCartegory()
         loadPaymentPeriods()
         LoadCurrencies()
+        LoadChartOfAccounts()
     End Sub
 
     Private Sub loadPaymentPeriods()
@@ -77,6 +78,14 @@ Public Class FrmStudent
             End If
 
         Next
+    End Sub
+
+    Private Sub LoadChartOfAccounts()
+        'With cboFeesReceiptBank
+        '    .DataSource = ChartOfAccounts(" where accountnumber not in (select isnull(parentaccount,'') from chartofaccounts)   and C.acctype = 'Bank' ")
+        '    .DisplayMember = "Text"
+        '    .ValueMember = "Value"
+        'End With
     End Sub
     Private Sub LoadPaymentTypes()
         With cboFeesCartegory
@@ -325,16 +334,15 @@ Public Class FrmStudent
 
 
     Private Sub LoadCashtypes()
-        With cboCashType
-            .DataSource = CashTypes()
-            .DisplayMember = "Text"
-            .ValueMember = "Value"
-        End With
 
     End Sub
 
 
     Private Sub Student_Load() Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DsSchool.COA' table. You can move, or remove it, as needed.
+        Me.COATableAdapter1.Fill(Me.DsSchool.COA)
+        'TODO: This line of code loads data into the 'DsSchool.COA' table. You can move, or remove it, as needed.
+
         'TODO: This line of code loads data into the 'DsSchool.StudentFeesTranscations' table. You can move, or remove it, as needed.
         '  Me.StudentFeesTranscationsTableAdapter.Fill(Me.DsSchool.StudentFeesTranscations)
         'TODO: This line of code loads data into the 'DsSchool.PaymentPeriods' table. You can move, or remove it, as needed.
@@ -347,10 +355,10 @@ Public Class FrmStudent
 
         isloading = True
 
-
+        loadcombos()
         LoadDatasets()
 
-        loadcombos()
+
 
 
 
@@ -425,7 +433,7 @@ Public Class FrmStudent
         '     Me.FeesPaymentTypeTableAdapter.Fill(Me.DsSchool.FeesPaymentType)
         'TODO: This line of code loads data into the 'DsSchool.Currencies' table. You can move, or remove it, as needed.
         Me.CurrenciesTableAdapter.Fill(Me.DsSchool.Currencies)
-
+        '    Me.COATableAdapter.Fill(DsSchool.COA)
         Try
             mblnaddingUser = False
             mblnaddingFess = False
@@ -2592,6 +2600,8 @@ Public Class FrmStudent
                         ImagePictureBox.Image = Nothing
                         lnkRemoveImage.Visible = False
                     End Try
+
+                    txtschoolFeesAccount.Text = .AccountNumber
 
                     '   LoadImage()
 
@@ -5014,11 +5024,7 @@ Public Class FrmStudent
         feesstud = New cEnrol(arraysplit(2).ToString, studid)
         lblfullname.Visible = True
 
-        Try
-            lbStudRef.Text = feesstud.EnrolRef
-        Catch ex As Exception
-            lbStudRef.Text = ""
-        End Try
+
 
         txtFeesStudID.Text = studid
         FeesStudSearch()
@@ -5046,8 +5052,7 @@ Public Class FrmStudent
         dgFessDetails.Enabled = True
         gbFeesPay.Enabled = True
         PostDateDateTimePicker.Value = Now.Date
-        mskpaydate.Text = Now.Date.ToShortDateString
-
+        dtpRecDate.Value = Now.Date.ToShortDateString
         BindingNavigator2.Items("Insert").Visible = False
         BindingNavigator2.Items("Delete").Visible = False
         BindingNavigator2.Items("Save").Visible = True
@@ -5073,6 +5078,7 @@ Public Class FrmStudent
         clsprint = False
 
         Dim amount, recid, recprefix, receipt, reference, period, cart, lineref As String
+        Dim bankAccount As Long = 0
         Dim det As Date
 
         Dim rows As Integer
@@ -5093,7 +5099,7 @@ Public Class FrmStudent
 
 
 
-                If Date.TryParse(mskpaydate.Text, det) Then
+                If Date.TryParse(dtpRecDate.Value, det) Then
                 Else
                     Throw New Exception("Invalid Receipt Date")
 
@@ -5124,7 +5130,7 @@ Public Class FrmStudent
                 params.Add(param)
 
 
-                param = New SqlParameter("@cashtype", cboCashType.Text)
+                param = New SqlParameter("@cashtype", "")
                 params.Add(param)
 
 
@@ -5199,6 +5205,11 @@ Public Class FrmStudent
                     End If
 
 
+                    bankAccount = dgFessDetails.Rows(A1).Cells("colFeesBank").Value
+
+                    If bankAccount = 0 Then
+                        Throw New Exception("Invalid Bank Account on line " & A1 + 1)
+                    End If
 
 
 
@@ -5248,6 +5259,11 @@ Public Class FrmStudent
 
                     param = New SqlParameter("@recdate", det)
                     params.Add(param)
+                    param = New SqlParameter("@bank", bankAccount)
+                    params.Add(param)
+                    param = New SqlParameter("@dc", "C")
+                    params.Add(param)
+
 
                     For Each par As SqlParameter In params
                         cmd.Parameters.Add(par)
@@ -5328,7 +5344,7 @@ Public Class FrmStudent
 
 
                 receipt = ReceiptTextBox.Text
-                Date.TryParse(mskpaydate.Text, det)
+                Date.TryParse(dtpRecDate.Value, det)
 
 
                 sql = "spInsertFeesHeader"
@@ -5355,7 +5371,7 @@ Public Class FrmStudent
                 params.Add(param)
 
 
-                param = New SqlParameter("@cashtype", cboCashType.Text)
+                param = New SqlParameter("@cashtype", "")
                 params.Add(param)
 
 
@@ -5428,13 +5444,21 @@ Public Class FrmStudent
                     If lineref <> "" Then
 
                         If (Mid(Trim(ReceiptTextBox.Text), 1, 3) = "Rec") Then
-                            amount = -1 * dgFessDetails.Rows(A1).Cells("amount").Value
+                            amount = dgFessDetails.Rows(A1).Cells("amount").Value
                         End If
                     Else
                         If (Mid(Trim(ReceiptTextBox.Text), 1, 3) = "Rec") Then
                             amount = dgFessDetails.Rows(A1).Cells("amount").Value
                         End If
                     End If
+
+
+                    bankAccount = dgFessDetails.Rows(A1).Cells("colFeesBank").Value
+
+                    If bankAccount = 0 Then
+                        Throw New Exception("Invalid Bank Account on line " & A1 + 1)
+                    End If
+
 
 
                     sql = "spInsertFeesDetails"
@@ -5477,6 +5501,12 @@ Public Class FrmStudent
                     params.Add(param)
 
                     param = New SqlParameter("@recdate", det)
+                    params.Add(param)
+
+                    param = New SqlParameter("@bank", bankAccount)
+                    params.Add(param)
+
+                    param = New SqlParameter("@dc", "C")
                     params.Add(param)
 
                     For Each par In params
@@ -5756,6 +5786,12 @@ Public Class FrmStudent
                                     param = New SqlParameter("@recdate", Now.Date)
                                     params.Add(param)
 
+                                    param = New SqlParameter("@bank", 0)
+                                    params.Add(param)
+
+                                    param = New SqlParameter("@dc", "D")
+                                    params.Add(param)
+
                                     For Each par As SqlParameter In params
                                         cmd.Parameters.Add(par)
                                     Next
@@ -5810,11 +5846,12 @@ Public Class FrmStudent
                     With cmd
                         .CommandType = CommandType.StoredProcedure
                         .Parameters.AddWithValue("@ref", cv)
+                        .Parameters.AddWithValue("@user", gouser.userName)
                         .ExecuteNonQuery()
                         MsgBox("Reference " & cv & " ,successfully reversed")
                     End With
                 Catch ex As Exception
-                    MsgBox("Error in reversing reference " & cv & "")
+                    MsgBox("Error in reversing reference " & cv & " " & ex.Message)
                 Finally
                     cnn.Close()
                 End Try
@@ -6474,6 +6511,8 @@ Public Class FrmStudent
 
 
         End If
+
+        lbSeacrhFees.Visible = False
 
     End Sub
 
@@ -7557,7 +7596,7 @@ Public Class FrmStudent
 
     End Sub
 
-    Private Sub cboCashType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboCashType.SelectedIndexChanged
+    Private Sub cboCashType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -7825,7 +7864,9 @@ Public Class FrmStudent
     Private Sub Button28_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClassTeacher.Click
 
         Dim fts As New List(Of ComboItem)
-        fts = FormTeachers(cboMarkClass.Text, Val(cboMarkLevel.Text), cboMarkSession.Text)
+        Dim strfilter As String = ""
+        strfilter = " where f.classdesc = '" & cboMarkClass.Text & "' and f.lvl = '" & cboMarkLevel.Text & "' and f.session = '" & cboMarkSession.Text & "'"
+        fts = FormTeachers(strfilter)
         If fts.Any Then
 
 
@@ -8417,45 +8458,51 @@ Public Class FrmStudent
 
 
     Private Sub dgFessDetails_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgFessDetails.CellClick
-        If e.ColumnIndex = 6 Then
-            If MsgBox("This will delete line " & e.RowIndex + 1 & ", do you want to continue?", MsgBoxStyle.YesNo) = vbYes Then
+        Try
+            If e.ColumnIndex = 7 Then
+                If MsgBox("This will delete line " & e.RowIndex + 1 & ", do you want to continue?", MsgBoxStyle.YesNo) = vbYes Then
+
+                    With dgFessDetails.Rows(e.RowIndex)
+                        deleteFeesLine(.Cells("lineref").Value.ToString, ReceiptTextBox.Text, e.RowIndex + 1)
+                    End With
+                    Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
+                End If
+                FeesloadingMode()
+                RefreshFeesStatement()
+            ElseIf e.ColumnIndex = 6 Then
+                Dim recline As New CFeesLines()
+
+
 
                 With dgFessDetails.Rows(e.RowIndex)
-                    deleteFeesLine(.Cells("lineref").Value.ToString, ReceiptTextBox.Text, e.RowIndex + 1)
+                    recline.LineRef = IIf(.Cells("lineref").Value.ToString = "", Guid.NewGuid.ToString, .Cells("lineref").Value.ToString)
+                    recline.Receipt = ReceiptTextBox.Text
+                    recline.Amnt = .Cells("Amount").Value
+                    recline.Currency = .Cells("currency").Value
+                    recline.Cartegory = .Cells("cartegory").Value
+                    recline.Ref = .Cells("reference").Value
+                    recline.Period = .Cells("Period").Value
+                    recline.Linenumber = e.RowIndex + 1
+                    recline.TransType = IIf(Mid(recline.Receipt, 1, 3) = "Rec", "R", "I")
+                    recline.Comment = ""
+                    recline.FeesBank = .Cells("colFeesBank").Value
+                    Date.TryParse(dtpRecDate.Value, recline.RecDate)
+                    UpdateFeesLines(recline)
+
+                    Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
+
                 End With
-                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
+
+                FeesloadingMode()
+                RefreshFeesStatement()
+
+
+
             End If
-            FeesloadingMode()
-            RefreshFeesStatement()
-        ElseIf e.ColumnIndex = 5 Then
-            Dim recline As New CFeesLines()
+        Catch ex As Exception
 
+        End Try
 
-
-            With dgFessDetails.Rows(e.RowIndex)
-                recline.LineRef = IIf(.Cells("lineref").Value.ToString = "", Guid.NewGuid.ToString, .Cells("lineref").Value.ToString)
-                recline.Receipt = ReceiptTextBox.Text
-                recline.Amnt = .Cells("Amount").Value
-                recline.Currency = .Cells("currency").Value
-                recline.Cartegory = .Cells("cartegory").Value
-                recline.Ref = .Cells("reference").Value
-                recline.Period = .Cells("Period").Value
-                recline.Linenumber = e.RowIndex + 1
-                recline.TransType = IIf(Mid(recline.Receipt, 1, 3) = "Rec", "R", "I")
-                recline.Comment = ""
-                Date.TryParse(mskpaydate.Text, recline.RecDate)
-                UpdateFeesLines(recline)
-
-                Feespayments_detailsTableAdapter.FillByReceipt(DsSchool.feespayments_details, ReceiptTextBox.Text, cboFeesCartegory.Text, cboFeesCurrency.Text)
-
-            End With
-
-            FeesloadingMode()
-            RefreshFeesStatement()
-
-
-
-        End If
     End Sub
     Private Sub deleteFeesLine(lineref As String, receipt As String, linenumber As String)
         Dim cmd As New SqlCommand
@@ -8548,6 +8595,13 @@ Public Class FrmStudent
             param = New SqlParameter("@recdate", .RecDate)
             cmd.Parameters.Add(param)
 
+            param = New SqlParameter("@bank", .FeesBank)
+            cmd.Parameters.Add(param)
+
+            param = New SqlParameter("@dc", "C")
+            cmd.Parameters.Add(param)
+
+
 
             Try
                 cnn.Open()
@@ -8576,6 +8630,7 @@ Public Class FrmStudent
                     recline.Cartegory = .Cells("cartegory").Value
                     recline.Ref = .Cells("reference").Value
                     recline.Period = .Cells("Period").Value
+                    recline.FeesBank = .Cells("colFeesBank").Value
                     recline.Linenumber = .Index + 1
                     recline.TransType = IIf(Mid(recline.Receipt, 1, 3) = "Rec", "R", "I")
 
@@ -9114,11 +9169,11 @@ Public Class FrmStudent
     End Sub
 
     Private Sub dgFessDetails_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles dgFessDetails.RowsAdded
-        '      FeesPaymentTypeTableAdapter.Fill(DsSchool.FeesPaymentType)
+        ''      FeesPaymentTypeTableAdapter.Fill(DsSchool.FeesPaymentType)
         'Try
-        '    Dim paycartcombo As DataGridViewComboBoxCell = dgFessDetails.Rows(e.RowIndex).Cells("Cartegory")
-        '    With paycartcombo
-        '        .DataSource = PaymentTypes("SchoolFees")
+        '    Dim bankcombo As DataGridViewComboBoxCell = dgFessDetails.Rows(e.RowIndex).Cells("colFeesBank")
+        '    With bankcombo
+        '        .DataSource = ChartOfAccounts()
         '        .DisplayMember = "Text"
         '        .ValueMember = "Value"
         '    End With
@@ -9463,7 +9518,9 @@ Public Class FrmStudent
 
 
         Dim fts As New List(Of ComboItem)
-        fts = FormTeachers(cboMarkClass.Text, Val(cboMarkLevel.Text), cboMarkSession.Text)
+        Dim strfilter As String = ""
+        strfilter = " where f.classdesc = '" & cboMarkClass.Text & "' and f.lvl = '" & cboMarkLevel.Text & "' and f.session = '" & cboMarkSession.Text & "'"
+        fts = FormTeachers(strfilter)
         If fts.Count > 0 Then
 
 
@@ -9489,8 +9546,14 @@ Public Class FrmStudent
 
     Private Sub btnSportsComments_Click(sender As Object, e As EventArgs) Handles btnSportsComments.Click
 
+
         Dim fts As New List(Of ComboItem)
-        fts = FormTeachers(cboMarkClass.Text, Val(cboMarkLevel.Text), cboMarkSession.Text)
+
+        Dim strfilter As String = ""
+
+        strfilter = " where f.classdesc = '" & cboMarkClass.Text & "' and f.lvl = '" & cboMarkLevel.Text & "' and f.session = '" & cboMarkSession.Text & "'"
+
+        fts = FormTeachers(strfilter)
         If fts.Count > 0 Then
 
 
@@ -9562,6 +9625,8 @@ Public Class FrmStudent
                 With enrollment
                     .Student = studentid
                     .enrolref = enrolref
+                    .AccNumber = stud.AccountNumber
+                    .Company = stud.Company
                 End With
 
 
@@ -9570,6 +9635,7 @@ Public Class FrmStudent
                 With enrolform
                     .mdiPrnt = mainform
                     .loadspec = True
+
                     .ShowDialog()
                 End With
 
@@ -9653,6 +9719,18 @@ Public Class FrmStudent
                                     .Status = reader("Status")
                                 Catch ex As Exception
                                     .Status = "Available"
+                                End Try
+
+                                Try
+                                    .Company = reader("SchoolCompany")
+                                Catch ex As Exception
+                                    .Company = Guid.NewGuid
+                                End Try
+
+                                Try
+                                    .AccNumber = reader("AccountNumber")
+                                Catch ex As Exception
+                                    .AccNumber = 0
                                 End Try
 
                                 .Clas = reader("Classdesc")
@@ -10236,8 +10314,16 @@ Public Class FrmStudent
 
     Private Function GetCartCurrency(cart As String) As String
 
-        Dim currency As String = ""
+        Dim    currency As String = ""
         currency = DsSchool.FeesPaymentType.Where(Function(x) x.Payment = cart).Select(Function(y) y.Currency).FirstOrDefault().ToString
+
+        Dim strwhere As String
+        strwhere = " where accountnumber Not In (Select isnull(parentaccount,'') from chartofaccounts)   and C.acctype = 'Bank' and c.currency = '" & currency & "'"
+
+        Me.COATableAdapter1.LoadAccounts(DsSchool.COA, strwhere)
+
+
+
         Return currency
 
 

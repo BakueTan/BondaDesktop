@@ -347,7 +347,6 @@
                                         </Style>
                                       </Textbox>
                                       <ColSpan>3</ColSpan>
-                                      <rd:Selected>true</rd:Selected>
                                     </CellContents>
                                   </TablixCell>
                                   <TablixCell />
@@ -1149,8 +1148,6 @@ fields!AccType.Value = "Revenue" or fields!AccType.Value = "OtherRevenue",iif(Fi
                             </TablixMembers>
                           </TablixRowHierarchy>
                           <DataSetName>dsReports_NeawYearStatement</DataSetName>
-                          <Top>0cm</Top>
-                          <Left>0cm</Left>
                           <Height>4.48268cm</Height>
                           <Width>18.71128cm</Width>
                           <Style />
@@ -1173,7 +1170,6 @@ fields!AccType.Value = "Revenue" or fields!AccType.Value = "OtherRevenue",iif(Fi
                             </Paragraph>
                           </Paragraphs>
                           <Top>4.62379cm</Top>
-                          <Left>0cm</Left>
                           <Height>0.63492cm</Height>
                           <Width>18.71128cm</Width>
                           <ZIndex>1</ZIndex>
@@ -1203,7 +1199,6 @@ fields!AccType.Value = "Revenue" or fields!AccType.Value = "OtherRevenue",iif(Fi
                             </Paragraph>
                           </Paragraphs>
                           <Top>5.4351cm</Top>
-                          <Left>0cm</Left>
                           <Height>0.63492cm</Height>
                           <Width>18.71128cm</Width>
                           <ZIndex>2</ZIndex>
@@ -1248,7 +1243,6 @@ fields!AccType.Value = "Revenue" or fields!AccType.Value = "OtherRevenue",iif(Fi
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.31746cm</Top>
-        <Left>0cm</Left>
         <Height>6.16712cm</Height>
         <Width>18.89919cm</Width>
         <Style />

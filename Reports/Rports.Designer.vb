@@ -879,9 +879,9 @@ Partial Class Rports
         Me.gbExamGraphicalAnalysis.Controls.Add(Me.cboExamGraphClass)
         Me.gbExamGraphicalAnalysis.Controls.Add(Me.Label185)
         Me.gbExamGraphicalAnalysis.Controls.Add(Me.cboExamGraphForm)
-        Me.gbExamGraphicalAnalysis.Location = New System.Drawing.Point(36, 132)
+        Me.gbExamGraphicalAnalysis.Location = New System.Drawing.Point(449, 3)
         Me.gbExamGraphicalAnalysis.Name = "gbExamGraphicalAnalysis"
-        Me.gbExamGraphicalAnalysis.Size = New System.Drawing.Size(30, 27)
+        Me.gbExamGraphicalAnalysis.Size = New System.Drawing.Size(83, 23)
         Me.gbExamGraphicalAnalysis.TabIndex = 47
         Me.gbExamGraphicalAnalysis.TabStop = False
         Me.gbExamGraphicalAnalysis.Text = "ExamGraphicalAnalysis"
@@ -2498,9 +2498,9 @@ Partial Class Rports
         Me.gbHsStudMarks.Controls.Add(Me.cboHsMarksRef)
         Me.gbHsStudMarks.Controls.Add(Me.Label38)
         Me.gbHsStudMarks.Controls.Add(Me.cboHsMarksLev)
-        Me.gbHsStudMarks.Location = New System.Drawing.Point(105, 186)
+        Me.gbHsStudMarks.Location = New System.Drawing.Point(236, 184)
         Me.gbHsStudMarks.Name = "gbHsStudMarks"
-        Me.gbHsStudMarks.Size = New System.Drawing.Size(63, 70)
+        Me.gbHsStudMarks.Size = New System.Drawing.Size(100, 221)
         Me.gbHsStudMarks.TabIndex = 0
         Me.gbHsStudMarks.TabStop = False
         Me.gbHsStudMarks.Text = "ExamMark"
@@ -2509,7 +2509,7 @@ Partial Class Rports
         'gbGraphicalView
         '
         Me.gbGraphicalView.Controls.Add(Me.chkGraphical)
-        Me.gbGraphicalView.Location = New System.Drawing.Point(71, 136)
+        Me.gbGraphicalView.Location = New System.Drawing.Point(112, 122)
         Me.gbGraphicalView.Name = "gbGraphicalView"
         Me.gbGraphicalView.Size = New System.Drawing.Size(153, 43)
         Me.gbGraphicalView.TabIndex = 35
@@ -6222,9 +6222,9 @@ Partial Class Rports
         Me.AA.Controls.Add(Me.Label52)
         Me.AA.Controls.Add(Me.cboAccLvl)
         Me.AA.Controls.Add(Me.rbAccPerForm)
-        Me.AA.Location = New System.Drawing.Point(217, 173)
+        Me.AA.Location = New System.Drawing.Point(393, 173)
         Me.AA.Name = "AA"
-        Me.AA.Size = New System.Drawing.Size(655, 309)
+        Me.AA.Size = New System.Drawing.Size(200, 232)
         Me.AA.TabIndex = 13
         Me.AA.TabStop = False
         Me.AA.Text = "Student Fees"

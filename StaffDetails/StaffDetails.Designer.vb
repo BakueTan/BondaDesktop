@@ -55,7 +55,9 @@ Partial Class frmStaffDetails
         Dim Label13 As System.Windows.Forms.Label
         Dim Label14 As System.Windows.Forms.Label
         Dim Label16 As System.Windows.Forms.Label
+        Dim Label18 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStaffDetails))
+        Dim Label20 As System.Windows.Forms.Label
         Me.StaffTabControl = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
@@ -127,6 +129,9 @@ Partial Class frmStaffDetails
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tbsubTeacher = New System.Windows.Forms.TabPage()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox16 = New System.Windows.Forms.GroupBox()
+        Me.dgSubsTaughtList = New System.Windows.Forms.DataGridView()
+        Me.StaffSubjectsTaughtBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cboSubTeachersbyClass = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -147,6 +152,20 @@ Partial Class frmStaffDetails
         Me.staffID = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox13 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.btnClassTeacherSearch = New System.Windows.Forms.Button()
+        Me.txtClassTeacherSearch = New System.Windows.Forms.TextBox()
+        Me.dgFormTacherList = New System.Windows.Forms.DataGridView()
+        Me.colStaffID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FullNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProgramDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LvlDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SessionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClassDescDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FormTeachersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.lbFormTeacher = New System.Windows.Forms.ListBox()
@@ -218,6 +237,21 @@ Partial Class frmStaffDetails
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.QualificationsTableAdapter = New StaffDetails.dsSchoolTableAdapters.QualificationsTableAdapter()
+        Me.FormTeachersTableAdapter = New StaffDetails.dsSchoolTableAdapters.FormTeachersTableAdapter()
+        Me.StaffSubjectsTaughtTableAdapter = New StaffDetails.dsSchoolTableAdapters.StaffSubjectsTaughtTableAdapter()
+        Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.btnSubjectTeachersSearch = New System.Windows.Forms.Button()
+        Me.txtSubjectTeachersSearch = New System.Windows.Forms.TextBox()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.colSubTaughtStaffID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FullnameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubjectIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Subject = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FormDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClassDescDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SessionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         StaffIDLabel = New System.Windows.Forms.Label()
         NameLabel = New System.Windows.Forms.Label()
         SurnameLabel = New System.Windows.Forms.Label()
@@ -250,6 +284,8 @@ Partial Class frmStaffDetails
         Label13 = New System.Windows.Forms.Label()
         Label14 = New System.Windows.Forms.Label()
         Label16 = New System.Windows.Forms.Label()
+        Label18 = New System.Windows.Forms.Label()
+        Label20 = New System.Windows.Forms.Label()
         Me.StaffTabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -277,6 +313,9 @@ Partial Class frmStaffDetails
         Me.TabControl1.SuspendLayout()
         Me.tbsubTeacher.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
+        Me.GroupBox16.SuspendLayout()
+        CType(Me.dgSubsTaughtList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StaffSubjectsTaughtBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgSubsTaught, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FormsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClassesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -284,12 +323,17 @@ Partial Class frmStaffDetails
         Me.GroupBox6.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.GroupBox13.SuspendLayout()
+        Me.GroupBox15.SuspendLayout()
+        CType(Me.dgFormTacherList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FormTeachersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgFormTeacher, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox17.SuspendLayout()
         Me.SuspendLayout()
         '
         'StaffIDLabel
@@ -576,6 +620,15 @@ Partial Class frmStaffDetails
         Label16.TabIndex = 32
         Label16.Text = "YearCompleted:"
         '
+        'Label18
+        '
+        Label18.AutoSize = True
+        Label18.Location = New System.Drawing.Point(325, -98)
+        Label18.Name = "Label18"
+        Label18.Size = New System.Drawing.Size(44, 13)
+        Label18.TabIndex = 0
+        Label18.Text = "staff ID:"
+        '
         'StaffTabControl
         '
         Me.StaffTabControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -716,6 +769,7 @@ Partial Class frmStaffDetails
         'DsSchool
         '
         Me.DsSchool.DataSetName = "dsSchool"
+        Me.DsSchool.EnforceConstraints = False
         Me.DsSchool.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BindingNavigatorCountItem
@@ -1193,7 +1247,7 @@ Partial Class frmStaffDetails
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaffPersonalDetailsBindingSource, "Title", True))
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Mr", "Ms", "Miss", "Dr", "Prof"})
+        Me.ComboBox1.Items.AddRange(New Object() {"Mr", "Ms", "Miss", "Dr", "Prof", "Mrs"})
         Me.ComboBox1.Location = New System.Drawing.Point(95, 43)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(62, 21)
@@ -1329,6 +1383,7 @@ Partial Class frmStaffDetails
         '
         'tbsubTeacher
         '
+        Me.tbsubTeacher.BackColor = System.Drawing.Color.Transparent
         Me.tbsubTeacher.Controls.Add(Me.GroupBox11)
         Me.tbsubTeacher.Location = New System.Drawing.Point(4, 22)
         Me.tbsubTeacher.Name = "tbsubTeacher"
@@ -1336,10 +1391,11 @@ Partial Class frmStaffDetails
         Me.tbsubTeacher.Size = New System.Drawing.Size(1232, 590)
         Me.tbsubTeacher.TabIndex = 0
         Me.tbsubTeacher.Text = "Subject Teachers"
-        Me.tbsubTeacher.UseVisualStyleBackColor = True
         '
         'GroupBox11
         '
+        Me.GroupBox11.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox11.Controls.Add(Me.GroupBox16)
         Me.GroupBox11.Controls.Add(Me.cboSubTeachersbyClass)
         Me.GroupBox11.Controls.Add(Me.Label5)
         Me.GroupBox11.Controls.Add(Me.Button8)
@@ -1347,28 +1403,65 @@ Partial Class frmStaffDetails
         Me.GroupBox11.Controls.Add(Me.lbSubTaughtSearch)
         Me.GroupBox11.Controls.Add(Me.Button1)
         Me.GroupBox11.Controls.Add(Me.GroupBox6)
-        Me.GroupBox11.Location = New System.Drawing.Point(23, 17)
+        Me.GroupBox11.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox11.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(1152, 523)
+        Me.GroupBox11.Size = New System.Drawing.Size(1226, 584)
         Me.GroupBox11.TabIndex = 25
         Me.GroupBox11.TabStop = False
         Me.GroupBox11.Text = "Subjects  Teachers"
         '
+        'GroupBox16
+        '
+        Me.GroupBox16.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox16.BackColor = System.Drawing.Color.SeaShell
+        Me.GroupBox16.Controls.Add(Me.GroupBox17)
+        Me.GroupBox16.Controls.Add(Me.dgSubsTaughtList)
+        Me.GroupBox16.Location = New System.Drawing.Point(655, 18)
+        Me.GroupBox16.Name = "GroupBox16"
+        Me.GroupBox16.Size = New System.Drawing.Size(565, 561)
+        Me.GroupBox16.TabIndex = 28
+        Me.GroupBox16.TabStop = False
+        Me.GroupBox16.Text = "SubjectTeachersList"
+        '
+        'dgSubsTaughtList
+        '
+        Me.dgSubsTaughtList.AllowUserToAddRows = False
+        Me.dgSubsTaughtList.AllowUserToDeleteRows = False
+        Me.dgSubsTaughtList.AllowUserToOrderColumns = True
+        Me.dgSubsTaughtList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.dgSubsTaughtList.AutoGenerateColumns = False
+        Me.dgSubsTaughtList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgSubsTaughtList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colSubTaughtStaffID, Me.FullnameDataGridViewTextBoxColumn1, Me.SubjectIDDataGridViewTextBoxColumn, Me.Subject, Me.FormDataGridViewTextBoxColumn, Me.ClassDescDataGridViewTextBoxColumn1, Me.YearDataGridViewTextBoxColumn, Me.SessionDataGridViewTextBoxColumn1})
+        Me.dgSubsTaughtList.DataSource = Me.StaffSubjectsTaughtBindingSource
+        Me.dgSubsTaughtList.Location = New System.Drawing.Point(6, 55)
+        Me.dgSubsTaughtList.MultiSelect = False
+        Me.dgSubsTaughtList.Name = "dgSubsTaughtList"
+        Me.dgSubsTaughtList.ReadOnly = True
+        Me.dgSubsTaughtList.Size = New System.Drawing.Size(553, 500)
+        Me.dgSubsTaughtList.TabIndex = 0
+        '
+        'StaffSubjectsTaughtBindingSource
+        '
+        Me.StaffSubjectsTaughtBindingSource.DataMember = "StaffSubjectsTaught"
+        Me.StaffSubjectsTaughtBindingSource.DataSource = Me.DsSchool
+        '
         'cboSubTeachersbyClass
         '
-        Me.cboSubTeachersbyClass.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.StaffPersonalDetailsBindingSource, "Title", True))
         Me.cboSubTeachersbyClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboSubTeachersbyClass.FormattingEnabled = True
         Me.cboSubTeachersbyClass.Items.AddRange(New Object() {"Mr", "Ms", "Miss", "Dr", "Prof"})
-        Me.cboSubTeachersbyClass.Location = New System.Drawing.Point(887, 13)
+        Me.cboSubTeachersbyClass.Location = New System.Drawing.Point(473, 18)
         Me.cboSubTeachersbyClass.Name = "cboSubTeachersbyClass"
-        Me.cboSubTeachersbyClass.Size = New System.Drawing.Size(226, 21)
+        Me.cboSubTeachersbyClass.Size = New System.Drawing.Size(176, 21)
         Me.cboSubTeachersbyClass.TabIndex = 26
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(806, 16)
+        Me.Label5.Location = New System.Drawing.Point(392, 21)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(75, 13)
         Me.Label5.TabIndex = 27
@@ -1376,7 +1469,7 @@ Partial Class frmStaffDetails
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(377, 405)
+        Me.Button8.Location = New System.Drawing.Point(244, 351)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(170, 32)
         Me.Button8.TabIndex = 25
@@ -1387,9 +1480,9 @@ Partial Class frmStaffDetails
         '
         Me.dgSubsTaught.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgSubsTaught.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SubTaughtProgram, Me.SubTaughtClass, Me.SubTaughtLevel, Me.SubTaughtSession, Me.SubTaughtSubject})
-        Me.dgSubsTaught.Location = New System.Drawing.Point(137, 114)
+        Me.dgSubsTaught.Location = New System.Drawing.Point(6, 60)
         Me.dgSubsTaught.Name = "dgSubsTaught"
-        Me.dgSubsTaught.Size = New System.Drawing.Size(663, 285)
+        Me.dgSubsTaught.Size = New System.Drawing.Size(643, 285)
         Me.dgSubsTaught.TabIndex = 24
         '
         'SubTaughtProgram
@@ -1455,15 +1548,15 @@ Partial Class frmStaffDetails
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbSubTaughtSearch.BackColor = System.Drawing.Color.LightYellow
         Me.lbSubTaughtSearch.FormattingEnabled = True
-        Me.lbSubTaughtSearch.Location = New System.Drawing.Point(507, 19)
+        Me.lbSubTaughtSearch.Location = New System.Drawing.Point(244, 18)
         Me.lbSubTaughtSearch.Name = "lbSubTaughtSearch"
-        Me.lbSubTaughtSearch.Size = New System.Drawing.Size(293, 82)
+        Me.lbSubTaughtSearch.Size = New System.Drawing.Size(132, 43)
         Me.lbSubTaughtSearch.TabIndex = 15
         Me.lbSubTaughtSearch.Visible = False
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(300, 405)
+        Me.Button1.Location = New System.Drawing.Point(167, 351)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(71, 32)
         Me.Button1.TabIndex = 12
@@ -1478,9 +1571,9 @@ Partial Class frmStaffDetails
         Me.GroupBox6.Controls.Add(Label11)
         Me.GroupBox6.Controls.Add(Label4)
         Me.GroupBox6.Controls.Add(Me.staffID)
-        Me.GroupBox6.Location = New System.Drawing.Point(244, 19)
+        Me.GroupBox6.Location = New System.Drawing.Point(6, 16)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(251, 65)
+        Me.GroupBox6.Size = New System.Drawing.Size(242, 45)
         Me.GroupBox6.TabIndex = 10
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Staff"
@@ -1523,21 +1616,155 @@ Partial Class frmStaffDetails
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.GroupBox13)
         Me.GroupBox4.Controls.Add(Me.Button7)
         Me.GroupBox4.Controls.Add(Me.Button6)
         Me.GroupBox4.Controls.Add(Me.lbFormTeacher)
         Me.GroupBox4.Controls.Add(Me.dgFormTeacher)
         Me.GroupBox4.Controls.Add(Me.GroupBox5)
-        Me.GroupBox4.Location = New System.Drawing.Point(193, 33)
+        Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox4.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(795, 461)
+        Me.GroupBox4.Size = New System.Drawing.Size(1226, 584)
         Me.GroupBox4.TabIndex = 0
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Class Teachers"
         '
+        'GroupBox13
+        '
+        Me.GroupBox13.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox13.BackColor = System.Drawing.Color.Ivory
+        Me.GroupBox13.Controls.Add(Me.GroupBox15)
+        Me.GroupBox13.Controls.Add(Me.dgFormTacherList)
+        Me.GroupBox13.Location = New System.Drawing.Point(471, 10)
+        Me.GroupBox13.Name = "GroupBox13"
+        Me.GroupBox13.Size = New System.Drawing.Size(735, 562)
+        Me.GroupBox13.TabIndex = 19
+        Me.GroupBox13.TabStop = False
+        Me.GroupBox13.Text = "Class Teachers List"
+        '
+        'GroupBox15
+        '
+        Me.GroupBox15.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBox15.Controls.Add(Me.Button9)
+        Me.GroupBox15.Controls.Add(Me.Label15)
+        Me.GroupBox15.Controls.Add(Me.btnClassTeacherSearch)
+        Me.GroupBox15.Controls.Add(Label18)
+        Me.GroupBox15.Controls.Add(Me.txtClassTeacherSearch)
+        Me.GroupBox15.Location = New System.Drawing.Point(16, 12)
+        Me.GroupBox15.Name = "GroupBox15"
+        Me.GroupBox15.Size = New System.Drawing.Size(258, 40)
+        Me.GroupBox15.TabIndex = 12
+        Me.GroupBox15.TabStop = False
+        Me.GroupBox15.Text = "Search"
+        '
+        'Button9
+        '
+        Me.Button9.BackgroundImage = Global.StaffDetails.My.Resources.Resources.Refresh
+        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button9.Location = New System.Drawing.Point(230, 15)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(19, 20)
+        Me.Button9.TabIndex = 22
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(9, 46)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(0, 13)
+        Me.Label15.TabIndex = 21
+        '
+        'btnClassTeacherSearch
+        '
+        Me.btnClassTeacherSearch.BackgroundImage = Global.StaffDetails.My.Resources.Resources.Find
+        Me.btnClassTeacherSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnClassTeacherSearch.Location = New System.Drawing.Point(212, 15)
+        Me.btnClassTeacherSearch.Name = "btnClassTeacherSearch"
+        Me.btnClassTeacherSearch.Size = New System.Drawing.Size(19, 20)
+        Me.btnClassTeacherSearch.TabIndex = 20
+        Me.btnClassTeacherSearch.UseVisualStyleBackColor = True
+        '
+        'txtClassTeacherSearch
+        '
+        Me.txtClassTeacherSearch.Location = New System.Drawing.Point(6, 14)
+        Me.txtClassTeacherSearch.Name = "txtClassTeacherSearch"
+        Me.txtClassTeacherSearch.Size = New System.Drawing.Size(207, 20)
+        Me.txtClassTeacherSearch.TabIndex = 1
+        '
+        'dgFormTacherList
+        '
+        Me.dgFormTacherList.AllowUserToAddRows = False
+        Me.dgFormTacherList.AllowUserToDeleteRows = False
+        Me.dgFormTacherList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.dgFormTacherList.AutoGenerateColumns = False
+        Me.dgFormTacherList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgFormTacherList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colStaffID, Me.FullNameDataGridViewTextBoxColumn, Me.ProgramDataGridViewTextBoxColumn, Me.LvlDataGridViewTextBoxColumn, Me.SessionDataGridViewTextBoxColumn, Me.ClassDescDataGridViewTextBoxColumn})
+        Me.dgFormTacherList.DataSource = Me.FormTeachersBindingSource
+        Me.dgFormTacherList.Location = New System.Drawing.Point(16, 55)
+        Me.dgFormTacherList.MultiSelect = False
+        Me.dgFormTacherList.Name = "dgFormTacherList"
+        Me.dgFormTacherList.ReadOnly = True
+        Me.dgFormTacherList.Size = New System.Drawing.Size(651, 483)
+        Me.dgFormTacherList.TabIndex = 0
+        '
+        'colStaffID
+        '
+        Me.colStaffID.DataPropertyName = "Teacher"
+        Me.colStaffID.HeaderText = "StaffID"
+        Me.colStaffID.Name = "colStaffID"
+        Me.colStaffID.ReadOnly = True
+        '
+        'FullNameDataGridViewTextBoxColumn
+        '
+        Me.FullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName"
+        Me.FullNameDataGridViewTextBoxColumn.HeaderText = "FullName"
+        Me.FullNameDataGridViewTextBoxColumn.Name = "FullNameDataGridViewTextBoxColumn"
+        Me.FullNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FullNameDataGridViewTextBoxColumn.Width = 150
+        '
+        'ProgramDataGridViewTextBoxColumn
+        '
+        Me.ProgramDataGridViewTextBoxColumn.DataPropertyName = "Program"
+        Me.ProgramDataGridViewTextBoxColumn.HeaderText = "Program"
+        Me.ProgramDataGridViewTextBoxColumn.Name = "ProgramDataGridViewTextBoxColumn"
+        Me.ProgramDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'LvlDataGridViewTextBoxColumn
+        '
+        Me.LvlDataGridViewTextBoxColumn.DataPropertyName = "lvl"
+        Me.LvlDataGridViewTextBoxColumn.HeaderText = "level"
+        Me.LvlDataGridViewTextBoxColumn.Name = "LvlDataGridViewTextBoxColumn"
+        Me.LvlDataGridViewTextBoxColumn.ReadOnly = True
+        Me.LvlDataGridViewTextBoxColumn.Width = 50
+        '
+        'SessionDataGridViewTextBoxColumn
+        '
+        Me.SessionDataGridViewTextBoxColumn.DataPropertyName = "Session"
+        Me.SessionDataGridViewTextBoxColumn.HeaderText = "Session"
+        Me.SessionDataGridViewTextBoxColumn.Name = "SessionDataGridViewTextBoxColumn"
+        Me.SessionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SessionDataGridViewTextBoxColumn.Width = 50
+        '
+        'ClassDescDataGridViewTextBoxColumn
+        '
+        Me.ClassDescDataGridViewTextBoxColumn.DataPropertyName = "ClassDesc"
+        Me.ClassDescDataGridViewTextBoxColumn.HeaderText = "ClassDesc"
+        Me.ClassDescDataGridViewTextBoxColumn.Name = "ClassDescDataGridViewTextBoxColumn"
+        Me.ClassDescDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ClassDescDataGridViewTextBoxColumn.Width = 150
+        '
+        'FormTeachersBindingSource
+        '
+        Me.FormTeachersBindingSource.DataMember = "FormTeachers"
+        Me.FormTeachersBindingSource.DataSource = Me.DsSchool
+        '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(384, 353)
+        Me.Button7.Location = New System.Drawing.Point(191, 326)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(170, 32)
         Me.Button7.TabIndex = 18
@@ -1546,7 +1773,7 @@ Partial Class frmStaffDetails
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(307, 353)
+        Me.Button6.Location = New System.Drawing.Point(114, 326)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(71, 32)
         Me.Button6.TabIndex = 17
@@ -1559,9 +1786,9 @@ Partial Class frmStaffDetails
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbFormTeacher.BackColor = System.Drawing.Color.LightYellow
         Me.lbFormTeacher.FormattingEnabled = True
-        Me.lbFormTeacher.Location = New System.Drawing.Point(500, 65)
+        Me.lbFormTeacher.Location = New System.Drawing.Point(68, 64)
         Me.lbFormTeacher.Name = "lbFormTeacher"
-        Me.lbFormTeacher.Size = New System.Drawing.Size(293, 121)
+        Me.lbFormTeacher.Size = New System.Drawing.Size(293, 238)
         Me.lbFormTeacher.TabIndex = 16
         Me.lbFormTeacher.Visible = False
         '
@@ -1569,9 +1796,9 @@ Partial Class frmStaffDetails
         '
         Me.dgFormTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgFormTeacher.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ftProg, Me.ftClass, Me.ftLevel, Me.ftSession})
-        Me.dgFormTeacher.Location = New System.Drawing.Point(201, 117)
+        Me.dgFormTeacher.Location = New System.Drawing.Point(20, 90)
         Me.dgFormTeacher.Name = "dgFormTeacher"
-        Me.dgFormTeacher.Size = New System.Drawing.Size(474, 230)
+        Me.dgFormTeacher.Size = New System.Drawing.Size(445, 230)
         Me.dgFormTeacher.TabIndex = 12
         '
         'ftProg
@@ -1617,7 +1844,7 @@ Partial Class frmStaffDetails
         Me.GroupBox5.Controls.Add(Label2)
         Me.GroupBox5.Controls.Add(Label3)
         Me.GroupBox5.Controls.Add(Me.txtFormTeacher)
-        Me.GroupBox5.Location = New System.Drawing.Point(262, 46)
+        Me.GroupBox5.Location = New System.Drawing.Point(23, 19)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(251, 65)
         Me.GroupBox5.TabIndex = 11
@@ -1933,7 +2160,6 @@ Partial Class frmStaffDetails
         'TreeView6
         '
         Me.TreeView6.BackColor = System.Drawing.Color.White
-        Me.TreeView6.LineColor = System.Drawing.Color.Empty
         Me.TreeView6.Location = New System.Drawing.Point(14, 278)
         Me.TreeView6.Name = "TreeView6"
         Me.TreeView6.Size = New System.Drawing.Size(184, 249)
@@ -2072,6 +2298,134 @@ Partial Class frmStaffDetails
         '
         Me.QualificationsTableAdapter.ClearBeforeFill = True
         '
+        'FormTeachersTableAdapter
+        '
+        Me.FormTeachersTableAdapter.ClearBeforeFill = True
+        '
+        'StaffSubjectsTaughtTableAdapter
+        '
+        Me.StaffSubjectsTaughtTableAdapter.ClearBeforeFill = True
+        '
+        'GroupBox17
+        '
+        Me.GroupBox17.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBox17.Controls.Add(Me.Button10)
+        Me.GroupBox17.Controls.Add(Me.Label17)
+        Me.GroupBox17.Controls.Add(Me.btnSubjectTeachersSearch)
+        Me.GroupBox17.Controls.Add(Label20)
+        Me.GroupBox17.Controls.Add(Me.txtSubjectTeachersSearch)
+        Me.GroupBox17.Location = New System.Drawing.Point(6, 17)
+        Me.GroupBox17.Name = "GroupBox17"
+        Me.GroupBox17.Size = New System.Drawing.Size(243, 37)
+        Me.GroupBox17.TabIndex = 11
+        Me.GroupBox17.TabStop = False
+        Me.GroupBox17.Text = "Search"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(9, 46)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(0, 13)
+        Me.Label17.TabIndex = 21
+        '
+        'btnSubjectTeachersSearch
+        '
+        Me.btnSubjectTeachersSearch.BackgroundImage = Global.StaffDetails.My.Resources.Resources.Find
+        Me.btnSubjectTeachersSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnSubjectTeachersSearch.Location = New System.Drawing.Point(202, 12)
+        Me.btnSubjectTeachersSearch.Name = "btnSubjectTeachersSearch"
+        Me.btnSubjectTeachersSearch.Size = New System.Drawing.Size(19, 20)
+        Me.btnSubjectTeachersSearch.TabIndex = 20
+        Me.btnSubjectTeachersSearch.UseVisualStyleBackColor = True
+        '
+        'Label20
+        '
+        Label20.AutoSize = True
+        Label20.Location = New System.Drawing.Point(325, -98)
+        Label20.Name = "Label20"
+        Label20.Size = New System.Drawing.Size(44, 13)
+        Label20.TabIndex = 0
+        Label20.Text = "staff ID:"
+        '
+        'txtSubjectTeachersSearch
+        '
+        Me.txtSubjectTeachersSearch.Location = New System.Drawing.Point(6, 12)
+        Me.txtSubjectTeachersSearch.Name = "txtSubjectTeachersSearch"
+        Me.txtSubjectTeachersSearch.Size = New System.Drawing.Size(200, 20)
+        Me.txtSubjectTeachersSearch.TabIndex = 1
+        '
+        'Button10
+        '
+        Me.Button10.BackgroundImage = Global.StaffDetails.My.Resources.Resources.Refresh
+        Me.Button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button10.Location = New System.Drawing.Point(220, 12)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(19, 20)
+        Me.Button10.TabIndex = 22
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'colSubTaughtStaffID
+        '
+        Me.colSubTaughtStaffID.DataPropertyName = "StaffID"
+        Me.colSubTaughtStaffID.HeaderText = "StaffID"
+        Me.colSubTaughtStaffID.Name = "colSubTaughtStaffID"
+        Me.colSubTaughtStaffID.ReadOnly = True
+        Me.colSubTaughtStaffID.Width = 50
+        '
+        'FullnameDataGridViewTextBoxColumn1
+        '
+        Me.FullnameDataGridViewTextBoxColumn1.DataPropertyName = "Fullname"
+        Me.FullnameDataGridViewTextBoxColumn1.HeaderText = "Fullname"
+        Me.FullnameDataGridViewTextBoxColumn1.Name = "FullnameDataGridViewTextBoxColumn1"
+        Me.FullnameDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.FullnameDataGridViewTextBoxColumn1.Width = 150
+        '
+        'SubjectIDDataGridViewTextBoxColumn
+        '
+        Me.SubjectIDDataGridViewTextBoxColumn.DataPropertyName = "SubjectID"
+        Me.SubjectIDDataGridViewTextBoxColumn.HeaderText = "SubjectID"
+        Me.SubjectIDDataGridViewTextBoxColumn.Name = "SubjectIDDataGridViewTextBoxColumn"
+        Me.SubjectIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SubjectIDDataGridViewTextBoxColumn.Width = 60
+        '
+        'Subject
+        '
+        Me.Subject.DataPropertyName = "Subject"
+        Me.Subject.HeaderText = "Subject"
+        Me.Subject.Name = "Subject"
+        Me.Subject.ReadOnly = True
+        '
+        'FormDataGridViewTextBoxColumn
+        '
+        Me.FormDataGridViewTextBoxColumn.DataPropertyName = "Form"
+        Me.FormDataGridViewTextBoxColumn.HeaderText = "Program"
+        Me.FormDataGridViewTextBoxColumn.Name = "FormDataGridViewTextBoxColumn"
+        Me.FormDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ClassDescDataGridViewTextBoxColumn1
+        '
+        Me.ClassDescDataGridViewTextBoxColumn1.DataPropertyName = "ClassDesc"
+        Me.ClassDescDataGridViewTextBoxColumn1.HeaderText = "Class"
+        Me.ClassDescDataGridViewTextBoxColumn1.Name = "ClassDescDataGridViewTextBoxColumn1"
+        Me.ClassDescDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'YearDataGridViewTextBoxColumn
+        '
+        Me.YearDataGridViewTextBoxColumn.DataPropertyName = "Year"
+        Me.YearDataGridViewTextBoxColumn.HeaderText = "Level"
+        Me.YearDataGridViewTextBoxColumn.Name = "YearDataGridViewTextBoxColumn"
+        Me.YearDataGridViewTextBoxColumn.ReadOnly = True
+        Me.YearDataGridViewTextBoxColumn.Width = 50
+        '
+        'SessionDataGridViewTextBoxColumn1
+        '
+        Me.SessionDataGridViewTextBoxColumn1.DataPropertyName = "Session"
+        Me.SessionDataGridViewTextBoxColumn1.HeaderText = "Session"
+        Me.SessionDataGridViewTextBoxColumn1.Name = "SessionDataGridViewTextBoxColumn1"
+        Me.SessionDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.SessionDataGridViewTextBoxColumn1.Width = 50
+        '
         'frmStaffDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2122,6 +2476,9 @@ Partial Class frmStaffDetails
         Me.tbsubTeacher.ResumeLayout(False)
         Me.GroupBox11.ResumeLayout(False)
         Me.GroupBox11.PerformLayout()
+        Me.GroupBox16.ResumeLayout(False)
+        CType(Me.dgSubsTaughtList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StaffSubjectsTaughtBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgSubsTaught, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FormsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClassesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2130,6 +2487,11 @@ Partial Class frmStaffDetails
         Me.GroupBox6.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox13.ResumeLayout(False)
+        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox15.PerformLayout()
+        CType(Me.dgFormTacherList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FormTeachersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgFormTeacher, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
@@ -2137,6 +2499,8 @@ Partial Class frmStaffDetails
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox17.ResumeLayout(False)
+        Me.GroupBox17.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2308,4 +2672,36 @@ Partial Class frmStaffDetails
     Friend WithEvents Institution As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Year As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RefID As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox13 As Windows.Forms.GroupBox
+    Friend WithEvents dgFormTacherList As Windows.Forms.DataGridView
+    Friend WithEvents FormTeachersBindingSource As Windows.Forms.BindingSource
+    Friend WithEvents FormTeachersTableAdapter As dsSchoolTableAdapters.FormTeachersTableAdapter
+    Friend WithEvents GroupBox15 As Windows.Forms.GroupBox
+    Friend WithEvents Label15 As Windows.Forms.Label
+    Friend WithEvents btnClassTeacherSearch As Windows.Forms.Button
+    Friend WithEvents txtClassTeacherSearch As Windows.Forms.TextBox
+    Friend WithEvents Button9 As Windows.Forms.Button
+    Friend WithEvents colStaffID As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FullNameDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ProgramDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LvlDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SessionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClassDescDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox16 As Windows.Forms.GroupBox
+    Friend WithEvents dgSubsTaughtList As Windows.Forms.DataGridView
+    Friend WithEvents StaffSubjectsTaughtBindingSource As Windows.Forms.BindingSource
+    Friend WithEvents StaffSubjectsTaughtTableAdapter As dsSchoolTableAdapters.StaffSubjectsTaughtTableAdapter
+    Friend WithEvents GroupBox17 As Windows.Forms.GroupBox
+    Friend WithEvents Button10 As Windows.Forms.Button
+    Friend WithEvents Label17 As Windows.Forms.Label
+    Friend WithEvents btnSubjectTeachersSearch As Windows.Forms.Button
+    Friend WithEvents txtSubjectTeachersSearch As Windows.Forms.TextBox
+    Friend WithEvents colSubTaughtStaffID As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FullnameDataGridViewTextBoxColumn1 As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SubjectIDDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Subject As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FormDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClassDescDataGridViewTextBoxColumn1 As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents YearDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SessionDataGridViewTextBoxColumn1 As Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -638,6 +638,7 @@ Partial Class frmAsserts
         'dsCoA
         '
         Me.dsCoA.DataSetName = "dsCoA"
+        Me.dsCoA.EnforceConstraints = False
         Me.dsCoA.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TabControl1
@@ -1078,7 +1079,6 @@ Partial Class frmAsserts
         '
         Me.ToolStripTextBox5.AccessibleName = "Position"
         Me.ToolStripTextBox5.AutoSize = False
-        Me.ToolStripTextBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox5.Name = "ToolStripTextBox5"
         Me.ToolStripTextBox5.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox5.Text = "0"

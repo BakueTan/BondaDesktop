@@ -35,8 +35,6 @@ Partial Class frmEditEnrollment
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEditEnrollment))
         Me.EnrollmentBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.LoadEnrollmentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsSchool = New StudentPersonalDetails.dsSchool()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
@@ -62,8 +60,14 @@ Partial Class frmEditEnrollment
         Me.lstResult = New System.Windows.Forms.ListBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button31 = New System.Windows.Forms.Button()
-        Me.LoadEnrollmentsTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.LoadEnrollmentsTableAdapter()
         Me.txtStudSearch = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtAccNumber = New System.Windows.Forms.TextBox()
+        Me.txtCompany = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.LoadEnrollmentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DsSchool = New StudentPersonalDetails.dsSchool()
+        Me.LoadEnrollmentsTableAdapter = New StudentPersonalDetails.dsSchoolTableAdapters.LoadEnrollmentsTableAdapter()
         StudentIDLabel = New System.Windows.Forms.Label()
         GenderLabel = New System.Windows.Forms.Label()
         ProgramLabel = New System.Windows.Forms.Label()
@@ -75,9 +79,9 @@ Partial Class frmEditEnrollment
         Label2 = New System.Windows.Forms.Label()
         CType(Me.EnrollmentBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EnrollmentBindingNavigator.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.LoadEnrollmentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StudentIDLabel
@@ -188,17 +192,6 @@ Partial Class frmEditEnrollment
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorAddNewItem.Text = "Add new"
         '
-        'LoadEnrollmentsBindingSource
-        '
-        Me.LoadEnrollmentsBindingSource.DataMember = "LoadEnrollments"
-        Me.LoadEnrollmentsBindingSource.DataSource = Me.DsSchool
-        '
-        'DsSchool
-        '
-        Me.DsSchool.DataSetName = "dsSchool"
-        Me.DsSchool.EnforceConstraints = False
-        Me.DsSchool.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
@@ -286,6 +279,10 @@ Partial Class frmEditEnrollment
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.GroupBox1.Controls.Add(Me.txtCompany)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.txtAccNumber)
+        Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Label2)
         Me.GroupBox1.Controls.Add(Me.EnrolTypeComboBox)
         Me.GroupBox1.Controls.Add(Me.EnrolRefTextBox)
@@ -307,7 +304,7 @@ Partial Class frmEditEnrollment
         Me.GroupBox1.Controls.Add(Me.SessionComboBox)
         Me.GroupBox1.Location = New System.Drawing.Point(226, 83)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(394, 307)
+        Me.GroupBox1.Size = New System.Drawing.Size(394, 372)
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Enrollment Details"
@@ -325,10 +322,10 @@ Partial Class frmEditEnrollment
         'EnrolRefTextBox
         '
         Me.EnrolRefTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LoadEnrollmentsBindingSource, "EnrolRef", True))
-        Me.EnrolRefTextBox.Location = New System.Drawing.Point(153, 271)
+        Me.EnrolRefTextBox.Location = New System.Drawing.Point(6, 346)
         Me.EnrolRefTextBox.Name = "EnrolRefTextBox"
         Me.EnrolRefTextBox.ReadOnly = True
-        Me.EnrolRefTextBox.Size = New System.Drawing.Size(10, 20)
+        Me.EnrolRefTextBox.Size = New System.Drawing.Size(382, 20)
         Me.EnrolRefTextBox.TabIndex = 21
         '
         'Date_EnrolledDateTimePicker
@@ -419,7 +416,7 @@ Partial Class frmEditEnrollment
         Me.lstResult.FormattingEnabled = True
         Me.lstResult.Location = New System.Drawing.Point(626, 74)
         Me.lstResult.Name = "lstResult"
-        Me.lstResult.Size = New System.Drawing.Size(218, 186)
+        Me.lstResult.Size = New System.Drawing.Size(218, 303)
         Me.lstResult.TabIndex = 17
         Me.lstResult.ValueMember = "StudentID"
         Me.lstResult.Visible = False
@@ -443,10 +440,6 @@ Partial Class frmEditEnrollment
         Me.Button31.TabIndex = 19
         Me.Button31.UseVisualStyleBackColor = True
         '
-        'LoadEnrollmentsTableAdapter
-        '
-        Me.LoadEnrollmentsTableAdapter.ClearBeforeFill = True
-        '
         'txtStudSearch
         '
         Me.txtStudSearch.Location = New System.Drawing.Point(643, 48)
@@ -454,12 +447,65 @@ Partial Class frmEditEnrollment
         Me.txtStudSearch.Size = New System.Drawing.Size(141, 20)
         Me.txtStudSearch.TabIndex = 20
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(55, 274)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(87, 13)
+        Me.Label1.TabIndex = 24
+        Me.Label1.Text = "AccountNumber:"
+        '
+        'txtAccNumber
+        '
+        Me.txtAccNumber.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LoadEnrollmentsBindingSource, "AccountNumber", True))
+        Me.txtAccNumber.Enabled = False
+        Me.txtAccNumber.Location = New System.Drawing.Point(153, 271)
+        Me.txtAccNumber.Name = "txtAccNumber"
+        Me.txtAccNumber.ReadOnly = True
+        Me.txtAccNumber.Size = New System.Drawing.Size(121, 20)
+        Me.txtAccNumber.TabIndex = 25
+        '
+        'txtCompany
+        '
+        Me.txtCompany.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LoadEnrollmentsBindingSource, "SchoolCompany", True))
+        Me.txtCompany.Enabled = False
+        Me.txtCompany.Location = New System.Drawing.Point(153, 295)
+        Me.txtCompany.Name = "txtCompany"
+        Me.txtCompany.ReadOnly = True
+        Me.txtCompany.Size = New System.Drawing.Size(121, 20)
+        Me.txtCompany.TabIndex = 27
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(55, 298)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(54, 13)
+        Me.Label4.TabIndex = 26
+        Me.Label4.Text = "Company:"
+        '
+        'LoadEnrollmentsBindingSource
+        '
+        Me.LoadEnrollmentsBindingSource.DataMember = "LoadEnrollments"
+        Me.LoadEnrollmentsBindingSource.DataSource = Me.DsSchool
+        '
+        'DsSchool
+        '
+        Me.DsSchool.DataSetName = "dsSchool"
+        Me.DsSchool.EnforceConstraints = False
+        Me.DsSchool.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'LoadEnrollmentsTableAdapter
+        '
+        Me.LoadEnrollmentsTableAdapter.ClearBeforeFill = True
+        '
         'frmEditEnrollment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(846, 435)
+        Me.ClientSize = New System.Drawing.Size(846, 558)
         Me.Controls.Add(Me.txtStudSearch)
         Me.Controls.Add(Me.Button31)
         Me.Controls.Add(Me.Label3)
@@ -474,10 +520,10 @@ Partial Class frmEditEnrollment
         CType(Me.EnrollmentBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.EnrollmentBindingNavigator.ResumeLayout(False)
         Me.EnrollmentBindingNavigator.PerformLayout()
-        CType(Me.LoadEnrollmentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.LoadEnrollmentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DsSchool, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -523,6 +569,10 @@ Partial Class frmEditEnrollment
     Friend WithEvents ToolStripButtonDelete As Windows.Forms.ToolStripButton
     Friend WithEvents LoadEnrollmentsTableAdapter As dsSchoolTableAdapters.LoadEnrollmentsTableAdapter
     Friend WithEvents txtStudSearch As Windows.Forms.TextBox
+    Friend WithEvents txtCompany As Windows.Forms.TextBox
+    Friend WithEvents Label4 As Windows.Forms.Label
+    Friend WithEvents txtAccNumber As Windows.Forms.TextBox
+    Friend WithEvents Label1 As Windows.Forms.Label
     '  Friend WithEvents SchoolsessionsBindingSource As System.Windows.Forms.BindingSource
     '   Friend WithEvents SchoolsessionsTableAdapter As SMS.dsSchoolTableAdapters.schoolsessionsTableAdapter
 End Class

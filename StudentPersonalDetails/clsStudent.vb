@@ -114,6 +114,12 @@ Public Class csStudent
 
     Public Property SavedStud As String
 
+    Public Property AccountNumber As Long
+    Public Property Acctype As String
+    Public Property SubAccType As String
+    Public Property Company As Guid
+
+
 
 
     Public ReadOnly Property Suffix() As String
@@ -1155,6 +1161,31 @@ Public Class csStudent
                     ClassDesc = reader("classdesc").ToString
                 Else
                     ClassDesc = ""
+                End If
+
+                If Not IsDBNull(reader("AccountNumber")) Then
+                    AccountNumber = Long.Parse(reader("AccountNumber").ToString)
+                Else
+                    AccountNumber = 0
+                End If
+
+                If Not IsDBNull(reader("AccType")) Then
+                    Acctype = reader("Acctype").ToString
+                Else
+                    Acctype = ""
+                End If
+
+                If Not IsDBNull(reader("SubAccType")) Then
+                    SubAccType = reader("SubAcctype").ToString
+                Else
+                    SubAccType = ""
+                End If
+
+
+                If Not IsDBNull(reader("SchoolCompany")) Then
+                    Company = Guid.Parse(reader("SchoolCompany").ToString)
+                Else
+                    Company = Guid.NewGuid
                 End If
 
             End While

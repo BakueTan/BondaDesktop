@@ -26,6 +26,7 @@ Public Class frmCoA
         LoadCurrencies()
         loadAccountingPeriods()
         LoadCoa()
+        LoadAccSubTypes()
         Me.ChartOfAccountsTableAdapter.Fill(Me.DsCoA.ChartOfAccounts)
 
         'TODO: This line of code loads data into the 'DsBanks.BankTransactions' table. You can move, or remove it, as needed.
@@ -40,6 +41,14 @@ Public Class frmCoA
         Show()
 
         Me.ReportViewer1.RefreshReport()
+    End Sub
+
+    Private Sub LoadAccSubTypes()
+        With AccSubTypeCombobox
+            .DataSource = AccountTypeSubTypes()
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
     End Sub
 
     Private Sub LoadCurrencies()
@@ -145,6 +154,19 @@ Public Class frmCoA
             cmd.Parameters.AddWithValue("@accountto", cboTransAccTo.SelectedValue)
             cmd.Parameters.AddWithValue("@company", Guid.Parse(cboTransCompany.SelectedValue.ToString))
             cmd.Parameters.AddWithValue("@dc", "C")
+
+            '     cmd.Parameters.AddWithValue("@transref", Guid.NewGuid)
+            Dim param As New SqlParameter With {
+                .ParameterName = "@transref",
+                .DbType = DbType.Guid,
+                .Direction = ParameterDirection.Output,
+                .Size = 16,
+                .Value = Guid.NewGuid
+                            }
+            cmd.Parameters.Add(param)
+
+
+
             cmd.ExecuteNonQuery()
             MsgBox("Bank Transfer effected")
             ChartOfAccountsTableAdapter.Fill(DsCoA.ChartOfAccounts)
@@ -257,6 +279,15 @@ Public Class frmCoA
                 cmd.Parameters.AddWithValue("@Transtype", "AB")
                 cmd.Parameters.AddWithValue("@company", cboJournalCompany.SelectedValue)
                 cmd.Parameters.AddWithValue("@dc", rw.cells("colJournalAdj").value)
+                Dim param As New SqlParameter With {
+                .ParameterName = "@transref",
+                .DbType = DbType.Guid,
+                .Direction = ParameterDirection.Output,
+                .Size = 16,
+                .Value = Guid.NewGuid
+                            }
+                cmd.Parameters.Add(param)
+
                 cmd.ExecuteNonQuery()
 
                 If rw.cells("colJournalAdj").value = "C" Then
@@ -274,6 +305,7 @@ Public Class frmCoA
             trans.Commit()
             MsgBox("Journal Posted")
             ChartOfAccountsTableAdapter.Fill(DsCoA.ChartOfAccounts)
+            dgJournalAcounts.Rows.Clear()
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -341,7 +373,7 @@ Public Class frmCoA
             coaRef = Guid.NewGuid
         End Try
         Try
-            ChartOfAccountsTableAdapter.CreateAccount(DsCoA.ChartOfAccounts, DescriptionTextBox.Text, Val(BalanceTextBox.Text), CurrencyComboBox.Text, AccTypeComboBox.Text, coaRef, ActiveCheckBox.Checked, IsSubAccountCheckBox.Checked, Val(ParentAccountComboBox.SelectedValue), Guid.Parse(cboAccCompany.SelectedValue.ToString))
+            ChartOfAccountsTableAdapter.CreateAccount(DsCoA.ChartOfAccounts, DescriptionTextBox.Text, Val(BalanceTextBox.Text), CurrencyComboBox.Text, AccTypeComboBox.Text, coaRef, ActiveCheckBox.Checked, IsSubAccountCheckBox.Checked, Val(ParentAccountComboBox.SelectedValue), Guid.Parse(cboAccCompany.SelectedValue.ToString), AccSubTypeCombobox.Text)
             MsgBox("Account Details updated")
             ChartOfAccountsTableAdapter.Fill(DsCoA.ChartOfAccounts)
         Catch ex As Exception
@@ -361,5 +393,17 @@ Public Class frmCoA
 
     Private Sub ToolStripButton29_Click(sender As Object, e As EventArgs) Handles ToolStripButton29.Click
 
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        dgJournalAcounts.Rows.Clear()
+    End Sub
+
+    Private Sub AccTypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccTypeComboBox.SelectedIndexChanged
+        With AccSubTypeCombobox
+            .DataSource = AccountTypeSubTypes(" where accounttype = '" & AccTypeComboBox.Text & "'")
+            .DisplayMember = "Text"
+            .ValueMember = "Value"
+        End With
     End Sub
 End Class

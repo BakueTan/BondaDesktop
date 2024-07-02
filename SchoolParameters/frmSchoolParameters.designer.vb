@@ -69,13 +69,26 @@ Partial Class frmSchoolParameters
         Dim Label16 As System.Windows.Forms.Label
         Dim Label24 As System.Windows.Forms.Label
         Dim Label25 As System.Windows.Forms.Label
+        Dim PaymentLabel As System.Windows.Forms.Label
+        Dim TypeLabel2 As System.Windows.Forms.Label
+        Dim AmountLabel As System.Windows.Forms.Label
+        Dim CurrencyLabel As System.Windows.Forms.Label
+        Dim RevenueAccountLabel As System.Windows.Forms.Label
+        Dim Label26 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSchoolParameters))
+        Dim PeriodLabel As System.Windows.Forms.Label
+        Dim DescriptionLabel2 As System.Windows.Forms.Label
+        Dim YearLabel1 As System.Windows.Forms.Label
+        Dim CurrentLabel As System.Windows.Forms.Label
+        Dim OpenLabel As System.Windows.Forms.Label
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CurrentIDValueTextBox = New System.Windows.Forms.TextBox()
+        Me.cboSchoolCompany = New System.Windows.Forms.ComboBox()
         Me.SchoolinfoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsSchoolParameters = New SchoolParameters.dsSchoolParameters()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.CurrentIDValueTextBox = New System.Windows.Forms.TextBox()
         Me.cboBaseCurrency = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtschoolref = New System.Windows.Forms.TextBox()
@@ -403,30 +416,27 @@ Partial Class frmSchoolParameters
         Me.tbPaymentPeriods = New System.Windows.Forms.TabPage()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.PaymentPeriodsDataGridView = New System.Windows.Forms.DataGridView()
-        Me.PeriodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CurrentDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.PaymentPeriodsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingNavigator6 = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.AddNew6 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripButton13 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton14 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton15 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton16 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton17 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton18 = New System.Windows.Forms.ToolStripButton()
         Me.tbPayCart = New System.Windows.Forms.TabPage()
+        Me.GroupBox25 = New System.Windows.Forms.GroupBox()
+        Me.PaymentTypeDataGridView = New System.Windows.Forms.DataGridView()
+        Me.PaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPayCartCurrency = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.CurrenciesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.colRevenueAccount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PaymentTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox21 = New System.Windows.Forms.GroupBox()
+        Me.txtPayCartRef = New System.Windows.Forms.TextBox()
+        Me.PaymentTextBox = New System.Windows.Forms.TextBox()
+        Me.TypeComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.AmountTextBox = New System.Windows.Forms.TextBox()
+        Me.CurrencyComboBox = New System.Windows.Forms.ComboBox()
+        Me.RevenueAccountComboBox = New System.Windows.Forms.ComboBox()
         Me.BindingNavigator9 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.AddNew9 = New System.Windows.Forms.ToolStripButton()
-        Me.PaymentTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ToolStripLabel5 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripButton34 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton35 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton36 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
@@ -436,30 +446,11 @@ Partial Class frmSchoolParameters
         Me.ToolStripButton38 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton39 = New System.Windows.Forms.ToolStripButton()
-        Me.PaymentTypeDataGridView = New System.Windows.Forms.DataGridView()
-        Me.tbPAyMethods = New System.Windows.Forms.TabPage()
-        Me.GroupBox22 = New System.Windows.Forms.GroupBox()
-        Me.BindingNavigator10 = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.AddNew10 = New System.Windows.Forms.ToolStripButton()
         Me.CashtypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ToolStripLabel6 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripButton41 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton42 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton43 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator16 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripTextBox6 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripSeparator17 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton44 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton45 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator18 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton46 = New System.Windows.Forms.ToolStripButton()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.CashtypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tbCurrencies = New System.Windows.Forms.TabPage()
         Me.GroupBox23 = New System.Windows.Forms.GroupBox()
         Me.BindingNavigator11 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.ToolStripButton19 = New System.Windows.Forms.ToolStripButton()
-        Me.CurrenciesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ToolStripLabel7 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton26 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton33 = New System.Windows.Forms.ToolStripButton()
@@ -533,10 +524,30 @@ Partial Class frmSchoolParameters
         Me.QualificationsTableAdapter = New SchoolParameters.dsSchoolParametersTableAdapters.QualificationsTableAdapter()
         Me.CurrenciesTableAdapter = New SchoolParameters.dsSchoolParametersTableAdapters.CurrenciesTableAdapter()
         Me.TableAdapterManager = New SchoolParameters.dsSchoolParametersTableAdapters.TableAdapterManager()
-        Me.PaymentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TypeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.AmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Currency = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.PeriodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Year = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CurrentDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Open = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.GroupBox26 = New System.Windows.Forms.GroupBox()
+        Me.PeriodTextBox = New System.Windows.Forms.TextBox()
+        Me.DescriptionTextBox2 = New System.Windows.Forms.TextBox()
+        Me.YearComboBox = New System.Windows.Forms.ComboBox()
+        Me.CurrentCheckBox = New System.Windows.Forms.CheckBox()
+        Me.OpenCheckBox = New System.Windows.Forms.CheckBox()
+        Me.PeriodRefLabel1 = New System.Windows.Forms.Label()
+        Me.BindingNavigator6 = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.AddNew6 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripButton14 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton15 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton16 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton17 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton18 = New System.Windows.Forms.ToolStripButton()
         SubjectIDLabel = New System.Windows.Forms.Label()
         SubjectLabel = New System.Windows.Forms.Label()
         UserNameLabel = New System.Windows.Forms.Label()
@@ -583,6 +594,17 @@ Partial Class frmSchoolParameters
         Label16 = New System.Windows.Forms.Label()
         Label24 = New System.Windows.Forms.Label()
         Label25 = New System.Windows.Forms.Label()
+        PaymentLabel = New System.Windows.Forms.Label()
+        TypeLabel2 = New System.Windows.Forms.Label()
+        AmountLabel = New System.Windows.Forms.Label()
+        CurrencyLabel = New System.Windows.Forms.Label()
+        RevenueAccountLabel = New System.Windows.Forms.Label()
+        Label26 = New System.Windows.Forms.Label()
+        PeriodLabel = New System.Windows.Forms.Label()
+        DescriptionLabel2 = New System.Windows.Forms.Label()
+        YearLabel1 = New System.Windows.Forms.Label()
+        CurrentLabel = New System.Windows.Forms.Label()
+        OpenLabel = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -672,25 +694,19 @@ Partial Class frmSchoolParameters
         Me.GroupBox8.SuspendLayout()
         CType(Me.PaymentPeriodsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PaymentPeriodsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingNavigator6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.BindingNavigator6.SuspendLayout()
         Me.tbPayCart.SuspendLayout()
+        Me.GroupBox25.SuspendLayout()
+        CType(Me.PaymentTypeDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CurrenciesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox21.SuspendLayout()
         CType(Me.BindingNavigator9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator9.SuspendLayout()
-        CType(Me.PaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentTypeDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tbPAyMethods.SuspendLayout()
-        Me.GroupBox22.SuspendLayout()
-        CType(Me.BindingNavigator10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.BindingNavigator10.SuspendLayout()
         CType(Me.CashtypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbCurrencies.SuspendLayout()
         Me.GroupBox23.SuspendLayout()
         CType(Me.BindingNavigator11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator11.SuspendLayout()
-        CType(Me.CurrenciesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbExchangeRates.SuspendLayout()
         Me.GroupBox24.SuspendLayout()
@@ -702,6 +718,9 @@ Partial Class frmSchoolParameters
         Me.BindingNavigator12.SuspendLayout()
         CType(Me.QualificationsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QualificationsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox26.SuspendLayout()
+        CType(Me.BindingNavigator6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BindingNavigator6.SuspendLayout()
         Me.SuspendLayout()
         '
         'SubjectIDLabel
@@ -887,7 +906,7 @@ Partial Class frmSchoolParameters
         'LogoLabel
         '
         LogoLabel.AutoSize = True
-        LogoLabel.Location = New System.Drawing.Point(460, 176)
+        LogoLabel.Location = New System.Drawing.Point(564, 116)
         LogoLabel.Name = "LogoLabel"
         LogoLabel.Size = New System.Drawing.Size(34, 13)
         LogoLabel.TabIndex = 10
@@ -1119,6 +1138,60 @@ Partial Class frmSchoolParameters
         Label25.TabIndex = 20
         Label25.Text = "Stamp 2:"
         '
+        'PaymentLabel
+        '
+        PaymentLabel.AutoSize = True
+        PaymentLabel.Location = New System.Drawing.Point(6, 54)
+        PaymentLabel.Name = "PaymentLabel"
+        PaymentLabel.Size = New System.Drawing.Size(51, 13)
+        PaymentLabel.TabIndex = 11
+        PaymentLabel.Text = "Payment:"
+        '
+        'TypeLabel2
+        '
+        TypeLabel2.AutoSize = True
+        TypeLabel2.Location = New System.Drawing.Point(6, 80)
+        TypeLabel2.Name = "TypeLabel2"
+        TypeLabel2.Size = New System.Drawing.Size(34, 13)
+        TypeLabel2.TabIndex = 13
+        TypeLabel2.Text = "Type:"
+        '
+        'AmountLabel
+        '
+        AmountLabel.AutoSize = True
+        AmountLabel.Location = New System.Drawing.Point(6, 107)
+        AmountLabel.Name = "AmountLabel"
+        AmountLabel.Size = New System.Drawing.Size(46, 13)
+        AmountLabel.TabIndex = 15
+        AmountLabel.Text = "Amount:"
+        '
+        'CurrencyLabel
+        '
+        CurrencyLabel.AutoSize = True
+        CurrencyLabel.Location = New System.Drawing.Point(6, 133)
+        CurrencyLabel.Name = "CurrencyLabel"
+        CurrencyLabel.Size = New System.Drawing.Size(52, 13)
+        CurrencyLabel.TabIndex = 17
+        CurrencyLabel.Text = "Currency:"
+        '
+        'RevenueAccountLabel
+        '
+        RevenueAccountLabel.AutoSize = True
+        RevenueAccountLabel.Location = New System.Drawing.Point(6, 160)
+        RevenueAccountLabel.Name = "RevenueAccountLabel"
+        RevenueAccountLabel.Size = New System.Drawing.Size(97, 13)
+        RevenueAccountLabel.TabIndex = 19
+        RevenueAccountLabel.Text = "Revenue Account:"
+        '
+        'Label26
+        '
+        Label26.AutoSize = True
+        Label26.Location = New System.Drawing.Point(25, 170)
+        Label26.Name = "Label26"
+        Label26.Size = New System.Drawing.Size(88, 13)
+        Label26.TabIndex = 32
+        Label26.Text = "Auto StudentIDs:"
+        '
         'TabControl1
         '
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1153,6 +1226,9 @@ Partial Class frmSchoolParameters
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cboSchoolCompany)
+        Me.GroupBox1.Controls.Add(Me.Label28)
+        Me.GroupBox1.Controls.Add(Label26)
         Me.GroupBox1.Controls.Add(CurrentIDValueLabel)
         Me.GroupBox1.Controls.Add(Me.CurrentIDValueTextBox)
         Me.GroupBox1.Controls.Add(Me.cboBaseCurrency)
@@ -1183,14 +1259,14 @@ Partial Class frmSchoolParameters
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "SchoolInfo"
         '
-        'CurrentIDValueTextBox
+        'cboSchoolCompany
         '
-        Me.CurrentIDValueTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SchoolinfoBindingSource, "CurrentIDValue", True))
-        Me.CurrentIDValueTextBox.Location = New System.Drawing.Point(180, 271)
-        Me.CurrentIDValueTextBox.Name = "CurrentIDValueTextBox"
-        Me.CurrentIDValueTextBox.ReadOnly = True
-        Me.CurrentIDValueTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.CurrentIDValueTextBox.TabIndex = 8
+        Me.cboSchoolCompany.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SchoolinfoBindingSource, "CompanyName", True))
+        Me.cboSchoolCompany.FormattingEnabled = True
+        Me.cboSchoolCompany.Location = New System.Drawing.Point(180, 322)
+        Me.cboSchoolCompany.Name = "cboSchoolCompany"
+        Me.cboSchoolCompany.Size = New System.Drawing.Size(168, 21)
+        Me.cboSchoolCompany.TabIndex = 10
         '
         'SchoolinfoBindingSource
         '
@@ -1200,7 +1276,26 @@ Partial Class frmSchoolParameters
         'DsSchoolParameters
         '
         Me.DsSchoolParameters.DataSetName = "dsSchoolParameters"
+        Me.DsSchoolParameters.EnforceConstraints = False
         Me.DsSchoolParameters.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(24, 325)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(111, 13)
+        Me.Label28.TabIndex = 34
+        Me.Label28.Text = "Accounting Company:"
+        '
+        'CurrentIDValueTextBox
+        '
+        Me.CurrentIDValueTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SchoolinfoBindingSource, "CurrentIDValue", True))
+        Me.CurrentIDValueTextBox.Location = New System.Drawing.Point(180, 271)
+        Me.CurrentIDValueTextBox.Name = "CurrentIDValueTextBox"
+        Me.CurrentIDValueTextBox.ReadOnly = True
+        Me.CurrentIDValueTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.CurrentIDValueTextBox.TabIndex = 8
         '
         'cboBaseCurrency
         '
@@ -1208,7 +1303,7 @@ Partial Class frmSchoolParameters
         Me.cboBaseCurrency.FormattingEnabled = True
         Me.cboBaseCurrency.Location = New System.Drawing.Point(180, 295)
         Me.cboBaseCurrency.Name = "cboBaseCurrency"
-        Me.cboBaseCurrency.Size = New System.Drawing.Size(100, 21)
+        Me.cboBaseCurrency.Size = New System.Drawing.Size(168, 21)
         Me.cboBaseCurrency.TabIndex = 9
         '
         'Label8
@@ -1224,10 +1319,10 @@ Partial Class frmSchoolParameters
         '
         Me.txtschoolref.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtschoolref.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SchoolinfoBindingSource, "Ref", True))
-        Me.txtschoolref.Location = New System.Drawing.Point(180, 322)
+        Me.txtschoolref.Location = New System.Drawing.Point(677, 349)
         Me.txtschoolref.Name = "txtschoolref"
         Me.txtschoolref.ReadOnly = True
-        Me.txtschoolref.Size = New System.Drawing.Size(10, 20)
+        Me.txtschoolref.Size = New System.Drawing.Size(226, 20)
         Me.txtschoolref.TabIndex = 27
         '
         'cboIdYearFormat
@@ -1237,7 +1332,7 @@ Partial Class frmSchoolParameters
         Me.cboIdYearFormat.Items.AddRange(New Object() {"YY", "YYY", "YYYY"})
         Me.cboIdYearFormat.Location = New System.Drawing.Point(180, 247)
         Me.cboIdYearFormat.Name = "cboIdYearFormat"
-        Me.cboIdYearFormat.Size = New System.Drawing.Size(100, 21)
+        Me.cboIdYearFormat.Size = New System.Drawing.Size(168, 21)
         Me.cboIdYearFormat.TabIndex = 7
         '
         'Label20
@@ -1273,7 +1368,6 @@ Partial Class frmSchoolParameters
         Me.AutoStudIDCheckBox.Name = "AutoStudIDCheckBox"
         Me.AutoStudIDCheckBox.Size = New System.Drawing.Size(104, 24)
         Me.AutoStudIDCheckBox.TabIndex = 4
-        Me.AutoStudIDCheckBox.Text = "AutoStudentID"
         Me.AutoStudIDCheckBox.UseVisualStyleBackColor = True
         '
         'LogoPictureBox
@@ -1281,7 +1375,7 @@ Partial Class frmSchoolParameters
         Me.LogoPictureBox.BackgroundImage = Global.SchoolParameters.My.Resources.Resources.Upload___Transfer_Photos
         Me.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.LogoPictureBox.DataBindings.Add(New System.Windows.Forms.Binding("Image", Me.SchoolinfoBindingSource, "Logo", True))
-        Me.LogoPictureBox.Location = New System.Drawing.Point(369, 195)
+        Me.LogoPictureBox.Location = New System.Drawing.Point(496, 139)
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.LogoPictureBox.Size = New System.Drawing.Size(226, 147)
         Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -4191,7 +4285,6 @@ Partial Class frmSchoolParameters
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl4.Controls.Add(Me.tbPaymentPeriods)
         Me.TabControl4.Controls.Add(Me.tbPayCart)
-        Me.TabControl4.Controls.Add(Me.tbPAyMethods)
         Me.TabControl4.Controls.Add(Me.tbCurrencies)
         Me.TabControl4.Controls.Add(Me.tbExchangeRates)
         Me.TabControl4.Location = New System.Drawing.Point(15, 9)
@@ -4202,6 +4295,7 @@ Partial Class frmSchoolParameters
         '
         'tbPaymentPeriods
         '
+        Me.tbPaymentPeriods.Controls.Add(Me.GroupBox26)
         Me.tbPaymentPeriods.Controls.Add(Me.GroupBox8)
         Me.tbPaymentPeriods.Location = New System.Drawing.Point(4, 22)
         Me.tbPaymentPeriods.Name = "tbPaymentPeriods"
@@ -4217,161 +4311,35 @@ Partial Class frmSchoolParameters
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox8.Controls.Add(Me.PaymentPeriodsDataGridView)
-        Me.GroupBox8.Controls.Add(Me.BindingNavigator6)
-        Me.GroupBox8.Location = New System.Drawing.Point(125, 58)
+        Me.GroupBox8.Location = New System.Drawing.Point(337, 6)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(660, 266)
+        Me.GroupBox8.Size = New System.Drawing.Size(567, 299)
         Me.GroupBox8.TabIndex = 26
         Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "Periods"
+        Me.GroupBox8.Text = "Periods List"
         '
         'PaymentPeriodsDataGridView
         '
+        Me.PaymentPeriodsDataGridView.AllowUserToAddRows = False
+        Me.PaymentPeriodsDataGridView.AllowUserToDeleteRows = False
         Me.PaymentPeriodsDataGridView.AutoGenerateColumns = False
         Me.PaymentPeriodsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.PaymentPeriodsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PeriodDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.CurrentDataGridViewCheckBoxColumn})
+        Me.PaymentPeriodsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PeriodDataGridViewTextBoxColumn, Me.Year, Me.DescriptionDataGridViewTextBoxColumn, Me.CurrentDataGridViewCheckBoxColumn, Me.Open})
         Me.PaymentPeriodsDataGridView.DataSource = Me.PaymentPeriodsBindingSource
-        Me.PaymentPeriodsDataGridView.Location = New System.Drawing.Point(57, 60)
+        Me.PaymentPeriodsDataGridView.Location = New System.Drawing.Point(6, 19)
         Me.PaymentPeriodsDataGridView.Name = "PaymentPeriodsDataGridView"
-        Me.PaymentPeriodsDataGridView.Size = New System.Drawing.Size(445, 181)
+        Me.PaymentPeriodsDataGridView.ReadOnly = True
+        Me.PaymentPeriodsDataGridView.Size = New System.Drawing.Size(544, 181)
         Me.PaymentPeriodsDataGridView.TabIndex = 6
-        '
-        'PeriodDataGridViewTextBoxColumn
-        '
-        Me.PeriodDataGridViewTextBoxColumn.DataPropertyName = "Period"
-        Me.PeriodDataGridViewTextBoxColumn.HeaderText = "Period"
-        Me.PeriodDataGridViewTextBoxColumn.Name = "PeriodDataGridViewTextBoxColumn"
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        '
-        'CurrentDataGridViewCheckBoxColumn
-        '
-        Me.CurrentDataGridViewCheckBoxColumn.DataPropertyName = "Current"
-        Me.CurrentDataGridViewCheckBoxColumn.HeaderText = "Current"
-        Me.CurrentDataGridViewCheckBoxColumn.Name = "CurrentDataGridViewCheckBoxColumn"
         '
         'PaymentPeriodsBindingSource
         '
         Me.PaymentPeriodsBindingSource.DataMember = "PaymentPeriods"
         Me.PaymentPeriodsBindingSource.DataSource = Me.DsSchoolParameters
         '
-        'BindingNavigator6
-        '
-        Me.BindingNavigator6.AddNewItem = Me.AddNew6
-        Me.BindingNavigator6.BindingSource = Me.PaymentPeriodsBindingSource
-        Me.BindingNavigator6.CountItem = Me.ToolStripLabel2
-        Me.BindingNavigator6.DeleteItem = Me.ToolStripButton13
-        Me.BindingNavigator6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton14, Me.ToolStripButton15, Me.ToolStripSeparator4, Me.ToolStripTextBox2, Me.ToolStripLabel2, Me.ToolStripSeparator5, Me.ToolStripButton16, Me.ToolStripButton17, Me.ToolStripSeparator6, Me.AddNew6, Me.ToolStripButton13, Me.ToolStripButton18})
-        Me.BindingNavigator6.Location = New System.Drawing.Point(3, 16)
-        Me.BindingNavigator6.MoveFirstItem = Me.ToolStripButton14
-        Me.BindingNavigator6.MoveLastItem = Me.ToolStripButton17
-        Me.BindingNavigator6.MoveNextItem = Me.ToolStripButton16
-        Me.BindingNavigator6.MovePreviousItem = Me.ToolStripButton15
-        Me.BindingNavigator6.Name = "BindingNavigator6"
-        Me.BindingNavigator6.PositionItem = Me.ToolStripTextBox2
-        Me.BindingNavigator6.Size = New System.Drawing.Size(654, 25)
-        Me.BindingNavigator6.TabIndex = 6
-        Me.BindingNavigator6.Text = "BindingNavigator6"
-        '
-        'AddNew6
-        '
-        Me.AddNew6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.AddNew6.Image = CType(resources.GetObject("AddNew6.Image"), System.Drawing.Image)
-        Me.AddNew6.Name = "AddNew6"
-        Me.AddNew6.RightToLeftAutoMirrorImage = True
-        Me.AddNew6.Size = New System.Drawing.Size(23, 22)
-        Me.AddNew6.Text = "Add new"
-        '
-        'ToolStripLabel2
-        '
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(35, 22)
-        Me.ToolStripLabel2.Text = "of {0}"
-        Me.ToolStripLabel2.ToolTipText = "Total number of items"
-        '
-        'ToolStripButton13
-        '
-        Me.ToolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton13.Image = CType(resources.GetObject("ToolStripButton13.Image"), System.Drawing.Image)
-        Me.ToolStripButton13.Name = "ToolStripButton13"
-        Me.ToolStripButton13.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton13.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton13.Text = "Delete"
-        '
-        'ToolStripButton14
-        '
-        Me.ToolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton14.Image = CType(resources.GetObject("ToolStripButton14.Image"), System.Drawing.Image)
-        Me.ToolStripButton14.Name = "ToolStripButton14"
-        Me.ToolStripButton14.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton14.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton14.Text = "Move first"
-        '
-        'ToolStripButton15
-        '
-        Me.ToolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton15.Image = CType(resources.GetObject("ToolStripButton15.Image"), System.Drawing.Image)
-        Me.ToolStripButton15.Name = "ToolStripButton15"
-        Me.ToolStripButton15.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton15.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton15.Text = "Move previous"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripTextBox2
-        '
-        Me.ToolStripTextBox2.AccessibleName = "Position"
-        Me.ToolStripTextBox2.AutoSize = False
-        Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
-        Me.ToolStripTextBox2.Size = New System.Drawing.Size(50, 21)
-        Me.ToolStripTextBox2.Text = "0"
-        Me.ToolStripTextBox2.ToolTipText = "Current position"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripButton16
-        '
-        Me.ToolStripButton16.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton16.Image = CType(resources.GetObject("ToolStripButton16.Image"), System.Drawing.Image)
-        Me.ToolStripButton16.Name = "ToolStripButton16"
-        Me.ToolStripButton16.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton16.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton16.Text = "Move next"
-        '
-        'ToolStripButton17
-        '
-        Me.ToolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton17.Image = CType(resources.GetObject("ToolStripButton17.Image"), System.Drawing.Image)
-        Me.ToolStripButton17.Name = "ToolStripButton17"
-        Me.ToolStripButton17.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton17.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton17.Text = "Move last"
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripButton18
-        '
-        Me.ToolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton18.Image = CType(resources.GetObject("ToolStripButton18.Image"), System.Drawing.Image)
-        Me.ToolStripButton18.Name = "ToolStripButton18"
-        Me.ToolStripButton18.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton18.Text = "Save Data"
-        '
         'tbPayCart
         '
+        Me.tbPayCart.Controls.Add(Me.GroupBox25)
         Me.tbPayCart.Controls.Add(Me.GroupBox21)
         Me.tbPayCart.Location = New System.Drawing.Point(4, 22)
         Me.tbPayCart.Name = "tbPayCart"
@@ -4381,24 +4349,170 @@ Partial Class frmSchoolParameters
         Me.tbPayCart.Text = "PaymentCartegories"
         Me.tbPayCart.UseVisualStyleBackColor = True
         '
+        'GroupBox25
+        '
+        Me.GroupBox25.Controls.Add(Me.PaymentTypeDataGridView)
+        Me.GroupBox25.Location = New System.Drawing.Point(324, 28)
+        Me.GroupBox25.Name = "GroupBox25"
+        Me.GroupBox25.Size = New System.Drawing.Size(567, 332)
+        Me.GroupBox25.TabIndex = 11
+        Me.GroupBox25.TabStop = False
+        Me.GroupBox25.Text = "Cartegories List"
+        '
+        'PaymentTypeDataGridView
+        '
+        Me.PaymentTypeDataGridView.AllowUserToAddRows = False
+        Me.PaymentTypeDataGridView.AllowUserToDeleteRows = False
+        Me.PaymentTypeDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PaymentTypeDataGridView.AutoGenerateColumns = False
+        Me.PaymentTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.PaymentTypeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn1, Me.AmountDataGridViewTextBoxColumn, Me.colPayCartCurrency, Me.colRevenueAccount})
+        Me.PaymentTypeDataGridView.DataSource = Me.PaymentTypeBindingSource
+        Me.PaymentTypeDataGridView.Location = New System.Drawing.Point(6, 16)
+        Me.PaymentTypeDataGridView.Name = "PaymentTypeDataGridView"
+        Me.PaymentTypeDataGridView.ReadOnly = True
+        Me.PaymentTypeDataGridView.Size = New System.Drawing.Size(555, 303)
+        Me.PaymentTypeDataGridView.TabIndex = 10
+        '
+        'PaymentDataGridViewTextBoxColumn
+        '
+        Me.PaymentDataGridViewTextBoxColumn.DataPropertyName = "Payment"
+        Me.PaymentDataGridViewTextBoxColumn.HeaderText = "Payment"
+        Me.PaymentDataGridViewTextBoxColumn.Name = "PaymentDataGridViewTextBoxColumn"
+        Me.PaymentDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PaymentDataGridViewTextBoxColumn.Width = 250
+        '
+        'TypeDataGridViewTextBoxColumn1
+        '
+        Me.TypeDataGridViewTextBoxColumn1.DataPropertyName = "Type"
+        Me.TypeDataGridViewTextBoxColumn1.HeaderText = "Type"
+        Me.TypeDataGridViewTextBoxColumn1.Items.AddRange(New Object() {"SchoolFees", "Ancillary"})
+        Me.TypeDataGridViewTextBoxColumn1.Name = "TypeDataGridViewTextBoxColumn1"
+        Me.TypeDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.TypeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.TypeDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'AmountDataGridViewTextBoxColumn
+        '
+        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
+        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
+        Me.AmountDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'colPayCartCurrency
+        '
+        Me.colPayCartCurrency.DataPropertyName = "Currency"
+        Me.colPayCartCurrency.DataSource = Me.CurrenciesBindingSource
+        Me.colPayCartCurrency.DisplayMember = "Currency"
+        Me.colPayCartCurrency.HeaderText = "Currency"
+        Me.colPayCartCurrency.Name = "colPayCartCurrency"
+        Me.colPayCartCurrency.ReadOnly = True
+        Me.colPayCartCurrency.ValueMember = "Currency"
+        '
+        'CurrenciesBindingSource
+        '
+        Me.CurrenciesBindingSource.DataMember = "Currencies"
+        Me.CurrenciesBindingSource.DataSource = Me.DsSchoolParameters
+        '
+        'colRevenueAccount
+        '
+        Me.colRevenueAccount.DataPropertyName = "RevenueAccount"
+        Me.colRevenueAccount.HeaderText = "RevenueAccount"
+        Me.colRevenueAccount.Name = "colRevenueAccount"
+        Me.colRevenueAccount.ReadOnly = True
+        Me.colRevenueAccount.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.colRevenueAccount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.colRevenueAccount.Width = 200
+        '
+        'PaymentTypeBindingSource
+        '
+        Me.PaymentTypeBindingSource.DataMember = "PaymentType"
+        Me.PaymentTypeBindingSource.DataSource = Me.DsSchoolParameters
+        '
         'GroupBox21
         '
+        Me.GroupBox21.Controls.Add(Me.txtPayCartRef)
+        Me.GroupBox21.Controls.Add(PaymentLabel)
+        Me.GroupBox21.Controls.Add(Me.PaymentTextBox)
+        Me.GroupBox21.Controls.Add(TypeLabel2)
+        Me.GroupBox21.Controls.Add(Me.TypeComboBox2)
+        Me.GroupBox21.Controls.Add(AmountLabel)
+        Me.GroupBox21.Controls.Add(Me.AmountTextBox)
+        Me.GroupBox21.Controls.Add(CurrencyLabel)
+        Me.GroupBox21.Controls.Add(Me.CurrencyComboBox)
+        Me.GroupBox21.Controls.Add(RevenueAccountLabel)
+        Me.GroupBox21.Controls.Add(Me.RevenueAccountComboBox)
         Me.GroupBox21.Controls.Add(Me.BindingNavigator9)
-        Me.GroupBox21.Controls.Add(Me.PaymentTypeDataGridView)
-        Me.GroupBox21.Location = New System.Drawing.Point(138, 28)
+        Me.GroupBox21.Location = New System.Drawing.Point(6, 28)
         Me.GroupBox21.Name = "GroupBox21"
-        Me.GroupBox21.Size = New System.Drawing.Size(634, 318)
+        Me.GroupBox21.Size = New System.Drawing.Size(312, 332)
         Me.GroupBox21.TabIndex = 0
         Me.GroupBox21.TabStop = False
         Me.GroupBox21.Text = "Payment Cartegories"
+        '
+        'txtPayCartRef
+        '
+        Me.txtPayCartRef.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentTypeBindingSource, "PayTypeRef", True))
+        Me.txtPayCartRef.Enabled = False
+        Me.txtPayCartRef.Location = New System.Drawing.Point(-2, 306)
+        Me.txtPayCartRef.Name = "txtPayCartRef"
+        Me.txtPayCartRef.ReadOnly = True
+        Me.txtPayCartRef.Size = New System.Drawing.Size(314, 20)
+        Me.txtPayCartRef.TabIndex = 21
+        '
+        'PaymentTextBox
+        '
+        Me.PaymentTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentTypeBindingSource, "Payment", True))
+        Me.PaymentTextBox.Location = New System.Drawing.Point(109, 51)
+        Me.PaymentTextBox.Name = "PaymentTextBox"
+        Me.PaymentTextBox.Size = New System.Drawing.Size(181, 20)
+        Me.PaymentTextBox.TabIndex = 12
+        '
+        'TypeComboBox2
+        '
+        Me.TypeComboBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentTypeBindingSource, "Type", True))
+        Me.TypeComboBox2.FormattingEnabled = True
+        Me.TypeComboBox2.Items.AddRange(New Object() {"SchoolFees", "Ancillary"})
+        Me.TypeComboBox2.Location = New System.Drawing.Point(109, 77)
+        Me.TypeComboBox2.Name = "TypeComboBox2"
+        Me.TypeComboBox2.Size = New System.Drawing.Size(121, 21)
+        Me.TypeComboBox2.TabIndex = 14
+        '
+        'AmountTextBox
+        '
+        Me.AmountTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentTypeBindingSource, "Amount", True))
+        Me.AmountTextBox.Location = New System.Drawing.Point(109, 104)
+        Me.AmountTextBox.Name = "AmountTextBox"
+        Me.AmountTextBox.Size = New System.Drawing.Size(121, 20)
+        Me.AmountTextBox.TabIndex = 16
+        '
+        'CurrencyComboBox
+        '
+        Me.CurrencyComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentTypeBindingSource, "Currency", True))
+        Me.CurrencyComboBox.FormattingEnabled = True
+        Me.CurrencyComboBox.Location = New System.Drawing.Point(109, 130)
+        Me.CurrencyComboBox.Name = "CurrencyComboBox"
+        Me.CurrencyComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.CurrencyComboBox.TabIndex = 18
+        '
+        'RevenueAccountComboBox
+        '
+        Me.RevenueAccountComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentTypeBindingSource, "Description", True))
+        Me.RevenueAccountComboBox.FormattingEnabled = True
+        Me.RevenueAccountComboBox.Location = New System.Drawing.Point(109, 157)
+        Me.RevenueAccountComboBox.Name = "RevenueAccountComboBox"
+        Me.RevenueAccountComboBox.Size = New System.Drawing.Size(181, 21)
+        Me.RevenueAccountComboBox.TabIndex = 20
         '
         'BindingNavigator9
         '
         Me.BindingNavigator9.AddNewItem = Me.AddNew9
         Me.BindingNavigator9.BindingSource = Me.PaymentTypeBindingSource
         Me.BindingNavigator9.CountItem = Me.ToolStripLabel5
-        Me.BindingNavigator9.DeleteItem = Me.ToolStripButton34
-        Me.BindingNavigator9.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton35, Me.ToolStripButton36, Me.ToolStripSeparator13, Me.ToolStripTextBox5, Me.ToolStripLabel5, Me.ToolStripSeparator14, Me.ToolStripButton37, Me.ToolStripButton38, Me.ToolStripSeparator15, Me.AddNew9, Me.ToolStripButton34, Me.ToolStripButton39})
+        Me.BindingNavigator9.DeleteItem = Nothing
+        Me.BindingNavigator9.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton35, Me.ToolStripButton36, Me.ToolStripSeparator13, Me.ToolStripTextBox5, Me.ToolStripLabel5, Me.ToolStripSeparator14, Me.ToolStripButton37, Me.ToolStripButton38, Me.ToolStripSeparator15, Me.AddNew9, Me.ToolStripButton39})
         Me.BindingNavigator9.Location = New System.Drawing.Point(3, 16)
         Me.BindingNavigator9.MoveFirstItem = Me.ToolStripButton35
         Me.BindingNavigator9.MoveLastItem = Me.ToolStripButton38
@@ -4406,7 +4520,7 @@ Partial Class frmSchoolParameters
         Me.BindingNavigator9.MovePreviousItem = Me.ToolStripButton36
         Me.BindingNavigator9.Name = "BindingNavigator9"
         Me.BindingNavigator9.PositionItem = Me.ToolStripTextBox5
-        Me.BindingNavigator9.Size = New System.Drawing.Size(628, 25)
+        Me.BindingNavigator9.Size = New System.Drawing.Size(306, 25)
         Me.BindingNavigator9.TabIndex = 11
         Me.BindingNavigator9.Text = "BindingNavigator9"
         '
@@ -4419,26 +4533,12 @@ Partial Class frmSchoolParameters
         Me.AddNew9.Size = New System.Drawing.Size(23, 22)
         Me.AddNew9.Text = "Add new"
         '
-        'PaymentTypeBindingSource
-        '
-        Me.PaymentTypeBindingSource.DataMember = "PaymentType"
-        Me.PaymentTypeBindingSource.DataSource = Me.DsSchoolParameters
-        '
         'ToolStripLabel5
         '
         Me.ToolStripLabel5.Name = "ToolStripLabel5"
         Me.ToolStripLabel5.Size = New System.Drawing.Size(35, 22)
         Me.ToolStripLabel5.Text = "of {0}"
         Me.ToolStripLabel5.ToolTipText = "Total number of items"
-        '
-        'ToolStripButton34
-        '
-        Me.ToolStripButton34.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton34.Image = CType(resources.GetObject("ToolStripButton34.Image"), System.Drawing.Image)
-        Me.ToolStripButton34.Name = "ToolStripButton34"
-        Me.ToolStripButton34.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton34.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton34.Text = "Delete"
         '
         'ToolStripButton35
         '
@@ -4508,177 +4608,10 @@ Partial Class frmSchoolParameters
         Me.ToolStripButton39.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton39.Text = "Save Data"
         '
-        'PaymentTypeDataGridView
-        '
-        Me.PaymentTypeDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PaymentTypeDataGridView.AutoGenerateColumns = False
-        Me.PaymentTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.PaymentTypeDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn1, Me.AmountDataGridViewTextBoxColumn, Me.Currency})
-        Me.PaymentTypeDataGridView.DataSource = Me.PaymentTypeBindingSource
-        Me.PaymentTypeDataGridView.Location = New System.Drawing.Point(17, 54)
-        Me.PaymentTypeDataGridView.Name = "PaymentTypeDataGridView"
-        Me.PaymentTypeDataGridView.Size = New System.Drawing.Size(596, 210)
-        Me.PaymentTypeDataGridView.TabIndex = 10
-        '
-        'tbPAyMethods
-        '
-        Me.tbPAyMethods.Controls.Add(Me.GroupBox22)
-        Me.tbPAyMethods.Location = New System.Drawing.Point(4, 22)
-        Me.tbPAyMethods.Name = "tbPAyMethods"
-        Me.tbPAyMethods.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbPAyMethods.Size = New System.Drawing.Size(910, 383)
-        Me.tbPAyMethods.TabIndex = 2
-        Me.tbPAyMethods.Text = "PaymentMethods"
-        Me.tbPAyMethods.UseVisualStyleBackColor = True
-        '
-        'GroupBox22
-        '
-        Me.GroupBox22.Controls.Add(Me.BindingNavigator10)
-        Me.GroupBox22.Controls.Add(Me.DataGridView1)
-        Me.GroupBox22.Location = New System.Drawing.Point(191, 57)
-        Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(580, 252)
-        Me.GroupBox22.TabIndex = 0
-        Me.GroupBox22.TabStop = False
-        Me.GroupBox22.Text = "PaymentMethods"
-        '
-        'BindingNavigator10
-        '
-        Me.BindingNavigator10.AddNewItem = Me.AddNew10
-        Me.BindingNavigator10.BindingSource = Me.CashtypeBindingSource
-        Me.BindingNavigator10.CountItem = Me.ToolStripLabel6
-        Me.BindingNavigator10.DeleteItem = Me.ToolStripButton41
-        Me.BindingNavigator10.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton42, Me.ToolStripButton43, Me.ToolStripSeparator16, Me.ToolStripTextBox6, Me.ToolStripLabel6, Me.ToolStripSeparator17, Me.ToolStripButton44, Me.ToolStripButton45, Me.ToolStripSeparator18, Me.AddNew10, Me.ToolStripButton41, Me.ToolStripButton46})
-        Me.BindingNavigator10.Location = New System.Drawing.Point(3, 16)
-        Me.BindingNavigator10.MoveFirstItem = Me.ToolStripButton42
-        Me.BindingNavigator10.MoveLastItem = Me.ToolStripButton45
-        Me.BindingNavigator10.MoveNextItem = Me.ToolStripButton44
-        Me.BindingNavigator10.MovePreviousItem = Me.ToolStripButton43
-        Me.BindingNavigator10.Name = "BindingNavigator10"
-        Me.BindingNavigator10.PositionItem = Me.ToolStripTextBox6
-        Me.BindingNavigator10.Size = New System.Drawing.Size(574, 25)
-        Me.BindingNavigator10.TabIndex = 13
-        Me.BindingNavigator10.Text = "BindingNavigator10"
-        '
-        'AddNew10
-        '
-        Me.AddNew10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.AddNew10.Image = CType(resources.GetObject("AddNew10.Image"), System.Drawing.Image)
-        Me.AddNew10.Name = "AddNew10"
-        Me.AddNew10.RightToLeftAutoMirrorImage = True
-        Me.AddNew10.Size = New System.Drawing.Size(23, 22)
-        Me.AddNew10.Text = "Add new"
-        '
         'CashtypeBindingSource
         '
         Me.CashtypeBindingSource.DataMember = "Cashtype"
         Me.CashtypeBindingSource.DataSource = Me.DsSchoolParameters
-        '
-        'ToolStripLabel6
-        '
-        Me.ToolStripLabel6.Name = "ToolStripLabel6"
-        Me.ToolStripLabel6.Size = New System.Drawing.Size(35, 22)
-        Me.ToolStripLabel6.Text = "of {0}"
-        Me.ToolStripLabel6.ToolTipText = "Total number of items"
-        '
-        'ToolStripButton41
-        '
-        Me.ToolStripButton41.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton41.Image = CType(resources.GetObject("ToolStripButton41.Image"), System.Drawing.Image)
-        Me.ToolStripButton41.Name = "ToolStripButton41"
-        Me.ToolStripButton41.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton41.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton41.Text = "Delete"
-        '
-        'ToolStripButton42
-        '
-        Me.ToolStripButton42.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton42.Image = CType(resources.GetObject("ToolStripButton42.Image"), System.Drawing.Image)
-        Me.ToolStripButton42.Name = "ToolStripButton42"
-        Me.ToolStripButton42.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton42.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton42.Text = "Move first"
-        '
-        'ToolStripButton43
-        '
-        Me.ToolStripButton43.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton43.Image = CType(resources.GetObject("ToolStripButton43.Image"), System.Drawing.Image)
-        Me.ToolStripButton43.Name = "ToolStripButton43"
-        Me.ToolStripButton43.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton43.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton43.Text = "Move previous"
-        '
-        'ToolStripSeparator16
-        '
-        Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
-        Me.ToolStripSeparator16.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripTextBox6
-        '
-        Me.ToolStripTextBox6.AccessibleName = "Position"
-        Me.ToolStripTextBox6.AutoSize = False
-        Me.ToolStripTextBox6.Name = "ToolStripTextBox6"
-        Me.ToolStripTextBox6.Size = New System.Drawing.Size(50, 21)
-        Me.ToolStripTextBox6.Text = "0"
-        Me.ToolStripTextBox6.ToolTipText = "Current position"
-        '
-        'ToolStripSeparator17
-        '
-        Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripButton44
-        '
-        Me.ToolStripButton44.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton44.Image = CType(resources.GetObject("ToolStripButton44.Image"), System.Drawing.Image)
-        Me.ToolStripButton44.Name = "ToolStripButton44"
-        Me.ToolStripButton44.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton44.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton44.Text = "Move next"
-        '
-        'ToolStripButton45
-        '
-        Me.ToolStripButton45.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton45.Image = CType(resources.GetObject("ToolStripButton45.Image"), System.Drawing.Image)
-        Me.ToolStripButton45.Name = "ToolStripButton45"
-        Me.ToolStripButton45.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton45.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton45.Text = "Move last"
-        '
-        'ToolStripSeparator18
-        '
-        Me.ToolStripSeparator18.Name = "ToolStripSeparator18"
-        Me.ToolStripSeparator18.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripButton46
-        '
-        Me.ToolStripButton46.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton46.Image = CType(resources.GetObject("ToolStripButton46.Image"), System.Drawing.Image)
-        Me.ToolStripButton46.Name = "ToolStripButton46"
-        Me.ToolStripButton46.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton46.Text = "Save Data"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.AutoGenerateColumns = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CashtypeDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.CashtypeBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(84, 68)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(413, 165)
-        Me.DataGridView1.TabIndex = 12
-        '
-        'CashtypeDataGridViewTextBoxColumn
-        '
-        Me.CashtypeDataGridViewTextBoxColumn.DataPropertyName = "Cashtype"
-        Me.CashtypeDataGridViewTextBoxColumn.HeaderText = "Cashtype"
-        Me.CashtypeDataGridViewTextBoxColumn.Name = "CashtypeDataGridViewTextBoxColumn"
         '
         'tbCurrencies
         '
@@ -4728,11 +4661,6 @@ Partial Class frmSchoolParameters
         Me.ToolStripButton19.RightToLeftAutoMirrorImage = True
         Me.ToolStripButton19.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton19.Text = "Add new"
-        '
-        'CurrenciesBindingSource
-        '
-        Me.CurrenciesBindingSource.DataMember = "Currencies"
-        Me.CurrenciesBindingSource.DataSource = Me.DsSchoolParameters
         '
         'ToolStripLabel7
         '
@@ -5301,36 +5229,260 @@ Partial Class frmSchoolParameters
         Me.TableAdapterManager.SubjectsTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = SchoolParameters.dsSchoolParametersTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'PaymentDataGridViewTextBoxColumn
+        'PeriodDataGridViewTextBoxColumn
         '
-        Me.PaymentDataGridViewTextBoxColumn.DataPropertyName = "Payment"
-        Me.PaymentDataGridViewTextBoxColumn.HeaderText = "Payment"
-        Me.PaymentDataGridViewTextBoxColumn.Name = "PaymentDataGridViewTextBoxColumn"
-        Me.PaymentDataGridViewTextBoxColumn.Width = 250
+        Me.PeriodDataGridViewTextBoxColumn.DataPropertyName = "Period"
+        Me.PeriodDataGridViewTextBoxColumn.HeaderText = "Period"
+        Me.PeriodDataGridViewTextBoxColumn.Name = "PeriodDataGridViewTextBoxColumn"
         '
-        'TypeDataGridViewTextBoxColumn1
+        'Year
         '
-        Me.TypeDataGridViewTextBoxColumn1.DataPropertyName = "Type"
-        Me.TypeDataGridViewTextBoxColumn1.HeaderText = "Type"
-        Me.TypeDataGridViewTextBoxColumn1.Items.AddRange(New Object() {"SchoolFees", "Ancillary"})
-        Me.TypeDataGridViewTextBoxColumn1.Name = "TypeDataGridViewTextBoxColumn1"
-        Me.TypeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.TypeDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Year.DataPropertyName = "Year"
+        Me.Year.HeaderText = "Year"
+        Me.Year.Name = "Year"
+        Me.Year.ReadOnly = True
         '
-        'AmountDataGridViewTextBoxColumn
+        'DescriptionDataGridViewTextBoxColumn
         '
-        Me.AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount"
-        Me.AmountDataGridViewTextBoxColumn.HeaderText = "Amount"
-        Me.AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn"
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
         '
-        'Currency
+        'CurrentDataGridViewCheckBoxColumn
         '
-        Me.Currency.DataPropertyName = "Currency"
-        Me.Currency.DataSource = Me.CurrenciesBindingSource
-        Me.Currency.DisplayMember = "Currency"
-        Me.Currency.HeaderText = "Currency"
-        Me.Currency.Name = "Currency"
-        Me.Currency.ValueMember = "Currency"
+        Me.CurrentDataGridViewCheckBoxColumn.DataPropertyName = "Current"
+        Me.CurrentDataGridViewCheckBoxColumn.HeaderText = "Current"
+        Me.CurrentDataGridViewCheckBoxColumn.Name = "CurrentDataGridViewCheckBoxColumn"
+        '
+        'Open
+        '
+        Me.Open.DataPropertyName = "Open"
+        Me.Open.HeaderText = "Open"
+        Me.Open.Name = "Open"
+        Me.Open.ReadOnly = True
+        '
+        'GroupBox26
+        '
+        Me.GroupBox26.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox26.Controls.Add(PeriodLabel)
+        Me.GroupBox26.Controls.Add(Me.PeriodTextBox)
+        Me.GroupBox26.Controls.Add(DescriptionLabel2)
+        Me.GroupBox26.Controls.Add(Me.DescriptionTextBox2)
+        Me.GroupBox26.Controls.Add(YearLabel1)
+        Me.GroupBox26.Controls.Add(Me.YearComboBox)
+        Me.GroupBox26.Controls.Add(CurrentLabel)
+        Me.GroupBox26.Controls.Add(Me.CurrentCheckBox)
+        Me.GroupBox26.Controls.Add(OpenLabel)
+        Me.GroupBox26.Controls.Add(Me.OpenCheckBox)
+        Me.GroupBox26.Controls.Add(Me.PeriodRefLabel1)
+        Me.GroupBox26.Controls.Add(Me.BindingNavigator6)
+        Me.GroupBox26.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox26.Name = "GroupBox26"
+        Me.GroupBox26.Size = New System.Drawing.Size(325, 365)
+        Me.GroupBox26.TabIndex = 27
+        Me.GroupBox26.TabStop = False
+        Me.GroupBox26.Text = "Periods"
+        '
+        'PeriodLabel
+        '
+        PeriodLabel.AutoSize = True
+        PeriodLabel.Location = New System.Drawing.Point(6, 56)
+        PeriodLabel.Name = "PeriodLabel"
+        PeriodLabel.Size = New System.Drawing.Size(40, 13)
+        PeriodLabel.TabIndex = 18
+        PeriodLabel.Text = "Period:"
+        '
+        'PeriodTextBox
+        '
+        Me.PeriodTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentPeriodsBindingSource, "Period", True))
+        Me.PeriodTextBox.Location = New System.Drawing.Point(75, 53)
+        Me.PeriodTextBox.Name = "PeriodTextBox"
+        Me.PeriodTextBox.Size = New System.Drawing.Size(121, 20)
+        Me.PeriodTextBox.TabIndex = 19
+        '
+        'DescriptionLabel2
+        '
+        DescriptionLabel2.AutoSize = True
+        DescriptionLabel2.Location = New System.Drawing.Point(6, 82)
+        DescriptionLabel2.Name = "DescriptionLabel2"
+        DescriptionLabel2.Size = New System.Drawing.Size(63, 13)
+        DescriptionLabel2.TabIndex = 20
+        DescriptionLabel2.Text = "Description:"
+        '
+        'DescriptionTextBox2
+        '
+        Me.DescriptionTextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentPeriodsBindingSource, "Description", True))
+        Me.DescriptionTextBox2.Location = New System.Drawing.Point(75, 79)
+        Me.DescriptionTextBox2.Name = "DescriptionTextBox2"
+        Me.DescriptionTextBox2.Size = New System.Drawing.Size(121, 20)
+        Me.DescriptionTextBox2.TabIndex = 21
+        '
+        'YearLabel1
+        '
+        YearLabel1.AutoSize = True
+        YearLabel1.Location = New System.Drawing.Point(6, 108)
+        YearLabel1.Name = "YearLabel1"
+        YearLabel1.Size = New System.Drawing.Size(32, 13)
+        YearLabel1.TabIndex = 22
+        YearLabel1.Text = "Year:"
+        '
+        'YearComboBox
+        '
+        Me.YearComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentPeriodsBindingSource, "Year", True))
+        Me.YearComboBox.FormattingEnabled = True
+        Me.YearComboBox.Location = New System.Drawing.Point(75, 105)
+        Me.YearComboBox.Name = "YearComboBox"
+        Me.YearComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.YearComboBox.TabIndex = 23
+        '
+        'CurrentLabel
+        '
+        CurrentLabel.AutoSize = True
+        CurrentLabel.Location = New System.Drawing.Point(6, 137)
+        CurrentLabel.Name = "CurrentLabel"
+        CurrentLabel.Size = New System.Drawing.Size(44, 13)
+        CurrentLabel.TabIndex = 24
+        CurrentLabel.Text = "Current:"
+        '
+        'CurrentCheckBox
+        '
+        Me.CurrentCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.PaymentPeriodsBindingSource, "Current", True))
+        Me.CurrentCheckBox.Location = New System.Drawing.Point(75, 132)
+        Me.CurrentCheckBox.Name = "CurrentCheckBox"
+        Me.CurrentCheckBox.Size = New System.Drawing.Size(121, 24)
+        Me.CurrentCheckBox.TabIndex = 25
+        Me.CurrentCheckBox.UseVisualStyleBackColor = True
+        '
+        'OpenLabel
+        '
+        OpenLabel.AutoSize = True
+        OpenLabel.Location = New System.Drawing.Point(6, 167)
+        OpenLabel.Name = "OpenLabel"
+        OpenLabel.Size = New System.Drawing.Size(36, 13)
+        OpenLabel.TabIndex = 26
+        OpenLabel.Text = "Open:"
+        '
+        'OpenCheckBox
+        '
+        Me.OpenCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.PaymentPeriodsBindingSource, "Open", True))
+        Me.OpenCheckBox.Location = New System.Drawing.Point(75, 162)
+        Me.OpenCheckBox.Name = "OpenCheckBox"
+        Me.OpenCheckBox.Size = New System.Drawing.Size(121, 24)
+        Me.OpenCheckBox.TabIndex = 27
+        Me.OpenCheckBox.UseVisualStyleBackColor = True
+        '
+        'PeriodRefLabel1
+        '
+        Me.PeriodRefLabel1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PaymentPeriodsBindingSource, "PeriodRef", True))
+        Me.PeriodRefLabel1.Location = New System.Drawing.Point(0, 342)
+        Me.PeriodRefLabel1.Name = "PeriodRefLabel1"
+        Me.PeriodRefLabel1.Size = New System.Drawing.Size(121, 23)
+        Me.PeriodRefLabel1.TabIndex = 28
+        Me.PeriodRefLabel1.Text = "Label16"
+        '
+        'BindingNavigator6
+        '
+        Me.BindingNavigator6.AddNewItem = Me.AddNew6
+        Me.BindingNavigator6.BindingSource = Me.PaymentPeriodsBindingSource
+        Me.BindingNavigator6.CountItem = Me.ToolStripLabel2
+        Me.BindingNavigator6.DeleteItem = Nothing
+        Me.BindingNavigator6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton14, Me.ToolStripButton15, Me.ToolStripSeparator4, Me.ToolStripTextBox2, Me.ToolStripLabel2, Me.ToolStripSeparator5, Me.ToolStripButton16, Me.ToolStripButton17, Me.ToolStripSeparator6, Me.AddNew6, Me.ToolStripButton18})
+        Me.BindingNavigator6.Location = New System.Drawing.Point(3, 16)
+        Me.BindingNavigator6.MoveFirstItem = Me.ToolStripButton14
+        Me.BindingNavigator6.MoveLastItem = Me.ToolStripButton17
+        Me.BindingNavigator6.MoveNextItem = Me.ToolStripButton16
+        Me.BindingNavigator6.MovePreviousItem = Me.ToolStripButton15
+        Me.BindingNavigator6.Name = "BindingNavigator6"
+        Me.BindingNavigator6.PositionItem = Me.ToolStripTextBox2
+        Me.BindingNavigator6.Size = New System.Drawing.Size(319, 25)
+        Me.BindingNavigator6.TabIndex = 6
+        Me.BindingNavigator6.Text = "BindingNavigator6"
+        '
+        'AddNew6
+        '
+        Me.AddNew6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AddNew6.Image = CType(resources.GetObject("AddNew6.Image"), System.Drawing.Image)
+        Me.AddNew6.Name = "AddNew6"
+        Me.AddNew6.RightToLeftAutoMirrorImage = True
+        Me.AddNew6.Size = New System.Drawing.Size(23, 22)
+        Me.AddNew6.Text = "Add new"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(35, 22)
+        Me.ToolStripLabel2.Text = "of {0}"
+        Me.ToolStripLabel2.ToolTipText = "Total number of items"
+        '
+        'ToolStripButton14
+        '
+        Me.ToolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton14.Image = CType(resources.GetObject("ToolStripButton14.Image"), System.Drawing.Image)
+        Me.ToolStripButton14.Name = "ToolStripButton14"
+        Me.ToolStripButton14.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton14.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton14.Text = "Move first"
+        '
+        'ToolStripButton15
+        '
+        Me.ToolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton15.Image = CType(resources.GetObject("ToolStripButton15.Image"), System.Drawing.Image)
+        Me.ToolStripButton15.Name = "ToolStripButton15"
+        Me.ToolStripButton15.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton15.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton15.Text = "Move previous"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripTextBox2
+        '
+        Me.ToolStripTextBox2.AccessibleName = "Position"
+        Me.ToolStripTextBox2.AutoSize = False
+        Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
+        Me.ToolStripTextBox2.Size = New System.Drawing.Size(50, 21)
+        Me.ToolStripTextBox2.Text = "0"
+        Me.ToolStripTextBox2.ToolTipText = "Current position"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton16
+        '
+        Me.ToolStripButton16.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton16.Image = CType(resources.GetObject("ToolStripButton16.Image"), System.Drawing.Image)
+        Me.ToolStripButton16.Name = "ToolStripButton16"
+        Me.ToolStripButton16.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton16.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton16.Text = "Move next"
+        '
+        'ToolStripButton17
+        '
+        Me.ToolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton17.Image = CType(resources.GetObject("ToolStripButton17.Image"), System.Drawing.Image)
+        Me.ToolStripButton17.Name = "ToolStripButton17"
+        Me.ToolStripButton17.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton17.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton17.Text = "Move last"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripButton18
+        '
+        Me.ToolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton18.Image = CType(resources.GetObject("ToolStripButton18.Image"), System.Drawing.Image)
+        Me.ToolStripButton18.Name = "ToolStripButton18"
+        Me.ToolStripButton18.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton18.Text = "Save Data"
         '
         'frmSchoolParameters
         '
@@ -5465,35 +5617,25 @@ Partial Class frmSchoolParameters
         Me.TabControl4.ResumeLayout(False)
         Me.tbPaymentPeriods.ResumeLayout(False)
         Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
         CType(Me.PaymentPeriodsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PaymentPeriodsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingNavigator6, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.BindingNavigator6.ResumeLayout(False)
-        Me.BindingNavigator6.PerformLayout()
         Me.tbPayCart.ResumeLayout(False)
+        Me.GroupBox25.ResumeLayout(False)
+        CType(Me.PaymentTypeDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CurrenciesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox21.ResumeLayout(False)
         Me.GroupBox21.PerformLayout()
         CType(Me.BindingNavigator9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator9.ResumeLayout(False)
         Me.BindingNavigator9.PerformLayout()
-        CType(Me.PaymentTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentTypeDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tbPAyMethods.ResumeLayout(False)
-        Me.GroupBox22.ResumeLayout(False)
-        Me.GroupBox22.PerformLayout()
-        CType(Me.BindingNavigator10, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.BindingNavigator10.ResumeLayout(False)
-        Me.BindingNavigator10.PerformLayout()
         CType(Me.CashtypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbCurrencies.ResumeLayout(False)
         Me.GroupBox23.ResumeLayout(False)
         Me.GroupBox23.PerformLayout()
         CType(Me.BindingNavigator11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator11.ResumeLayout(False)
         Me.BindingNavigator11.PerformLayout()
-        CType(Me.CurrenciesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbExchangeRates.ResumeLayout(False)
         Me.GroupBox24.ResumeLayout(False)
@@ -5508,6 +5650,11 @@ Partial Class frmSchoolParameters
         Me.BindingNavigator12.PerformLayout()
         CType(Me.QualificationsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QualificationsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox26.ResumeLayout(False)
+        Me.GroupBox26.PerformLayout()
+        CType(Me.BindingNavigator6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BindingNavigator6.ResumeLayout(False)
+        Me.BindingNavigator6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -5785,25 +5932,11 @@ Partial Class frmSchoolParameters
     Friend WithEvents tbPaymentPeriods As Windows.Forms.TabPage
     Friend WithEvents GroupBox8 As Windows.Forms.GroupBox
     Friend WithEvents PaymentPeriodsDataGridView As Windows.Forms.DataGridView
-    Friend WithEvents BindingNavigator6 As Windows.Forms.BindingNavigator
-    Friend WithEvents AddNew6 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripLabel2 As Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripButton13 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton14 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton15 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator4 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripTextBox2 As Windows.Forms.ToolStripTextBox
-    Friend WithEvents ToolStripSeparator5 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton16 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton17 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator6 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton18 As Windows.Forms.ToolStripButton
     Friend WithEvents tbPayCart As Windows.Forms.TabPage
     Friend WithEvents GroupBox21 As Windows.Forms.GroupBox
     Friend WithEvents BindingNavigator9 As Windows.Forms.BindingNavigator
     Friend WithEvents AddNew9 As Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripLabel5 As Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripButton34 As Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton35 As Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton36 As Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator13 As Windows.Forms.ToolStripSeparator
@@ -5814,22 +5947,6 @@ Partial Class frmSchoolParameters
     Friend WithEvents ToolStripSeparator15 As Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripButton39 As Windows.Forms.ToolStripButton
     Friend WithEvents PaymentTypeDataGridView As Windows.Forms.DataGridView
-    Friend WithEvents tbPAyMethods As Windows.Forms.TabPage
-    Friend WithEvents GroupBox22 As Windows.Forms.GroupBox
-    Friend WithEvents BindingNavigator10 As Windows.Forms.BindingNavigator
-    Friend WithEvents AddNew10 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripLabel6 As Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripButton41 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton42 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton43 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator16 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripTextBox6 As Windows.Forms.ToolStripTextBox
-    Friend WithEvents ToolStripSeparator17 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton44 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton45 As Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator18 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton46 As Windows.Forms.ToolStripButton
-    Friend WithEvents DataGridView1 As Windows.Forms.DataGridView
     Friend WithEvents tbstaff As Windows.Forms.TabPage
     Friend WithEvents TabControl5 As Windows.Forms.TabControl
     Friend WithEvents tbStaffQual As Windows.Forms.TabPage
@@ -5901,14 +6018,10 @@ Partial Class frmSchoolParameters
     Friend WithEvents SectionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PaymentPeriodsBindingSource As Windows.Forms.BindingSource
     Friend WithEvents PaymentPeriodsTableAdapter As dsSchoolParametersTableAdapters.PaymentPeriodsTableAdapter
-    Friend WithEvents PeriodDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DescriptionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CurrentDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents PaymentTypeBindingSource As Windows.Forms.BindingSource
     Friend WithEvents PaymentTypeTableAdapter As dsSchoolParametersTableAdapters.PaymentTypeTableAdapter
     Friend WithEvents CashtypeBindingSource As Windows.Forms.BindingSource
     Friend WithEvents CashtypeTableAdapter As dsSchoolParametersTableAdapters.CashtypeTableAdapter
-    Friend WithEvents CashtypeDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents QualificationsBindingSource As Windows.Forms.BindingSource
     Friend WithEvents QualificationsTableAdapter As dsSchoolParametersTableAdapters.QualificationsTableAdapter
     Friend WithEvents SchoolinfoBindingSource As Windows.Forms.BindingSource
@@ -5975,8 +6088,42 @@ Partial Class frmSchoolParameters
     Friend WithEvents pbSchoolStamp2 As Windows.Forms.PictureBox
     Friend WithEvents chkCurrentClass As Windows.Forms.CheckBox
     Friend WithEvents chkRunDisplayedClass As Windows.Forms.CheckBox
+    Friend WithEvents GroupBox25 As Windows.Forms.GroupBox
     Friend WithEvents PaymentDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TypeDataGridViewTextBoxColumn1 As Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents AmountDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Currency As Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents colPayCartCurrency As Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents colRevenueAccount As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PaymentTextBox As Windows.Forms.TextBox
+    Friend WithEvents TypeComboBox2 As Windows.Forms.ComboBox
+    Friend WithEvents AmountTextBox As Windows.Forms.TextBox
+    Friend WithEvents CurrencyComboBox As Windows.Forms.ComboBox
+    Friend WithEvents RevenueAccountComboBox As Windows.Forms.ComboBox
+    Friend WithEvents txtPayCartRef As Windows.Forms.TextBox
+    Friend WithEvents cboSchoolCompany As Windows.Forms.ComboBox
+    Friend WithEvents Label28 As Windows.Forms.Label
+    Friend WithEvents GroupBox26 As Windows.Forms.GroupBox
+    Friend WithEvents PeriodTextBox As Windows.Forms.TextBox
+    Friend WithEvents DescriptionTextBox2 As Windows.Forms.TextBox
+    Friend WithEvents YearComboBox As Windows.Forms.ComboBox
+    Friend WithEvents CurrentCheckBox As Windows.Forms.CheckBox
+    Friend WithEvents OpenCheckBox As Windows.Forms.CheckBox
+    Friend WithEvents PeriodRefLabel1 As Windows.Forms.Label
+    Friend WithEvents BindingNavigator6 As Windows.Forms.BindingNavigator
+    Friend WithEvents AddNew6 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripLabel2 As Windows.Forms.ToolStripLabel
+    Friend WithEvents ToolStripButton14 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton15 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator4 As Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripTextBox2 As Windows.Forms.ToolStripTextBox
+    Friend WithEvents ToolStripSeparator5 As Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton16 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton17 As Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator6 As Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton18 As Windows.Forms.ToolStripButton
+    Friend WithEvents PeriodDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Year As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescriptionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CurrentDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Open As Windows.Forms.DataGridViewCheckBoxColumn
 End Class

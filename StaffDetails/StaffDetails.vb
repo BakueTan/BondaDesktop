@@ -27,16 +27,18 @@ Public Class frmStaffDetails
 
 
     Private Sub StaffDetails_Load() Handles MyBase.Load
-        'TODO: This line of code loads data into the 'DsSchool.Qualifications' table. You can move, or remove it, as needed.
-        Me.QualificationsTableAdapter.Fill(Me.DsSchool.Qualifications)
+        'TODO: This line of code loads data into the 'DsSchool.StaffSubjectsTaught' table. You can move, or remove it, as needed.
+
+        'TODO: This line of code loads data into the 'DsSchool.FormTeachers' table. You can move, or remove it, as needed.
+
 
         'TODO: This line of code loads data into the 'DsSchool.StaffPersonalDetails' table. You can move, or remove it, as needed.
 
         'TODO: This line of code loads data into the 'DsSchool.schoolsessions' table. You can move, or remove it, as needed.
-
+        LoadCombos()
         loadsets()
         'TODO: This line of code loads data into the 'DsSchool.StaffSubjectsTaught' table. You can move, or remove it, as needed.
-        LoadCombos()
+
 
         Prepareform(Me, frmmain, False)
         MdiParent = frmmain
@@ -66,10 +68,13 @@ Public Class frmStaffDetails
 
     Private Sub LoadClasses()
         With cboSubTeachersbyClass
-            .DataSource = Classes()
+            .DataSource = Classes(True)
             .DisplayMember = "Text"
             .ValueMember = "Value"
+
         End With
+
+        cboSubTeachersbyClass.SelectedText = "ALL"
     End Sub
 
     Private Sub LoadSessions()
@@ -96,6 +101,10 @@ Public Class frmStaffDetails
             Me.ClassesTableAdapter.Fill(Me.DsSchool.Classes)
             'TODO: This line of code loads data into the 'DsSchool.forms' table. You can move, or remove it, as needed.
             Me.FormsTableAdapter.Fill(Me.DsSchool.forms)
+            Me.FormTeachersTableAdapter.LoadFormTeachers(Me.DsSchool.FormTeachers, "")
+            'TODO: This line of code loads data into the 'DsSchool.Qualifications' table. You can move, or remove it, as needed.
+            Me.QualificationsTableAdapter.Fill(Me.DsSchool.Qualifications)
+            Me.StaffSubjectsTaughtTableAdapter.LoadStaffSubjects(Me.DsSchool.StaffSubjectsTaught, "")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -119,7 +128,7 @@ Public Class frmStaffDetails
 
             trans = cnn.BeginTransaction()
 
-            If cboSubTeachersbyClass.Text = "" Then
+            If cboSubTeachersbyClass.Text = "ALL" Then
                 sql = "delete staffsubjectstaught where staffid = '" & staffID.Text & "' "
             Else
                 sql = "delete staffsubjectstaught where staffid = '" & staffID.Text & "' and classdesc = '" & cboSubTeachersbyClass.Text & "'"
@@ -170,8 +179,9 @@ Public Class frmStaffDetails
 
             Next
             trans.Commit()
-            MsgBox("Staff Classes Successfully updated")
+            MsgBox("Staff Subjects Successfully Updated")
             LoadStaffSubjects(staffID.Text, cls)
+            Button10_Click(Me, Nothing)
         Catch ex As Exception
             MsgBox(ex.Message)
             trans.Rollback()
@@ -471,6 +481,14 @@ Public Class frmStaffDetails
         dgSubsTaught.Rows.Clear()
 
         Dim rows As Integer = 0
+
+        Dim strclassoption As String = ""
+
+        If clas <> "ALL" Then
+            strclassoption = " and t.classdesc = '" & clas & "'"
+        End If
+        Dim filter As String = " where t.staffid = '" & staffid & "'" & strclassoption & ""
+
         cnn = New SqlConnection(ConnectionString)
         Try
 
@@ -482,8 +500,8 @@ Public Class frmStaffDetails
             With cmd
                 .CommandType = CommandType.StoredProcedure
 
-                .Parameters.AddWithValue("@staff", staffid)
-                .Parameters.AddWithValue("@clas", clas)
+                .Parameters.AddWithValue("@filter", filter)
+
                 subs = .ExecuteReader()
                 If subs.HasRows Then
                     While subs.Read
@@ -1056,6 +1074,8 @@ Public Class frmStaffDetails
             trans.Commit()
             MsgBox("Class Teachers updated")
             fillFormTeacher()
+            Button9_Click_1(Me, Nothing)
+
         Catch ex As Exception
             MsgBox(ex.Message)
             trans.Rollback()
@@ -1094,18 +1114,20 @@ Public Class frmStaffDetails
     End Sub
 
     Private Sub fillFormTeacher()
-        sqltext = "spFillFormTeacher"
+        sqltext = "spLoadFormTeachers"
         cnn = New SqlConnection(ConnectionString)
         Dim formteacher As SqlDataReader
         Dim rows As Integer = 0
         dgFormTeacher.Rows.Clear()
+
+        Dim filter As String = " where teacher = '" & Trim(txtFormTeacher.Text) & "'"
 
         Try
             cnn.Open()
             cmd = New SqlCommand(sqltext, cnn)
             With cmd
                 .CommandType = CommandType.StoredProcedure
-                .Parameters.AddWithValue("@teacher", txtFormTeacher.Text)
+                .Parameters.AddWithValue("@filter", filter)
                 formteacher = .ExecuteReader
                 If formteacher.HasRows Then
                     While formteacher.Read
@@ -1397,6 +1419,84 @@ Public Class frmStaffDetails
 
     Private Sub dgStaffQual_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles dgStaffQual.DataError
         Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub btnClassTeacherSearch_Click(sender As Object, e As EventArgs) Handles btnClassTeacherSearch.Click
+        Dim filter As String = ""
+        Try
+            filter = " where concat ( teacher,S.name,s.surname,f.lvl,f.classdesc,f.session,f.program,title) like '%" & txtClassTeacherSearch.Text & "%'"
+            FormTeachersTableAdapter.LoadFormTeachers(DsSchool.FormTeachers, filter)
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
+    Private Sub Button9_Click_1(sender As Object, e As EventArgs) Handles Button9.Click
+        txtClassTeacherSearch.Clear()
+        FormTeachersTableAdapter.LoadFormTeachers(DsSchool.FormTeachers, "")
+    End Sub
+
+    Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles dgFormTacherList.SelectionChanged
+        Try
+            Dim staffid As String = dgFormTacherList.SelectedRows(0).Cells("colStaffId").Value
+            txtFormTeacher.Text = staffid
+            lbFormTeacher.Visible = False
+            fillFormTeacher()
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
+    Private Sub dgFormTacherList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgFormTacherList.CellContentClick
+
+
+    End Sub
+
+    Private Sub txtClassTeacherSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtClassTeacherSearch.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnClassTeacherSearch_Click(Me, Nothing)
+        End If
+    End Sub
+
+    Private Sub btnSubjectTeachersSearch_Click(sender As Object, e As EventArgs) Handles btnSubjectTeachersSearch.Click
+        Try
+            Dim strwhere As String = " where concat(t.staffid,s.name,s.surname,t.classdesc,b.subject,t.form,t.subjectid) like '%" & txtSubjectTeachersSearch.Text & "%'"
+            StaffSubjectsTaughtTableAdapter.LoadStaffSubjects(DsSchool.StaffSubjectsTaught, strwhere)
+        Catch ex As Exception
+
+        End Try
+
+
+
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        txtSubjectTeachersSearch.Clear()
+
+        StaffSubjectsTaughtTableAdapter.LoadStaffSubjects(DsSchool.StaffSubjectsTaught, "")
+    End Sub
+
+    Private Sub txtSubjectTeachersSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSubjectTeachersSearch.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnSubjectTeachersSearch_Click(Me, Nothing)
+        End If
+    End Sub
+
+    Private Sub DataGridView1_SelectionChanged_1(sender As Object, e As EventArgs) Handles dgSubsTaughtList.SelectionChanged
+        Try
+            Dim staff As String = dgSubsTaughtList.SelectedRows(0).Cells("colSubTaughtStaffID").Value
+            staffID.Text = staff
+            lbSubTaughtSearch.Visible = False
+
+            LoadStaffSubjects(staff, cboSubTeachersbyClass.Text)
 
         Catch ex As Exception
 

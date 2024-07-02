@@ -35,7 +35,8 @@ Partial Class frmCoA
         Dim ParentAccountLabel As System.Windows.Forms.Label
         Dim Label7 As System.Windows.Forms.Label
         Dim Label8 As System.Windows.Forms.Label
-        Dim ReportDataSource3 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim Label4 As System.Windows.Forms.Label
+        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCoA))
         Me.GLStatementBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsCoA = New IncomeExpenditure.dsCoA()
@@ -45,18 +46,6 @@ Partial Class frmCoA
         Me.TabControl3 = New System.Windows.Forms.TabControl()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.AccTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AccountNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CurrencyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CoARefDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BlockedDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.OpeningBalAsofDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IsSubAccountDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ParentAccountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CompanyRefDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CompanynameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ChartOfAccountsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
@@ -67,6 +56,7 @@ Partial Class frmCoA
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.AccSubTypeCombobox = New System.Windows.Forms.ComboBox()
         Me.BindingNavigator5 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.ToolStripButton29 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripLabel5 = New System.Windows.Forms.ToolStripLabel()
@@ -119,6 +109,7 @@ Partial Class frmCoA
         Me.txtTansAmount = New System.Windows.Forms.TextBox()
         Me.tbJournal = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.cboJournalCompany = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -137,6 +128,18 @@ Partial Class frmCoA
         Me.TableAdapterManager = New IncomeExpenditure.dsCoATableAdapters.TableAdapterManager()
         Me.GLStatementTableAdapter = New IncomeExpenditure.dsCoATableAdapters.GLStatementTableAdapter()
         Me.AccountCartegoriesTableAdapter = New IncomeExpenditure.dsAccountsSettingsTableAdapters.AccountCartegoriesTableAdapter()
+        Me.AccTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AccSubType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AccountNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CurrencyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CoARefDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BlockedDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.OpeningBalAsofDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IsSubAccountDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ParentAccountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompanyRefDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         DescriptionLabel = New System.Windows.Forms.Label()
         BalanceLabel = New System.Windows.Forms.Label()
         AccountNumberLabel = New System.Windows.Forms.Label()
@@ -149,6 +152,7 @@ Partial Class frmCoA
         ParentAccountLabel = New System.Windows.Forms.Label()
         Label7 = New System.Windows.Forms.Label()
         Label8 = New System.Windows.Forms.Label()
+        Label4 = New System.Windows.Forms.Label()
         CType(Me.GLStatementBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCoA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -179,7 +183,7 @@ Partial Class frmCoA
         'DescriptionLabel
         '
         DescriptionLabel.AutoSize = True
-        DescriptionLabel.Location = New System.Drawing.Point(6, 146)
+        DescriptionLabel.Location = New System.Drawing.Point(6, 173)
         DescriptionLabel.Name = "DescriptionLabel"
         DescriptionLabel.Size = New System.Drawing.Size(63, 13)
         DescriptionLabel.TabIndex = 0
@@ -188,7 +192,7 @@ Partial Class frmCoA
         'BalanceLabel
         '
         BalanceLabel.AutoSize = True
-        BalanceLabel.Location = New System.Drawing.Point(6, 201)
+        BalanceLabel.Location = New System.Drawing.Point(6, 228)
         BalanceLabel.Name = "BalanceLabel"
         BalanceLabel.Size = New System.Drawing.Size(49, 13)
         BalanceLabel.TabIndex = 2
@@ -197,7 +201,7 @@ Partial Class frmCoA
         'AccountNumberLabel
         '
         AccountNumberLabel.AutoSize = True
-        AccountNumberLabel.Location = New System.Drawing.Point(6, 174)
+        AccountNumberLabel.Location = New System.Drawing.Point(6, 201)
         AccountNumberLabel.Name = "AccountNumberLabel"
         AccountNumberLabel.Size = New System.Drawing.Size(90, 13)
         AccountNumberLabel.TabIndex = 4
@@ -206,7 +210,7 @@ Partial Class frmCoA
         'CurrencyLabel
         '
         CurrencyLabel.AutoSize = True
-        CurrencyLabel.Location = New System.Drawing.Point(6, 227)
+        CurrencyLabel.Location = New System.Drawing.Point(6, 254)
         CurrencyLabel.Name = "CurrencyLabel"
         CurrencyLabel.Size = New System.Drawing.Size(52, 13)
         CurrencyLabel.TabIndex = 6
@@ -224,7 +228,7 @@ Partial Class frmCoA
         'ActiveLabel
         '
         ActiveLabel.AutoSize = True
-        ActiveLabel.Location = New System.Drawing.Point(6, 314)
+        ActiveLabel.Location = New System.Drawing.Point(6, 341)
         ActiveLabel.Name = "ActiveLabel"
         ActiveLabel.Size = New System.Drawing.Size(49, 13)
         ActiveLabel.TabIndex = 11
@@ -251,7 +255,7 @@ Partial Class frmCoA
         'IsSubAccountLabel
         '
         IsSubAccountLabel.AutoSize = True
-        IsSubAccountLabel.Location = New System.Drawing.Point(6, 256)
+        IsSubAccountLabel.Location = New System.Drawing.Point(6, 283)
         IsSubAccountLabel.Name = "IsSubAccountLabel"
         IsSubAccountLabel.Size = New System.Drawing.Size(72, 13)
         IsSubAccountLabel.TabIndex = 14
@@ -284,6 +288,15 @@ Partial Class frmCoA
         Label8.TabIndex = 69
         Label8.Text = "Company:"
         '
+        'Label4
+        '
+        Label4.AutoSize = True
+        Label4.Location = New System.Drawing.Point(6, 142)
+        Label4.Name = "Label4"
+        Label4.Size = New System.Drawing.Size(53, 13)
+        Label4.TabIndex = 29
+        Label4.Text = "SubType:"
+        '
         'GLStatementBindingSource
         '
         Me.GLStatementBindingSource.DataMember = "GLStatement"
@@ -292,6 +305,7 @@ Partial Class frmCoA
         'DsCoA
         '
         Me.DsCoA.DataSetName = "dsCoA"
+        Me.DsCoA.EnforceConstraints = False
         Me.DsCoA.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TabControl1
@@ -362,102 +376,13 @@ Partial Class frmCoA
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AccTypeDataGridViewTextBoxColumn, Me.AccountNumberDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.BalanceDataGridViewTextBoxColumn, Me.CurrencyDataGridViewTextBoxColumn, Me.CoARefDataGridViewTextBoxColumn, Me.BlockedDataGridViewCheckBoxColumn, Me.OpeningBalAsofDataGridViewTextBoxColumn, Me.IsSubAccountDataGridViewCheckBoxColumn, Me.ParentAccountDataGridViewTextBoxColumn, Me.CompanyRefDataGridViewTextBoxColumn, Me.CompanynameDataGridViewTextBoxColumn})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AccTypeDataGridViewTextBoxColumn, Me.AccSubType, Me.AccountNumberDataGridViewTextBoxColumn, Me.DescriptionDataGridViewTextBoxColumn, Me.BalanceDataGridViewTextBoxColumn, Me.CurrencyDataGridViewTextBoxColumn, Me.CoARefDataGridViewTextBoxColumn, Me.BlockedDataGridViewCheckBoxColumn, Me.OpeningBalAsofDataGridViewTextBoxColumn, Me.IsSubAccountDataGridViewCheckBoxColumn, Me.ParentAccountDataGridViewTextBoxColumn, Me.CompanyRefDataGridViewTextBoxColumn})
         Me.DataGridView2.DataSource = Me.ChartOfAccountsBindingSource
         Me.DataGridView2.Location = New System.Drawing.Point(6, 15)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.Size = New System.Drawing.Size(988, 503)
         Me.DataGridView2.TabIndex = 20
-        '
-        'AccTypeDataGridViewTextBoxColumn
-        '
-        Me.AccTypeDataGridViewTextBoxColumn.DataPropertyName = "AccType"
-        Me.AccTypeDataGridViewTextBoxColumn.HeaderText = "AccType"
-        Me.AccTypeDataGridViewTextBoxColumn.Name = "AccTypeDataGridViewTextBoxColumn"
-        Me.AccTypeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'AccountNumberDataGridViewTextBoxColumn
-        '
-        Me.AccountNumberDataGridViewTextBoxColumn.DataPropertyName = "AccountNumber"
-        Me.AccountNumberDataGridViewTextBoxColumn.HeaderText = "AccountNumber"
-        Me.AccountNumberDataGridViewTextBoxColumn.Name = "AccountNumberDataGridViewTextBoxColumn"
-        Me.AccountNumberDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DescriptionDataGridViewTextBoxColumn
-        '
-        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
-        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
-        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DescriptionDataGridViewTextBoxColumn.Width = 150
-        '
-        'BalanceDataGridViewTextBoxColumn
-        '
-        Me.BalanceDataGridViewTextBoxColumn.DataPropertyName = "Balance"
-        Me.BalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
-        Me.BalanceDataGridViewTextBoxColumn.Name = "BalanceDataGridViewTextBoxColumn"
-        Me.BalanceDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CurrencyDataGridViewTextBoxColumn
-        '
-        Me.CurrencyDataGridViewTextBoxColumn.DataPropertyName = "Currency"
-        Me.CurrencyDataGridViewTextBoxColumn.HeaderText = "Currency"
-        Me.CurrencyDataGridViewTextBoxColumn.Name = "CurrencyDataGridViewTextBoxColumn"
-        Me.CurrencyDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CoARefDataGridViewTextBoxColumn
-        '
-        Me.CoARefDataGridViewTextBoxColumn.DataPropertyName = "CoARef"
-        Me.CoARefDataGridViewTextBoxColumn.HeaderText = "CoARef"
-        Me.CoARefDataGridViewTextBoxColumn.Name = "CoARefDataGridViewTextBoxColumn"
-        Me.CoARefDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CoARefDataGridViewTextBoxColumn.Visible = False
-        '
-        'BlockedDataGridViewCheckBoxColumn
-        '
-        Me.BlockedDataGridViewCheckBoxColumn.DataPropertyName = "Blocked"
-        Me.BlockedDataGridViewCheckBoxColumn.HeaderText = "Blocked"
-        Me.BlockedDataGridViewCheckBoxColumn.Name = "BlockedDataGridViewCheckBoxColumn"
-        Me.BlockedDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'OpeningBalAsofDataGridViewTextBoxColumn
-        '
-        Me.OpeningBalAsofDataGridViewTextBoxColumn.DataPropertyName = "OpeningBalAsof"
-        Me.OpeningBalAsofDataGridViewTextBoxColumn.HeaderText = "OpeningBalAsof"
-        Me.OpeningBalAsofDataGridViewTextBoxColumn.Name = "OpeningBalAsofDataGridViewTextBoxColumn"
-        Me.OpeningBalAsofDataGridViewTextBoxColumn.ReadOnly = True
-        Me.OpeningBalAsofDataGridViewTextBoxColumn.Visible = False
-        '
-        'IsSubAccountDataGridViewCheckBoxColumn
-        '
-        Me.IsSubAccountDataGridViewCheckBoxColumn.DataPropertyName = "isSubAccount"
-        Me.IsSubAccountDataGridViewCheckBoxColumn.HeaderText = "isSubAccount"
-        Me.IsSubAccountDataGridViewCheckBoxColumn.Name = "IsSubAccountDataGridViewCheckBoxColumn"
-        Me.IsSubAccountDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'ParentAccountDataGridViewTextBoxColumn
-        '
-        Me.ParentAccountDataGridViewTextBoxColumn.DataPropertyName = "ParentAccount"
-        Me.ParentAccountDataGridViewTextBoxColumn.HeaderText = "ParentAccount"
-        Me.ParentAccountDataGridViewTextBoxColumn.Name = "ParentAccountDataGridViewTextBoxColumn"
-        Me.ParentAccountDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CompanyRefDataGridViewTextBoxColumn
-        '
-        Me.CompanyRefDataGridViewTextBoxColumn.DataPropertyName = "CompanyRef"
-        Me.CompanyRefDataGridViewTextBoxColumn.HeaderText = "CompanyRef"
-        Me.CompanyRefDataGridViewTextBoxColumn.Name = "CompanyRefDataGridViewTextBoxColumn"
-        Me.CompanyRefDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CompanyRefDataGridViewTextBoxColumn.Visible = False
-        '
-        'CompanynameDataGridViewTextBoxColumn
-        '
-        Me.CompanynameDataGridViewTextBoxColumn.DataPropertyName = "companyname"
-        Me.CompanynameDataGridViewTextBoxColumn.HeaderText = "companyname"
-        Me.CompanynameDataGridViewTextBoxColumn.Name = "CompanynameDataGridViewTextBoxColumn"
-        Me.CompanynameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CompanynameDataGridViewTextBoxColumn.Width = 150
         '
         'ChartOfAccountsBindingSource
         '
@@ -544,9 +469,9 @@ Partial Class frmCoA
         'ReportViewer1
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        ReportDataSource3.Name = "DataSet1"
-        ReportDataSource3.Value = Me.GLStatementBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource3)
+        ReportDataSource2.Name = "DataSet1"
+        ReportDataSource2.Value = Me.GLStatementBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource2)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "IncomeExpenditure.rptGLStatement.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
@@ -556,6 +481,8 @@ Partial Class frmCoA
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Label4)
+        Me.GroupBox1.Controls.Add(Me.AccSubTypeCombobox)
         Me.GroupBox1.Controls.Add(Me.BindingNavigator5)
         Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.btnSearchVendor)
@@ -585,6 +512,17 @@ Partial Class frmCoA
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Chart Of Accounts"
+        '
+        'AccSubTypeCombobox
+        '
+        Me.AccSubTypeCombobox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ChartOfAccountsBindingSource, "AccSubType", True))
+        Me.AccSubTypeCombobox.DisplayMember = "Cartegory"
+        Me.AccSubTypeCombobox.FormattingEnabled = True
+        Me.AccSubTypeCombobox.Location = New System.Drawing.Point(99, 139)
+        Me.AccSubTypeCombobox.Name = "AccSubTypeCombobox"
+        Me.AccSubTypeCombobox.Size = New System.Drawing.Size(121, 21)
+        Me.AccSubTypeCombobox.TabIndex = 30
+        Me.AccSubTypeCombobox.ValueMember = "Cartegory"
         '
         'BindingNavigator5
         '
@@ -648,7 +586,6 @@ Partial Class frmCoA
         '
         Me.ToolStripTextBox5.AccessibleName = "Position"
         Me.ToolStripTextBox5.AutoSize = False
-        Me.ToolStripTextBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox5.Name = "ToolStripTextBox5"
         Me.ToolStripTextBox5.Size = New System.Drawing.Size(50, 23)
         Me.ToolStripTextBox5.Text = "0"
@@ -758,7 +695,7 @@ Partial Class frmCoA
         Me.pnlParentAccount.Controls.Add(ParentAccountLabel)
         Me.pnlParentAccount.Controls.Add(Me.ParentAccountComboBox)
         Me.pnlParentAccount.Enabled = False
-        Me.pnlParentAccount.Location = New System.Drawing.Point(6, 272)
+        Me.pnlParentAccount.Location = New System.Drawing.Point(6, 299)
         Me.pnlParentAccount.Name = "pnlParentAccount"
         Me.pnlParentAccount.Size = New System.Drawing.Size(276, 34)
         Me.pnlParentAccount.TabIndex = 18
@@ -775,7 +712,7 @@ Partial Class frmCoA
         'IsSubAccountCheckBox
         '
         Me.IsSubAccountCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Me.ChartOfAccountsBindingSource, "isSubAccount", True))
-        Me.IsSubAccountCheckBox.Location = New System.Drawing.Point(99, 251)
+        Me.IsSubAccountCheckBox.Location = New System.Drawing.Point(99, 278)
         Me.IsSubAccountCheckBox.Name = "IsSubAccountCheckBox"
         Me.IsSubAccountCheckBox.Size = New System.Drawing.Size(104, 24)
         Me.IsSubAccountCheckBox.TabIndex = 15
@@ -802,7 +739,7 @@ Partial Class frmCoA
         'DescriptionTextBox
         '
         Me.DescriptionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ChartOfAccountsBindingSource, "Description", True))
-        Me.DescriptionTextBox.Location = New System.Drawing.Point(99, 139)
+        Me.DescriptionTextBox.Location = New System.Drawing.Point(99, 166)
         Me.DescriptionTextBox.Name = "DescriptionTextBox"
         Me.DescriptionTextBox.Size = New System.Drawing.Size(187, 20)
         Me.DescriptionTextBox.TabIndex = 1
@@ -810,7 +747,7 @@ Partial Class frmCoA
         'BalanceTextBox
         '
         Me.BalanceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ChartOfAccountsBindingSource, "Balance", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0", "C2"))
-        Me.BalanceTextBox.Location = New System.Drawing.Point(99, 194)
+        Me.BalanceTextBox.Location = New System.Drawing.Point(99, 221)
         Me.BalanceTextBox.Name = "BalanceTextBox"
         Me.BalanceTextBox.Size = New System.Drawing.Size(121, 20)
         Me.BalanceTextBox.TabIndex = 3
@@ -819,7 +756,7 @@ Partial Class frmCoA
         '
         Me.AccountNumberTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ChartOfAccountsBindingSource, "AccountNumber", True))
         Me.AccountNumberTextBox.Enabled = False
-        Me.AccountNumberTextBox.Location = New System.Drawing.Point(99, 168)
+        Me.AccountNumberTextBox.Location = New System.Drawing.Point(99, 195)
         Me.AccountNumberTextBox.Name = "AccountNumberTextBox"
         Me.AccountNumberTextBox.ReadOnly = True
         Me.AccountNumberTextBox.Size = New System.Drawing.Size(187, 20)
@@ -829,7 +766,7 @@ Partial Class frmCoA
         '
         Me.CurrencyComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ChartOfAccountsBindingSource, "Currency", True))
         Me.CurrencyComboBox.FormattingEnabled = True
-        Me.CurrencyComboBox.Location = New System.Drawing.Point(99, 224)
+        Me.CurrencyComboBox.Location = New System.Drawing.Point(99, 251)
         Me.CurrencyComboBox.Name = "CurrencyComboBox"
         Me.CurrencyComboBox.Size = New System.Drawing.Size(121, 21)
         Me.CurrencyComboBox.TabIndex = 7
@@ -993,13 +930,15 @@ Partial Class frmCoA
         '
         'btnTransSave
         '
+        Me.btnTransSave.BackColor = System.Drawing.Color.Green
+        Me.btnTransSave.ForeColor = System.Drawing.Color.White
         Me.btnTransSave.Location = New System.Drawing.Point(681, 71)
         Me.btnTransSave.Name = "btnTransSave"
         Me.btnTransSave.Size = New System.Drawing.Size(125, 34)
         Me.btnTransSave.TabIndex = 9
         Me.btnTransSave.Tag = " "
         Me.btnTransSave.Text = "Transfer"
-        Me.btnTransSave.UseVisualStyleBackColor = True
+        Me.btnTransSave.UseVisualStyleBackColor = False
         '
         'txtTransComments
         '
@@ -1075,6 +1014,7 @@ Partial Class frmCoA
         Me.GroupBox4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox4.Controls.Add(Me.Button2)
         Me.GroupBox4.Controls.Add(Me.cboJournalCompany)
         Me.GroupBox4.Controls.Add(Me.Label9)
         Me.GroupBox4.Controls.Add(Me.Button1)
@@ -1091,6 +1031,18 @@ Partial Class frmCoA
         Me.GroupBox4.TabIndex = 0
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Journals"
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Red
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(140, 267)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(125, 34)
+        Me.Button2.TabIndex = 89
+        Me.Button2.Tag = " "
+        Me.Button2.Text = "Clear"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'cboJournalCompany
         '
@@ -1112,13 +1064,15 @@ Partial Class frmCoA
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(9, 267)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(125, 34)
         Me.Button1.TabIndex = 86
         Me.Button1.Tag = " "
         Me.Button1.Text = "Post"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'dgJournalAcounts
         '
@@ -1227,6 +1181,94 @@ Partial Class frmCoA
         'AccountCartegoriesTableAdapter
         '
         Me.AccountCartegoriesTableAdapter.ClearBeforeFill = True
+        '
+        'AccTypeDataGridViewTextBoxColumn
+        '
+        Me.AccTypeDataGridViewTextBoxColumn.DataPropertyName = "AccType"
+        Me.AccTypeDataGridViewTextBoxColumn.HeaderText = "AccType"
+        Me.AccTypeDataGridViewTextBoxColumn.Name = "AccTypeDataGridViewTextBoxColumn"
+        Me.AccTypeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'AccSubType
+        '
+        Me.AccSubType.DataPropertyName = "AccSubType"
+        Me.AccSubType.HeaderText = "AccSubType"
+        Me.AccSubType.Name = "AccSubType"
+        Me.AccSubType.ReadOnly = True
+        '
+        'AccountNumberDataGridViewTextBoxColumn
+        '
+        Me.AccountNumberDataGridViewTextBoxColumn.DataPropertyName = "AccountNumber"
+        Me.AccountNumberDataGridViewTextBoxColumn.HeaderText = "AccountNumber"
+        Me.AccountNumberDataGridViewTextBoxColumn.Name = "AccountNumberDataGridViewTextBoxColumn"
+        Me.AccountNumberDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescriptionDataGridViewTextBoxColumn
+        '
+        Me.DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.HeaderText = "Description"
+        Me.DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn"
+        Me.DescriptionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DescriptionDataGridViewTextBoxColumn.Width = 150
+        '
+        'BalanceDataGridViewTextBoxColumn
+        '
+        Me.BalanceDataGridViewTextBoxColumn.DataPropertyName = "Balance"
+        Me.BalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
+        Me.BalanceDataGridViewTextBoxColumn.Name = "BalanceDataGridViewTextBoxColumn"
+        Me.BalanceDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CurrencyDataGridViewTextBoxColumn
+        '
+        Me.CurrencyDataGridViewTextBoxColumn.DataPropertyName = "Currency"
+        Me.CurrencyDataGridViewTextBoxColumn.HeaderText = "Currency"
+        Me.CurrencyDataGridViewTextBoxColumn.Name = "CurrencyDataGridViewTextBoxColumn"
+        Me.CurrencyDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CoARefDataGridViewTextBoxColumn
+        '
+        Me.CoARefDataGridViewTextBoxColumn.DataPropertyName = "CoARef"
+        Me.CoARefDataGridViewTextBoxColumn.HeaderText = "CoARef"
+        Me.CoARefDataGridViewTextBoxColumn.Name = "CoARefDataGridViewTextBoxColumn"
+        Me.CoARefDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CoARefDataGridViewTextBoxColumn.Visible = False
+        '
+        'BlockedDataGridViewCheckBoxColumn
+        '
+        Me.BlockedDataGridViewCheckBoxColumn.DataPropertyName = "Blocked"
+        Me.BlockedDataGridViewCheckBoxColumn.HeaderText = "Blocked"
+        Me.BlockedDataGridViewCheckBoxColumn.Name = "BlockedDataGridViewCheckBoxColumn"
+        Me.BlockedDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'OpeningBalAsofDataGridViewTextBoxColumn
+        '
+        Me.OpeningBalAsofDataGridViewTextBoxColumn.DataPropertyName = "OpeningBalAsof"
+        Me.OpeningBalAsofDataGridViewTextBoxColumn.HeaderText = "OpeningBalAsof"
+        Me.OpeningBalAsofDataGridViewTextBoxColumn.Name = "OpeningBalAsofDataGridViewTextBoxColumn"
+        Me.OpeningBalAsofDataGridViewTextBoxColumn.ReadOnly = True
+        Me.OpeningBalAsofDataGridViewTextBoxColumn.Visible = False
+        '
+        'IsSubAccountDataGridViewCheckBoxColumn
+        '
+        Me.IsSubAccountDataGridViewCheckBoxColumn.DataPropertyName = "isSubAccount"
+        Me.IsSubAccountDataGridViewCheckBoxColumn.HeaderText = "isSubAccount"
+        Me.IsSubAccountDataGridViewCheckBoxColumn.Name = "IsSubAccountDataGridViewCheckBoxColumn"
+        Me.IsSubAccountDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'ParentAccountDataGridViewTextBoxColumn
+        '
+        Me.ParentAccountDataGridViewTextBoxColumn.DataPropertyName = "ParentAccount"
+        Me.ParentAccountDataGridViewTextBoxColumn.HeaderText = "ParentAccount"
+        Me.ParentAccountDataGridViewTextBoxColumn.Name = "ParentAccountDataGridViewTextBoxColumn"
+        Me.ParentAccountDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CompanyRefDataGridViewTextBoxColumn
+        '
+        Me.CompanyRefDataGridViewTextBoxColumn.DataPropertyName = "CompanyRef"
+        Me.CompanyRefDataGridViewTextBoxColumn.HeaderText = "CompanyRef"
+        Me.CompanyRefDataGridViewTextBoxColumn.Name = "CompanyRefDataGridViewTextBoxColumn"
+        Me.CompanyRefDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CompanyRefDataGridViewTextBoxColumn.Visible = False
         '
         'frmCoA
         '
@@ -1348,17 +1390,6 @@ Partial Class frmCoA
     Friend WithEvents chkGLShowCredits As Windows.Forms.CheckBox
     Friend WithEvents chkGLShowDebits As Windows.Forms.CheckBox
     Friend WithEvents Panel1 As Windows.Forms.Panel
-    Friend WithEvents AccTypeDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents AccountNumberDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DescriptionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BalanceDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CurrencyDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CoARefDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BlockedDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents OpeningBalAsofDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IsSubAccountDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents ParentAccountDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CompanyRefDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CompanynameDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GLStatementBindingSource As Windows.Forms.BindingSource
     Friend WithEvents GLStatementTableAdapter As dsCoATableAdapters.GLStatementTableAdapter
@@ -1383,4 +1414,18 @@ Partial Class frmCoA
     Friend WithEvents DsAccountsSettings As dsAccountsSettings
     Friend WithEvents AccountCartegoriesBindingSource As Windows.Forms.BindingSource
     Friend WithEvents AccountCartegoriesTableAdapter As dsAccountsSettingsTableAdapters.AccountCartegoriesTableAdapter
+    Friend WithEvents Button2 As Windows.Forms.Button
+    Friend WithEvents AccSubTypeCombobox As Windows.Forms.ComboBox
+    Friend WithEvents AccTypeDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents AccSubType As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents AccountNumberDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescriptionDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents BalanceDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CurrencyDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CoARefDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents BlockedDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents OpeningBalAsofDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IsSubAccountDataGridViewCheckBoxColumn As Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents ParentAccountDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CompanyRefDataGridViewTextBoxColumn As Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -14,6 +14,9 @@ Public Class frmEditEnrollment
     Public Copy As Boolean = False
     Public mdiPrnt As Form
 
+    Public Company As Guid
+    Public AccNumber As Long
+
     Private Sub loadPrograms()
         With ProgramComboBox
             .DataSource = Programs()
@@ -62,6 +65,8 @@ Public Class frmEditEnrollment
                 .Parameters.AddWithValue("@status", StatusComboBox.Text)
                 .Parameters.AddWithValue("@enrolref", IIf(EnrolRefTextBox.Text = "", Guid.NewGuid, EnrolRefTextBox.Text))
                 .Parameters.AddWithValue("@enroltype", StatusComboBox.Text)
+                .Parameters.AddWithValue("@accnumber", Val(txtAccNumber.Text))
+                .Parameters.AddWithValue("@company", Guid.Parse(txtCompany.Text))
                 .ExecuteNonQuery()
                 MsgBox("Enrollment Saved")
                 blnaddingenrol = False
@@ -91,6 +96,7 @@ Public Class frmEditEnrollment
             If loadspec Then
                 Try
                     Me.LoadEnrollmentsTableAdapter.FillByStud(Me.DsSchool.LoadEnrollments, enrollment.Student, enrollment.enrolref)
+
                 Catch ex As Exception
 
                 End Try
@@ -110,6 +116,9 @@ Public Class frmEditEnrollment
                     StatusComboBox.Text = .Status
                     Date_EnrolledDateTimePicker.Value = Now.Date
                     EnrolRefTextBox.Text = .enrolref
+                    txtCompany.Text = .Company.ToString
+                    txtAccNumber.Text = .AccNumber
+
 
                 End With
 
@@ -153,6 +162,7 @@ Public Class frmEditEnrollment
 
     Private Sub BindingNavigatorAddNewItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorAddNewItem.Click
         blnaddingenrol = True
+
     End Sub
 
     Private Sub Button31_Click(sender As Object, e As EventArgs) Handles Button31.Click

@@ -176,6 +176,10 @@
               <Mapping SourceColumn="SelectedCartegory" DataSetColumn="SelectedCartegory" />
               <Mapping SourceColumn="Currency" DataSetColumn="Currency" />
               <Mapping SourceColumn="BillingCurrency" DataSetColumn="BillingCurrency" />
+              <Mapping SourceColumn="LineBalance" DataSetColumn="LineBalance" />
+              <Mapping SourceColumn="dc" DataSetColumn="dc" />
+              <Mapping SourceColumn="OvBalance" DataSetColumn="OvBalance" />
+              <Mapping SourceColumn="CreatedOn" DataSetColumn="CreatedOn" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="soccerConnectionString (MySettings)" DbObjectName="RevoEduBonda.dbo.spClassFeesTranscations" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="FillByClass" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByClass" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByClass">
@@ -1009,6 +1013,16 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="LineBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLineBalance" msprop:Generator_ColumnPropNameInRow="LineBalance" msprop:Generator_ColumnPropNameInTable="LineBalanceColumn" msprop:Generator_UserColumnName="LineBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dc" msprop:Generator_ColumnVarNameInTable="columndc" msprop:Generator_ColumnPropNameInRow="dc" msprop:Generator_ColumnPropNameInTable="dcColumn" msprop:Generator_UserColumnName="dc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OvBalance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOvBalance" msprop:Generator_ColumnPropNameInRow="OvBalance" msprop:Generator_ColumnPropNameInTable="OvBalanceColumn" msprop:Generator_UserColumnName="OvBalance" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CreatedOn" msprop:Generator_ColumnVarNameInTable="columnCreatedOn" msprop:Generator_ColumnPropNameInRow="CreatedOn" msprop:Generator_ColumnPropNameInTable="CreatedOnColumn" msprop:Generator_UserColumnName="CreatedOn" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

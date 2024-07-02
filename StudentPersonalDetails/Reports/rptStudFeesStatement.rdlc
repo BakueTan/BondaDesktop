@@ -397,10 +397,13 @@
                           <TablixBody>
                             <TablixColumns>
                               <TablixColumn>
-                                <Width>1.40625in</Width>
+                                <Width>1.11458in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>1.33333in</Width>
+                                <Width>0.89583in</Width>
+                              </TablixColumn>
+                              <TablixColumn>
+                                <Width>1in</Width>
                               </TablixColumn>
                             </TablixColumns>
                             <TablixRows>
@@ -416,7 +419,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=iif(Fields!ConvAmount.Value &gt;0,formatcurrency(Fields!ConvAmount.Value),"")</Value>
+                                                <Value>=iif(Fields!dc.value  = "D",formatcurrency(Fields!ConvAmount.Value),"")</Value>
                                                 <Style>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
@@ -450,8 +453,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>= IIF(trim(ucase(fields!Currency.value)) = trim(ucase(fields!BillingCurrency.value)),  iif(Fields!ConvAmount.Value&lt;0,formatcurrency(Fields!ConvAmount.Value*-1),""),
- iif(Fields!ConvAmount.Value&lt;0,formatcurrency(Fields!ConvAmount.Value*-1) &amp; " (" &amp; formatcurrency(Fields!Amount.Value*-1)&amp; "-" &amp; fields!Currency.Value &amp; ")"  ,""))</Value>
+                                                <Value>=iif(Fields!dc.value  = "C",formatcurrency(Fields!ConvAmount.Value),"")</Value>
                                                 <Style>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
@@ -463,6 +465,40 @@
                                           </Paragraph>
                                         </Paragraphs>
                                         <rd:DefaultName>Textbox103</rd:DefaultName>
+                                        <Style>
+                                          <Border>
+                                            <Color>LightGrey</Color>
+                                            <Style>Solid</Style>
+                                          </Border>
+                                          <PaddingLeft>2pt</PaddingLeft>
+                                          <PaddingRight>2pt</PaddingRight>
+                                          <PaddingTop>2pt</PaddingTop>
+                                          <PaddingBottom>2pt</PaddingBottom>
+                                        </Style>
+                                      </Textbox>
+                                    </CellContents>
+                                  </TablixCell>
+                                  <TablixCell>
+                                    <CellContents>
+                                      <Textbox Name="Textbox5">
+                                        <CanGrow>true</CanGrow>
+                                        <KeepTogether>true</KeepTogether>
+                                        <Paragraphs>
+                                          <Paragraph>
+                                            <TextRuns>
+                                              <TextRun>
+                                                <Value>=formatcurrency(abs(fields!LineBalance.Value),2,TriState.False,TriState.False,TriState.False)</Value>
+                                                <Style>
+                                                  <FontWeight>Bold</FontWeight>
+                                                </Style>
+                                              </TextRun>
+                                            </TextRuns>
+                                            <Style>
+                                              <TextAlign>Right</TextAlign>
+                                            </Style>
+                                          </Paragraph>
+                                        </Paragraphs>
+                                        <rd:DefaultName>Textbox5</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -490,7 +526,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=iif((sum(fields!ConvAmount.Value) + fields!BBF.Value)&gt;=0,formatcurrency((sum(fields!ConvAmount.Value) + fields!BBF.Value)),"")</Value>
+                                                <Value>=iif(fields!OvBalance.Value &gt; 0,formatcurrency(abs(fields!OvBalance.Value),2,TriState.False,TriState.False,TriState.False),"")</Value>
                                                 <Style>
                                                   <FontSize>12pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
@@ -525,7 +561,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=iif((sum(fields!ConvAmount.Value) + fields!BBF.Value)&lt; 0,formatcurrency((sum(fields!ConvAmount.Value) + fields!BBF.Value)*-1),"")</Value>
+                                                <Value>=iif(fields!OvBalance.Value &lt;= 0,formatcurrency(abs(fields!OvBalance.Value),2,TriState.False,TriState.False,TriState.False),"")</Value>
                                                 <Style>
                                                   <FontSize>12pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
@@ -538,6 +574,41 @@
                                           </Paragraph>
                                         </Paragraphs>
                                         <rd:DefaultName>Textbox130</rd:DefaultName>
+                                        <Style>
+                                          <Border>
+                                            <Color>LightGrey</Color>
+                                            <Style>Solid</Style>
+                                          </Border>
+                                          <PaddingLeft>2pt</PaddingLeft>
+                                          <PaddingRight>2pt</PaddingRight>
+                                          <PaddingTop>2pt</PaddingTop>
+                                          <PaddingBottom>2pt</PaddingBottom>
+                                        </Style>
+                                      </Textbox>
+                                    </CellContents>
+                                  </TablixCell>
+                                  <TablixCell>
+                                    <CellContents>
+                                      <Textbox Name="Textbox6">
+                                        <CanGrow>true</CanGrow>
+                                        <KeepTogether>true</KeepTogether>
+                                        <Paragraphs>
+                                          <Paragraph>
+                                            <TextRuns>
+                                              <TextRun>
+                                                <Value />
+                                                <Style>
+                                                  <FontSize>12pt</FontSize>
+                                                  <FontWeight>Bold</FontWeight>
+                                                </Style>
+                                              </TextRun>
+                                            </TextRuns>
+                                            <Style>
+                                              <TextAlign>Right</TextAlign>
+                                            </Style>
+                                          </Paragraph>
+                                        </Paragraphs>
+                                        <rd:DefaultName>Textbox6</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>LightGrey</Color>
@@ -649,7 +720,7 @@
                                                 <Paragraph>
                                                   <TextRuns>
                                                     <TextRun>
-                                                      <Value>=IIF(fields!BBF.Value &gt;=0 ,FORMATCURRENCY(fields!BBF.Value) ,"")</Value>
+                                                      <Value>=IIF(fields!BBF.Value &gt;=0 ,formatcurrency(Abs(fields!BBF.Value),2,TriState.False,TriState.False,TriState.False) ,"")</Value>
                                                       <Style>
                                                         <FontWeight>Bold</FontWeight>
                                                       </Style>
@@ -732,7 +803,7 @@
                                                 <Paragraph>
                                                   <TextRuns>
                                                     <TextRun>
-                                                      <Value>=IIF(fields!BBF.Value &lt; 0 ,formatcurrency(fields!BBF.Value*-1) ,"")</Value>
+                                                      <Value>=IIF(fields!BBF.Value &lt; 0 ,formatcurrency(abs(fields!BBF.Value),2,TriState.False,TriState.False,TriState.False) ,"")</Value>
                                                       <Style>
                                                         <FontWeight>Bold</FontWeight>
                                                       </Style>
@@ -768,6 +839,123 @@
                                   </TablixMember>
                                 </TablixMembers>
                               </TablixMember>
+                              <TablixMember>
+                                <TablixHeader>
+                                  <Size>0.25in</Size>
+                                  <CellContents>
+                                    <Textbox Name="Textbox1">
+                                      <CanGrow>true</CanGrow>
+                                      <KeepTogether>true</KeepTogether>
+                                      <Paragraphs>
+                                        <Paragraph>
+                                          <TextRuns>
+                                            <TextRun>
+                                              <Value />
+                                              <Style>
+                                                <FontSize>12pt</FontSize>
+                                                <FontWeight>Bold</FontWeight>
+                                              </Style>
+                                            </TextRun>
+                                          </TextRuns>
+                                          <Style>
+                                            <TextAlign>Center</TextAlign>
+                                          </Style>
+                                        </Paragraph>
+                                      </Paragraphs>
+                                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                                      <Style>
+                                        <Border>
+                                          <Color>LightGrey</Color>
+                                          <Style>Solid</Style>
+                                        </Border>
+                                        <PaddingLeft>2pt</PaddingLeft>
+                                        <PaddingRight>2pt</PaddingRight>
+                                        <PaddingTop>2pt</PaddingTop>
+                                        <PaddingBottom>2pt</PaddingBottom>
+                                      </Style>
+                                    </Textbox>
+                                  </CellContents>
+                                </TablixHeader>
+                                <TablixMembers>
+                                  <TablixMember>
+                                    <TablixHeader>
+                                      <Size>0.25in</Size>
+                                      <CellContents>
+                                        <Textbox Name="Textbox3">
+                                          <CanGrow>true</CanGrow>
+                                          <KeepTogether>true</KeepTogether>
+                                          <Paragraphs>
+                                            <Paragraph>
+                                              <TextRuns>
+                                                <TextRun>
+                                                  <Value>Balance</Value>
+                                                  <Style>
+                                                    <FontSize>12pt</FontSize>
+                                                    <FontWeight>Bold</FontWeight>
+                                                  </Style>
+                                                </TextRun>
+                                              </TextRuns>
+                                              <Style>
+                                                <TextAlign>Right</TextAlign>
+                                              </Style>
+                                            </Paragraph>
+                                          </Paragraphs>
+                                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                                          <Style>
+                                            <Border>
+                                              <Color>LightGrey</Color>
+                                              <Style>Solid</Style>
+                                            </Border>
+                                            <PaddingLeft>2pt</PaddingLeft>
+                                            <PaddingRight>2pt</PaddingRight>
+                                            <PaddingTop>2pt</PaddingTop>
+                                            <PaddingBottom>2pt</PaddingBottom>
+                                          </Style>
+                                        </Textbox>
+                                      </CellContents>
+                                    </TablixHeader>
+                                    <TablixMembers>
+                                      <TablixMember>
+                                        <TablixHeader>
+                                          <Size>0.25in</Size>
+                                          <CellContents>
+                                            <Textbox Name="Textbox4">
+                                              <CanGrow>true</CanGrow>
+                                              <KeepTogether>true</KeepTogether>
+                                              <Paragraphs>
+                                                <Paragraph>
+                                                  <TextRuns>
+                                                    <TextRun>
+                                                      <Value />
+                                                      <Style>
+                                                        <FontWeight>Bold</FontWeight>
+                                                      </Style>
+                                                    </TextRun>
+                                                  </TextRuns>
+                                                  <Style>
+                                                    <TextAlign>Right</TextAlign>
+                                                  </Style>
+                                                </Paragraph>
+                                              </Paragraphs>
+                                              <rd:DefaultName>Textbox4</rd:DefaultName>
+                                              <Style>
+                                                <Border>
+                                                  <Color>LightGrey</Color>
+                                                  <Style>Solid</Style>
+                                                </Border>
+                                                <PaddingLeft>2pt</PaddingLeft>
+                                                <PaddingRight>2pt</PaddingRight>
+                                                <PaddingTop>2pt</PaddingTop>
+                                                <PaddingBottom>2pt</PaddingBottom>
+                                              </Style>
+                                            </Textbox>
+                                          </CellContents>
+                                        </TablixHeader>
+                                      </TablixMember>
+                                    </TablixMembers>
+                                  </TablixMember>
+                                </TablixMembers>
+                              </TablixMember>
                             </TablixMembers>
                           </TablixColumnHierarchy>
                           <TablixRowHierarchy>
@@ -782,7 +970,12 @@
                                 <SortExpressions>
                                   <SortExpression>
                                     <Value>=Fields!PostDate.Value</Value>
-                                    <Direction>Descending</Direction>
+                                  </SortExpression>
+                                  <SortExpression>
+                                    <Value>=Fields!Receipt.Value</Value>
+                                  </SortExpression>
+                                  <SortExpression>
+                                    <Value>=Fields!CreatedOn.Value</Value>
                                   </SortExpression>
                                 </SortExpressions>
                                 <TablixHeader>
@@ -932,7 +1125,7 @@
                           <Top>1.61175in</Top>
                           <Left>0.09999in</Left>
                           <Height>1.25in</Height>
-                          <Width>8.27396in</Width>
+                          <Width>8.54479in</Width>
                           <ZIndex>6</ZIndex>
                           <Style>
                             <Border>
@@ -961,10 +1154,20 @@
               <Group Name="list1_Details_Group">
                 <GroupExpressions>
                   <GroupExpression>=Fields!StudentID.Value</GroupExpression>
+                  <GroupExpression>=Fields!BillingCurrency.Value</GroupExpression>
                 </GroupExpressions>
                 <PageBreak>
                   <BreakLocation>Between</BreakLocation>
                 </PageBreak>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!BillingCurrency.Value</FilterExpression>
+                    <Operator>NotEqual</Operator>
+                    <FilterValues>
+                      <FilterValue>= ""</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
               </Group>
               <TablixMembers>
                 <TablixMember />
@@ -988,7 +1191,7 @@
     <Height>3.9822in</Height>
     <Style />
   </Body>
-  <Width>9.51958in</Width>
+  <Width>9.75917in</Width>
   <Page>
     <PageHeader>
       <Height>0.78in</Height>
@@ -1266,6 +1469,22 @@
         <Field Name="BillingCurrency">
           <DataField>BillingCurrency</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LineBalance">
+          <DataField>LineBalance</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="dc">
+          <DataField>dc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OvBalance">
+          <DataField>OvBalance</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CreatedOn">
+          <DataField>CreatedOn</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
